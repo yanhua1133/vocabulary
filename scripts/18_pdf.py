@@ -87,6 +87,22 @@ def md_to_html(md, title):
             f"<body>{html}</body></html>")
 
 
+def strip_metadata(path):
+    """清掉 Chrome 写进去的 UA/producer 等信息，只留标题。"""
+    import fitz
+
+    if not os.path.exists(path):
+        return
+    doc = fitz.open(path)
+    title = doc.metadata.get("title") or os.path.basename(path)[:-4]
+    doc.set_metadata({"title": title, "producer": "", "creator": "",
+                      "author": "", "subject": "", "keywords": ""})
+    tmp = path + ".tmp"
+    doc.save(tmp, garbage=3, deflate=True)
+    doc.close()
+    os.replace(tmp, path)
+
+
 def merge():
     """把 31 个分册合成一册，并建 List / Unit 两级书签。"""
     import fitz
@@ -111,6 +127,8 @@ def merge():
         print(f"  合入 {f} ({len(book)} 页)")
     book.set_toc(toc)
     out = os.path.join(PDF, "GRE3000-合订本.pdf")
+    book.set_metadata({"title": "GRE3000", "producer": "", "creator": "",
+                       "author": "", "subject": "", "keywords": ""})
     book.save(out, garbage=4, deflate=True)
     print(f"\n{out}\n{len(book)} 页, {os.path.getsize(out)/1024/1024:.0f} MB, "
           f"书签 {len(toc)} 条")
@@ -138,6 +156,7 @@ def main():
              f"--print-to-pdf={pdf_path}", f"file://{html_path}"],
             capture_output=True, timeout=600,
         )
+        strip_metadata(pdf_path)
         size = os.path.getsize(pdf_path) if os.path.exists(pdf_path) else 0
         print(f"List{n}.pdf  {size/1024/1024:.1f} MB  "
               f"（略去半星词 {md_to_html.dropped} 条）")

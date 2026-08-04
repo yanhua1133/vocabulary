@@ -19,7 +19,7 @@ description: |
 | `/gre3000 build <N>` | 按下面流程跑完 List N，然后给出 `out/List<N>.md` 路径 + 5 行预览。 |
 | `/gre3000 build all` | 对 `data/todo_llm.json` 里还有缺口的 List 依次执行同样流程。 |
 | `/gre3000 verify` | 跑 `scripts/15_audit.py`，只报数字。 |
-| `/gre3000 pdf [N]` | 跑 `scripts/18_pdf.py [N]` → `pdf/List<N>.pdf`（无头 Chrome 打印，16 开 185×260mm 竖版）。 |
+| `/gre3000 pdf [N]` | 跑 `scripts/18_pdf.py [N]` → `pdf/List<N>.pdf`（playwright 打印，16 开 185×260mm 竖版）。 |
 | `/gre3000 pdf merge` | 跑 `scripts/18_pdf.py --merge` → `pdf/GRE3000-合订本.pdf`，带 List/Unit 两级书签。 |
 | `/gre3000 fix "<抱怨>"` | 按用户指出的问题修，重渲染那个 List，把改好的行贴出来。 |
 

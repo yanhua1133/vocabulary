@@ -69,18 +69,43 @@ def word_row(word, rec, prefix=""):
     return "<tr>" + "".join(f"<td>{c}</td>" for c in cells) + "</tr>"
 
 
-def render_unit(unit, words):
+def plan_dedup(book):
+    """全书去重：每个单词整本书只出现一次。
+
+    词头行一律保留（原书结构，含 5 个原书自带的重复词头）。近/反义词行在两种
+    情况下略去：它本身就是书里的某个词头（那里有它的完整条目），或它在本书更早
+    的位置已经出现过。返回允许输出的 (list, unit, 词条序号, 小写词) 集合。
+    """
+    heads = {e["word"].strip().lower()
+             for L in book["lists"] for u in L["units"] for e in u["entries"]}
+    seen, keep = set(), set()
+    for L in book["lists"]:
+        for u in L["units"]:
+            for i, e in enumerate(u["entries"]):
+                w = e["word"].strip().lower()
+                keep.add((L["list"], u["unit"], i, w))
+                seen.add(w)
+                for x in e["syn"] + e["ant"]:
+                    k = x.strip().lower()
+                    if not k or k in heads or k in seen:
+                        continue
+                    seen.add(k)
+                    keep.add((L["list"], u["unit"], i, k))
+    return keep
+
+
+def render_unit(lst, unit, words, keep):
     out = [f"\n## Unit {unit['unit']}\n", "<table>", "<thead><tr>"]
     out += [f"<th>{c}</th>" for c in COLS]
     out.append("</tr></thead>")
-    for e in unit["entries"]:
-        seen = set()
+    for i, e in enumerate(unit["entries"]):
         rows = ([(e["word"], "")] + [(x, "↳近") for x in e["syn"]]
                 + [(x, "↳反") for x in e["ant"]])
         for w, prefix in rows:
-            if w.lower() in seen:
+            token = (lst, unit["unit"], i, w.strip().lower())
+            if token not in keep:
                 continue
-            seen.add(w.lower())
+            keep.discard(token)          # 令牌用掉，同一词条里重复列的也只出一次
             rec = words.get(w, {})
             # 一个词的两行必须同页，所以各自单独成组
             out.append("<tbody>")
@@ -98,11 +123,13 @@ def main():
     words = json.load(open(os.path.join(DATA, "words.json")))
     wanted = {int(a) for a in sys.argv[1:] if a.isdigit()} or None
     os.makedirs(OUT, exist_ok=True)
+    # 去重是全书范围的，必须先按全书顺序算好，只渲染部分 List 时结果才一致
+    keep = plan_dedup(book)
     for L in book["lists"]:
         if wanted and L["list"] not in wanted:
             continue
         parts = [f"# List {L['list']}\n"]
-        parts += [render_unit(u, words) for u in L["units"]]
+        parts += [render_unit(L["list"], u, words, keep) for u in L["units"]]
         p = os.path.join(OUT, f"List{L['list']}.md")
         open(p, "w").write("".join(parts))
         print(p)

@@ -25,10 +25,6 @@
 <tr><td colspan="7">例 The paper polled a thousand readers about the new tax.  该报就新税向一千名读者做了调查。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 solicit</td><td>/səˈlɪsɪt/</td><td>★★</td><td>★★</td><td>及物动词</td><td>请求，征求；招揽</td><td>solicit donations<br>募集捐款</td></tr>
-<tr><td colspan="7">例 The charity solicited funds from local businesses all winter.  该慈善机构整个冬天向本地企业募捐。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 survey</td><td>/sərˈveɪ/</td><td>★★★☆</td><td>★★★☆</td><td>名词、及物动词</td><td>调查；勘测；概览</td><td>conduct a survey<br>开展一项调查</td></tr>
 <tr><td colspan="7">例 We surveyed every household about their water use last summer.  去年夏天我们调查了每户人家的用水情况。</td></tr>
 </tbody>
@@ -37,40 +33,8 @@
 <tr><td colspan="7">例 After weeks of protest the company capitulated to the workers' demands.  抗议数周后，公司向工人的要求屈服了。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 budge</td><td>/bʌdʒ/</td><td>★★</td><td>★★</td><td>动词</td><td>挪动，微动；改变主意</td><td>refuse to budge<br>拒不让步</td></tr>
-<tr><td colspan="7">例 The heavy stone would not budge despite our best efforts.  尽管我们竭尽全力，那块沉重的石头还是挪不动。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 concede</td><td>/kənˈsiːd/</td><td>★★☆</td><td>★★</td><td>及物动词</td><td>承认</td><td>concede the point<br>承认这一点</td></tr>
-<tr><td colspan="7">例 She finally conceded that her opponent had made a fair point.  她最终承认对手说得有道理。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 relent</td><td>/rɪˈlent/</td><td>★</td><td>★</td><td>不及物动词</td><td>变宽容，让步；减弱</td><td>finally relent<br>最终松口让步</td></tr>
-<tr><td colspan="7">例 Her father finally relented and let her borrow the car.  她父亲终于让步，把车借给了她。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 submit</td><td>/səbˈmɪt/</td><td>★★★</td><td>★★★</td><td>动词</td><td>屈服，服从；提交</td><td>submit to authority<br>服从权威</td></tr>
-<tr><td colspan="7">例 The rebels refused to submit to the new government.  叛军拒绝向新政府屈服。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 succumb</td><td>/səˈkʌm/</td><td>★★</td><td>★★</td><td>不及物动词</td><td>屈服；死亡</td><td>succumb to pressure<br>屈服于压力</td></tr>
-<tr><td colspan="7">例 The mayor finally succumbed to pressure and withdrew the unpopular proposal.  市长最终屈服于压力，撤回了不受欢迎的提案。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 surrender</td><td>/səˈrendər/</td><td>★★★</td><td>★★★</td><td>动词</td><td>交出，放弃，投降</td><td>surrender to the police<br>向警方投降</td></tr>
-<tr><td colspan="7">例 The thief finally surrendered to the police after a long chase.  经过长时间追捕，小偷终于向警方投降。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 knuckle under</td><td>/ˈnʌkəl ˈʌndər/</td><td>★★</td><td>☆</td><td>动词</td><td>屈服，让步</td><td>knuckle under to pressure<br>在压力下屈服</td></tr>
 <tr><td colspan="7">例 He refused to knuckle under to the angry crowd.  他拒绝向愤怒的人群屈服。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 resist</td><td>/rɪˈzɪst/</td><td>★★★</td><td>★★★★★</td><td>及物动词、不及物动词</td><td>抵抗，抗拒，不服从</td><td>resist the temptation<br>抵抗诱惑</td></tr>
-<tr><td colspan="7">例 The villagers resisted every attempt to move them elsewhere.  村民们抵制一切要迁走他们的企图。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 oppose</td><td>/əˈpoʊz/</td><td>★★★</td><td>★★★</td><td>及物动词</td><td>反对，抵制</td><td>oppose the new law<br>反对新法律</td></tr>
-<tr><td colspan="7">例 Two senators openly opposed the new tax bill.  两位参议员公开反对这项新税案。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>caprice</b></td><td>/kəˈpriːs/</td><td>★☆</td><td>★☆</td><td>名词</td><td>反复无常，一时兴起</td><td>at the caprice of<br>任凭…一时兴起</td></tr>
@@ -93,84 +57,32 @@
 <tr><td colspan="7">例 We need written confirmation before we release the funds.  在放款之前我们需要书面确认。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 steadfast</td><td>/ˈstedfæst/</td><td>★★</td><td>★★</td><td>形容词</td><td>坚定的，忠诚的</td><td>steadfast in his belief<br>信念坚定不移</td></tr>
-<tr><td colspan="7">例 She remained steadfast in her belief despite years of public ridicule.  尽管多年遭受公众嘲笑，她依然坚定地坚持自己的信念。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 resolute</td><td>/ˈrezəluːt/</td><td>★★</td><td>★★</td><td>形容词</td><td>坚定的</td><td>remain resolute<br>保持坚定</td></tr>
-<tr><td colspan="7">例 Despite heavy criticism, the mayor remained resolute about closing the old factory.  尽管备受批评，市长在关闭旧工厂一事上依然坚定。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 constant</td><td>/ˈkɑːnstənt/</td><td>★★★☆</td><td>★★★☆</td><td>形容词、名词</td><td>不变的，恒定的；忠诚的</td><td>a constant friend<br>忠诚不变的朋友</td></tr>
 <tr><td colspan="7">例 Her support remained constant through every difficult year.  她的支持在每个艰难年头都不曾改变。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳反 pertinacious</del></td><td>/ˌpɜːrtnˈeɪʃəs/</td><td>☆</td><td>☆</td><td>形容词</td><td>顽固的，固执地坚持的</td><td>pertinacious in her demands<br>固执地坚持要求</td></tr>
-<tr><td colspan="7">例 The pertinacious reporter kept calling until she got an answer.  这位执着的记者不停打电话，直到得到答复。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>captivate</b></td><td>/ˈkæptɪveɪt/</td><td>★</td><td>★★</td><td>及物动词</td><td>使着迷，深深吸引</td><td>captivate the audience<br>深深吸引观众</td></tr>
 <tr><td colspan="7">例 Her first novel captivated readers around the world.  她的第一部小说令世界各地的读者着迷。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 allure</td><td>/əˈlʊr/</td><td>★★</td><td>★★</td><td>及物动词、名词</td><td>吸引，诱惑</td><td>the allure of fame<br>名声的诱惑</td></tr>
-<tr><td colspan="7">例 Cheap rents allure young artists to this run-down district.  低廉的租金吸引年轻艺术家来到这个破旧街区。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 beguile</td><td>/bɪˈɡaɪl/</td><td>☆</td><td>☆</td><td>及物动词</td><td>欺骗，诱骗；使着迷</td><td>beguile the audience<br>令观众着迷</td></tr>
-<tr><td colspan="7">例 The magician could beguile an audience for a full hour.  这位魔术师能让观众着迷整整一小时。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 bewitch</td><td>/bɪˈwɪtʃ/</td><td>☆</td><td>☆</td><td>及物动词</td><td>使着迷；用魔法迷住</td><td>bewitch the audience<br>让观众为之着迷</td></tr>
 <tr><td colspan="7">例 Her singing bewitched everyone in the crowded little hall.  她的歌声让拥挤小厅里的每个人都着了迷。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 enchant</td><td>/ɪnˈtʃænt/</td><td>★☆</td><td>★★</td><td>及物动词</td><td>使入迷，使陶醉</td><td>be enchanted by the scenery<br>被风景迷住</td></tr>
-<tr><td colspan="7">例 The old fishing village enchanted every visitor who stayed there.  那个古老渔村令每位住过的游客陶醉。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 fascinate</td><td>/ˈfæsɪneɪt/</td><td>★</td><td>★★★</td><td>及物动词</td><td>强烈吸引，使入迷</td><td>fascinate young readers<br>使小读者着迷</td></tr>
-<tr><td colspan="7">例 Stories about strange deep-sea creatures fascinate young readers all over the world.  关于奇异深海生物的故事让全世界的小读者着迷。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 magnetize</td><td>/ˈmæɡnətaɪz/</td><td>☆</td><td>☆</td><td>及物动词</td><td>强烈吸引，使着迷；使磁化</td><td>magnetize a crowd<br>牢牢吸引住人群</td></tr>
 <tr><td colspan="7">例 The speaker magnetized the audience within the first two minutes.  演讲者在头两分钟内就牢牢吸引住了听众。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 repulse</td><td>/rɪˈpʌls/</td><td>★☆</td><td>★☆</td><td>及物动词</td><td>使厌恶，排斥</td><td>repulsed by the smell<br>被那气味恶心到</td></tr>
-<tr><td colspan="7">例 The sight of the rotting fruit repulsed everyone standing near the crate.  腐烂水果的样子让站在箱子旁的每个人都感到恶心。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>careworn</b></td><td>/ˈkerwɔːrn/</td><td>☆</td><td>☆</td><td>形容词</td><td>憔悴的，饱受忧虑的</td><td>a careworn face<br>憔悴的面容</td></tr>
 <tr><td colspan="7">例 Her careworn face brightened when the children ran into the room.  孩子们跑进房间时，她憔悴的脸上亮了起来。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 lighthearted</td><td>/ˌlaɪtˈhɑːrtɪd/</td><td>★☆</td><td>★★</td><td>形容词</td><td>轻松愉快的，无忧无虑的</td><td>a lighthearted comedy<br>轻松的喜剧</td></tr>
-<tr><td colspan="7">例 We wanted a lighthearted film after such a stressful week.  在如此紧张的一周后，我们想看部轻松的电影。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>cardinal</b></td><td>/ˈkɑːrdənl/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>主要的，非常重要的</td><td>a cardinal rule<br>一条首要的规则</td></tr>
 <tr><td colspan="7">例 Honesty is a cardinal rule in this small hospital.  诚实是这家小医院的首要准则。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 dominant</td><td>/ˈdɑːmɪnənt/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>处于支配地位的；（基因）显性的</td><td>the dominant player<br>占主导地位的一方</td></tr>
-<tr><td colspan="7">例 The dominant player in the market set prices that everyone else followed.  市场上占主导地位的那家定的价，其他人都跟着走。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 overbearing</td><td>/ˌoʊvərˈberɪŋ/</td><td>★☆</td><td>☆</td><td>形容词</td><td>专横傲慢的</td><td>an overbearing boss<br>专横傲慢的老板</td></tr>
-<tr><td colspan="7">例 His overbearing manner made junior colleagues afraid to voice any objection.  他专横的作风让年轻同事不敢提出任何反对意见。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 overriding</td><td>/ˌoʊvərˈraɪdɪŋ/</td><td>★★</td><td>★★</td><td>形容词</td><td>最重要的，优先于一切的</td><td>of overriding importance<br>具有首要重要性</td></tr>
 <tr><td colspan="7">例 Safety was the overriding concern in designing the bridge.  安全是设计这座桥时最重要的考虑。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 paramount</td><td>/ˈpærəmaʊnt/</td><td>★★☆</td><td>★★</td><td>形容词</td><td>最重要的</td><td>of paramount importance<br>至为重要</td></tr>
-<tr><td colspan="7">例 Safety is paramount when workers handle these highly flammable chemicals.  工人处理这些极易燃的化学品时，安全最为重要。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 preeminent</td><td>/priˈemɪnənt/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>优秀的，重要的</td><td>the preeminent scholar<br>最杰出的学者</td></tr>
-<tr><td colspan="7">例 He is the preeminent authority on medieval trade routes in Europe.  他是研究欧洲中世纪贸易路线最杰出的权威。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 primal</td><td>/ˈpraɪməl/</td><td>★★</td><td>★★</td><td>形容词</td><td>原始的；最初的，首要的</td><td>a primal instinct<br>一种原始本能</td></tr>
@@ -181,36 +93,8 @@
 <tr><td colspan="7">例 The court holds supreme authority over all such disputes.  该法院对所有此类争议拥有最高裁判权。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 minor</td><td>/ˈmaɪnər/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>较小的，不重要的</td><td>a minor problem<br>一个小问题</td></tr>
-<tr><td colspan="7">例 Only minor repairs were needed after the small accident.  小事故后只需要一些小修理。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>caricature</b></td><td>/ˈkærɪkətʃər/</td><td>★★</td><td>★★</td><td>名词、及物动词</td><td>讽刺画，夸张的滑稽模仿</td><td>draw a caricature<br>画一幅讽刺画</td></tr>
 <tr><td colspan="7">例 The cartoonist drew a cruel caricature of the new mayor.  漫画家画了一幅刻薄的新市长讽刺画。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 burlesque</td><td>/bɜːrˈlesk/</td><td>★★</td><td>★★</td><td>名词、动词</td><td>滑稽夸张的模仿讽刺作品；恶搞</td><td>a burlesque of politics<br>对政治的滑稽恶搞</td></tr>
-<tr><td colspan="7">例 The play is a clever burlesque of modern political debate.  这部戏是对当代政治辩论的巧妙滑稽模仿。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 imitate</td><td>/ˈɪməˌteɪt/</td><td>★★</td><td>★★</td><td>及物动词</td><td>模仿，仿效</td><td>imitate his accent<br>模仿他的口音</td></tr>
-<tr><td colspan="7">例 Children naturally imitate the speech of adults around them.  孩子会自然地模仿身边大人的说话方式。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 mock</td><td>/ˈmɑːk/</td><td>★★☆</td><td>★★☆</td><td>形容词、动词</td><td>假的，模拟的；嘲笑</td><td>a mock trial<br>模拟审判</td></tr>
-<tr><td colspan="7">例 Students held a mock election to learn how voting works.  学生举行模拟选举以了解投票如何运作。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 parody</td><td>/ˈpærədi/</td><td>★★☆</td><td>★★☆</td><td>名词</td><td>（以嘲笑原作作者的）模仿作品，恶搞</td><td>a parody of the film<br>对该片的恶搞模仿</td></tr>
-<tr><td colspan="7">例 The students wrote a hilarious parody of the morning speech at assembly.  学生们写了一篇滑稽的作品，恶搞集会上的早间讲话。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 spoof</td><td>/spuːf/</td><td>★★</td><td>★★</td><td>名词</td><td>轻松幽默的模仿，小恶搞</td><td>a spoof of the news<br>对新闻的幽默模仿</td></tr>
-<tr><td colspan="7">例 The show aired a clever spoof of the evening news broadcast.  节目播出了对晚间新闻的一段巧妙恶搞。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 travesty</td><td>/ˈtrævəsti/</td><td>★★</td><td>★★</td><td>名词</td><td>拙劣的、嘲弄性模仿</td><td>a travesty of justice<br>对正义的拙劣讽刺</td></tr>
-<tr><td colspan="7">例 Critics called the hasty trial a travesty of justice.  批评者称这场匆忙的审判是对正义的拙劣讽刺。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>carnal</b></td><td>/ˈkɑːrnl/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>肉体的，物质的；世俗的</td><td>carnal pleasures<br>肉体的享乐</td></tr>
@@ -221,10 +105,6 @@
 <tr><td colspan="7">例 Most countries have banned corporal punishment in their schools.  多数国家已禁止在学校施行体罚。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 corporeal</td><td>/kɔːrˈpɔːriəl/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>肉体的；有形的，实体的</td><td>corporeal existence<br>肉体的存在</td></tr>
-<tr><td colspan="7">例 The ghost seemed almost corporeal in the flickering candlelight.  在摇曳的烛光中，那鬼影几乎像有实体。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 fleshly</td><td>/ˈflɛʃli/</td><td>☆</td><td>☆</td><td>形容词</td><td>肉体的；世俗的</td><td>fleshly desires<br>肉体的欲望</td></tr>
 <tr><td colspan="7">例 The monk warned his students against fleshly temptations.  那位僧人告诫学生要远离肉体的诱惑。</td></tr>
 </tbody>
@@ -233,28 +113,12 @@
 <tr><td colspan="7">例 He cared little for material wealth and lived very simply.  他不太在意物质财富，生活极为简朴。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 somatic</td><td>/səˈmætɪk/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>肉体的</td><td>somatic symptoms<br>身体上的症状</td></tr>
-<tr><td colspan="7">例 The doctor attributed her somatic symptoms to prolonged emotional stress.  医生把她身体上的症状归因于长期的情绪压力。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳近 earthborn</del></td><td>/ˈɜrθbɔrn/</td><td>☆</td><td>☆</td><td>形容词</td><td>生于尘世的，凡人的</td><td>earthborn creatures<br>尘世间的生灵</td></tr>
 <tr><td colspan="7">例 The poem contrasts heavenly spirits with weak earthborn men.  这首诗把天上的神灵与脆弱的凡人相对照。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 mundane</td><td>/mʌnˈdeɪn/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>平凡的</td><td>mundane daily chores<br>平凡的日常杂务</td></tr>
-<tr><td colspan="7">例 He spent the morning on mundane daily chores like laundry and dishes.  他整个上午都在做洗衣洗碗这类平凡的日常杂务。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 temporal</td><td>/ˈtempərəl/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>世俗的，尘世的</td><td>temporal power<br>世俗权力</td></tr>
-<tr><td colspan="7">例 Medieval popes wielded both spiritual and temporal power in Europe.  中世纪的教皇在欧洲同时掌握宗教权力与世俗权力。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 terrestrial</td><td>/təˈrestriəl/</td><td>★★☆</td><td>★☆</td><td>形容词</td><td>陆地的；地球的；世俗的</td><td>terrestrial life<br>陆地生物；尘世生活</td></tr>
 <tr><td colspan="7">例 Astronomers compare Mars with terrestrial deserts to picture its climate.  天文学家把火星与地球上的沙漠作比较来想象其气候。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 worldly</td><td>/ˈwɜːrldli/</td><td>★★</td><td>★★</td><td>形容词</td><td>世间的，世俗的；老练的</td><td>worldly possessions<br>世俗财产</td></tr>
-<tr><td colspan="7">例 He gave away all his worldly possessions and entered the monastery.  他捐出全部世俗财产，进了修道院。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 spiritual</td><td>/ˈspɪrɪtʃuəl/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>精神的；灵魂的，宗教的</td><td>spiritual growth<br>精神成长</td></tr>
@@ -269,10 +133,6 @@
 <tr><td colspan="7">例 After the exams the students went on a three-day binge.  考完试后学生们狂欢了三天。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 revel</td><td>/ˈrevl/</td><td>★★</td><td>★★</td><td>不及物动词、名词</td><td>享乐，陶醉</td><td>revel in praise<br>陶醉于赞美</td></tr>
-<tr><td colspan="7">例 Young actors often revel in the applause of a packed opening night.  年轻演员常陶醉于首演满座时的掌声。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳近 roister</del></td><td>/ˈrɔɪstər/</td><td>☆</td><td>☆</td><td>不及物动词</td><td>喧闹作乐，狂欢</td><td>roister in the tavern<br>在酒馆里喧闹狂欢</td></tr>
 <tr><td colspan="7">例 Sailors roistered in the port until the ship sailed at dawn.  水手们在港口喧闹作乐，直到黎明开船。</td></tr>
 </tbody>
@@ -285,24 +145,12 @@
 <tr><td colspan="7">例 She carped at every detail of the seating arrangement.  她对座位安排的每个细节都挑剔。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 cavil</td><td>/ˈkævl/</td><td>☆</td><td>☆</td><td>动词</td><td>挑剔，吹毛求疵</td><td>cavil over wording<br>在措辞上吹毛求疵</td></tr>
-<tr><td colspan="7">例 Reviewers caviled over the wording instead of judging the ideas.  评审者在措辞上吹毛求疵，而不评判观点。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 fuss</td><td>/fʌs/</td><td>★★☆</td><td>★★☆</td><td>名词、不及物动词</td><td>小题大做，抱怨；忙乱</td><td>make a fuss about<br>为…大惊小怪</td></tr>
 <tr><td colspan="7">例 Don't make a fuss about a tiny stain on the tablecloth.  别为桌布上一小块污渍小题大做。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 niggle</td><td>/ˈnɪɡəl/</td><td>☆</td><td>☆</td><td>动词、名词</td><td>对琐事挑剔；使烦扰</td><td>niggle over trifles<br>为琐事吹毛求疵</td></tr>
 <tr><td colspan="7">例 Reviewers niggled over commas instead of judging the argument.  评审者在逗号上挑剔，却不评判论点本身。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 nitpick</td><td>/ˈnɪtpɪk/</td><td>★</td><td>★</td><td>动词</td><td>吹毛求疵</td><td>nitpick about grammar<br>在语法上吹毛求疵</td></tr>
-<tr><td colspan="7">例 Reviewers nitpick about grammar while ignoring the serious flaws in the argument.  评审者在语法上吹毛求疵，却忽视论证中的严重缺陷。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 gripe</td><td>/ɡraɪp/</td><td>★☆</td><td>★☆</td><td>不及物动词</td><td>抱怨</td><td>gripe about the food<br>抱怨饭菜</td></tr>
-<tr><td colspan="7">例 The passengers griped loudly about the delay for nearly a whole hour.  乘客们大声抱怨延误，抱怨了将近一个小时。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 grizzle</td><td>/ˈɡrɪzəl/</td><td>☆</td><td>☆</td><td>不及物动词</td><td>抱怨，啜泣着诉苦</td><td>grizzle about the weather<br>抱怨天气</td></tr>
@@ -315,10 +163,6 @@
 <tbody>
 <tr><td>↳近 grouse</td><td>/ˈɡraʊs/</td><td>★★</td><td>★★</td><td>不及物动词、名词</td><td>抱怨，发牢骚</td><td>grouse about long hours<br>抱怨工时太长</td></tr>
 <tr><td colspan="7">例 The crew groused about long hours during the harvest season.  收割季里工人们抱怨工时太长。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 grumble</td><td>/ˈɡrʌmbl/</td><td>★☆</td><td>★☆</td><td>不及物动词</td><td>（尤指低声地）抱怨，埋怨</td><td>grumble under one's breath<br>低声抱怨</td></tr>
-<tr><td colspan="7">例 The workers grumbled about the new rules but followed them anyway.  工人们低声抱怨新规定，但还是照办了。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 wail</td><td>/ˈweɪl/</td><td>★☆</td><td>★☆</td><td>动词、名词</td><td>痛哭，哀号；抱怨</td><td>wail in grief<br>悲痛地哀号</td></tr>
@@ -359,20 +203,12 @@
 <tr><td colspan="7">例 The new evidence cast doubt on the official explanation.  新证据让官方的解释受到质疑。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 discharge</td><td>/dɪsˈtʃɑːrdʒ/</td><td>★★★</td><td>★★★</td><td>及物动词</td><td>释放；解雇</td><td>discharge the prisoner<br>释放囚犯</td></tr>
-<tr><td colspan="7">例 The court discharged the prisoner immediately after the new evidence appeared.  新证据出现后，法庭立即释放了那名囚犯。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 emanate</td><td>/ˈeməˌneɪt/</td><td>★</td><td>☆</td><td>动词</td><td>散发，发出；发源</td><td>emanate from the kitchen<br>从厨房散发出来</td></tr>
 <tr><td colspan="7">例 A warm smell of bread emanated from the little bakery.  一股温热的面包香从小面包店里散发出来。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 irradiate</td><td>/ɪˈreɪdieɪt/</td><td>☆</td><td>☆</td><td>及物动词</td><td>照射，照亮；辐照</td><td>irradiate the sample<br>对样品进行辐照</td></tr>
 <tr><td colspan="7">例 Sunlight irradiated the valley and the mist quickly lifted.  阳光照亮山谷，雾气很快散去。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 issue</td><td>/ˈɪʃuː/</td><td>★★★★☆</td><td>★★★★☆</td><td>名词、动词</td><td>（有争议的）话题，议题；（使）流出</td><td>issue a statement<br>发表声明</td></tr>
-<tr><td colspan="7">例 Water issued from the cracked pipe and flooded the basement overnight.  水从裂开的管道中流出，一夜之间淹了地下室。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 shoot</td><td>/ˈʃuːt/</td><td>★★★☆</td><td>★★★☆</td><td>动词、名词</td><td>射出，发射；迅速射出（光线等）</td><td>shoot a glance at<br>朝…投去一瞥</td></tr>
@@ -395,10 +231,6 @@
 <tr><td colspan="7">例 Factories once dumped chemical waste straight into the river.  工厂曾把化学废料直接倾倒进河里。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 jettison</td><td>/ˈdʒetɪsn/</td><td>★☆</td><td>★☆</td><td>及物动词</td><td>抛弃，放弃（想法、计划等）</td><td>jettison the proposal<br>放弃该提案</td></tr>
-<tr><td colspan="7">例 The company jettisoned the proposal as soon as funding became uncertain.  资金一变得不确定，公司就放弃了这项提案。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 toss</td><td>/ˈtɔːs/</td><td>★★★</td><td>★★★</td><td>动词、名词</td><td>扔，抛；抛弃</td><td>toss aside<br>随手丢在一边</td></tr>
 <tr><td colspan="7">例 She tossed the crumpled letter into the fire without reading it.  她没读就把那封皱信扔进了火里。</td></tr>
 </tbody>
@@ -407,52 +239,16 @@
 <tr><td colspan="7">例 The judge castigated the company for its negligence.  法官严厉指责该公司的疏忽。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 berate</td><td>/bɪˈreɪt/</td><td>★</td><td>☆</td><td>及物动词</td><td>严厉指责，斥责</td><td>berate him publicly<br>公开斥责他</td></tr>
-<tr><td colspan="7">例 The coach began to berate his players in front of reporters.  教练开始在记者面前严厉斥责他的球员。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 chastise</td><td>/tʃæˈstaɪz/</td><td>★☆</td><td>★☆</td><td>及物动词</td><td>严厉批评，责骂</td><td>chastise for laziness<br>因懒惰而受责骂</td></tr>
 <tr><td colspan="7">例 The coach chastised the players for their careless passing.  教练严厉批评球员们传球草率。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 lambaste</td><td>/læmˈbeɪst/</td><td>☆</td><td>★</td><td>及物动词</td><td>严厉斥责，痛骂</td><td>lambaste the government<br>痛斥政府</td></tr>
-<tr><td colspan="7">例 Critics lambasted the film for its shallow, sentimental ending.  批评家严厉斥责这部电影结局浅薄而煽情。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 reprimand</td><td>/ˈreprəˌmænd/</td><td>★☆</td><td>★★</td><td>及物动词、名词</td><td>训斥，正式谴责</td><td>reprimand an employee<br>训斥员工</td></tr>
-<tr><td colspan="7">例 The officer was reprimanded for leaving his post early.  这名警官因提早离岗而受到训斥。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 reproach</td><td>/rɪˈproʊtʃ/</td><td>★☆</td><td>★★</td><td>及物动词</td><td>批评，责备</td><td>reproach oneself for<br>因某事自责</td></tr>
-<tr><td colspan="7">例 She reproached him for never returning her calls.  她责备他从不回她的电话。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 rebuke</td><td>/rɪˈbjuːk/</td><td>★★</td><td>★★</td><td>及物动词、名词</td><td>斥责，责难</td><td>a sharp rebuke<br>严厉的斥责</td></tr>
 <tr><td colspan="7">例 The judge rebuked the lawyer for interrupting the witness.  法官斥责律师打断证人发言。</td></tr>
 </tbody>
 <tbody>
-<tr><td><del>↳近 vituperate</del></td><td>/vaɪˈtuːpəreɪt/</td><td>☆</td><td>☆</td><td>及物动词</td><td>谩骂，责骂</td><td>vituperate an opponent<br>谩骂对手</td></tr>
-<tr><td colspan="7">例 The columnist vituperated the mayor in every weekly article.  这位专栏作家在每周的文章里都痛骂市长。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 excoriate</td><td>/ɪkˈskɔːrieɪt/</td><td>☆</td><td>☆</td><td>及物动词</td><td>严厉批评；擦伤皮肤</td><td>excoriate the government<br>严厉批评政府</td></tr>
-<tr><td colspan="7">例 Critics excoriated the film for its casual cruelty.  批评家严厉批评该片的随意残忍。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 rail</td><td>/reɪl/</td><td>★★★☆</td><td>★★</td><td>不及物动词</td><td>痛斥，抱怨</td><td>rail against injustice<br>猛烈抨击不公</td></tr>
-<tr><td colspan="7">例 Students railed against the unfair new grading policy all week.  学生们整周都在痛斥不公平的新评分政策。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳反 approbate</del></td><td>/ˈæprəbeɪt/</td><td>☆</td><td>☆</td><td>及物动词</td><td>赞许，认可</td><td>approbate the decision<br>认可这一决定</td></tr>
 <tr><td colspan="7">例 The board approbated the merger after a long private debate.  经过长时间闭门辩论，董事会认可了这次合并。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 accolade</td><td>/ˈækəleɪd/</td><td>★☆</td><td>★</td><td>名词</td><td>赞扬，荣誉；奖励</td><td>win the highest accolade<br>赢得最高荣誉</td></tr>
-<tr><td colspan="7">例 The novel received accolades from critics on both continents.  这部小说获得了两大洲评论家的赞誉。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 extol</td><td>/ɪkˈstoʊl/</td><td>★</td><td>★</td><td>及物动词</td><td>赞美；吹捧</td><td>extol his virtues<br>赞美他的品德</td></tr>
-<tr><td colspan="7">例 Neighbors still extol his kindness during the long winter flood.  邻居们至今仍赞美他在漫长冬季洪水期间的善举。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>catalyze</b></td><td>/ˈkætəlaɪz/</td><td>★</td><td>★</td><td>及物动词</td><td>成为…的导火索，导致</td><td>catalyze reform<br>推动改革</td></tr>
@@ -469,10 +265,6 @@
 <tbody>
 <tr><td>↳近 effectuate</td><td>/ɪˈfektʃueɪt/</td><td>☆</td><td>☆</td><td>及物动词</td><td>使实现，实行</td><td>effectuate a change<br>促成一项改变</td></tr>
 <tr><td colspan="7">例 New funding finally effectuated the repairs promised years ago.  新的资金终于使多年前承诺的修缮得以实现。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 engender</td><td>/ɪnˈdʒendər/</td><td>★☆</td><td>★☆</td><td>及物动词</td><td>引起，使发展</td><td>engender trust<br>产生信任</td></tr>
-<tr><td colspan="7">例 Small acts of honesty engender trust more surely than grand promises do.  小小的诚实之举比宏大的承诺更能可靠地产生信任。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 generate</td><td>/ˈdʒenəreɪt/</td><td>★★★</td><td>★★★</td><td>及物动词</td><td>产生，引起；发电</td><td>generate interest<br>引起兴趣</td></tr>
@@ -499,16 +291,8 @@
 <tr><td colspan="7">例 The new law brought about a sharp drop in traffic deaths.  新法律使交通死亡人数大幅下降。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 retard</td><td>/rɪˈtɑːrd/</td><td>★★</td><td>★★</td><td>及物动词</td><td>减速，延迟</td><td>retard the growth<br>延缓生长</td></tr>
-<tr><td colspan="7">例 Language barriers retarded the progress of the peace negotiations.  语言障碍阻碍了和平谈判的进展。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 prevent</td><td>/prɪˈvent/</td><td>★★★★</td><td>★★★★</td><td>及物动词</td><td>阻止，防止</td><td>prevent an accident<br>防止事故发生</td></tr>
 <tr><td colspan="7">例 Simple handwashing prevents the spread of many common infections.  简单的洗手就能防止许多常见感染传播。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 inhibit</td><td>/ɪnˈhɪbɪt/</td><td>★★</td><td>★★</td><td>及物动词</td><td>抑制，阻碍</td><td>inhibit the growth of bacteria<br>抑制细菌生长</td></tr>
-<tr><td colspan="7">例 Cold weather inhibits the growth of these tropical plants.  寒冷天气抑制了这些热带植物的生长。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 inhibitor</td><td>/ɪnˈhɪbɪtər/</td><td>★★</td><td>★★</td><td>名词</td><td>抑制剂，抑制物</td><td>a growth inhibitor<br>生长抑制剂</td></tr>
@@ -523,16 +307,8 @@
 <tr><td colspan="7">例 The novel imagines an apocalypse caused by a runaway climate crisis.  这部小说设想了失控气候危机引发的末日灾难。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 calamity</td><td>/kəˈlæməti/</td><td>★★</td><td>☆</td><td>名词</td><td>灾难，大祸；不幸事件</td><td>a national calamity<br>国家性的大灾难</td></tr>
-<tr><td colspan="7">例 The flood was the worst calamity the small town had faced.  这场洪水是这个小镇遭遇过的最严重灾难。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 cataclysm</td><td>/ˈkætəklɪzəm/</td><td>★☆</td><td>★☆</td><td>名词</td><td>大灾难；剧变</td><td>a social cataclysm<br>社会剧变</td></tr>
 <tr><td colspan="7">例 The eruption was a cataclysm that reshaped the entire island.  那次喷发是一场重塑整座岛屿的大灾难。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 debacle</td><td>/deɪˈbɑːkl/</td><td>★★</td><td>★★</td><td>名词</td><td>溃败</td><td>an economic debacle<br>经济上的溃败</td></tr>
-<tr><td colspan="7">例 The campaign ended in a debacle that cost the party three seats.  这场竞选以溃败收场，使该党丢掉三个席位。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 tragedy</td><td>/ˈtrædʒədi/</td><td>★★★</td><td>★★★</td><td>名词</td><td>惨事，灾难；悲剧</td><td>a terrible tragedy<br>一场可怕的惨剧</td></tr>
@@ -545,10 +321,6 @@
 <tbody>
 <tr><td>↳近 disaster</td><td>/dɪˈzæstər/</td><td>★★★☆</td><td>★★★☆</td><td>名词</td><td>灾难；彻底的失败</td><td>a natural disaster<br>自然灾害</td></tr>
 <tr><td colspan="7">例 The opening night was a disaster from the very first scene.  首演之夜从第一场戏起就是一场彻底的失败。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 fiasco</td><td>/fiˈæskoʊ/</td><td>★★</td><td>★★</td><td>名词</td><td>大失败</td><td>end in a fiasco<br>以惨败告终</td></tr>
-<tr><td colspan="7">例 The poorly planned launch party ended in a complete fiasco.  筹划糟糕的发布会以彻底的失败告终。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 fizzle</td><td>/ˈfɪzəl/</td><td>★</td><td>★</td><td>不及物动词、名词</td><td>失败，虎头蛇尾地结束</td><td>fizzle out<br>逐渐失败告终</td></tr>
@@ -587,24 +359,12 @@
 <tr><td colspan="7">例 We need a definite answer before we can book the venue.  我们需要明确答复才能订场地。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 downright</td><td>/ˈdaʊnˌraɪt/</td><td>★★</td><td>★★★★</td><td>形容词、副词</td><td>完全的，彻底的</td><td>downright dangerous<br>十足危险</td></tr>
-<tr><td colspan="7">例 That suggestion is downright dangerous and should be dropped.  那个建议完全是危险的，应该放弃。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 fair</td><td>/ˈfer/</td><td>★★★★</td><td>★★★★</td><td>形容词</td><td>公正的；相当的；晴朗的</td><td>a fair trial<br>公正的审判</td></tr>
 <tr><td colspan="7">例 Everyone deserves a fair hearing before any decision is made.  在做出任何决定之前，人人都应得到公正的申辩机会。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 utter</td><td>/ˈʌtər/</td><td>★★☆</td><td>★★★</td><td>形容词、及物动词</td><td>完全的，彻底的；说出</td><td>utter nonsense<br>一派胡言</td></tr>
-<tr><td colspan="7">例 What he said was utter nonsense from start to finish.  他说的从头到尾都是彻底的胡话。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 thorough</td><td>/ˈθɜːroʊ/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>彻底的，详尽的</td><td>a thorough investigation<br>彻底的调查</td></tr>
 <tr><td colspan="7">例 Inspectors carried out a thorough search of every storage room.  检查员对每间储藏室都做了彻底搜查。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 unalloyed</td><td>/ˌʌnəˈlɔɪd/</td><td>☆</td><td>★</td><td>形容词</td><td>纯粹的，无掺杂的</td><td>unalloyed pleasure<br>纯粹的快乐</td></tr>
-<tr><td colspan="7">例 The trip was an unalloyed pleasure from start to finish.  这次旅行从头到尾都是纯粹的享受。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 unconditional</td><td>/ˌʌnkənˈdɪʃənəl/</td><td>★★☆</td><td>★☆</td><td>形容词</td><td>无条件的，绝对的</td><td>unconditional surrender<br>无条件投降</td></tr>
@@ -615,24 +375,12 @@
 <tr><td colspan="7">例 The plan won her unqualified support at the very first meeting.  这个计划在第一次会上就赢得她毫无保留的支持。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 conditional</td><td>/kənˈdɪʃənl/</td><td>★★☆</td><td>★☆</td><td>形容词</td><td>有条件的，受制约的</td><td>a conditional offer<br>有条件的录取通知</td></tr>
-<tr><td colspan="7">例 She received a conditional offer from her favorite university.  她收到了心仪大学的有条件录取通知。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 qualified</td><td>/ˈkwɑːləˌfaɪd/</td><td>★★★☆</td><td>★★★</td><td>形容词</td><td>有限制的，有保留的；合格的</td><td>qualified approval<br>有保留的赞同</td></tr>
-<tr><td colspan="7">例 The plan received only qualified approval from the board.  该计划仅获得董事会有保留的认可。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>catholic</b></td><td>/ˈkæθlɪk/</td><td>★★★☆</td><td>★</td><td>形容词</td><td>普遍的，包容的</td><td>catholic tastes<br>广泛的爱好</td></tr>
 <tr><td colspan="7">例 Her catholic tastes in music surprised everyone at the party.  她在音乐上广泛的爱好让聚会上每个人都惊讶。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 unlimited</td><td>/ʌnˈlɪmɪtɪd/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>无限的，无限制的</td><td>unlimited access<br>无限制的访问权</td></tr>
 <tr><td colspan="7">例 The pass gives unlimited access to every museum in the city.  这张通票可无限次进入城中所有博物馆。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 unqualified</td><td>/ʌnˈkwɑːlɪfaɪd/</td><td>★★</td><td>★</td><td>形容词</td><td>绝对的，无保留的；不合格的</td><td>unqualified support<br>毫无保留的支持</td></tr>
-<tr><td colspan="7">例 The plan won her unqualified support at the very first meeting.  这个计划在第一次会上就赢得她毫无保留的支持。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 unrestricted</td><td>/ˌʌnrɪˈstrɪktɪd/</td><td>★★</td><td>★</td><td>形容词</td><td>不受限制的，无约束的</td><td>unrestricted freedom<br>不受限制的自由</td></tr>
@@ -667,56 +415,16 @@
 <tr><td colspan="7">例 His caustic remarks about the film upset the young director.  他对影片刻薄的评论让年轻导演很难过。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 acerbic</td><td>/əˈsɜːrbɪk/</td><td>★</td><td>★</td><td>形容词</td><td>（语调）尖酸的，刻薄的</td><td>acerbic wit<br>尖刻的机智</td></tr>
-<tr><td colspan="7">例 The reviewer is famous for her acerbic comments on new plays.  这位评论家以对新剧的尖酸评论闻名。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 acrid</td><td>/ˈækrɪd/</td><td>★</td><td>★</td><td>形容词</td><td>刻薄的；辛辣刺鼻的</td><td>acrid smoke<br>刺鼻的烟</td></tr>
-<tr><td colspan="7">例 An acrid smell of burning plastic filled the hallway.  一股塑料烧焦的刺鼻气味充满了走廊。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 barbed</td><td>/ˈbɑːrbd/</td><td>★★</td><td>★★</td><td>形容词</td><td>尖刻的；有倒刺的</td><td>a barbed comment<br>带刺的评论</td></tr>
 <tr><td colspan="7">例 Her barbed compliment made the whole table fall silent.  她那句带刺的赞美让全桌人都沉默了。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 mordant</td><td>/ˈmɔːrdnt/</td><td>★</td><td>★</td><td>形容词</td><td>尖酸刻薄的</td><td>mordant wit<br>尖刻的机智</td></tr>
-<tr><td colspan="7">例 His mordant wit amused readers but cost him several close friendships.  他尖刻的机智取悦了读者，却让他失去几段亲密友谊。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 pungent</td><td>/ˈpʌndʒənt/</td><td>★☆</td><td>★★</td><td>形容词</td><td>（言辞）辛辣尖刻的；刺鼻的</td><td>pungent criticism<br>辛辣的批评</td></tr>
-<tr><td colspan="7">例 His pungent criticism of the report left everyone at the table silent.  他对这份报告辛辣的批评让全桌人都沉默了。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 sardonic</td><td>/sɑːrˈdɑːnɪk/</td><td>★☆</td><td>★</td><td>形容词</td><td>讥讽的，嘲笑的</td><td>a sardonic smile<br>讥讽的微笑</td></tr>
-<tr><td colspan="7">例 He answered with a sardonic laugh and said nothing more.  他讥讽地笑了一声，什么也没再说。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 satiric</td><td>/səˈtɪrɪk/</td><td>★</td><td>★</td><td>形容词</td><td>讽刺的，讥讽的</td><td>a satiric novel<br>一部讽刺小说</td></tr>
-<tr><td colspan="7">例 The magazine published a satiric cartoon about the election.  这家杂志刊登了一幅关于选举的讽刺漫画。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 scathing</td><td>/ˈskeɪðɪŋ/</td><td>★☆</td><td>★★</td><td>形容词</td><td>尖酸刻薄的，严厉的</td><td>a scathing attack<br>尖刻的攻击</td></tr>
-<tr><td colspan="7">例 She made a scathing remark about his sloppy research.  她对他草率的研究作了一句尖刻的评论。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 sharp</td><td>/ˈʃɑːrp/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>尖刻的；锋利的；敏锐的</td><td>a sharp tongue<br>说话尖刻</td></tr>
 <tr><td colspan="7">例 The critic has a sharp tongue but an unusually fair mind.  这位评论家言辞尖刻，心思却格外公正。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 genial</td><td>/ˈdʒiːniəl/</td><td>★☆</td><td>★★</td><td>形容词</td><td>和蔼亲切的；温和宜人的</td><td>a genial host<br>亲切的主人</td></tr>
-<tr><td colspan="7">例 Our genial neighbor invited the whole street over for dinner.  我们和蔼可亲的邻居请整条街的人来吃晚饭。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 smooth</td><td>/ˈsmuːð/</td><td>★★★☆</td><td>★★★☆</td><td>形容词、动词</td><td>温和的，圆滑的；平滑的</td><td>a smooth talker<br>说话圆滑的人</td></tr>
 <tr><td colspan="7">例 He is a smooth talker who never offends anyone in negotiations.  他谈判时言辞圆滑，从不得罪任何人。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 kind</td><td>/ˈkaɪnd/</td><td>★★★★☆</td><td>★★★★☆</td><td>形容词、名词</td><td>仁慈的，友好的；种类</td><td>a kind word<br>一句善意的话</td></tr>
-<tr><td colspan="7">例 It was kind of her to visit the sick neighbor daily.  她每天去看望生病的邻居，真是好心。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 innocuous</td><td>/ɪˈnɑːkjuəs/</td><td>★★</td><td>★★</td><td>形容词</td><td>无害的；不会引起敌意的</td><td>an innocuous question<br>一个无恶意的问题</td></tr>
-<tr><td colspan="7">例 What seemed an innocuous question turned out to reveal her deepest secret.  看似无恶意的问题最终却揭露了她最深的秘密。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>caveat</b></td><td>/ˈkæviæt/</td><td>★★</td><td>★★</td><td>名词</td><td>警告，告诫</td><td>add a caveat<br>补充一句告诫</td></tr>
@@ -727,32 +435,8 @@
 <tr><td colspan="7">例 The agency issued a warning about swimming near the rocks.  该机构就在岩石附近游泳发出了警告。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 admonish</td><td>/ədˈmɑːnɪʃ/</td><td>★</td><td>★</td><td>动词</td><td>告诫，警告；责备</td><td>admonish someone for lying<br>因撒谎而责备某人</td></tr>
-<tr><td colspan="7">例 The teacher admonished the boys for shouting in the hallway.  老师责备男孩们在走廊里大喊大叫。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>cavil</b></td><td>/ˈkævl/</td><td>☆</td><td>☆</td><td>动词</td><td>挑剔，吹毛求疵</td><td>cavil over wording<br>在措辞上吹毛求疵</td></tr>
 <tr><td colspan="7">例 Reviewers caviled over the wording instead of judging the ideas.  评审者在措辞上吹毛求疵，而不评判观点。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 carp</td><td>/kɑːrp/</td><td>★★</td><td>★★</td><td>不及物动词</td><td>对小事吹毛求疵，挑剔，表现不满</td><td>carp at every detail<br>对每个细节都挑剔</td></tr>
-<tr><td colspan="7">例 She carped at every detail of the seating arrangement.  她对座位安排的每个细节都挑剔。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 fuss</td><td>/fʌs/</td><td>★★☆</td><td>★★☆</td><td>名词、不及物动词</td><td>小题大做，抱怨；忙乱</td><td>make a fuss about<br>为…大惊小怪</td></tr>
-<tr><td colspan="7">例 Don't make a fuss about a tiny stain on the tablecloth.  别为桌布上一小块污渍小题大做。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 niggle</td><td>/ˈnɪɡəl/</td><td>☆</td><td>☆</td><td>动词、名词</td><td>对琐事挑剔；使烦扰</td><td>niggle over trifles<br>为琐事吹毛求疵</td></tr>
-<tr><td colspan="7">例 Reviewers niggled over commas instead of judging the argument.  评审者在逗号上挑剔，却不评判论点本身。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 nitpick</td><td>/ˈnɪtpɪk/</td><td>★</td><td>★</td><td>动词</td><td>吹毛求疵</td><td>nitpick about grammar<br>在语法上吹毛求疵</td></tr>
-<tr><td colspan="7">例 Reviewers nitpick about grammar while ignoring the serious flaws in the argument.  评审者在语法上吹毛求疵，却忽视论证中的严重缺陷。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 quibble</td><td>/ˈkwɪbl/</td><td>★☆</td><td>★☆</td><td>不及物动词、名词</td><td>吹毛求疵</td><td>quibble over details<br>在细节上挑刺</td></tr>
-<tr><td colspan="7">例 They quibbled over the wording while the deadline slipped away.  他们在措辞上纠缠不休，截止日期却悄悄过去。</td></tr>
 </tbody>
 </table>
 
@@ -801,24 +485,8 @@
 <tr><td colspan="7">例 The defeated nation was forced to cede two provinces.  战败国被迫割让两个省。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 relinquish</td><td>/rɪˈlɪŋkwɪʃ/</td><td>★★</td><td>★</td><td>及物动词</td><td>放弃（权力、职位）</td><td>relinquish control<br>放弃控制权</td></tr>
-<tr><td colspan="7">例 She refused to relinquish control of the family business.  她拒绝放弃对家族企业的控制权。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 render</td><td>/ˈrendər/</td><td>★★☆</td><td>★★☆</td><td>及物动词</td><td>交出，给予；使成为</td><td>render assistance<br>提供援助</td></tr>
 <tr><td colspan="7">例 The neighbors rendered assistance long before the ambulance arrived.  邻居们在救护车到达前很久就提供了援助。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 yield</td><td>/ˈjiːld/</td><td>★★★</td><td>★★★</td><td>动词、名词</td><td>产生，出产；屈服，让出</td><td>yield results<br>产生结果</td></tr>
-<tr><td colspan="7">例 Months of patient testing finally yielded a usable vaccine.  数月耐心的试验终于产出可用的疫苗。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 renounce</td><td>/rɪˈnaʊns/</td><td>★★</td><td>★</td><td>及物动词</td><td>正式放弃，声明弃绝</td><td>renounce one's claim<br>声明放弃权利主张</td></tr>
-<tr><td colspan="7">例 He renounced his claim to the inheritance in writing.  他以书面形式放弃了继承权。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 resign</td><td>/rɪˈzaɪn/</td><td>★★★</td><td>★★★★</td><td>动词</td><td>辞职，放弃（职位）</td><td>resign from office<br>辞去公职</td></tr>
-<tr><td colspan="7">例 The minister resigned from office after the scandal broke.  丑闻爆发后，那位部长辞职了。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 turnin</td><td>/ˌtɜːrn ˈɪn/</td><td>★</td><td>★★★</td><td>动词</td><td>上交，交出</td><td>turn in the keys<br>交回钥匙</td></tr>
@@ -869,10 +537,6 @@
 <tr><td colspan="7">例 Victorian editors bowdlerized the play before letting children read it.  维多利亚时代的编者在让孩子阅读前删改了这部剧。</td></tr>
 </tbody>
 <tbody>
-<tr><td><del>↳近 expurgate</del></td><td>/ˈekspərɡeɪt/</td><td>☆</td><td>☆</td><td>及物动词</td><td>净化（书等），删去（不当处）</td><td>expurgate a text<br>删改文本</td></tr>
-<tr><td colspan="7">例 Editors expurgated several passages before the book reached young readers.  编辑在这本书交到小读者手中之前删去了几个段落。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 red-pencil</td><td>/ˌred ˈpensəl/</td><td>★★★</td><td>★</td><td>及物动词</td><td>删改，删除</td><td>red-pencil the report<br>删改报告</td></tr>
 <tr><td colspan="7">例 The editor red-penciled every sentence that might offend advertisers.  编辑删掉了每一句可能得罪广告商的话。</td></tr>
 </tbody>
@@ -909,52 +573,12 @@
 <tr><td colspan="7">例 The council voted to censure the mayor for his conduct.  议会投票谴责市长的行为。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 condemn</td><td>/kənˈdem/</td><td>★★☆</td><td>★★☆</td><td>及物动词</td><td>谴责（…为不道德的、邪恶的）</td><td>condemn the attack<br>谴责这次袭击</td></tr>
-<tr><td colspan="7">例 World leaders quickly condemned the attack on the hospital.  各国领导人迅速谴责了对医院的袭击。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 denounce</td><td>/dɪˈnaʊns/</td><td>★★</td><td>★★</td><td>及物动词</td><td>公开指责</td><td>denounce corruption<br>公开指责腐败</td></tr>
-<tr><td colspan="7">例 Local leaders publicly denounced the corruption exposed by the newspaper.  当地领导人公开谴责报纸曝光的腐败行为。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳近 objurgate</del></td><td>/ˈɑːbdʒərɡeɪt/</td><td>☆</td><td>☆</td><td>及物动词</td><td>严厉斥责，痛骂</td><td>objurgate the offender<br>痛斥违规者</td></tr>
 <tr><td colspan="7">例 The old professor objurgated students who plagiarized their essays.  这位老教授严厉斥责抄袭论文的学生。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 rebuke</td><td>/rɪˈbjuːk/</td><td>★★</td><td>★★</td><td>及物动词、名词</td><td>斥责，责难</td><td>a sharp rebuke<br>严厉的斥责</td></tr>
-<tr><td colspan="7">例 The judge rebuked the lawyer for interrupting the witness.  法官斥责律师打断证人发言。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 reprimand</td><td>/ˈreprəˌmænd/</td><td>★☆</td><td>★★</td><td>及物动词、名词</td><td>训斥，正式谴责</td><td>reprimand an employee<br>训斥员工</td></tr>
-<tr><td colspan="7">例 The officer was reprimanded for leaving his post early.  这名警官因提早离岗而受到训斥。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 reproach</td><td>/rɪˈproʊtʃ/</td><td>★☆</td><td>★★</td><td>及物动词</td><td>批评，责备</td><td>reproach oneself for<br>因某事自责</td></tr>
-<tr><td colspan="7">例 She reproached him for never returning her calls.  她责备他从不回她的电话。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳近 reprehend</del></td><td>/reprɪˈhend/</td><td>☆</td><td>☆</td><td>及物动词</td><td>谴责，指责</td><td>reprehend such conduct<br>谴责这种行为</td></tr>
-<tr><td colspan="7">例 The committee did not hesitate to reprehend the officer for his careless report.  委员会毫不犹豫地谴责了那名官员草率的报告。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 pan</td><td>/pæn/</td><td>★★★☆</td><td>★★★☆</td><td>及物动词、名词</td><td>严厉批评</td><td>pan a new film<br>严厉批评一部新片</td></tr>
-<tr><td colspan="7">例 Critics panned the film for its clumsy dialogue and predictable ending.  影评人严厉批评这部电影对话笨拙、结局可预料。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 commend</td><td>/kəˈmend/</td><td>★★</td><td>★★</td><td>及物动词</td><td>赞扬，表扬</td><td>commend her courage<br>赞扬她的勇气</td></tr>
-<tr><td colspan="7">例 The principal commended her courage in front of the whole school.  校长在全校面前赞扬了她的勇气。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 extol</td><td>/ɪkˈstoʊl/</td><td>★</td><td>★</td><td>及物动词</td><td>赞美；吹捧</td><td>extol his virtues<br>赞美他的品德</td></tr>
-<tr><td colspan="7">例 Neighbors still extol his kindness during the long winter flood.  邻居们至今仍赞美他在漫长冬季洪水期间的善举。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 laud</td><td>/ˈlɔːd/</td><td>★☆</td><td>★☆</td><td>及物动词</td><td>赞美，称赞</td><td>laud his courage<br>赞扬他的勇气</td></tr>
 <tr><td colspan="7">例 Critics lauded the young pianist for her fearless interpretation.  评论家赞扬这位年轻钢琴家大胆的演绎。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 endorse</td><td>/ɪnˈdɔːrs/</td><td>★★☆</td><td>★★★</td><td>及物动词</td><td>公开支持</td><td>endorse a candidate<br>公开支持某候选人</td></tr>
-<tr><td colspan="7">例 The union voted to endorse the mayor for a second term.  工会投票支持市长连任。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>chic</b></td><td>/ˈʃiːk/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>时髦的，潮的</td><td>look effortlessly chic<br>显得自然时髦</td></tr>
@@ -963,10 +587,6 @@
 <tbody>
 <tr><td>↳近 stylish</td><td>/ˈstaɪlɪʃ/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>时髦的，有格调的</td><td>a stylish coat<br>时髦的外套</td></tr>
 <tr><td colspan="7">例 She wore a stylish grey coat that everyone asked about.  她穿着一件人人都追问来处的时髦灰外套。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 fashionable</td><td>/ˈfæʃənəbəl/</td><td>★★☆</td><td>★☆</td><td>形容词</td><td>时髦的，流行的</td><td>a fashionable neighborhood<br>时尚的街区</td></tr>
-<tr><td colspan="7">例 Long coats became fashionable again after that film came out.  那部电影上映后长外套又流行起来。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 modish</td><td>/ˈmoʊdɪʃ/</td><td>★</td><td>★</td><td>形容词</td><td>时髦的，流行的</td><td>modish clothes<br>时髦的衣服</td></tr>
@@ -979,10 +599,6 @@
 <tbody>
 <tr><td><del>↳近 voguish</del></td><td>/ˈvoʊɡɪʃ/</td><td>☆</td><td>☆</td><td>形容词</td><td>时髦的，流行一时的</td><td>voguish jargon<br>流行一时的行话</td></tr>
 <tr><td colspan="7">例 His essay is packed with voguish terms that mean very little.  他的文章塞满了意义不大的时髦术语。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 outmoded</td><td>/ˌaʊtˈmoʊdɪd/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>过时的，废弃的</td><td>outmoded ideas<br>过时的观念</td></tr>
-<tr><td colspan="7">例 The factory still relies on outmoded machinery from the nineteen sixties.  这家工厂仍在使用二十世纪六十年代的过时机器。</td></tr>
 </tbody>
 <tbody>
 <tr><td><del>↳反 unchic</del></td><td>/ˌʌnˈʃiːk/</td><td>☆</td><td>☆</td><td>形容词</td><td>不时髦的，不入时的</td><td>unchic but comfortable<br>不时髦但舒适</td></tr>
@@ -1005,64 +621,24 @@
 <tr><td colspan="7">例 Both sides finally agreed to a cessation of hostilities.  双方最终同意停止敌对行动。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 check</td><td>/tʃek/</td><td>★★★★☆</td><td>★★★★☆</td><td>及物动词</td><td>使突然停止，阻止；检查，核对</td><td>check the spread of disease<br>阻止疾病蔓延</td></tr>
-<tr><td colspan="7">例 Strict quarantine measures checked the spread of the disease.  严格的隔离措施阻止了疾病的蔓延。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 cutoff</td><td>/ˈkʌtɔːf/</td><td>★★</td><td>★★</td><td>名词</td><td>终止，中断；截止点</td><td>a funding cutoff<br>资金中断</td></tr>
 <tr><td colspan="7">例 The sudden cutoff of aid left the clinic without medicine.  援助突然中断，使诊所无药可用。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 closure</td><td>/ˈkloʊʒər/</td><td>★★★</td><td>★★★</td><td>名词</td><td>关闭，终止</td><td>the closure of the factory<br>工厂的关闭</td></tr>
-<tr><td colspan="7">例 The closure of the branch left thirty people jobless.  分店关闭让三十人失业。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 discontinuance</td><td>/ˌdɪskənˈtɪnjuəns/</td><td>★</td><td>☆</td><td>名词</td><td>停止，中断</td><td>the discontinuance of the service<br>服务的停止</td></tr>
-<tr><td colspan="7">例 The discontinuance of the bus route angered local residents.  公交线路的停运惹恼了当地居民。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 expiration</td><td>/ˌekspəˈreɪʃən/</td><td>★★☆</td><td>★</td><td>名词</td><td>到期，终止</td><td>the expiration date<br>到期日</td></tr>
 <tr><td colspan="7">例 Check the expiration date before you open the sealed package.  打开密封包装前请查看保质期。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 halt</td><td>/ˈhɔːlt/</td><td>★★★</td><td>★★★</td><td>名词、动词</td><td>停止，暂停</td><td>come to a halt<br>停下来</td></tr>
-<tr><td colspan="7">例 Heavy snow brought the whole city to a halt.  大雪使整座城市陷入停滞。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 shutdown</td><td>/ˈʃʌtdaʊn/</td><td>★★☆</td><td>★★☆</td><td>名词</td><td>关闭，停工，停机</td><td>a plant shutdown<br>工厂停产</td></tr>
 <tr><td colspan="7">例 The shutdown of the old plant cost the town four hundred jobs.  老工厂停产使小镇失去四百个岗位。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 termination</td><td>/tərməˈneɪʃən/</td><td>★★☆</td><td>☆</td><td>名词</td><td>终止，结束</td><td>the termination of the contract<br>合同的终止</td></tr>
-<tr><td colspan="7">例 Either side may request termination of the agreement early.  任何一方都可要求提前终止协议。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 commencement</td><td>/kəˈmensmənt/</td><td>★★☆</td><td>★☆</td><td>名词</td><td>开始，开端；毕业典礼</td><td>the commencement of talks<br>谈判的开始</td></tr>
-<tr><td colspan="7">例 The commencement of construction was delayed by heavy spring rains.  施工的开始因春季大雨而延后。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 start</td><td>/ˈstɑːrt/</td><td>★★★★☆</td><td>★★★★☆</td><td>名词、动词</td><td>开始，开端</td><td>from the start<br>从一开始</td></tr>
 <tr><td colspan="7">例 From the start it was clear the schedule was too tight.  从一开始就明显看出日程太紧。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 continuation</td><td>/kənˌtɪnjuˈeɪʃən/</td><td>★★☆</td><td>☆</td><td>名词</td><td>继续，延续</td><td>the continuation of talks<br>会谈的继续</td></tr>
-<tr><td colspan="7">例 The continuation of the project depends on further funding.  项目的继续取决于后续资金。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>chaff</b></td><td>/tʃæf/</td><td>★☆</td><td>★☆</td><td>动词、名词</td><td>取笑，善意地嘲弄</td><td>chaff a friend<br>取笑朋友</td></tr>
 <tr><td colspan="7">例 His teammates chaffed him about his terrible singing voice.  队友们拿他糟糕的歌喉取笑他。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 banter</td><td>/ˈbæntər/</td><td>★★☆</td><td>★★☆</td><td>名词、动词</td><td>打趣，逗趣的谈话</td><td>friendly banter<br>友好的打趣</td></tr>
-<tr><td colspan="7">例 The two old rivals exchanged friendly banter before the match.  两位老对手在比赛前友好地打趣了几句。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 jape</td><td>/dʒeɪp/</td><td>☆</td><td>☆</td><td>名词、动词</td><td>嘲弄</td><td>a harmless jape<br>无恶意的玩笑</td></tr>
-<tr><td colspan="7">例 He japed about his own baldness to put the guests at ease.  他拿自己的秃头开玩笑，让客人们放松下来。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 jest</td><td>/dʒest/</td><td>★★</td><td>★★</td><td>名词</td><td>玩笑，戏谑</td><td>in jest<br>开玩笑地</td></tr>
-<tr><td colspan="7">例 He said it in jest, but nobody in the room was laughing.  他是开玩笑说的，但屋里没有一个人笑。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 quip</td><td>/ˈkwɪp/</td><td>★☆</td><td>★☆</td><td>名词、动词</td><td>妙语，俏皮话；说妙语</td><td>a witty quip<br>机智的俏皮话</td></tr>
@@ -1075,10 +651,6 @@
 <tbody>
 <tr><td>↳近 anxiety</td><td>/æŋˈzaɪəti/</td><td>★★★☆</td><td>★★★☆</td><td>名词</td><td>焦虑，不安；担忧</td><td>a source of anxiety<br>焦虑的根源</td></tr>
 <tr><td colspan="7">例 Waiting for the test results caused her weeks of anxiety.  等待检查结果让她焦虑了好几周。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 concern</td><td>/kənˈsɜːrn/</td><td>★★★☆</td><td>★★★☆</td><td>名词、及物动词</td><td>关心，担心；涉及</td><td>show genuine concern<br>表现出真切的关心</td></tr>
-<tr><td colspan="7">例 Parents expressed concern about the safety of the playground.  家长们对操场的安全表示关心。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 disquiet</td><td>/dɪsˈkwaɪət/</td><td>★</td><td>★</td><td>名词、及物动词</td><td>不安，忧虑；使不安</td><td>growing disquiet<br>日益增长的不安</td></tr>
@@ -1097,32 +669,12 @@
 <tr><td colspan="7">例 She thanked the nurses for their constant solicitude during her recovery.  她感谢护士们在她康复期间始终的关切。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 unease</td><td>/ʌnˈiːz/</td><td>★☆</td><td>★☆</td><td>名词</td><td>不安，忧虑</td><td>a feeling of unease<br>不安的感觉</td></tr>
-<tr><td colspan="7">例 A feeling of unease settled over the village after the warning.  警报之后，一种不安感笼罩了村庄。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 unrest</td><td>/ʌnˈrest/</td><td>★★☆</td><td>★★☆</td><td>名词</td><td>不安，动荡，骚乱</td><td>social unrest<br>社会动荡</td></tr>
 <tr><td colspan="7">例 Rising food prices led to months of social unrest.  食品价格上涨导致了数月的社会动荡。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 worry</td><td>/ˈwɜːri/</td><td>★★★★</td><td>★★★★</td><td>名词、动词</td><td>担忧，忧虑</td><td>a constant worry<br>长久的忧虑</td></tr>
-<tr><td colspan="7">例 Money was a constant worry during their first year abroad.  在国外的第一年里，钱是他们持续的忧虑。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 aplomb</td><td>/əˈplɑːm/</td><td>★</td><td>★</td><td>名词</td><td>沉着，泰然自若</td><td>with great aplomb<br>非常从容地</td></tr>
 <tr><td colspan="7">例 She handled the hostile interview with remarkable aplomb.  她极为从容地应对了那场充满敌意的采访。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 composure</td><td>/kəmˈpoʊʒər/</td><td>★★</td><td>★★</td><td>名词</td><td>镇静，沉着</td><td>regain one's composure<br>重新恢复镇静</td></tr>
-<tr><td colspan="7">例 He lost his composure only once, when the verdict was read.  只有在宣读判决时，他才失了一次镇静。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 countenance</td><td>/ˈkaʊntənəns/</td><td>★☆</td><td>☆</td><td>及物动词</td><td>容忍；赞成，推崇</td><td>countenance such behavior<br>容忍这种行为</td></tr>
-<tr><td colspan="7">例 The headmaster would not countenance cheating of any kind in his school.  校长绝不容忍校内任何形式的作弊。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 equanimity</td><td>/ˌiːkwəˈnɪmɪti/</td><td>★</td><td>☆</td><td>名词</td><td>平静，镇定</td><td>with equanimity<br>以平静的心态</td></tr>
-<tr><td colspan="7">例 She accepted the bad news with surprising equanimity.  她以出人意料的平静接受了这个坏消息。</td></tr>
 </tbody>
 <tbody>
 <tr><td><del>↳反 sangfroid</del></td><td>/sɑːŋˈfrwɑː/</td><td>☆</td><td>☆</td><td>名词</td><td>沉着冷静，泰然</td><td>admirable sangfroid<br>令人敬佩的冷静</td></tr>
@@ -1175,36 +727,8 @@
 <tr><td colspan="7">例 She has championed the rights of migrant workers for years.  她多年来一直为农民工的权益奔走呼吁。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 advocate</td><td>/ˈædvəkeɪt/</td><td>★★★</td><td>★★★</td><td>及物动词、名词</td><td>支持，提倡</td><td>advocate reform<br>提倡改革</td></tr>
-<tr><td colspan="7">例 Many doctors advocate walking as the simplest form of exercise.  许多医生提倡把走路作为最简单的运动方式。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 back</td><td>/ˈbæk/</td><td>★★★★★</td><td>★★★★★</td><td>及物动词</td><td>支持，资助</td><td>back a candidate<br>支持某位候选人</td></tr>
-<tr><td colspan="7">例 Several investors agreed to back her new company.  几位投资人同意资助她的新公司。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 endorse</td><td>/ɪnˈdɔːrs/</td><td>★★☆</td><td>★★★</td><td>及物动词</td><td>公开支持</td><td>endorse a candidate<br>公开支持某候选人</td></tr>
-<tr><td colspan="7">例 The union voted to endorse the mayor for a second term.  工会投票支持市长连任。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 patronize</td><td>/ˈpeɪtrənaɪz/</td><td>★☆</td><td>★★★</td><td>及物动词</td><td>赞助；以高人一等的态度对待</td><td>patronize the arts<br>赞助艺术</td></tr>
-<tr><td colspan="7">例 Wealthy merchants patronized young painters throughout the Renaissance.  富商在整个文艺复兴时期都赞助年轻画家。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 plump for</td><td>/ˈplʌmp fɔːr/</td><td>★★</td><td>★☆</td><td>动词</td><td>选定，支持</td><td>plump for the cheaper option<br>选定较便宜的方案</td></tr>
 <tr><td colspan="7">例 After hours of argument the committee plumped for the cheaper design.  争论数小时后，委员会选定了较便宜的设计。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 disparage</td><td>/dɪˈspærɪdʒ/</td><td>★☆</td><td>★</td><td>及物动词</td><td>贬低；轻蔑地说</td><td>disparage someone's efforts<br>贬低某人的努力</td></tr>
-<tr><td colspan="7">例 Do not disparage her work simply because she is young.  不要仅仅因为她年轻就贬低她的工作。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 impugn</td><td>/ɪmˈpjuːn/</td><td>★</td><td>★</td><td>及物动词</td><td>抨击，质疑（诚信、动机）</td><td>impugn someone's motives<br>质疑某人的动机</td></tr>
-<tr><td colspan="7">例 He never impugned the honesty of his opponents.  他从不质疑对手的诚实。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 oppose</td><td>/əˈpoʊz/</td><td>★★★</td><td>★★★</td><td>及物动词</td><td>反对，抵制</td><td>oppose the new law<br>反对新法律</td></tr>
-<tr><td colspan="7">例 Two senators openly opposed the new tax bill.  两位参议员公开反对这项新税案。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>compulsive</b></td><td>/kəmˈpʌlsɪv/</td><td>★★</td><td>★★</td><td>形容词</td><td>不能自拔的</td><td>a compulsive liar<br>无法自控的说谎者</td></tr>
@@ -1233,22 +757,6 @@
 <tbody>
 <tr><td>↳近 daydream</td><td>/ˈdeɪˌdriːm/</td><td>★★</td><td>★★</td><td>名词、不及物动词</td><td>白日梦，幻想</td><td>lost in a daydream<br>陷入白日梦中</td></tr>
 <tr><td colspan="7">例 He sat by the window lost in a daydream about sailing away.  他坐在窗边，沉浸在扬帆远行的白日梦里。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 delusion</td><td>/dɪˈluːʒn/</td><td>★★</td><td>☆</td><td>名词</td><td>错觉，妄想</td><td>labor under a delusion<br>抱着错误的幻想</td></tr>
-<tr><td colspan="7">例 He clung to the delusion that the company would soon rehire him.  他固执地抱着公司很快会重新雇用他的妄想。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 fantasy</td><td>/ˈfæntəsi/</td><td>★★★☆</td><td>★★★☆</td><td>名词</td><td>幻想</td><td>indulge in fantasy<br>沉溺于幻想</td></tr>
-<tr><td colspan="7">例 Her plan to retire at thirty was pure fantasy.  她三十岁退休的打算纯属幻想。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 figment</td><td>/ˈfɪɡmənt/</td><td>★☆</td><td>★☆</td><td>名词</td><td>虚构的事物，幻觉</td><td>a figment of imagination<br>凭空想象之物</td></tr>
-<tr><td colspan="7">例 The threatening letter was a figment of his own imagination.  那封威胁信是他自己凭空想象出来的。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 hallucination</td><td>/həˌluːsɪˈneɪʃn/</td><td>★☆</td><td>☆</td><td>名词</td><td>幻觉</td><td>suffer hallucinations<br>出现幻觉</td></tr>
-<tr><td colspan="7">例 The high fever gave him vivid hallucinations that lasted through the night.  高烧让他产生了持续整夜的鲜明幻觉。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 illusion</td><td>/ɪˈluːʒən/</td><td>★★★</td><td>★★★</td><td>名词</td><td>错觉，幻想</td><td>an optical illusion<br>视觉错觉</td></tr>
@@ -1283,10 +791,6 @@
 <tr><td colspan="7">例 The journalist exposed the charlatan selling fake medicine.  记者揭穿了那个卖假药的骗子。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 fake</td><td>/ˈfeɪk/</td><td>★★★☆</td><td>★★★☆</td><td>形容词、名词、动词</td><td>假的，伪造的；伪造品</td><td>a fake diploma<br>假文凭</td></tr>
-<tr><td colspan="7">例 The gallery unknowingly displayed a fake for almost ten years.  这家画廊不知情地展出了一件赝品近十年。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 fraud</td><td>/ˈfrɔːd/</td><td>★★★☆</td><td>★★★☆</td><td>名词</td><td>骗子；欺诈行为</td><td>expose a fraud<br>揭露骗局</td></tr>
 <tr><td colspan="7">例 The so-called healer turned out to be an outright fraud.  那位所谓的治疗师原来是个彻头彻尾的骗子。</td></tr>
 </tbody>
@@ -1299,16 +803,8 @@
 <tr><td colspan="7">例 The town square once drew mountebanks selling miracle cures.  镇中心广场曾吸引卖神奇药方的江湖骗子。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 phony</td><td>/ˈfoʊni/</td><td>★★</td><td>★★</td><td>形容词、名词</td><td>假的，冒充的；骗子</td><td>a phony accent<br>假装的口音</td></tr>
-<tr><td colspan="7">例 He used a phony name when renting the small apartment.  他租那间小公寓时用了假名。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 pretender</td><td>/prɪˈtendər/</td><td>★☆</td><td>★☆</td><td>名词</td><td>冒充者，觊觎者</td><td>a pretender to the throne<br>觊觎王位者</td></tr>
 <tr><td colspan="7">例 Three pretenders claimed the crown within a single year.  一年之内有三个觊觎者宣称拥有王位。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 quack</td><td>/kwæk/</td><td>★★</td><td>★★</td><td>名词</td><td>骗子医生，江湖郎中</td><td>a medical quack<br>冒牌医生</td></tr>
-<tr><td colspan="7">例 The medical quack sold colored water as a cure for every illness.  那个江湖郎中把有色的水当作万病灵药出售。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 imposter</td><td>/ɪmˈpɑːstər/</td><td>★☆</td><td>★☆</td><td>名词</td><td>冒充者，骗子</td><td>unmask an imposter<br>揭穿冒充者</td></tr>
@@ -1323,56 +819,16 @@
 <tr><td colspan="7">例 Night guards must stay alert even during the quietest hours.  夜间守卫即便在最安静的时段也必须保持警觉。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 cautious</td><td>/ˈkɔːʃəs/</td><td>★★☆</td><td>★</td><td>形容词</td><td>谨慎的，小心的</td><td>a cautious approach<br>谨慎的做法</td></tr>
-<tr><td colspan="7">例 Investors remained cautious until the election results were announced.  在选举结果公布前投资者一直很谨慎。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 circumspect</td><td>/ˈsɜːrkəmspekt/</td><td>★</td><td>☆</td><td>形容词</td><td>谨慎的，小心的</td><td>remain circumspect in public<br>在公开场合保持谨慎</td></tr>
-<tr><td colspan="7">例 Diplomats stay circumspect in public and blunt behind closed doors.  外交官在公开场合谨慎，关起门来则直言不讳。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 conservative</td><td>/kənˈsɜːrvətɪv/</td><td>★★★☆</td><td>★★☆</td><td>形容词</td><td>守旧的，不愿改变的；不招摇的，低调的</td><td>a conservative estimate<br>保守的估计</td></tr>
-<tr><td colspan="7">例 Her parents were too conservative to accept such an unconventional career choice.  她的父母太守旧，无法接受这样不合常规的职业选择。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 gingerly</td><td>/ˈdʒɪndʒərli/</td><td>★☆</td><td>★☆</td><td>副词、形容词</td><td>小心谨慎地；谨慎的</td><td>step gingerly<br>小心翼翼地走</td></tr>
 <tr><td colspan="7">例 She gingerly lifted the cracked vase onto the padded table.  她小心翼翼地把破裂的花瓶搬到铺垫的桌上。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 guarded</td><td>/ˈɡɑːrdəd/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>谨慎的，有保留的</td><td>a guarded response<br>有保留的回应</td></tr>
-<tr><td colspan="7">例 The minister gave a guarded welcome to the new proposal.  部长对新提案表示了有保留的欢迎。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳近 heedful</del></td><td>/ˈhiːdfəl/</td><td>☆</td><td>☆</td><td>形容词</td><td>留心的，注意的</td><td>heedful of the warning<br>留意警告</td></tr>
-<tr><td colspan="7">例 Heedful of the forecast, the climbers turned back early.  留意到天气预报，登山者提早返回了。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 wary</td><td>/ˈweri/</td><td>★★☆</td><td>★</td><td>形容词</td><td>警惕的，谨慎的</td><td>wary of strangers<br>对陌生人警惕</td></tr>
-<tr><td colspan="7">例 Children are taught to be wary of strangers offering free rides.  孩子们被教导要警惕主动提供搭车的陌生人。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 rash</td><td>/ræʃ/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>草率的，仓促的</td><td>a rash decision<br>草率的决定</td></tr>
-<tr><td colspan="7">例 He regretted his rash decision to sell the house so quickly.  他后悔自己如此草率地决定迅速卖掉房子。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 bold</td><td>/ˈboʊld/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>大胆的，勇敢的；醒目的</td><td>a bold move<br>大胆的举动</td></tr>
-<tr><td colspan="7">例 It was a bold decision to leave a secure job.  辞去稳定的工作是个大胆的决定。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>chase</b></td><td>/tʃeɪs/</td><td>★★★☆</td><td>★★★☆</td><td>动词</td><td>驱赶</td><td>chase away<br>赶走，驱散</td></tr>
 <tr><td colspan="7">例 The farmer chased the crows away from his young corn.  农夫把乌鸦从他的嫩玉米地里赶走。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 banish</td><td>/ˈbænɪʃ/</td><td>★★</td><td>★★</td><td>及物动词</td><td>驱逐出境</td><td>banish him from court<br>将他逐出宫廷</td></tr>
-<tr><td colspan="7">例 The king decided to banish the poet from the court forever.  国王决定把这位诗人永远逐出宫廷。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 dismiss</td><td>/dɪˈsmɪs/</td><td>★★☆</td><td>★★☆</td><td>及物动词</td><td>解散，打发走；解雇；不予考虑</td><td>dismiss the class<br>宣布下课</td></tr>
 <tr><td colspan="7">例 The teacher dismissed the class ten minutes ahead of time.  老师提前十分钟宣布下课。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 expel</td><td>/ɪkˈspel/</td><td>★★</td><td>★★</td><td>及物动词</td><td>驱逐；开除</td><td>expel a student<br>开除一名学生</td></tr>
-<tr><td colspan="7">例 The school expelled two students for cheating on the exam.  学校因考试作弊开除了两名学生。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 extrude</td><td>/ɪkˈstruːd/</td><td>☆</td><td>☆</td><td>及物动词</td><td>赶出，逐出；挤压出</td><td>extrude molten metal<br>挤压出熔融金属</td></tr>
@@ -1395,40 +851,20 @@
 <tr><td colspan="7">例 There is a glaring contradiction between his speech and his voting record.  他的演讲与投票记录之间存在明显矛盾。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 dissent</td><td>/dɪˈsent/</td><td>★★☆</td><td>★★</td><td>不及物动词、名词</td><td>持异议，不同意；反对正统</td><td>voice one's dissent<br>表达异议</td></tr>
-<tr><td colspan="7">例 Two judges dissented from the majority opinion of the court.  两位法官对法院的多数意见持异议。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 disjunction</td><td>/dɪsˈdʒʌŋkʃən/</td><td>★</td><td>☆</td><td>名词</td><td>分离，脱节</td><td>a disjunction between<br>…之间的脱节</td></tr>
 <tr><td colspan="7">例 The report notes a disjunction between policy goals and daily practice.  报告指出政策目标与日常做法之间存在脱节。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 discord</td><td>/ˈdɪskɔːrd/</td><td>★★☆</td><td>★★☆</td><td>名词</td><td>意见不一致，不和谐</td><td>sow discord<br>挑起不和</td></tr>
-<tr><td colspan="7">例 A single careless remark sowed discord among the previously friendly neighbors.  一句不慎的话在原本和睦的邻居间挑起了不和。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 conflict</td><td>/ˈkɑːnflɪkt/</td><td>★★★☆</td><td>★★★☆</td><td>名词、动词</td><td>冲突，矛盾；抵触</td><td>a conflict of interest<br>利益冲突</td></tr>
 <tr><td colspan="7">例 The judge withdrew because of a possible conflict of interest.  法官因可能存在利益冲突而回避。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 rift</td><td>/rɪft/</td><td>★★☆</td><td>★★☆</td><td>名词</td><td>分裂，不和</td><td>heal the rift<br>弥合裂痕</td></tr>
-<tr><td colspan="7">例 A deep rift opened between the two brothers after their father died.  父亲去世后，两兄弟之间出现了深深的裂痕。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 rivalry</td><td>/ˈraɪvəlri/</td><td>★★☆</td><td>★★☆</td><td>名词</td><td>竞争，对抗</td><td>a bitter rivalry<br>激烈的对抗</td></tr>
 <tr><td colspan="7">例 The two newspapers kept up a bitter rivalry for thirty years.  这两家报纸维持了三十年的激烈竞争。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 dichotomy</td><td>/daɪˈkɑːtəmi/</td><td>★★</td><td>★★</td><td>名词</td><td>对立</td><td>a false dichotomy<br>虚假的二分对立</td></tr>
-<tr><td colspan="7">例 The book rejects the simple dichotomy between nature and human culture.  这本书否认自然与人类文化之间的简单对立。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>chauvinistic</b></td><td>/ˌʃoʊvɪˈnɪstɪk/</td><td>★</td><td>☆</td><td>形容词</td><td>盲目爱国的</td><td>chauvinistic rhetoric<br>盲目爱国的言辞</td></tr>
 <tr><td colspan="7">例 The newspaper's chauvinistic rhetoric grew louder as the election approached.  随着选举临近，该报盲目爱国的言辞越发高涨。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳近 jingoist</del></td><td>/ˈdʒɪŋɡoʊɪst/</td><td>☆</td><td>☆</td><td>名词</td><td>极端爱国的好战分子</td><td>an outspoken jingoist<br>直言不讳的好战爱国者</td></tr>
-<tr><td colspan="7">例 The columnist was denounced as a jingoist eager for another foreign war.  这位专栏作家被谴责为渴望再打一场对外战争的好战爱国者。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 jingoistic</td><td>/ˌdʒɪŋɡoʊˈɪstɪk/</td><td>★</td><td>★</td><td>形容词</td><td>极端爱国的，好战的</td><td>jingoistic slogans<br>极端爱国的口号</td></tr>
@@ -1447,32 +883,8 @@
 <tr><td colspan="7">例 Strict quarantine measures checked the spread of the disease.  严格的隔离措施阻止了疾病的蔓延。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 arrest</td><td>/əˈrest/</td><td>★★★☆</td><td>★★★☆</td><td>名词、动词</td><td>停止；逮捕</td><td>place him under arrest<br>将他逮捕</td></tr>
-<tr><td colspan="7">例 The new drug can arrest the spread of the disease for years.  这种新药能在数年内阻止疾病扩散。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 stall</td><td>/ˈstɔːl/</td><td>★★☆</td><td>★★☆</td><td>动词、名词</td><td>使停顿，拖延；摊位</td><td>stall for time<br>拖延时间</td></tr>
 <tr><td colspan="7">例 The lawyer stalled for time while his assistant fetched the file.  律师在助手去取文件时拖延时间。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 bridle</td><td>/ˈbraɪdl/</td><td>★☆</td><td>★☆</td><td>动词</td><td>限制</td><td>bridle his anger<br>克制他的怒气</td></tr>
-<tr><td colspan="7">例 She bridled her temper and answered the rude question politely.  她克制住脾气，礼貌地回答了那个无礼的问题。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 contain</td><td>/kənˈteɪn/</td><td>★★★☆</td><td>★★★☆</td><td>及物动词</td><td>控制，抑制；包含</td><td>contain the outbreak<br>控制疫情爆发</td></tr>
-<tr><td colspan="7">例 Doctors worked around the clock to contain the outbreak.  医生们昼夜不停地努力控制疫情。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 curb</td><td>/ˈkɜːrb/</td><td>★★☆</td><td>★★☆</td><td>及物动词、名词</td><td>控制，约束</td><td>curb government spending<br>控制政府开支</td></tr>
-<tr><td colspan="7">例 The city introduced new rules to curb traffic downtown.  市政府出台新规以限制市区交通。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 tame</td><td>/teɪm/</td><td>★★☆</td><td>★★☆</td><td>形容词、及物动词</td><td>被驯化的；控制，抑制</td><td>tame the wild horse<br>驯服野马</td></tr>
-<tr><td colspan="7">例 It took the trainer months to tame the wild horse completely.  训马师花了几个月才彻底驯服那匹野马。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 bring up</td><td>/brɪŋ ˈʌp/</td><td>★★★★☆</td><td>★★★★</td><td>动词</td><td>提出（话题）；养育</td><td>bring up the topic<br>提起这个话题</td></tr>
-<tr><td colspan="7">例 Nobody dared bring up the topic of money at dinner.  晚饭时没人敢提起钱的话题。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 draw up</td><td>/ˌdrɔː ˈʌp/</td><td>★★★★</td><td>★★★☆</td><td>动词</td><td>停住；拟定</td><td>draw up a contract<br>拟定一份合同</td></tr>
@@ -1487,16 +899,8 @@
 <tr><td colspan="7">例 The taxi pulled up at the curb just as it began raining.  就在开始下雨时，出租车在路边停了下来。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 accord</td><td>/əˈkɔːrd/</td><td>★★☆</td><td>★★</td><td>名词、及物动词</td><td>一致，符合；授予</td><td>in accord with<br>与…一致</td></tr>
-<tr><td colspan="7">例 His actions were in accord with the policy he announced.  他的行动与他宣布的政策一致。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 cohere</td><td>/koʊˈhɪr/</td><td>☆</td><td>☆</td><td>不及物动词</td><td>一致，相符；黏合</td><td>cohere with the evidence<br>与证据相符</td></tr>
 <tr><td colspan="7">例 His account does not cohere with what the other witnesses said.  他的说法与其他证人所言并不相符。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 conform</td><td>/kənˈfɔːrm/</td><td>★★☆</td><td>★★★</td><td>及物动词、不及物动词</td><td>使协调；遵照，遵从</td><td>conform to the standard<br>符合标准</td></tr>
-<tr><td colspan="7">例 All new buildings must conform to strict safety codes.  所有新建筑都必须符合严格的安全规范。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 correspond</td><td>/ˌkɔːrəˈspɑːnd/</td><td>★★☆</td><td>★★☆</td><td>不及物动词</td><td>相符，一致；通信</td><td>correspond to the facts<br>与事实相符</td></tr>
@@ -1515,24 +919,8 @@
 <tr><td colspan="7">例 The new building harmonizes well with the older houses nearby.  这座新建筑与附近的老房子十分协调。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 jibe</td><td>/dʒaɪb/</td><td>★</td><td>★</td><td>不及物动词</td><td>意见一致</td><td>jibe with the facts<br>与事实相符</td></tr>
-<tr><td colspan="7">例 His account of the accident does not jibe with the physical evidence.  他对这场事故的说法与实物证据不符。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 tally</td><td>/ˈtæli/</td><td>★★☆</td><td>★★☆</td><td>动词、名词</td><td>相符，一致；计数</td><td>tally with the records<br>与记录相符</td></tr>
 <tr><td colspan="7">例 His account of the accident does not tally with the witness statements.  他对事故的叙述与证人陈述不符。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 propagate</td><td>/ˈprɑːpəɡeɪt/</td><td>★★</td><td>☆</td><td>及物动词</td><td>传播，宣传</td><td>propagate new ideas<br>传播新思想</td></tr>
-<tr><td colspan="7">例 Missionaries traveled far to propagate their beliefs among distant communities.  传教士远行到偏远社区去传播他们的信仰。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 goad</td><td>/ɡoʊd/</td><td>★☆</td><td>★☆</td><td>及物动词、名词</td><td>刺激，驱使，激发</td><td>goad him into action<br>激他采取行动</td></tr>
-<tr><td colspan="7">例 His teammates goaded him into accepting the ridiculous bet.  队友们激他接受了那个荒唐的赌约。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 hasten</td><td>/ˈheɪsn/</td><td>★☆</td><td>★☆</td><td>及物动词</td><td>加速，促进；催促</td><td>hasten the decision<br>促使尽快决定</td></tr>
-<tr><td colspan="7">例 Warm weather hastened the melting of snow on the high mountain passes.  暖和的天气促进了高山山口积雪的融化。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 differ</td><td>/ˈdɪfər/</td><td>★★★</td><td>★★★</td><td>不及物动词</td><td>不同；意见不一致</td><td>differ in opinion<br>意见不同</td></tr>
@@ -1561,10 +949,6 @@
 <tr><td colspan="7">例 The baby's cherubic face melted the hearts of everyone present.  婴儿天真可爱的脸融化了在场所有人的心。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 fiendish</td><td>/ˈfiːndɪʃ/</td><td>★</td><td>★</td><td>形容词</td><td>恶魔般的，恶毒的；极难的</td><td>a fiendish plot<br>恶毒的阴谋</td></tr>
-<tr><td colspan="7">例 The detective uncovered a fiendish plan to poison the water supply.  侦探揭露了一个恶毒的投毒供水计划。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 devilish</td><td>/ˈdevlɪʃ/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>邪恶的，恶魔般的</td><td>a devilish grin<br>邪气的笑</td></tr>
 <tr><td colspan="7">例 The boy wore a devilish grin as he hid the keys.  男孩藏起钥匙时露出一丝邪气的笑。</td></tr>
 </tbody>
@@ -1577,10 +961,6 @@
 <tr><td colspan="7">例 He obtained the money by deception and was later arrested.  他骗取了这笔钱，后来被捕。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 artifice</td><td>/ˈɑːrtəfɪs/</td><td>★☆</td><td>★☆</td><td>名词</td><td>诡计，欺骗；巧妙手段</td><td>use clever artifice<br>使用巧妙的诡计</td></tr>
-<tr><td colspan="7">例 Her apparent shyness was pure artifice designed to disarm her rivals.  她表面的羞怯纯属伪装，为的是麻痹对手。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 legerdemain</td><td>/ˌledʒərdəˈmeɪn/</td><td>☆</td><td>☆</td><td>名词</td><td>戏法；骗术，欺诈</td><td>financial legerdemain<br>财务骗术</td></tr>
 <tr><td colspan="7">例 The accountant used legerdemain to hide the losses for three years.  会计用骗术把亏损隐藏了三年。</td></tr>
 </tbody>
@@ -1589,40 +969,12 @@
 <tr><td colspan="7">例 She used every wile she knew to win his support.  她用尽一切手段来赢得他的支持。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 subterfuge</td><td>/ˈsʌbtərfjuːdʒ/</td><td>★☆</td><td>★☆</td><td>名词</td><td>诡计</td><td>resort to subterfuge<br>采用诡计</td></tr>
-<tr><td colspan="7">例 The spy resorted to subterfuge to enter the heavily guarded building.  间谍采用诡计进入戒备森严的大楼。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 aboveboard action</td><td>/əˌbʌvˈbɔrd ˈækʃən/</td><td>☆</td><td>☆</td><td>名词</td><td>光明正大的行为</td><td>an aboveboard action<br>光明正大之举</td></tr>
 <tr><td colspan="7">例 The committee praised his aboveboard action in reporting the conflict.  委员会赞扬他报告利益冲突的正当行为。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>chide</b></td><td>/tʃaɪd/</td><td>★</td><td>★</td><td>动词</td><td>责备</td><td>chide someone gently<br>温和地责备某人</td></tr>
 <tr><td colspan="7">例 She chided her son for forgetting his grandmother's birthday.  她责备儿子忘了祖母的生日。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 reprove</td><td>/rɪˈpruːv/</td><td>☆</td><td>★</td><td>及物动词</td><td>温和地责备，警告</td><td>reprove a student mildly<br>温和地批评学生</td></tr>
-<tr><td colspan="7">例 The coach reproved the player for arguing with the referee.  教练责备那名球员与裁判争辩。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 reprimand</td><td>/ˈreprəˌmænd/</td><td>★☆</td><td>★★</td><td>及物动词、名词</td><td>训斥，正式谴责</td><td>reprimand an employee<br>训斥员工</td></tr>
-<tr><td colspan="7">例 The officer was reprimanded for leaving his post early.  这名警官因提早离岗而受到训斥。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 reproach</td><td>/rɪˈproʊtʃ/</td><td>★☆</td><td>★★</td><td>及物动词</td><td>批评，责备</td><td>reproach oneself for<br>因某事自责</td></tr>
-<tr><td colspan="7">例 She reproached him for never returning her calls.  她责备他从不回她的电话。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 tick off</td><td>/ˌtɪk ˈɔf/</td><td>★★☆</td><td>★★★★</td><td>动词</td><td>斥责；使恼火</td><td>get ticked off by the boss<br>被老板训斥</td></tr>
-<tr><td colspan="7">例 The manager ticked him off for arriving late again.  经理因他又迟到而把他训了一顿。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 praise</td><td>/ˈpreɪz/</td><td>★★★</td><td>★★★</td><td>名词、动词</td><td>赞扬，称赞</td><td>win high praise<br>获得高度赞扬</td></tr>
-<tr><td colspan="7">例 Her first novel won high praise from serious critics.  她的第一部小说赢得了严肃评论家的高度赞扬。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 commend</td><td>/kəˈmend/</td><td>★★</td><td>★★</td><td>及物动词</td><td>赞扬，表扬</td><td>commend her courage<br>赞扬她的勇气</td></tr>
-<tr><td colspan="7">例 The principal commended her courage in front of the whole school.  校长在全校面前赞扬了她的勇气。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>choleric</b></td><td>/ˈkɑːlərɪk/</td><td>☆</td><td>☆</td><td>形容词</td><td>易怒的，暴躁的</td><td>a choleric temper<br>暴躁的脾气</td></tr>
@@ -1637,16 +989,8 @@
 <tr><td colspan="7">例 The baby was cranky all night because of the heat.  因为天热，宝宝整夜都在闹脾气。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 irascible</td><td>/ɪˈræsəbl/</td><td>★</td><td>★</td><td>形容词</td><td>易怒的，暴躁的</td><td>an irascible old man<br>脾气暴躁的老人</td></tr>
-<tr><td colspan="7">例 The irascible coach shouted at the referee over every call.  这位暴躁的教练对每一次判罚都冲裁判大喊。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 peevish</td><td>/ˈpiːvɪʃ/</td><td>☆</td><td>☆</td><td>形容词</td><td>易怒的，爱抱怨的</td><td>a peevish complaint<br>不耐烦的抱怨</td></tr>
 <tr><td colspan="7">例 She answered in a peevish tone and refused to explain further.  她用不耐烦的语气回答，拒绝再解释。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 petulant</td><td>/ˈpetʃələnt/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>易怒的，爱发脾气的</td><td>a petulant remark<br>使性子的话</td></tr>
-<tr><td colspan="7">例 The actor made a petulant remark and stormed off the stage.  那位演员使性子说了句话，然后气冲冲地离开了舞台。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 bad-tempered</td><td>/ˌbæd ˈtempərd/</td><td>★★☆</td><td>★★</td><td>形容词</td><td>脾气坏的，易怒的</td><td>a bad-tempered boss<br>脾气坏的老板</td></tr>
@@ -1661,28 +1005,8 @@
 <tr><td colspan="7">例 He grows short-tempered whenever the deadline gets close.  每到截稿期临近他就变得急躁。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 testy</td><td>/ˈtesti/</td><td>★☆</td><td>★★</td><td>形容词</td><td>易怒的，暴躁的</td><td>a testy reply<br>不耐烦的回答</td></tr>
-<tr><td colspan="7">例 He grew testy when the reporters kept repeating the question.  记者反复问同一个问题时，他变得不耐烦起来。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 difficult to provoke</td><td>/ˈdɪfɪkəlt tu prəˈvoʊk/</td><td>★★☆</td><td>★</td><td>形容词</td><td>不易被激怒的</td><td>difficult to provoke<br>难以被激怒</td></tr>
 <tr><td colspan="7">例 A good referee is patient and difficult to provoke during heated games.  好裁判在激烈比赛中耐心且不易被激怒。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 pacific</td><td>/pəˈsɪfɪk/</td><td>★★★☆</td><td>★</td><td>形容词</td><td>平和的，爱好和平的</td><td>a pacific temperament<br>平和的性情</td></tr>
-<tr><td colspan="7">例 He settled the quarrel with a few pacific words.  他用几句平和的话平息了争吵。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 placid</td><td>/ˈplæsɪd/</td><td>★★</td><td>★★</td><td>形容词</td><td>冷静的，淡定的</td><td>a placid temperament<br>沉静的性情</td></tr>
-<tr><td colspan="7">例 His placid temperament made him ideal for this very stressful job.  他沉静的性情使他非常适合这份高压工作。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 calm</td><td>/ˈkɑːm/</td><td>★★★☆</td><td>★★★★★</td><td>形容词、动词、名词</td><td>平静的；使镇静</td><td>calm down quickly<br>很快平静下来</td></tr>
-<tr><td colspan="7">例 She spoke in a calm voice until the children settled.  她用平静的声音说话，直到孩子们安静下来。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 serene</td><td>/səˈriːn/</td><td>★★</td><td>★★</td><td>形容词</td><td>平静的，安详的</td><td>a serene smile<br>安详的微笑</td></tr>
-<tr><td colspan="7">例 She watched the serene surface of the lake at dawn without speaking.  她默默看着黎明时宁静的湖面。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 tranquil</td><td>/ˈtræŋkwəl/</td><td>★★</td><td>★★</td><td>形容词</td><td>平静的，安宁的</td><td>a tranquil lake<br>平静的湖面</td></tr>
@@ -1693,68 +1017,20 @@
 <tr><td colspan="7">例 She stayed composed while answering the reporters' hostile questions.  她在回答记者敌意的提问时始终保持镇静。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 nonchalant</td><td>/ˌnɑːnʃəˈlɑːnt/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>漫不经心的，淡然的</td><td>a nonchalant shrug<br>漫不经心地一耸肩</td></tr>
-<tr><td colspan="7">例 He answered the accusation with a nonchalant shrug and changed the subject.  他冷淡地一耸肩回应指控，然后换了话题。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>chord</b></td><td>/kɔːrd/</td><td>★★☆</td><td>★</td><td>不及物动词</td><td>与…和谐一致；符合</td><td>chord with his beliefs<br>与他的信念相符</td></tr>
 <tr><td colspan="7">例 His plain proposal chords with everything he has said before.  他直白的提议与他此前所说的完全一致。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 accord</td><td>/əˈkɔːrd/</td><td>★★☆</td><td>★★</td><td>名词、及物动词</td><td>一致，符合；授予</td><td>in accord with<br>与…一致</td></tr>
-<tr><td colspan="7">例 His actions were in accord with the policy he announced.  他的行动与他宣布的政策一致。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 agree</td><td>/əˈɡriː/</td><td>★★★★</td><td>★★★★</td><td>动词</td><td>同意，赞同；一致</td><td>agree to the terms<br>同意这些条款</td></tr>
-<tr><td colspan="7">例 Both sides finally agreed to the new safety rules.  双方最终同意了新的安全规定。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 conform</td><td>/kənˈfɔːrm/</td><td>★★☆</td><td>★★★</td><td>及物动词、不及物动词</td><td>使协调；遵照，遵从</td><td>conform to the standard<br>符合标准</td></tr>
-<tr><td colspan="7">例 All new buildings must conform to strict safety codes.  所有新建筑都必须符合严格的安全规范。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 consist</td><td>/kənˈsɪst/</td><td>★★★</td><td>★★★</td><td>不及物动词</td><td>一致，相符；由…组成</td><td>consist with the evidence<br>与证据相符</td></tr>
 <tr><td colspan="7">例 His later remarks hardly consist with what he promised earlier.  他后来的话与先前的承诺很不一致。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 correspond</td><td>/ˌkɔːrəˈspɑːnd/</td><td>★★☆</td><td>★★☆</td><td>不及物动词</td><td>相符，一致；通信</td><td>correspond to the facts<br>与事实相符</td></tr>
-<tr><td colspan="7">例 The figures in the report correspond exactly to the bank records.  报告中的数字与银行记录完全相符。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 dovetail</td><td>/ˈdʌvteɪl/</td><td>★</td><td>★</td><td>动词、名词</td><td>吻合，与…相配合</td><td>dovetail with the plan<br>与计划相吻合</td></tr>
-<tr><td colspan="7">例 Her research dovetails neatly with the team's long-term goals.  她的研究与团队的长期目标恰好吻合。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 fit</td><td>/ˈfɪt/</td><td>★★★★</td><td>★★★★</td><td>动词、形容词</td><td>相符，适合；合适的</td><td>fit the description<br>符合描述</td></tr>
-<tr><td colspan="7">例 The suspect they arrested did not fit the witness's description.  他们逮捕的嫌疑人并不符合证人的描述。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 harmonize</td><td>/ˈhɑːrməˌnaɪz/</td><td>★☆</td><td>★☆</td><td>动词</td><td>协调一致；使和谐</td><td>harmonize with tradition<br>与传统相协调</td></tr>
-<tr><td colspan="7">例 The new building harmonizes well with the older houses nearby.  这座新建筑与附近的老房子十分协调。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 jibe</td><td>/dʒaɪb/</td><td>★</td><td>★</td><td>不及物动词</td><td>意见一致</td><td>jibe with the facts<br>与事实相符</td></tr>
-<tr><td colspan="7">例 His account of the accident does not jibe with the physical evidence.  他对这场事故的说法与实物证据不符。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 rhyme</td><td>/ˈraɪm/</td><td>★★☆</td><td>★★☆</td><td>动词、名词</td><td>押韵；协调一致</td><td>rhyme with each other<br>彼此押韵</td></tr>
 <tr><td colspan="7">例 The last two lines of the poem rhyme perfectly.  这首诗最后两行押韵得非常工整。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 square</td><td>/ˈskwer/</td><td>★★★★</td><td>★★★★</td><td>及物动词</td><td>贿赂，收买；使一致</td><td>square the local officials<br>把当地官员收买好</td></tr>
-<tr><td colspan="7">例 The developer had squared the local officials long before construction.  开发商早在动工前就把当地官员收买好了。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 tally</td><td>/ˈtæli/</td><td>★★☆</td><td>★★☆</td><td>动词、名词</td><td>相符，一致；计数</td><td>tally with the records<br>与记录相符</td></tr>
-<tr><td colspan="7">例 His account of the accident does not tally with the witness statements.  他对事故的叙述与证人陈述不符。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 differ from</td><td>/ˈdɪfər frʌm/</td><td>★★★</td><td>★☆</td><td>动词</td><td>与…不同</td><td>differ from the original<br>与原作不同</td></tr>
 <tr><td colspan="7">例 This edition differs from the original in several important details.  这一版在几个重要细节上与原作不同。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 disagree with</td><td>/ˌdɪsəˈɡri wɪð/</td><td>★★★</td><td>★☆</td><td>动词</td><td>与…不一致；不同意</td><td>disagree with the report<br>与报告不一致</td></tr>
-<tr><td colspan="7">例 These figures disagree with the totals printed in the annual report.  这些数字与年报中印的总数不符。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>chromatic</b></td><td>/krəˈmætɪk/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>彩色的</td><td>brilliant chromatic patterns<br>绚丽的彩色图案</td></tr>
@@ -1769,10 +1045,6 @@
 <tr><td colspan="7">例 The old town is full of colorful shops and banners.  老城里满是色彩缤纷的店铺和旗帜。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 motley</td><td>/ˈmɑːtli/</td><td>★★</td><td>★★</td><td>形容词</td><td>混杂的，富于变化的</td><td>a motley crowd<br>混杂的人群</td></tr>
-<tr><td colspan="7">例 A motley crowd of farmers, students, and shopkeepers filled the town square.  农民、学生和店主组成的混杂人群挤满了市镇广场。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 multicolored</td><td>/ˌmʌltiˈkʌlərd/</td><td>★☆</td><td>☆</td><td>形容词</td><td>多色的，五彩的</td><td>a multicolored scarf<br>多彩的围巾</td></tr>
 <tr><td colspan="7">例 She wrapped the gift in multicolored paper and ribbon.  她用彩色的纸和丝带包好礼物。</td></tr>
 </tbody>
@@ -1785,20 +1057,12 @@
 <tr><td colspan="7">例 The artist arranged varicolored tiles into a huge spiral pattern.  艺术家把杂色瓷砖排成巨大的螺旋图案。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 variegated</td><td>/ˈverɪɡeɪtɪd/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>杂色的，斑驳的</td><td>variegated leaves<br>斑驳的叶子</td></tr>
-<tr><td colspan="7">例 She filled the garden with variegated leaves of green and cream.  她在花园里种满绿白斑驳的叶子。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 kaleidoscopic</td><td>/kəˌlaɪdəˈskɑpɪk/</td><td>★</td><td>☆</td><td>形容词</td><td>千变万化的；万花筒般的</td><td>a kaleidoscopic display<br>千变万化的景象</td></tr>
 <tr><td colspan="7">例 The festival offered a kaleidoscopic mix of music and costume.  节庆呈现出千变万化的音乐与服饰。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 colorless</td><td>/ˈkʌlərləs/</td><td>★★</td><td>★★</td><td>形容词</td><td>无色的；单调乏味的</td><td>a colorless liquid<br>无色的液体</td></tr>
 <tr><td colspan="7">例 Pure water is a colorless and odorless liquid at room temperature.  纯水在室温下是无色无味的液体。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 pallid</td><td>/ˈpælɪd/</td><td>★</td><td>★</td><td>形容词</td><td>无生气的，缺乏活力的</td><td>a pallid imitation<br>毫无生气的模仿</td></tr>
-<tr><td colspan="7">例 The remake was a pallid imitation of a far livelier original.  这部翻拍片是对一部活力十足的原作的毫无生气的模仿。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 blanched</td><td>/blæntʃt/</td><td>★</td><td>★</td><td>形容词</td><td>变白的，发白的</td><td>a blanched face<br>发白的脸</td></tr>
@@ -1821,56 +1085,8 @@
 <tr><td colspan="7">例 The problem was discovered during a routine inspection last week.  这个问题是上周例行检查时发现的。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 sporadic</td><td>/spəˈrædɪk/</td><td>★★</td><td>★★</td><td>形容词</td><td>断断续续的</td><td>sporadic gunfire<br>断续的枪声</td></tr>
-<tr><td colspan="7">例 Sporadic gunfire continued through the night on the edge of town.  镇子边缘整夜断断续续传来枪声。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>churlish</b></td><td>/ˈtʃɜːrlɪʃ/</td><td>★</td><td>★</td><td>形容词</td><td>粗鲁无礼的</td><td>a churlish refusal<br>无礼的拒绝</td></tr>
 <tr><td colspan="7">例 It would be churlish to refuse such a generous gift.  拒绝如此丰厚的礼物就太无礼了。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 boorish</td><td>/ˈbʊrɪʃ/</td><td>★</td><td>★</td><td>形容词</td><td>粗鲁无礼的</td><td>boorish behavior<br>粗鲁无礼的举动</td></tr>
-<tr><td colspan="7">例 His boorish behavior at the table embarrassed everyone present.  他在餐桌上粗鲁无礼的举动让在场所有人难堪。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 classless</td><td>/ˈklæsləs/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>粗俗的，没有教养的</td><td>a classless remark<br>一句粗俗的话</td></tr>
-<tr><td colspan="7">例 Mocking the waiter was a classless thing to do.  取笑服务员是很没教养的行为。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 loutish</td><td>/ˈlaʊtɪʃ/</td><td>☆</td><td>☆</td><td>形容词</td><td>粗鲁的</td><td>loutish manners<br>粗鲁的举止</td></tr>
-<tr><td colspan="7">例 His loutish manners at the dinner table embarrassed his entire family.  他在餐桌上粗鲁的举止让全家人都很难堪。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 uncouth</td><td>/ʌnˈkuːθ/</td><td>★</td><td>★</td><td>形容词</td><td>粗鲁的，无教养的</td><td>uncouth table manners<br>粗野的餐桌举止</td></tr>
-<tr><td colspan="7">例 His uncouth remarks at dinner offended nearly everyone at the table.  他在晚餐上粗鲁的言辞几乎惹恼了同桌所有人。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳反 couth</del></td><td>/kuːθ/</td><td>☆</td><td>☆</td><td>形容词</td><td>有教养的，文雅的</td><td>a couth young man<br>一个有教养的年轻人</td></tr>
-<tr><td colspan="7">例 He was surprisingly couth for someone raised on the streets.  对一个街头长大的人来说，他出奇地有教养。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 cultivated</td><td>/ˈkʌltɪveɪtɪd/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>有教养的，有修养的</td><td>a cultivated taste in art<br>高雅的艺术品位</td></tr>
-<tr><td colspan="7">例 Her cultivated manners impressed everyone at the dinner.  她优雅的举止让晚宴上的每个人都印象深刻。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 polished</td><td>/ˈpɑːlɪʃt/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>有教养的</td><td>polished manners<br>优雅得体的举止</td></tr>
-<tr><td colspan="7">例 His polished manners impressed everyone at the formal dinner.  他优雅得体的举止让正式晚宴上的每个人都印象深刻。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 refined</td><td>/rəˈfaɪnd/</td><td>★★☆</td><td>★★★</td><td>形容词</td><td>精炼的，纯净的；有教养的</td><td>refined sugar<br>精制糖</td></tr>
-<tr><td colspan="7">例 Refined sugar has been stripped of every impurity.  精制糖已去除了所有杂质。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 well-bred</td><td>/wɛl ˈbrɛd/</td><td>★★☆</td><td>★★</td><td>形容词</td><td>有教养的，有礼貌的</td><td>a well-bred young woman<br>一位有教养的年轻女子</td></tr>
-<tr><td colspan="7">例 The well-bred guest thanked the host before leaving.  这位有教养的客人离开前向主人道了谢。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 courteous</td><td>/ˈkɜːrtiəs/</td><td>★★</td><td>★★</td><td>形容词</td><td>礼貌的，谦恭有礼的</td><td>a courteous reply<br>礼貌的答复</td></tr>
-<tr><td colspan="7">例 Even when customers shouted, the young clerk remained calm and courteous.  即使顾客大声嚷嚷，那位年轻店员仍然平静而有礼。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 polite</td><td>/pəˈlaɪt/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>有礼貌的，客气的</td><td>make polite conversation<br>客套地寒暄</td></tr>
-<tr><td colspan="7">例 It is polite to greet your neighbors in the morning.  早上向邻居问好是有礼貌的做法。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>cipher</b></td><td>/ˈsaɪfər/</td><td>★★</td><td>★★</td><td>名词</td><td>密码</td><td>break the cipher<br>破解密码</td></tr>
@@ -1897,24 +1113,12 @@
 <tr><td colspan="7">例 The path is circular, so it brings you back here.  这条小路是环形的，会把你带回这里。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 roundabout</td><td>/ˈraʊndəˌbaʊt/</td><td>★★</td><td>★★</td><td>形容词、名词</td><td>迂回的，间接的</td><td>in a roundabout way<br>以迂回的方式</td></tr>
-<tr><td colspan="7">例 She told me the news in a roundabout way that confused everyone.  她以绕弯子的方式告诉我这消息，把大家都搞糊涂了。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 direct</td><td>/dəˈrekt/</td><td>★★★★</td><td>★★★★</td><td>形容词</td><td>直接的，径直的</td><td>a direct flight<br>直飞航班</td></tr>
 <tr><td colspan="7">例 Ask for a direct answer instead of a long explanation.  要个直接的答复，而不是长篇解释。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 straight</td><td>/ˈstreɪt/</td><td>★★★★</td><td>★★★★</td><td>形容词</td><td>直的，笔直的</td><td>a straight road<br>笔直的道路</td></tr>
 <tr><td colspan="7">例 Drive straight ahead until you reach the second traffic light.  一直往前开，直到第二个红绿灯。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 straightforward</td><td>/ˌstreɪtˈfɔːrwərd/</td><td>★★☆</td><td>★★★</td><td>形容词</td><td>简单明了的；坦率的</td><td>a straightforward procedure<br>简单直接的流程</td></tr>
-<tr><td colspan="7">例 The instructions are straightforward enough for a child to follow.  说明简单明了，连孩子都能照着做。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 straightforwardness</td><td>/ˌstreɪtˈfɔrwərdnəs/</td><td>☆</td><td>☆</td><td>名词</td><td>坦率，直截了当</td><td>valued for his straightforwardness<br>因直率而受重视</td></tr>
-<tr><td colspan="7">例 Her straightforwardness saved the committee hours of pointless debate.  她的直率为委员会省下数小时无谓的争论。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 direction</td><td>/dəˈrekʃən/</td><td>★★★★</td><td>★★☆</td><td>名词</td><td>方向；指引，说明</td><td>sense of direction<br>方向感</td></tr>
@@ -1983,10 +1187,6 @@
 <tr><td colspan="7">例 Good writing avoids wordiness and expresses each idea with as few words as possible.  好的文章避免啰唆，用尽可能少的字表达每个意思。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 conciseness</td><td>/kənˈsaɪsnəs/</td><td>☆</td><td>☆</td><td>名词</td><td>简洁，简明</td><td>praised for its conciseness<br>因简洁而受赞</td></tr>
-<tr><td colspan="7">例 Editors valued the report for its conciseness and clarity.  编辑们赞赏这份报告简洁清晰。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 concision</td><td>/kənˈsɪʒən/</td><td>☆</td><td>☆</td><td>名词</td><td>简洁，简明</td><td>written with concision<br>写得简洁</td></tr>
 <tr><td colspan="7">例 The editor praised the report for its concision and its total lack of jargon.  编辑称赞这份报告简洁，且完全没有行话。</td></tr>
 </tbody>
@@ -2011,14 +1211,6 @@
 <tr><td colspan="7">例 The government capped tuition increases at three percent this year.  政府将今年学费涨幅限制在百分之三。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 limit</td><td>/ˈlɪmət/</td><td>★★★☆</td><td>★★★☆</td><td>名词、及物动词</td><td>界限，限度；限制</td><td>exceed the speed limit<br>超过限速</td></tr>
-<tr><td colspan="7">例 He was fined for exceeding the speed limit downtown.  他因在市区超速而被罚款。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 confine</td><td>/kənˈfaɪn/</td><td>★☆</td><td>★☆</td><td>及物动词</td><td>限制</td><td>confine the discussion<br>限定讨论范围</td></tr>
-<tr><td colspan="7">例 Please confine the discussion to the budget for this year.  请把讨论限定在今年的预算上。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 delimit</td><td>/dɪˈlɪmɪt/</td><td>☆</td><td>☆</td><td>及物动词</td><td>划定界限，限定</td><td>delimit the boundary<br>划定边界</td></tr>
 <tr><td colspan="7">例 The treaty delimits the border between the two countries.  条约划定了两国之间的边界。</td></tr>
 </tbody>
@@ -2035,40 +1227,8 @@
 <tr><td colspan="7">例 Diplomats stay circumspect in public and blunt behind closed doors.  外交官在公开场合谨慎，关起门来则直言不讳。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 alert</td><td>/əˈlɜːrt/</td><td>★★★☆</td><td>★★★☆</td><td>形容词、名词</td><td>警觉的，机敏的；警报</td><td>stay alert<br>保持警觉</td></tr>
-<tr><td colspan="7">例 Night guards must stay alert even during the quietest hours.  夜间守卫即便在最安静的时段也必须保持警觉。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 careful</td><td>/ˈkerfəl/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>谨慎的，仔细的</td><td>careful consideration<br>慎重考虑</td></tr>
 <tr><td colspan="7">例 Be careful when you cross this busy street at night.  夜里穿过这条繁忙的街道时要小心。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 gingerly</td><td>/ˈdʒɪndʒərli/</td><td>★☆</td><td>★☆</td><td>副词、形容词</td><td>小心谨慎地；谨慎的</td><td>step gingerly<br>小心翼翼地走</td></tr>
-<tr><td colspan="7">例 She gingerly lifted the cracked vase onto the padded table.  她小心翼翼地把破裂的花瓶搬到铺垫的桌上。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 guarded</td><td>/ˈɡɑːrdəd/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>谨慎的，有保留的</td><td>a guarded response<br>有保留的回应</td></tr>
-<tr><td colspan="7">例 The minister gave a guarded welcome to the new proposal.  部长对新提案表示了有保留的欢迎。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳近 heedful</del></td><td>/ˈhiːdfəl/</td><td>☆</td><td>☆</td><td>形容词</td><td>留心的，注意的</td><td>heedful of the warning<br>留意警告</td></tr>
-<tr><td colspan="7">例 Heedful of the forecast, the climbers turned back early.  留意到天气预报，登山者提早返回了。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 prudent</td><td>/ˈpruːdnt/</td><td>★★</td><td>★★</td><td>形容词</td><td>明智的；小心谨慎的，审慎的</td><td>a prudent investment<br>一笔审慎的投资</td></tr>
-<tr><td colspan="7">例 It would be prudent to save part of every paycheck.  每份工资都存下一部分才是明智之举。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 cautious</td><td>/ˈkɔːʃəs/</td><td>★★☆</td><td>★</td><td>形容词</td><td>谨慎的，小心的</td><td>a cautious approach<br>谨慎的做法</td></tr>
-<tr><td colspan="7">例 Investors remained cautious until the election results were announced.  在选举结果公布前投资者一直很谨慎。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 chary</td><td>/ˈtʃeri/</td><td>☆</td><td>☆</td><td>形容词</td><td>非常谨慎的</td><td>chary of praise<br>不轻易给出赞美</td></tr>
-<tr><td colspan="7">例 Editors are chary of publishing claims that cannot be checked.  编辑对发表无法核实的说法非常谨慎。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 wary</td><td>/ˈweri/</td><td>★★☆</td><td>★</td><td>形容词</td><td>警惕的，谨慎的</td><td>wary of strangers<br>对陌生人警惕</td></tr>
-<tr><td colspan="7">例 Children are taught to be wary of strangers offering free rides.  孩子们被教导要警惕主动提供搭车的陌生人。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 careless</td><td>/ˈkerləs/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>粗心的，疏忽的</td><td>a careless mistake<br>粗心的错误</td></tr>
@@ -2099,36 +1259,12 @@
 <tr><td colspan="7">例 The new road bypasses the crowded center of the town.  新路绕开了拥挤的镇中心。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 dodge</td><td>/dɑːdʒ/</td><td>★★★</td><td>★★★</td><td>动词</td><td>躲避</td><td>dodge the question<br>回避问题</td></tr>
-<tr><td colspan="7">例 The minister managed to dodge the question three times in one interview.  部长在一次采访中三次成功回避了这个问题。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 sidestep</td><td>/ˈsaɪdstep/</td><td>★☆</td><td>★☆</td><td>及物动词</td><td>回避，避开（问题）</td><td>sidestep the issue<br>回避这个问题</td></tr>
-<tr><td colspan="7">例 The candidate neatly sidestepped the issue of rising unemployment.  这位候选人巧妙地回避了失业率上升的问题。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 skirt</td><td>/skɜːrt/</td><td>★★★</td><td>★★★</td><td>及物动词</td><td>绕行，避开</td><td>skirt the issue<br>回避问题</td></tr>
-<tr><td colspan="7">例 The minister tried to skirt the issue with a long, vague answer.  部长试图用冗长含糊的回答回避这个问题。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 get around</td><td>/ɡet əˈraʊnd/</td><td>★★★★★</td><td>★★★★☆</td><td>动词</td><td>规避，绕开</td><td>get around the law<br>规避法律</td></tr>
 <tr><td colspan="7">例 Clever accountants found ways to get around the new tax.  精明的会计找到了规避新税的办法。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 comply with</td><td>/kəmˈplaɪ wɪð/</td><td>★★★</td><td>★★★</td><td>动词</td><td>遵守，服从</td><td>comply with regulations<br>遵守规章</td></tr>
-<tr><td colspan="7">例 Every factory must comply with the new emission standards.  每家工厂都必须遵守新的排放标准。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 follow</td><td>/ˈfɑːloʊ/</td><td>★★★★</td><td>★★★★</td><td>及物动词</td><td>遵循，跟随</td><td>follow the rules<br>遵守规则</td></tr>
 <tr><td colspan="7">例 If you follow the instructions exactly, nothing can go wrong.  只要严格按说明操作，就不会出错。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 obey</td><td>/oʊˈbeɪ/</td><td>★★☆</td><td>★★☆</td><td>动词</td><td>服从，遵守</td><td>obey the rules<br>遵守规则</td></tr>
-<tr><td colspan="7">例 Drivers must obey the speed limit in school zones.  司机在学校区域必须遵守限速。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 observe</td><td>/əbˈzɜːrv/</td><td>★★★</td><td>★★★</td><td>动词</td><td>遵守；观察</td><td>observe the law<br>遵守法律</td></tr>
-<tr><td colspan="7">例 All visitors are expected to observe the museum's rules.  所有参观者都应遵守博物馆的规定。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>civility</b></td><td>/səˈvɪləti/</td><td>★★</td><td>☆</td><td>名词</td><td>彬彬有礼</td><td>treat with civility<br>以礼相待</td></tr>
@@ -2171,10 +1307,6 @@
 <tr><td colspan="7">例 Online incivility has made public discussion much harder lately.  网络上的粗鲁让公共讨论近来变得更难。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 rudeness</td><td>/ˈruːdnəs/</td><td>★☆</td><td>★☆</td><td>名词</td><td>粗鲁，无礼</td><td>apologize for one's rudeness<br>为自己的无礼道歉</td></tr>
-<tr><td colspan="7">例 Her rudeness to the waiter embarrassed everyone in our group.  她对服务员的无礼让我们同行的人都很尴尬。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳反 surliness</del></td><td>/ˈsɜrlinəs/</td><td>☆</td><td>☆</td><td>名词</td><td>脾气坏，粗声粗气</td><td>the waiter's surliness<br>侍者的粗鲁态度</td></tr>
 <tr><td colspan="7">例 The surliness of the staff spoiled an otherwise pleasant meal.  员工的粗鲁态度毁了本来愉快的一餐。</td></tr>
 </tbody>
@@ -2189,22 +1321,6 @@
 <tbody>
 <tr><td><b>clandestine</b></td><td>/klænˈdestɪn/</td><td>★★</td><td>★</td><td>形容词</td><td>秘密的，暗中的</td><td>a clandestine meeting<br>秘密的会面</td></tr>
 <tr><td colspan="7">例 They arranged a clandestine meeting in an empty parking garage.  他们在一个空停车场安排了秘密会面。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 secret</td><td>/ˈsiːkrət/</td><td>★★★★</td><td>★★★★</td><td>形容词、名词</td><td>秘密的，隐秘的；秘密</td><td>keep a secret<br>保守秘密</td></tr>
-<tr><td colspan="7">例 They held secret meetings in the basement for several months.  他们在地下室秘密开会数月。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 covert</td><td>/ˈkoʊvərt/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>隐蔽的，秘密的</td><td>covert operations<br>秘密行动</td></tr>
-<tr><td colspan="7">例 The agency ran covert operations in several neighboring countries.  该机构在数个邻国进行秘密行动。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 furtive</td><td>/ˈfɜːrtɪv/</td><td>★</td><td>★</td><td>形容词</td><td>鬼鬼祟祟的；秘密的</td><td>a furtive glance<br>偷偷的一瞥</td></tr>
-<tr><td colspan="7">例 He cast a furtive glance at the answers on her desk.  他偷偷瞥了一眼她桌上的答案。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 surreptitious</td><td>/ˌsɜːrəpˈtɪʃəs/</td><td>★</td><td>★</td><td>形容词</td><td>偷偷摸摸的，保密的</td><td>a surreptitious glance<br>偷偷的一瞥</td></tr>
-<tr><td colspan="7">例 He took a surreptitious glance at his watch during the meeting.  会上他偷偷看了一眼手表。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 sneaky</td><td>/ˈsniːki/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>鬼鬼祟祟的，偷偷的</td><td>a sneaky trick<br>偷偷的伎俩</td></tr>
@@ -2227,16 +1343,8 @@
 <tr><td colspan="7">例 He won the contract through underhand dealings with an official.  他通过与官员的暗中交易赢得合同。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 underhanded</td><td>/ˌʌndərˈhændɪd/</td><td>★</td><td>★★</td><td>形容词</td><td>狡诈的，暗中进行的</td><td>underhanded tactics<br>暗中使用的手段</td></tr>
-<tr><td colspan="7">例 They won the contract through underhanded tactics.  他们靠不正当手段赢得了合同。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 open</td><td>/ˈoʊpən/</td><td>★★★★☆</td><td>★★★★☆</td><td>形容词</td><td>公开的，坦率的</td><td>open opposition<br>公开的反对</td></tr>
 <tr><td colspan="7">例 There was open opposition to the plan at the meeting.  会上有人公开反对这项计划。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 overt</td><td>/oʊˈvɜːrt/</td><td>★★</td><td>★★</td><td>形容词</td><td>明显的，公开的</td><td>overt hostility<br>公开的敌意</td></tr>
-<tr><td colspan="7">例 The policy met overt hostility from local business owners.  该政策遭到当地商户的公开敌视。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 public</td><td>/ˈpʌblɪk/</td><td>★★★★☆</td><td>★★★★☆</td><td>形容词、名词</td><td>公开的；公众的</td><td>make it public<br>予以公开</td></tr>
@@ -2267,10 +1375,6 @@
 <tr><td colspan="7">例 Readers praised the lucidness of her scientific writing.  读者称赞她科学写作的清晰。</td></tr>
 </tbody>
 <tbody>
-<tr><td><del>↳近 perspicuity</del></td><td>/ˌpɜːrspɪˈkjuːəti/</td><td>☆</td><td>☆</td><td>名词</td><td>清晰明了</td><td>admirable perspicuity<br>令人称道的明晰</td></tr>
-<tr><td colspan="7">例 The judge praised the lawyer for the perspicuity of her written brief.  法官称赞这位律师书面陈述的清晰明了。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳近 perspicuousness</del></td><td>/pərˈspɪkjuəsnəs/</td><td>☆</td><td>☆</td><td>名词</td><td>清晰易懂</td><td>perspicuousness of style<br>文风的清晰</td></tr>
 <tr><td colspan="7">例 The textbook is valued for its perspicuousness and useful examples.  这本教材因清晰易懂和实用例子而受重视。</td></tr>
 </tbody>
@@ -2279,20 +1383,8 @@
 <tr><td colspan="7">例 These tablets purify water so it becomes safe to drink.  这些药片能净化水，使其可安全饮用。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 clear</td><td>/ˈklɪr/</td><td>★★★★☆</td><td>★★★★★</td><td>形容词</td><td>明确的，确凿的；清楚的</td><td>a clear majority<br>明显的多数</td></tr>
-<tr><td colspan="7">例 The party won by a clear majority of votes.  该党以明显多数票获胜。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 elucidate</td><td>/iˈluːsɪdeɪt/</td><td>★☆</td><td>☆</td><td>动词</td><td>阐明</td><td>elucidate the problem<br>阐明问题</td></tr>
-<tr><td colspan="7">例 The footnotes elucidate the problem far better than the chapter itself does.  脚注比正文本身更好地阐明了这个问题。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 explain</td><td>/ɪkˈspleɪn/</td><td>★★★★</td><td>★★★★</td><td>及物动词</td><td>解释，说明</td><td>explain the reason<br>解释原因</td></tr>
 <tr><td colspan="7">例 Could you explain why the experiment failed the second time?  你能解释一下第二次实验为何失败吗？</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 illuminate</td><td>/ɪˈluːmɪneɪt/</td><td>★★</td><td>☆</td><td>及物动词</td><td>阐明</td><td>illuminate the problem<br>阐明问题</td></tr>
-<tr><td colspan="7">例 Her lecture illuminated a problem that had puzzled economists for years.  她的讲座阐明了一个困扰经济学家多年的问题。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 illustrate</td><td>/ˈɪləsˌtreɪt/</td><td>★★☆</td><td>★</td><td>及物动词</td><td>说明，举例说明</td><td>illustrate the point<br>说明这一点</td></tr>
@@ -2311,14 +1403,6 @@
 <tr><td colspan="7">例 Much of the confusion came from unclarity in the guidelines.  许多混乱源于指南中的含糊之处。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 obfuscate</td><td>/ˈɑːbfʌskeɪt/</td><td>★</td><td>☆</td><td>及物动词</td><td>使困惑，使模糊</td><td>obfuscate the facts<br>把事实弄模糊</td></tr>
-<tr><td colspan="7">例 The witness seemed determined to obfuscate the facts rather than explain them.  证人似乎一心要把事实弄模糊，而不是解释清楚。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 obscure</td><td>/əbˈskjʊr/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>含义模糊的；平凡的，不知名的</td><td>an obscure poet<br>不知名的诗人</td></tr>
-<tr><td colspan="7">例 He remained an obscure poet until a critic rediscovered his work decades later.  他一直是个不知名的诗人，直到几十年后一位批评家重新发现他的作品。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>clasp</b></td><td>/klæsp/</td><td>★★</td><td>★★</td><td>名词、动词</td><td>紧握</td><td>clasp her hand<br>紧握她的手</td></tr>
 <tr><td colspan="7">例 He clasped her hand tightly as the train pulled away.  火车开动时，他紧紧握住她的手。</td></tr>
 </tbody>
@@ -2333,10 +1417,6 @@
 <tbody>
 <tr><td>↳近 grasp</td><td>/ˈɡræsp/</td><td>★★★</td><td>★★★</td><td>动词、名词</td><td>抓紧，握牢；理解</td><td>grasp the handle<br>抓住把手</td></tr>
 <tr><td colspan="7">例 She grasped the rope tightly and pulled herself up.  她紧抓绳子，把自己拉了上去。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 grip</td><td>/ˈɡrɪp/</td><td>★★★</td><td>★★★</td><td>及物动词、名词</td><td>吸引住；紧握</td><td>grip the reader's attention<br>抓住读者注意力</td></tr>
-<tr><td colspan="7">例 The film gripped us from the very first scene.  这部电影从第一个镜头就抓住了我们。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 handgrip</td><td>/ˈhændɡrɪp/</td><td>☆</td><td>☆</td><td>名词</td><td>紧握；手柄，握把</td><td>a firm handgrip<br>有力的握手</td></tr>
@@ -2369,36 +1449,12 @@
 <tr><td colspan="7">例 He took a charitable view of his student's careless mistake.  他对学生的粗心错误持宽容态度。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 lenient</td><td>/ˈliːniənt/</td><td>★★</td><td>★★</td><td>形容词</td><td>宽大仁慈的</td><td>a lenient sentence<br>从轻的判决</td></tr>
-<tr><td colspan="7">例 The judge handed down a lenient sentence because of the boy's age.  由于这个男孩年纪小，法官作出了从轻的判决。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 merciful</td><td>/ˈmɜːrsɪfəl/</td><td>★★</td><td>★★</td><td>形容词</td><td>仁慈的，宽厚的</td><td>a merciful judge<br>宽仁的法官</td></tr>
-<tr><td colspan="7">例 The court was merciful and gave him only a small fine.  法庭很宽仁，只罚了他少许款项。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 mild</td><td>/ˈmaɪld/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>温和的，不严厉的</td><td>a mild punishment<br>轻微的处罚</td></tr>
 <tr><td colspan="7">例 The winter here is unusually mild and rarely brings snow.  这里的冬天格外温和，很少下雪。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 genial</td><td>/ˈdʒiːniəl/</td><td>★☆</td><td>★★</td><td>形容词</td><td>和蔼亲切的；温和宜人的</td><td>a genial host<br>亲切的主人</td></tr>
-<tr><td colspan="7">例 Our genial neighbor invited the whole street over for dinner.  我们和蔼可亲的邻居请整条街的人来吃晚饭。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 gentle</td><td>/ˈdʒentəl/</td><td>★★★</td><td>★★★★★</td><td>形容词</td><td>温和的，轻柔的</td><td>a gentle voice<br>温柔的声音</td></tr>
-<tr><td colspan="7">例 He gave the door a gentle push and stepped inside.  他轻轻推了一下门，走了进去。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 balmy</td><td>/ˈbɑːmi/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>温和宜人的</td><td>a balmy evening<br>温暖宜人的傍晚</td></tr>
 <tr><td colspan="7">例 We sat outside enjoying the balmy air of early summer.  我们坐在外面享受初夏温和宜人的空气。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 equable</td><td>/ˈekwəbl/</td><td>☆</td><td>☆</td><td>形容词</td><td>（脾气、性情）温和的</td><td>an equable temper<br>平和的性情</td></tr>
-<tr><td colspan="7">例 His equable nature made him easy to work with.  他性情平和，与他共事很轻松。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 harsh</td><td>/hɑːrʃ/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>严厉的</td><td>harsh criticism<br>严厉的批评</td></tr>
-<tr><td colspan="7">例 The judge's harsh sentence surprised even the prosecutors in the courtroom.  法官严厉的判决连法庭上的检察官都感到意外。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 severe</td><td>/səˈvɪr/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>严厉的；严重的</td><td>a severe penalty<br>严厉的处罚</td></tr>
@@ -2413,36 +1469,8 @@
 <tr><td colspan="7">例 Her parents were strict about homework and bedtime.  她父母对作业和睡觉时间很严格。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 inclement</td><td>/ɪnˈklemənt/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>（天气等）恶劣的</td><td>inclement weather<br>恶劣的天气</td></tr>
-<tr><td colspan="7">例 The ceremony moved indoors because of unusually inclement weather.  由于天气异常恶劣，典礼改在室内举行。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del><b>cliché</b></del></td><td>/kliːˈʃeɪ/</td><td>☆</td><td>★★★</td><td>名词</td><td>陈词滥调，老套的说法</td><td>an overused cliché<br>用滥的陈词</td></tr>
 <tr><td colspan="7">例 Saying that time heals everything has become a tired cliché.  说时间治愈一切已成为老套的陈词滥调。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 banality</td><td>/bəˈnæləti/</td><td>★</td><td>☆</td><td>名词</td><td>平庸；陈腐的话</td><td>the banality of his speech<br>他讲话的平庸乏味</td></tr>
-<tr><td colspan="7">例 The film offered nothing but banalities about growing up.  这部电影只提供了些关于成长的陈腐说法。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 bromide</td><td>/ˈbroʊmaɪd/</td><td>★☆</td><td>★☆</td><td>名词</td><td>陈词滥调；镇静剂</td><td>a tired old bromide<br>老掉牙的陈词</td></tr>
-<tr><td colspan="7">例 His speech ended with a tired old bromide about hard work.  他的演讲以一句关于努力工作的陈腐套话作结。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 platitude</td><td>/ˈplætɪtuːd/</td><td>★</td><td>☆</td><td>名词</td><td>陈词滥调</td><td>utter a platitude<br>说一句陈词滥调</td></tr>
-<tr><td colspan="7">例 The speech offered nothing but platitudes about hard work and dreams.  这篇演讲除了关于努力与梦想的陈词滥调外别无他物。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 trite</td><td>/traɪt/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>陈腐的，陈词滥调的</td><td>a trite observation<br>陈腐的见解</td></tr>
-<tr><td colspan="7">例 The speech relied on trite phrases that moved nobody in the hall.  那篇演讲满是陈腐的套话，没能感动会场里的任何人。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳近 bathetic</del></td><td>/bəˈθetɪk/</td><td>☆</td><td>☆</td><td>形容词</td><td>故作伤感的；突降的</td><td>a bathetic ending<br>故作伤感的结局</td></tr>
-<tr><td colspan="7">例 The novel ends with a bathetic scene of sudden tears.  小说以一个突然落泪、故作伤感的场面收尾。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 hackneyed</td><td>/ˈhæknid/</td><td>★</td><td>★</td><td>形容词</td><td>陈腐的，缺乏创新的</td><td>a hackneyed phrase<br>陈腐的说法</td></tr>
-<tr><td colspan="7">例 The speech relied on hackneyed images of struggle and triumph.  这篇演讲依赖于陈腐的奋斗与胜利意象。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 stereotypical</td><td>/ˌsteriəˈtɪpɪkəl/</td><td>★★</td><td>★</td><td>形容词</td><td>老套的，刻板的</td><td>a stereotypical image<br>刻板的形象</td></tr>
@@ -2453,28 +1481,12 @@
 <tr><td colspan="7">例 The team needs a fresh approach to this old problem.  团队需要用新颖的方法处理这个老问题。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 new</td><td>/ˈnuː/</td><td>★★★★★</td><td>★★★★★</td><td>形容词</td><td>新的，最近出现的</td><td>a brand new car<br>一辆全新的汽车</td></tr>
-<tr><td colspan="7">例 They moved into a new apartment near the river.  他们搬进了河边一套新公寓。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 original</td><td>/əˈrɪdʒənl/</td><td>★★★★</td><td>★★★★</td><td>形容词</td><td>创新的；最初的，最早的</td><td>an original idea<br>有创意的想法</td></tr>
-<tr><td colspan="7">例 Her proposal was genuinely original, unlike the tired ideas we usually hear.  她的提案确实新颖，不像我们常听到的那些陈旧想法。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 creative</td><td>/kriˈeɪtɪv/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>有创造力的，创新的</td><td>a creative solution<br>有创意的办法</td></tr>
 <tr><td colspan="7">例 She found a creative solution to the seating problem.  她为座位问题想出了有创意的办法。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>clog</b></td><td>/klɑːɡ/</td><td>★★</td><td>★★</td><td>名词</td><td>阻碍物</td><td>a clog on progress<br>进步的障碍</td></tr>
 <tr><td colspan="7">例 Old regulations act as a clog on economic progress.  陈旧的法规成了经济进步的阻碍。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 balk</td><td>/bɔːk/</td><td>★☆</td><td>★☆</td><td>不及物动词、及物动词</td><td>阻碍；不愿接受，拒绝</td><td>balk at the price<br>因价格而退缩</td></tr>
-<tr><td colspan="7">例 Buyers began to balk at the price after the third increase.  第三次涨价之后，买家开始因价格而退缩。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 bar</td><td>/ˈbɑːr/</td><td>★★★★</td><td>★★★★</td><td>名词、及物动词</td><td>阻挡，禁止；条，棒；酒吧</td><td>bar the entrance<br>堵住入口</td></tr>
-<tr><td colspan="7">例 A fallen tree barred the narrow path up the hill.  一棵倒下的树堵住了上山的窄路。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 block</td><td>/ˈblɑːk/</td><td>★★★★</td><td>★★★★</td><td>名词、及物动词</td><td>阻碍物；街区</td><td>a block to progress<br>进步的障碍</td></tr>
@@ -2487,10 +1499,6 @@
 <tbody>
 <tr><td>↳近 drag</td><td>/ˈdræɡ/</td><td>★★★</td><td>★★★</td><td>名词、动词</td><td>累赘，阻力；拖曳</td><td>a drag on growth<br>增长的阻力</td></tr>
 <tr><td colspan="7">例 High debt became a drag on the country's economy.  高额债务成了该国经济的阻力。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 fetter</td><td>/ˈfetər/</td><td>★</td><td>★</td><td>名词、及物动词</td><td>束缚</td><td>the fetters of tradition<br>传统的束缚</td></tr>
-<tr><td colspan="7">例 Heavy family obligations fettered her ambition for many long years.  沉重的家庭责任多年来束缚了她的雄心。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 holdback</td><td>/ˈhoʊldbæk/</td><td>☆</td><td>☆</td><td>名词</td><td>阻碍，抑制因素</td><td>a serious holdback<br>严重的阻碍</td></tr>
@@ -2513,20 +1521,8 @@
 <tr><td colspan="7">例 Radio interference made the broadcast almost impossible to hear.  无线电干扰使广播几乎听不清。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 obstacle</td><td>/ˈɑːbstəkəl/</td><td>★★☆</td><td>★★☆</td><td>名词</td><td>障碍，阻碍物</td><td>overcome an obstacle<br>克服障碍</td></tr>
-<tr><td colspan="7">例 Lack of funding was the main obstacle to finishing the bridge.  资金不足是完成大桥的主要障碍。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 obstruction</td><td>/əbˈstrʌkʃən/</td><td>★★☆</td><td>★★</td><td>名词</td><td>障碍物；阻挠</td><td>an obstruction in the road<br>路上的障碍物</td></tr>
-<tr><td colspan="7">例 Police removed the obstruction that had blocked traffic for hours.  警方清除了堵塞交通数小时的障碍物。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 shackles</td><td>/ˈʃækəlz/</td><td>★★</td><td>★★</td><td>名词</td><td>镣铐；束缚，桎梏</td><td>break the shackles<br>打破束缚</td></tr>
 <tr><td colspan="7">例 They fought to break the shackles of colonial rule.  他们为打破殖民统治的枷锁而斗争。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 stop</td><td>/ˈstɑːp/</td><td>★★★★☆</td><td>★★★★☆</td><td>动词、名词</td><td>停止；停靠站</td><td>put a stop to<br>制止，终止</td></tr>
-<tr><td colspan="7">例 The referee stopped the match because of the sudden storm.  裁判因突来的暴风雨中止了比赛。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 stumbling block</td><td>/ˈstʌmblɪŋ blɑːk/</td><td>★★</td><td>★★★</td><td>名词</td><td>绊脚石，障碍</td><td>a major stumbling block<br>主要障碍</td></tr>
@@ -2537,48 +1533,16 @@
 <tr><td colspan="7">例 Old rules trammel the creativity of young designers here.  旧规矩束缚了这里年轻设计师的创造力。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 encumber</td><td>/ɪnˈkʌmbər/</td><td>☆</td><td>☆</td><td>及物动词</td><td>阻碍；妨碍</td><td>encumber the project<br>妨碍这个项目</td></tr>
-<tr><td colspan="7">例 Too many rules encumber small businesses in this country.  太多规定阻碍了这个国家的小企业。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 hinder</td><td>/ˈhɪndər/</td><td>★★</td><td>★★★</td><td>及物动词</td><td>阻碍，妨碍</td><td>hinder progress<br>妨碍进展</td></tr>
-<tr><td colspan="7">例 Poor lighting hindered the search for survivors.  照明不足妨碍了对生还者的搜寻。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 holdup</td><td>/ˈhoʊldʌp/</td><td>★</td><td>★</td><td>名词</td><td>延误，阻碍；抢劫</td><td>cause a holdup<br>造成延误</td></tr>
 <tr><td colspan="7">例 A broken signal caused a long holdup on the line.  信号故障造成线路长时间延误。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 inhibit</td><td>/ɪnˈhɪbɪt/</td><td>★★</td><td>★★</td><td>及物动词</td><td>抑制，阻碍</td><td>inhibit the growth of bacteria<br>抑制细菌生长</td></tr>
-<tr><td colspan="7">例 Cold weather inhibits the growth of these tropical plants.  寒冷天气抑制了这些热带植物的生长。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 interfere with</td><td>/ˌɪntərˈfɪr wɪð/</td><td>★★★</td><td>★☆</td><td>动词</td><td>干扰，妨碍</td><td>interfere with the work<br>妨碍工作</td></tr>
 <tr><td colspan="7">例 Loud noise from the street interferes with my concentration.  街上的噪音干扰我集中注意力。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 obstruct</td><td>/əbˈstrʌkt/</td><td>★★</td><td>★★</td><td>及物动词</td><td>妨碍，阻塞</td><td>obstruct justice<br>妨碍司法公正</td></tr>
-<tr><td colspan="7">例 A fallen tree obstructed the only road out of town.  一棵倒下的树堵住了唯一的出城道路。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 shackle</td><td>/ˈʃækl/</td><td>★☆</td><td>★☆</td><td>及物动词</td><td>束缚；限制，阻碍</td><td>shackle free trade<br>束缚自由贸易</td></tr>
-<tr><td colspan="7">例 New tariffs would shackle trade between the two neighboring countries.  新关税会束缚这两个邻国之间的贸易。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 stymie</td><td>/ˈstaɪmi/</td><td>★</td><td>★</td><td>及物动词</td><td>阻碍，妨碍</td><td>stymie an investigation<br>阻碍调查</td></tr>
-<tr><td colspan="7">例 Missing records stymied the investigation for months.  档案缺失使调查停滞了数月。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 tie up</td><td>/taɪ ʌp/</td><td>★★★☆</td><td>★★★</td><td>动词</td><td>捆住；使受阻，占住</td><td>tie up the traffic<br>使交通受阻</td></tr>
 <tr><td colspan="7">例 The accident tied up traffic for more than two hours.  事故使交通堵塞了两个多小时。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 aid</td><td>/ˈeɪd/</td><td>★★★☆</td><td>★★★★</td><td>动词、名词</td><td>帮助，援助</td><td>come to someone's aid<br>前来帮助某人</td></tr>
-<tr><td colspan="7">例 Neighbors came to her aid within minutes of the fire.  火灾发生几分钟内邻居们就来帮忙。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 assist</td><td>/əˈsɪst/</td><td>★★★☆</td><td>★★★★</td><td>动词</td><td>帮助，协助</td><td>assist with the work<br>协助工作</td></tr>
-<tr><td colspan="7">例 Two nurses assisted the surgeon during the operation.  两名护士在手术中协助医生。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 help</td><td>/ˈhelp/</td><td>★★★★★</td><td>★★★★★</td><td>名词、动词</td><td>帮助，助益</td><td>a great help<br>很大的帮助</td></tr>
@@ -2589,10 +1553,6 @@
 <tr><td colspan="7">例 A blood clot in his leg required immediate medical attention.  他腿部的血块需要立即接受治疗。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 array</td><td>/əˈreɪ/</td><td>★★★</td><td>★★★</td><td>名词</td><td>一批，一系列；排列</td><td>an impressive array<br>蔚为壮观的一批</td></tr>
-<tr><td colspan="7">例 The museum displayed an impressive array of ancient coins.  博物馆展出了一批蔚为壮观的古钱币。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 assemblage</td><td>/əˈsemblədʒ/</td><td>★☆</td><td>★☆</td><td>名词</td><td>聚集；一群，集合体</td><td>an odd assemblage<br>奇特的一群</td></tr>
 <tr><td colspan="7">例 The museum displays a strange assemblage of old machines.  博物馆展出一批奇特的老机器。</td></tr>
 </tbody>
@@ -2601,16 +1561,8 @@
 <tr><td colspan="7">例 A small band of protesters gathered outside the building.  一小群抗议者聚集在大楼外。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 block</td><td>/ˈblɑːk/</td><td>★★★★</td><td>★★★★</td><td>名词、及物动词</td><td>阻碍物；街区</td><td>a block to progress<br>进步的障碍</td></tr>
-<tr><td colspan="7">例 Fear of failure can be a block to learning anything.  怕失败会成为学习任何东西的障碍。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 bunch</td><td>/ˈbʌntʃ/</td><td>★★★☆</td><td>★★★☆</td><td>名词</td><td>一群，一束，一串</td><td>a bunch of keys<br>一串钥匙</td></tr>
 <tr><td colspan="7">例 A bunch of students waited outside the lecture hall.  一群学生在讲堂外等着。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 cluster</td><td>/ˈklʌstər/</td><td>★★★</td><td>★★★</td><td>名词</td><td>一群，一簇</td><td>a cluster of houses<br>一簇房屋</td></tr>
-<tr><td colspan="7">例 A small cluster of reporters waited outside the courthouse door.  一小群记者等在法院门口。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 clutch</td><td>/ˈklʌtʃ/</td><td>★★★</td><td>★★★</td><td>名词、动词</td><td>一群，一窝；抓紧</td><td>a clutch of eggs<br>一窝蛋</td></tr>
@@ -2633,10 +1585,6 @@
 <tr><td colspan="7">例 A huddle of workers stood smoking near the gate.  一群工人挤在门边吸烟。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 knot</td><td>/ˈnɑːt/</td><td>★★☆</td><td>★★☆</td><td>名词、动词</td><td>结；纽带；打结</td><td>tie a knot<br>打一个结</td></tr>
-<tr><td colspan="7">例 The sailor tied a knot that no amount of pulling could loosen.  水手打了个怎么拉都松不开的结。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 lot</td><td>/ˈlɑːt/</td><td>★★★★☆</td><td>★★★★☆</td><td>名词</td><td>一批，一群，一堆</td><td>a bad lot<br>一帮坏人</td></tr>
 <tr><td colspan="7">例 The auction sold the whole lot for very little.  拍卖会把这一整批以极低价卖掉。</td></tr>
 </tbody>
@@ -2647,10 +1595,6 @@
 <tbody>
 <tr><td>↳近 package</td><td>/ˈpækədʒ/</td><td>★★★☆</td><td>★★★☆</td><td>名词、及物动词</td><td>一批，一套；包裹</td><td>a package of reforms<br>一套改革措施</td></tr>
 <tr><td colspan="7">例 The government announced a package of measures to help farmers.  政府宣布一整套帮助农民的措施。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 congeal</td><td>/kənˈdʒiːl/</td><td>☆</td><td>☆</td><td>动词</td><td>凝固，固化</td><td>congeal into a mass<br>凝结成块</td></tr>
-<tr><td colspan="7">例 The gravy congealed as soon as the plate cooled.  盘子一凉，肉汁就凝住了。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 jell</td><td>/ˈdʒel/</td><td>★☆</td><td>★☆</td><td>动词</td><td>凝固，成胶状；成形</td><td>jell in the fridge<br>在冰箱里凝固</td></tr>
@@ -2665,54 +1609,6 @@
 <tr><td colspan="7">例 The two leaders exchanged cordial greetings before the talks.  两位领导人在会谈前互致亲切的问候。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 affable</td><td>/ˈæfəbl/</td><td>★☆</td><td>★</td><td>形容词</td><td>和蔼的，温和的</td><td>an affable host<br>和蔼的主人</td></tr>
-<tr><td colspan="7">例 Our affable neighbor greets everyone on the street by name.  我们和蔼的邻居在街上会叫出每个人的名字打招呼。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 genial</td><td>/ˈdʒiːniəl/</td><td>★☆</td><td>★★</td><td>形容词</td><td>和蔼亲切的；温和宜人的</td><td>a genial host<br>亲切的主人</td></tr>
-<tr><td colspan="7">例 Our genial neighbor invited the whole street over for dinner.  我们和蔼可亲的邻居请整条街的人来吃晚饭。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 hospitable</td><td>/ˈhɑːspɪtəbəl/</td><td>★☆</td><td>★★★</td><td>形容词</td><td>热情好客的；宜于生长的</td><td>hospitable to strangers<br>对陌生人热情</td></tr>
-<tr><td colspan="7">例 The villagers were remarkably hospitable to the exhausted travelers.  村民对疲惫的旅人非常好客。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 sociable</td><td>/ˈsoʊʃəbəl/</td><td>★☆</td><td>★★★</td><td>形容词</td><td>好交际的，友善的</td><td>a sociable personality<br>好交际的性格</td></tr>
-<tr><td colspan="7">例 She is far more sociable than her quiet older brother.  她比她安静的哥哥爱交际得多。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 warmhearted</td><td>/ˈwɔrm ˈhɑrtɪd/</td><td>☆</td><td>★★</td><td>形容词</td><td>热心的，热情友善的</td><td>a warmhearted neighbor<br>一位热心的邻居</td></tr>
-<tr><td colspan="7">例 Their warmhearted host insisted that everyone stay for dinner.  他们热心的主人坚持要所有人留下吃饭。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 bracing</td><td>/ˈbreɪsɪŋ/</td><td>★★</td><td>★★</td><td>形容词</td><td>令人振奋的，提神的</td><td>a bracing sea breeze<br>令人振奋的海风</td></tr>
-<tr><td colspan="7">例 A bracing wind off the lake woke us up immediately.  湖面吹来的清冽寒风立刻让我们清醒了。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 invigorating</td><td>/ɪnˈvɪɡəreɪtɪŋ/</td><td>★☆</td><td>★★</td><td>形容词</td><td>令人精神焕发的</td><td>an invigorating morning walk<br>令人振奋的晨间散步</td></tr>
-<tr><td colspan="7">例 A cold shower can be surprisingly invigorating after a run.  跑步后洗个冷水澡出奇地让人精神焕发。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 refreshing</td><td>/rɪˈfreʃɪŋ/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>令人身心振奋的，提神的</td><td>a refreshing drink<br>提神的饮料</td></tr>
-<tr><td colspan="7">例 A cold shower is wonderfully refreshing after a long run.  长跑后洗个冷水澡格外提神。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 rejuvenating</td><td>/rɪˈdʒuːvəneɪtɪŋ/</td><td>★</td><td>☆</td><td>形容词</td><td>使恢复活力的</td><td>a rejuvenating holiday<br>让人恢复活力的假期</td></tr>
-<tr><td colspan="7">例 Two weeks by the lake proved wonderfully rejuvenating.  在湖边的两周让人格外恢复了活力。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 restorative</td><td>/rɪˈstɔːrətɪv/</td><td>★☆</td><td>☆</td><td>形容词</td><td>有益健康的</td><td>a restorative sleep<br>恢复元气的睡眠</td></tr>
-<tr><td colspan="7">例 A long walk by the sea proved wonderfully restorative after weeks of stress.  数周压力之后，在海边长时间散步格外有益身心。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 reviving</td><td>/rɪˈvaɪvɪŋ/</td><td>★★</td><td>★★</td><td>形容词</td><td>使苏醒的，令人重振的</td><td>a reviving cup of tea<br>一杯提神的茶</td></tr>
-<tr><td colspan="7">例 She handed him a reviving cup of strong coffee.  她给他递上一杯提神的浓咖啡。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 stimulating</td><td>/ˈstɪmjəˌleɪtɪŋ/</td><td>★★☆</td><td>★☆</td><td>形容词</td><td>激励的，令人振奋的</td><td>a stimulating discussion<br>一场激发思考的讨论</td></tr>
-<tr><td colspan="7">例 The seminar was the most stimulating class of the term.  这场研讨会是本学期最能激发思考的课。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 vital</td><td>/ˈvaɪtəl/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>充满活力的；极重要的</td><td>full of vital energy<br>充满生命活力</td></tr>
 <tr><td colspan="7">例 Regular exercise keeps older people vital and mentally alert.  经常锻炼使老年人保持活力和头脑清醒。</td></tr>
 </tbody>
@@ -2721,28 +1617,8 @@
 <tr><td colspan="7">例 The mountain air had a vitalizing effect on the patients.  山间空气对病人有振奋精神的作用。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 aloof</td><td>/əˈluːf/</td><td>★★</td><td>★★</td><td>形容词</td><td>冷淡的，冷漠孤傲的</td><td>remain aloof from<br>对…保持冷淡疏远</td></tr>
-<tr><td colspan="7">例 He stayed aloof from office gossip and rarely joined lunch.  他对办公室的闲话保持冷淡，很少参加午餐。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 apathetic</td><td>/ˌæpəˈθetɪk/</td><td>★☆</td><td>★★</td><td>形容词</td><td>冷漠的，无兴趣的</td><td>apathetic voters<br>冷漠的选民</td></tr>
-<tr><td colspan="7">例 Most students seemed apathetic about the election and did not vote.  大多数学生对这次选举漠不关心，也没有投票。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 brittle</td><td>/ˈbrɪtl/</td><td>★★</td><td>★★</td><td>形容词</td><td>易碎的，脆弱的；冷淡的，不真心的</td><td>brittle old paper<br>脆化的旧纸</td></tr>
-<tr><td colspan="7">例 The brittle old pages cracked when I turned them carefully.  我小心翻动时，那些脆化的旧书页还是裂开了。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 detached</td><td>/dɪˈtætʃt/</td><td>★★☆</td><td>★★★</td><td>形容词</td><td>冷漠超然的，不介入的</td><td>a detached attitude<br>超然冷漠的态度</td></tr>
-<tr><td colspan="7">例 She described the accident in a strangely detached voice.  她用一种异常冷漠的语气描述了那场事故。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 distant</td><td>/ˈdɪstənt/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>冷淡的，疏远的；遥远的</td><td>a distant manner<br>冷淡的态度</td></tr>
 <tr><td colspan="7">例 She was polite but distant throughout the whole dinner.  整个晚餐期间她客气却冷淡。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 offish</td><td>/ˈɔːfɪʃ/</td><td>☆</td><td>★</td><td>形容词</td><td>冷淡的，不友好的</td><td>seem a bit offish<br>显得有点冷淡</td></tr>
-<tr><td colspan="7">例 The new neighbors seemed offish until we invited them over.  在我们邀请之前，新邻居显得有些冷淡。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 remote</td><td>/rɪˈmoʊt/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>冷淡的，疏离的；遥远的</td><td>a remote expression<br>疏离的神情</td></tr>
@@ -2801,10 +1677,6 @@
 <tr><td colspan="7">例 The union used the strike to gain leverage in talks.  工会利用罢工在谈判中取得影响力。</td></tr>
 </tbody>
 <tbody>
-<tr><td><del>↳反 impuissance</del></td><td>/ɪmˈpjuːɪsəns/</td><td>☆</td><td>☆</td><td>名词</td><td>无权，虚弱</td><td>political impuissance<br>政治上的无权</td></tr>
-<tr><td colspan="7">例 The committee's impuissance became clear when nobody obeyed its order.  没人服从命令时，委员会的无权就显露了。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 impotence</td><td>/ˈɪmpətəns/</td><td>★☆</td><td>☆</td><td>名词</td><td>无力，无能</td><td>a sense of impotence<br>无能为力之感</td></tr>
 <tr><td colspan="7">例 Voters expressed impotence in the face of rising prices.  面对物价上涨，选民表达了无能为力之感。</td></tr>
 </tbody>
@@ -2815,18 +1687,6 @@
 <tbody>
 <tr><td>↳近 lovey-dovey</td><td>/ˌlʌvi ˈdʌvi/</td><td>★</td><td>★★★</td><td>形容词</td><td>卿卿我我的，腻歪的</td><td>a lovey-dovey couple<br>腻歪的小情侣</td></tr>
 <tr><td colspan="7">例 They were so lovey-dovey that their friends teased them.  他们太腻歪，朋友们都笑话他们。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 maudlin</td><td>/ˈmɔːdlɪn/</td><td>★</td><td>★</td><td>形容词</td><td>过于感伤的</td><td>maudlin sentimentality<br>过度的感伤</td></tr>
-<tr><td colspan="7">例 After two drinks he grew maudlin about his lost youth.  喝了两杯后他为逝去的青春伤感起来。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 mawkish</td><td>/ˈmɔːkɪʃ/</td><td>☆</td><td>☆</td><td>形容词</td><td>过度伤感的</td><td>a mawkish film<br>滥情的电影</td></tr>
-<tr><td colspan="7">例 The film's mawkish ending made several people in the audience laugh out loud.  这部电影滥情的结局让观众里好几个人笑出声来。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 saccharine</td><td>/ˈsækərɪn/</td><td>★</td><td>★</td><td>形容词</td><td>甜得发腻的；矫情做作的</td><td>saccharine sentimentality<br>矫情做作的伤感</td></tr>
-<tr><td colspan="7">例 The film's ending is far too saccharine for my taste.  这部电影的结局对我来说太过矫情。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 sentimental</td><td>/ˌsentəˈmentəl/</td><td>★★☆</td><td>★★★</td><td>形容词</td><td>多情的，感情用事的</td><td>sentimental value<br>情感价值</td></tr>
@@ -2841,64 +1701,12 @@
 <tr><td colspan="7">例 My clumsy attempt at juggling ended with three broken plates.  我笨拙地学抛球，结果打碎了三个盘子。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 awkward</td><td>/ˈɔːkwərd/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>笨拙的，不灵巧的；尴尬的</td><td>an awkward silence<br>尴尬的沉默</td></tr>
-<tr><td colspan="7">例 An awkward silence followed his remark about her divorce.  他谈到她离婚之后，出现了一阵尴尬的沉默。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 ham-handed</td><td>/ˌhæm ˈhændɪd/</td><td>★★★</td><td>★★☆</td><td>形容词</td><td>笨手笨脚的，不圆滑的</td><td>a ham-handed apology<br>笨拙的道歉</td></tr>
-<tr><td colspan="7">例 His ham-handed attempt to help only made things worse.  他笨拙的帮忙只让事情更糟。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 heavy-handed</td><td>/ˌhevi ˈhændɪd/</td><td>★★★</td><td>★☆</td><td>形容词</td><td>笨拙的；严厉专断的</td><td>heavy-handed policing<br>粗暴的执法</td></tr>
 <tr><td colspan="7">例 The government's heavy-handed response angered many peaceful protesters.  政府的强硬做法激怒了许多和平抗议者。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 maladroit</td><td>/ˌmæləˈdrɔɪt/</td><td>☆</td><td>☆</td><td>形容词</td><td>笨拙的</td><td>a maladroit attempt<br>笨拙的尝试</td></tr>
-<tr><td colspan="7">例 His maladroit attempt at an apology only made the situation worse.  他笨拙的道歉尝试只是让情况变得更糟。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳近 unhandy</del></td><td>/ʌnˈhændi/</td><td>☆</td><td>★</td><td>形容词</td><td>不便使用的；笨手笨脚的</td><td>an unhandy tool<br>不好用的工具</td></tr>
-<tr><td colspan="7">例 This unhandy old ladder is difficult to carry upstairs.  这把不好用的旧梯子很难搬上楼。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 bungling</td><td>/ˈbʌŋɡlɪŋ/</td><td>★</td><td>★</td><td>形容词</td><td>笨拙的，办事不力的</td><td>bungling amateurs<br>笨手笨脚的业余者</td></tr>
-<tr><td colspan="7">例 A bungling assistant managed to lose the only copy of the contract.  一个笨手笨脚的助手把合同唯一的副本弄丢了。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 inept</td><td>/ɪˈnept/</td><td>★★</td><td>★★</td><td>形容词</td><td>愚笨的，荒谬的；不称职的，无能力的</td><td>politically inept<br>政治上无能</td></tr>
-<tr><td colspan="7">例 The manager was so inept at handling complaints that customers left in droves.  这位经理处理投诉如此无能，导致顾客大量流失。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 adroit</td><td>/əˈdrɔɪt/</td><td>★</td><td>★</td><td>形容词</td><td>熟练的，灵巧的</td><td>adroit at negotiation<br>擅长谈判</td></tr>
-<tr><td colspan="7">例 She proved remarkably adroit at handling hostile questions from reporters.  她在应对记者的敌意提问时表现得非常娴熟。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 deft</td><td>/deft/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>灵巧的，熟练的</td><td>a deft touch<br>娴熟的手法</td></tr>
-<tr><td colspan="7">例 With a few deft strokes the artist finished the small sketch.  画家几笔灵巧的勾画便完成了那幅小素描。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 dexterous</td><td>/ˈdekstrəs/</td><td>★</td><td>☆</td><td>形容词</td><td>动作灵活的；头脑灵活的</td><td>dexterous fingers<br>灵巧的手指</td></tr>
-<tr><td colspan="7">例 The surgeon's dexterous hands worked steadily for more than six hours.  这位外科医生灵活的双手稳稳地工作了六个多小时。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 handy</td><td>/ˈhændi/</td><td>★★★</td><td>★★★★★</td><td>形容词</td><td>方便的；就在手边的</td><td>come in handy<br>派上用场</td></tr>
-<tr><td colspan="7">例 Keep a flashlight handy in case the power fails tonight.  把手电筒放在手边，以防今晚停电。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>coagulate</b></td><td>/koʊˈæɡjuleɪt/</td><td>☆</td><td>☆</td><td>动词</td><td>凝结，凝固</td><td>coagulate into clots<br>凝结成块</td></tr>
 <tr><td colspan="7">例 Blood from the small cut coagulated within a few minutes.  小伤口流出的血几分钟内就凝结了。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 clot</td><td>/klɑːt/</td><td>★★</td><td>★★</td><td>名词、动词</td><td>密集的一群；凝结</td><td>a blood clot<br>血块</td></tr>
-<tr><td colspan="7">例 A blood clot in his leg required immediate medical attention.  他腿部的血块需要立即接受治疗。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 congeal</td><td>/kənˈdʒiːl/</td><td>☆</td><td>☆</td><td>动词</td><td>凝固，固化</td><td>congeal into a mass<br>凝结成块</td></tr>
-<tr><td colspan="7">例 The gravy congealed as soon as the plate cooled.  盘子一凉，肉汁就凝住了。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 jelly</td><td>/ˈdʒeli/</td><td>★★☆</td><td>★★☆</td><td>名词、动词</td><td>果冻；使成胶状</td><td>set like jelly<br>凝成果冻状</td></tr>
-<tr><td colspan="7">例 The soup had jellied in the pot by the morning.  到早上汤已在锅里凝成了冻状。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 melt</td><td>/ˈmelt/</td><td>★★★</td><td>★★★</td><td>动词</td><td>融化，熔化</td><td>melt in the sun<br>在阳光下融化</td></tr>
@@ -2911,10 +1719,6 @@
 <tbody>
 <tr><td><del>↳反 fluidify</del></td><td>/ˈfluɪdɪfaɪ/</td><td>☆</td><td>☆</td><td>及物动词</td><td>使流体化，使变稀</td><td>fluidify the thick paste<br>使稠糊变稀</td></tr>
 <tr><td colspan="7">例 Adding warm water helps fluidify the thick chocolate mixture.  加温水有助于把稠巧克力糊变稀。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 dissolve</td><td>/dɪˈzɑːlv/</td><td>★★☆</td><td>★★☆</td><td>动词</td><td>溶解，融化；解散</td><td>dissolve in water<br>在水中溶解</td></tr>
-<tr><td colspan="7">例 Stir the powder until the crystals dissolve in water completely.  搅拌粉末，直到晶体在水中完全溶解。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>coalesce</b></td><td>/ˌkoʊəˈles/</td><td>★☆</td><td>★</td><td>动词</td><td>合并，融合</td><td>coalesce into a group<br>合并成一个团体</td></tr>
@@ -2941,20 +1745,12 @@
 <tr><td colspan="7">例 Workers coupled the new carriage to the waiting train.  工人把新车厢挂到等候的列车上。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 fuse</td><td>/ˈfjuːz/</td><td>★★☆</td><td>★★★</td><td>动词</td><td>融合，熔合</td><td>fuse two traditions<br>融合两种传统</td></tr>
-<tr><td colspan="7">例 Her music fuses jazz rhythms with traditional folk melodies.  她的音乐把爵士节奏与传统民谣旋律融为一体。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳近 interfuse</del></td><td>/ˌɪntərˈfjuz/</td><td>☆</td><td>☆</td><td>动词</td><td>使混合，交融</td><td>interfuse the two styles<br>交融两种风格</td></tr>
 <tr><td colspan="7">例 The composer interfuses folk melodies with modern harmony.  作曲家把民间旋律与现代和声交融在一起。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 join</td><td>/ˈdʒɔɪn/</td><td>★★★★</td><td>★★★★</td><td>动词</td><td>连接，接合；加入</td><td>join the two pieces<br>把两块接起来</td></tr>
 <tr><td colspan="7">例 Join the ends of the rope with a firm knot.  用牢固的结把绳子两端接起来。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 link</td><td>/ˈlɪŋk/</td><td>★★★★</td><td>★★★★</td><td>名词、动词</td><td>联系，纽带；连接</td><td>a close link<br>紧密的联系</td></tr>
-<tr><td colspan="7">例 Researchers found a close link between sleep and memory.  研究者发现睡眠与记忆之间存在紧密联系。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 break up</td><td>/breɪk ʌp/</td><td>★★★★</td><td>★★★☆</td><td>动词</td><td>分开，分裂；解散</td><td>break up the group<br>拆散这个团体</td></tr>
@@ -2969,20 +1765,12 @@
 <tr><td colspan="7">例 The teacher sectioned the class into four working groups.  老师把班级分成四个学习小组。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 separate</td><td>/ˈsepəreɪt/</td><td>★★★★</td><td>★★★★★</td><td>动词、形容词</td><td>分开，分离</td><td>separate the yolks<br>把蛋黄分离出来</td></tr>
-<tr><td colspan="7">例 Please separate the recyclable waste from the ordinary rubbish.  请把可回收垃圾与普通垃圾分开。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 sever</td><td>/ˈsevər/</td><td>★★</td><td>★★</td><td>及物动词</td><td>切断，断绝</td><td>sever all ties<br>断绝一切关系</td></tr>
 <tr><td colspan="7">例 The company severed all ties with its former supplier.  公司与前供应商断绝了一切关系。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 split</td><td>/ˈsplɪt/</td><td>★★★☆</td><td>★★★☆</td><td>动词、名词</td><td>分裂，分开</td><td>split into groups<br>分成小组</td></tr>
 <tr><td colspan="7">例 The committee split into two camps over the proposal.  委员会因该提案分裂成两派。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 sunder</td><td>/ˈsʌndər/</td><td>★</td><td>★</td><td>及物动词</td><td>分开，割断</td><td>sunder the alliance<br>使联盟破裂</td></tr>
-<tr><td colspan="7">例 The bitter dispute sundered an alliance that had lasted decades.  这场激烈的争端割断了维持数十年的联盟。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 unlink</td><td>/ʌnˈlɪŋk/</td><td>☆</td><td>☆</td><td>及物动词</td><td>断开，解除关联</td><td>unlink the two accounts<br>解除两账户关联</td></tr>
@@ -3011,36 +1799,8 @@
 <tr><td colspan="7">例 She coaxed the frightened kitten out from under the porch.  她把受惊的小猫从门廊下哄了出来。</td></tr>
 </tbody>
 <tbody>
-<tr><td><del>↳近 blandish</del></td><td>/ˈblændɪʃ/</td><td>☆</td><td>☆</td><td>动词</td><td>奉承，讨好，哄诱</td><td>blandish the boss<br>讨好奉承老板</td></tr>
-<tr><td colspan="7">例 He blandished the officials until they signed the permit.  他一路奉承官员，直到他们签下许可。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 cajole</td><td>/kəˈdʒoʊl/</td><td>★</td><td>★</td><td>动词</td><td>哄骗</td><td>cajole him into agreeing<br>哄他答应下来</td></tr>
-<tr><td colspan="7">例 She cajoled her brother into driving her to the airport.  她哄着哥哥开车送她去机场。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 wheedle</td><td>/ˈwiːdl/</td><td>☆</td><td>☆</td><td>动词</td><td>（用花言巧语）诱惑，哄骗</td><td>wheedle money out of him<br>哄他掏出钱来</td></tr>
-<tr><td colspan="7">例 She wheedled her father into lending her the old car.  她哄着父亲把那辆旧车借给她。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 palaver</td><td>/pəˈlævər/</td><td>★</td><td>★</td><td>名词</td><td>闲谈，废话；花言巧语</td><td>endless palaver about money<br>没完没了地谈钱</td></tr>
-<tr><td colspan="7">例 After an hour of pointless palaver, the committee had decided nothing.  经过一小时无意义的闲谈，委员会什么也没决定。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>coda</b></td><td>/ˈkoʊdə/</td><td>★☆</td><td>★☆</td><td>名词</td><td>终曲</td><td>a triumphant coda<br>辉煌的终曲</td></tr>
 <tr><td colspan="7">例 The symphony ends with a quiet and unexpectedly gentle coda.  这部交响曲以安静而出乎意料温柔的尾声结束。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 finale</td><td>/fɪˈnæli/</td><td>★★★</td><td>★★★</td><td>名词</td><td>终场，结局</td><td>the grand finale<br>盛大的终场</td></tr>
-<tr><td colspan="7">例 The orchestra saved its loudest music for the grand finale.  乐团把最响亮的乐段留给了盛大的终场。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 epilogue</td><td>/ˈepɪlɔːɡ/</td><td>★★</td><td>★★</td><td>名词</td><td>文学作品的结局</td><td>a brief epilogue<br>简短的结语</td></tr>
-<tr><td colspan="7">例 A brief epilogue tells the reader what became of the two brothers.  简短的结语告诉读者两兄弟后来的境况。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 overture</td><td>/ˈoʊvərtʃər/</td><td>★★</td><td>★★</td><td>名词</td><td>序曲，前奏；提议</td><td>play the overture<br>演奏序曲</td></tr>
-<tr><td colspan="7">例 The orchestra opened the evening with a lively overture by Rossini.  乐团以罗西尼一首轻快的序曲开始了晚会。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 prelude</td><td>/ˈpreɪˌluːd/</td><td>★★</td><td>★★</td><td>名词</td><td>序曲；前奏，先兆</td><td>a prelude to war<br>战争的前奏</td></tr>
@@ -3079,10 +1839,6 @@
 <tr><td colspan="7">例 Several coexisting traditions shaped the music of that region.  几种共存的传统塑造了那个地区的音乐。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 concurrent</td><td>/kənˈkɜːrənt/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>同时发生的，并行的</td><td>concurrent sessions<br>同时进行的分会</td></tr>
-<tr><td colspan="7">例 The judge imposed two concurrent sentences of three years each.  法官判处两项各三年的刑期同时执行。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 contemporaneous</td><td>/kənˌtempəˈreɪniəs/</td><td>★☆</td><td>☆</td><td>形容词</td><td>同时代的，同时发生的</td><td>contemporaneous records<br>同时期的记录</td></tr>
 <tr><td colspan="7">例 Historians rely on contemporaneous letters to date the rebellion.  史学家依靠同时期的信件来确定叛乱的年代。</td></tr>
 </tbody>
@@ -3093,10 +1849,6 @@
 <tbody>
 <tr><td>↳近 synchronic</td><td>/sɪŋˈkrɑːnɪk/</td><td>☆</td><td>☆</td><td>形容词</td><td>共时的，同一时期的</td><td>a synchronic analysis<br>共时分析</td></tr>
 <tr><td colspan="7">例 Her synchronic study describes the language as it stood in 1900.  她的共时研究描述了这门语言在1900年的状态。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 synchronous</td><td>/ˈsɪŋkrənəs/</td><td>★★</td><td>☆</td><td>形容词</td><td>同时期的，同步的</td><td>synchronous orbit<br>同步轨道</td></tr>
-<tr><td colspan="7">例 The dancers' movements were perfectly synchronous throughout the piece.  舞者的动作在整支舞中完全同步。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 asynchronous</td><td>/eɪˈsɪŋkrənəs/</td><td>★☆</td><td>☆</td><td>形容词</td><td>不同步的，异步的</td><td>asynchronous communication<br>异步通信</td></tr>
@@ -3119,16 +1871,8 @@
 <tr><td colspan="7">例 She gave a convincing explanation for the missing money.  她对丢失的钱给出了令人信服的解释。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 compelling</td><td>/kəmˈpelɪŋ/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>极具说服力的</td><td>a compelling reason<br>令人信服的理由</td></tr>
-<tr><td colspan="7">例 He gave a compelling reason for leaving the project early.  他给出了提前离开项目的极具说服力的理由。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 conclusive</td><td>/kənˈkluːsɪv/</td><td>★★</td><td>★★</td><td>形容词</td><td>决定性的，无可置疑的</td><td>conclusive proof<br>决定性的证据</td></tr>
 <tr><td colspan="7">例 The tests were not conclusive, so the doctors ordered more.  检测结果并不确定，医生便要求再做检查。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 telling</td><td>/ˈtelɪŋ/</td><td>★★★★</td><td>★★</td><td>形容词</td><td>有效的，显著的</td><td>a telling detail<br>意味深长的细节</td></tr>
-<tr><td colspan="7">例 One telling detail in the letter revealed the writer's true motive.  信中一个意味深长的细节揭示了写信人的真实动机。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 persuasive</td><td>/pərˈsweɪsɪv/</td><td>★★</td><td>★★</td><td>形容词</td><td>有说服力的，令人信服的</td><td>a persuasive speaker<br>有说服力的演讲者</td></tr>
@@ -3139,44 +1883,12 @@
 <tr><td colspan="7">例 No one offered a satisfying answer to the reporter's question.  没人对记者的问题给出令人满意的答复。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 apropos</td><td>/ˌæprəˈpoʊ/</td><td>★☆</td><td>★☆</td><td>形容词、介词</td><td>相关的；关于，有关</td><td>apropos of nothing<br>毫无来由地</td></tr>
-<tr><td colspan="7">例 Apropos of nothing, he asked whether I had ever been to Rome.  他毫无来由地问我是否去过罗马。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 germane</td><td>/dʒɜːrˈmeɪn/</td><td>★</td><td>★</td><td>形容词</td><td>有关的，适当的</td><td>germane to the discussion<br>与讨论相关</td></tr>
-<tr><td colspan="7">例 Her question was germane to the discussion and changed our plan.  她的问题与讨论密切相关，改变了我们的计划。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 relative</td><td>/ˈrelətɪv/</td><td>★★★☆</td><td>★★★☆</td><td>形容词、名词</td><td>相关的；相对的；亲属</td><td>relative to the topic<br>与该话题相关</td></tr>
-<tr><td colspan="7">例 Comfort is relative and depends largely on what you expect.  舒适是相对的，很大程度上取决于你的期望。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 relevant</td><td>/ˈreləvənt/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>有关系的，重要的</td><td>relevant to the case<br>与本案有关</td></tr>
-<tr><td colspan="7">例 The judge ruled that the old letters were relevant to the case.  法官裁定那些旧信件与本案有关。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 unconvincing</td><td>/ˌʌnkənˈvɪnsɪŋ/</td><td>★☆</td><td>☆</td><td>形容词</td><td>无说服力的，难以令人信服的</td><td>an unconvincing excuse<br>站不住脚的借口</td></tr>
 <tr><td colspan="7">例 The witness gave an unconvincing account of where he had been.  证人对自己的行踪给出了难以令人信服的说法。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 unpersuasive</td><td>/ˌʌnpərˈsweɪsɪv/</td><td>☆</td><td>☆</td><td>形容词</td><td>无说服力的</td><td>an unpersuasive defense<br>无说服力的辩护</td></tr>
 <tr><td colspan="7">例 The lawyer's unpersuasive closing argument failed to move the jury.  律师毫无说服力的结案陈词未能打动陪审团。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 extraneous</td><td>/ɪkˈstreɪniəs/</td><td>★☆</td><td>★</td><td>形容词</td><td>无关的，不重要的</td><td>extraneous information<br>无关的信息</td></tr>
-<tr><td colspan="7">例 Please delete all extraneous details from the summary.  请把摘要中所有无关的细节删掉。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 irrelevant</td><td>/ˌɪˈreləvənt/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>无关的，不相干的</td><td>an irrelevant detail<br>无关的细节</td></tr>
-<tr><td colspan="7">例 The lawyer objected because the question was completely irrelevant here.  律师提出反对，因为这个问题在此完全无关。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 impertinent</td><td>/ɪmˈpɜːrtnənt/</td><td>★☆</td><td>☆</td><td>形容词</td><td>不相关的；无礼的，鲁莽的</td><td>an impertinent remark<br>无礼的言论</td></tr>
-<tr><td colspan="7">例 The lawyer objected that the question was impertinent to the charges.  律师反对说，这个问题与指控无关。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳反 irrelative</del></td><td>/ɪˈrɛlətɪv/</td><td>☆</td><td>☆</td><td>形容词</td><td>无关的，不相干的</td><td>irrelative to the issue<br>与该问题无关</td></tr>
-<tr><td colspan="7">例 He dismissed the data as irrelative to his central argument.  他认为这些数据与他的核心论点无关。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>cognizant</b></td><td>/ˈkɑːɡnɪzənt/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>知道的，意识到的</td><td>be cognizant of risks<br>意识到风险</td></tr>
@@ -3195,28 +1907,12 @@
 <tr><td colspan="7">例 She was a witting participant in the scheme from the start.  她从一开始就是这个计划的知情参与者。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 apprehensive</td><td>/ˌæprɪˈhensɪv/</td><td>★★</td><td>★</td><td>形容词</td><td>知晓的；忧虑不安的</td><td>apprehensive of the danger<br>知晓其中的危险</td></tr>
-<tr><td colspan="7">例 She was fully apprehensive of the dangers before she signed anything.  在签任何文件之前，她已充分知晓其中的危险。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 sensible</td><td>/ˈsensəbəl/</td><td>★★★</td><td>★★★★★</td><td>形容词</td><td>明智的，合理的</td><td>a sensible choice<br>明智的选择</td></tr>
-<tr><td colspan="7">例 Wearing boots was a sensible choice in that mud.  在那种泥地里穿靴子是明智的选择。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 oblivious</td><td>/əˈblɪviəs/</td><td>★★</td><td>☆</td><td>形容词</td><td>不知道的，不知情的</td><td>oblivious to the noise<br>察觉不到噪音</td></tr>
-<tr><td colspan="7">例 Deep in her book, she was oblivious to the noise of the crowd.  她沉浸在书里，察觉不到人群的嘈杂。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 unconscious</td><td>/ʌnˈkɑːnʃəs/</td><td>★★★</td><td>☆</td><td>形容词</td><td>无意识的；昏迷的</td><td>an unconscious habit<br>无意识的习惯</td></tr>
 <tr><td colspan="7">例 The driver lay unconscious on the road until help arrived.  司机躺在路上昏迷不醒，直到救援到来。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 unaware</td><td>/ˌʌnəˈwer/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>不知道的，未察觉的</td><td>be unaware of the rule<br>不知道这条规定</td></tr>
 <tr><td colspan="7">例 They were unaware that the meeting had been moved to Friday.  他们不知道会议已改到周五。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 unmindful</td><td>/ʌnˈmaɪndfəl/</td><td>☆</td><td>☆</td><td>形容词</td><td>不留意的，未察觉的</td><td>unmindful of danger<br>不顾危险</td></tr>
-<tr><td colspan="7">例 Unmindful of the time, they talked until well past midnight.  他们没在意时间，一直聊到深夜。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>collapse</b></td><td>/kəˈlæps/</td><td>★★★</td><td>★★★</td><td>动词、名词</td><td>失败</td><td>the collapse of talks<br>谈判的破裂</td></tr>
@@ -3243,28 +1939,12 @@
 <tr><td colspan="7">例 Her greatest achievement was building the school from nothing.  她最大的成就是从无到有建起这所学校。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 success</td><td>/səkˈses/</td><td>★★★★</td><td>★★★★</td><td>名词</td><td>成功；成功的人或事</td><td>a resounding success<br>巨大的成功</td></tr>
-<tr><td colspan="7">例 The fundraising campaign was a resounding success beyond all forecasts.  这次筹款活动大获成功，远超所有预测。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>collude</b></td><td>/kəˈluːd/</td><td>★</td><td>★</td><td>动词</td><td>串通，共谋（做坏事）</td><td>collude with rivals<br>与对手串通</td></tr>
 <tr><td colspan="7">例 Two suppliers colluded with rivals to keep prices artificially high.  两家供应商与对手串通，人为维持高价。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 connive</td><td>/kəˈnaɪv/</td><td>☆</td><td>☆</td><td>不及物动词</td><td>共谋；纵容，默许坏事</td><td>connive at fraud<br>对欺诈行为暗中纵容</td></tr>
-<tr><td colspan="7">例 Two officers connived at the fraud for several years.  两名官员多年来对这起欺诈暗中纵容。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 conspire</td><td>/kənˈspaɪər/</td><td>★☆</td><td>★☆</td><td>动词</td><td>合谋，密谋</td><td>conspire to overthrow<br>密谋推翻</td></tr>
-<tr><td colspan="7">例 Several generals conspired to seize power while the president was abroad.  几名将军趁总统出国时密谋夺权。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 contrive</td><td>/kənˈtraɪv/</td><td>★</td><td>★</td><td>及物动词</td><td>谋划，设法做到；发明</td><td>contrive a meeting<br>设法安排一次会面</td></tr>
 <tr><td colspan="7">例 He contrived to leave the party without anyone noticing.  他设法离开了聚会，没被任何人察觉。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 intrigue</td><td>/ˈɪntriːɡ/</td><td>★★</td><td>★★</td><td>名词、及物动词</td><td>阴谋；激起…的兴趣</td><td>political intrigue<br>政治阴谋</td></tr>
-<tr><td colspan="7">例 Court records reveal decades of political intrigue behind the sudden fall of the minister.  法庭记录揭示了这位大臣突然倒台背后数十年的政治阴谋。</td></tr>
 </tbody>
 <tbody>
 <tr><td><del>↳近 machinate</del></td><td>/ˈmækəˌneɪt/</td><td>☆</td><td>☆</td><td>动词</td><td>阴谋策划，图谋</td><td>machinate against a rival<br>图谋对付对手</td></tr>
@@ -3295,24 +1975,8 @@
 <tr><td colspan="7">例 The two armies fought a titanic battle across the frozen river.  两支军队在冰封的河上展开了一场惊天动地的大战。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 gargantuan</td><td>/ɡɑːrˈɡæntʃuən/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>巨大的</td><td>a gargantuan appetite<br>巨大的食量</td></tr>
-<tr><td colspan="7">例 The young athlete has a gargantuan appetite after every practice.  这名年轻运动员每次训练后都有巨大的食量。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 mammoth</td><td>/ˈmæməθ/</td><td>★★</td><td>★★</td><td>形容词、名词</td><td>巨大的；猛犸象</td><td>a mammoth task<br>艰巨的任务</td></tr>
 <tr><td colspan="7">例 Rebuilding the port after the storm was a mammoth undertaking.  风暴后重建港口是一项巨大的工程。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 tremendous</td><td>/trəˈmendəs/</td><td>★★★</td><td>★★★★</td><td>形容词</td><td>极大的</td><td>a tremendous impact<br>极大的影响</td></tr>
-<tr><td colspan="7">例 The new policy had a tremendous effect on small farmers everywhere.  新政策对各地小农户产生了极大的影响。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 elephantine</td><td>/ˌelɪˈfæntiːn/</td><td>☆</td><td>☆</td><td>形容词</td><td>巨大的；笨拙的</td><td>elephantine movements<br>笨重的动作</td></tr>
-<tr><td colspan="7">例 His elephantine movements on stage made the delicate dance look almost comic.  他在台上笨重的动作让这支细腻的舞蹈显得近乎滑稽。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 prodigious</td><td>/prəˈdɪdʒəs/</td><td>★☆</td><td>☆</td><td>形容词</td><td>巨大的；惊人的，了不起的</td><td>a prodigious memory<br>惊人的记忆力</td></tr>
-<tr><td colspan="7">例 The pianist has a prodigious memory for long and complicated scores.  这位钢琴家对冗长复杂的乐谱有惊人的记忆力。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 tiny</td><td>/ˈtaɪni/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>极小的，微小的</td><td>a tiny fraction<br>极小的一部分</td></tr>
@@ -3323,16 +1987,8 @@
 <tr><td colspan="7">例 The report studies the crisis at both the macro and micro level.  报告从宏观和微观两个层面研究这场危机。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 minute</td><td>/maɪˈnjuːt/</td><td>★★★★</td><td>★★</td><td>形容词</td><td>极小的，微不足道的；细致的</td><td>a minute quantity<br>极小的量</td></tr>
-<tr><td colspan="7">例 Even a minute trace of the chemical can spoil the batch.  即使极微量的这种化学品也会毁掉整批产品。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 miniature</td><td>/ˈmɪniətʃər/</td><td>★★☆</td><td>★★☆</td><td>形容词、名词</td><td>微型的；微型画</td><td>a miniature version<br>微缩版本</td></tr>
 <tr><td colspan="7">例 The museum displays a miniature model of the whole city.  博物馆展出了整座城市的微缩模型。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 minuscule</td><td>/ˈmɪnəskjuːl/</td><td>★★</td><td>★★</td><td>形容词</td><td>极小的，微不足道的</td><td>a minuscule amount<br>极小的量</td></tr>
-<tr><td colspan="7">例 A minuscule crack in the pipe caused the entire basement to flood overnight.  管道上一道极小的裂缝一夜之间让整个地下室被淹。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 wee</td><td>/ˈwiː/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>极小的，很少的</td><td>a wee bit tired<br>有一点点累</td></tr>
@@ -3347,14 +2003,6 @@
 <tr><td colspan="7">例 Her coltish humor kept the whole office laughing all morning.  她爱开玩笑的性子让整个办公室笑了一上午。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 antic</td><td>/ˈæntɪk/</td><td>★</td><td>★</td><td>形容词</td><td>滑稽可笑的</td><td>antic behavior<br>滑稽的举动</td></tr>
-<tr><td colspan="7">例 His antic gestures on stage made the whole audience laugh.  他在台上滑稽可笑的动作让全场观众大笑。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 frisky</td><td>/ˈfrɪski/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>活泼欢腾的</td><td>a frisky puppy<br>一只活泼的小狗</td></tr>
-<tr><td colspan="7">例 The frisky colt raced across the field at dawn.  黎明时那匹活泼的小马驹在田野上奔跑。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳近 frolicsome</del></td><td>/ˈfrɑlɪksəm/</td><td>☆</td><td>☆</td><td>形容词</td><td>嬉戏的，爱玩闹的</td><td>a frolicsome puppy<br>爱闹的小狗</td></tr>
 <tr><td colspan="7">例 The frolicsome children chased each other around the garden.  那些爱闹的孩子在花园里互相追逐。</td></tr>
 </tbody>
@@ -3367,16 +2015,8 @@
 <tr><td colspan="7">例 Her sportful teasing made even the shy students laugh.  她戏谑的玩笑让连害羞的学生都笑了。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 earnest</td><td>/ˈɜːrnɪst/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>严肃认真的</td><td>an earnest student<br>认真的学生</td></tr>
-<tr><td colspan="7">例 An earnest student stayed behind to ask about the summer reading list.  一名认真的学生留下来询问暑期阅读书目。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 serious-minded</td><td>/ˈsɪriəs ˈmaɪndɪd/</td><td>★★★</td><td>★☆</td><td>形容词</td><td>严肃认真的</td><td>a serious-minded scholar<br>严肃认真的学者</td></tr>
 <tr><td colspan="7">例 She is too serious-minded to enjoy their silly office jokes.  她太严肃认真，欣赏不了办公室里那些无聊的玩笑。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 sober</td><td>/ˈsoʊbər/</td><td>★★★</td><td>★★★</td><td>形容词</td><td>严肃的；节制的</td><td>a sober assessment<br>冷静的评估</td></tr>
-<tr><td colspan="7">例 The committee offered a sober assessment of the country's economic prospects.  委员会对国家经济前景作出冷静的评估。</td></tr>
 </tbody>
 </table>
 
@@ -3485,36 +2125,16 @@
 <tr><td colspan="7">例 A small cluster of reporters waited outside the courthouse door.  一小群记者等在法院门口。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 array</td><td>/əˈreɪ/</td><td>★★★</td><td>★★★</td><td>名词</td><td>一批，一系列；排列</td><td>an impressive array<br>蔚为壮观的一批</td></tr>
-<tr><td colspan="7">例 The museum displayed an impressive array of ancient coins.  博物馆展出了一批蔚为壮观的古钱币。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 batch</td><td>/ˈbætʃ/</td><td>★★★</td><td>★★★</td><td>名词</td><td>一批，一炉，一组</td><td>a fresh batch of bread<br>新出炉的一批面包</td></tr>
 <tr><td colspan="7">例 The factory recalled an entire batch of defective batteries.  工厂召回了一整批有缺陷的电池。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 bunch</td><td>/ˈbʌntʃ/</td><td>★★★☆</td><td>★★★☆</td><td>名词</td><td>一群，一束，一串</td><td>a bunch of keys<br>一串钥匙</td></tr>
-<tr><td colspan="7">例 A bunch of students waited outside the lecture hall.  一群学生在讲堂外等着。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 group</td><td>/ˈɡruːp/</td><td>★★★★☆</td><td>★★★★☆</td><td>名词、动词</td><td>群，组，团体</td><td>a small group of people<br>一小群人</td></tr>
 <tr><td colspan="7">例 A group of tourists gathered around the fountain to take photos.  一群游客聚在喷泉边拍照。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 clutch</td><td>/ˈklʌtʃ/</td><td>★★★</td><td>★★★</td><td>名词、动词</td><td>一群，一窝；抓紧</td><td>a clutch of eggs<br>一窝蛋</td></tr>
-<tr><td colspan="7">例 A clutch of reporters waited at the airport exit.  一群记者在机场出口等候。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 constellation</td><td>/ˌkɑːnstəˈleɪʃən/</td><td>★★</td><td>★★★</td><td>名词</td><td>一群，一批；星座</td><td>a constellation of famous actors<br>一批著名演员</td></tr>
-<tr><td colspan="7">例 The film features a constellation of famous young actors.  这部电影汇集了一批著名的年轻演员。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 crop</td><td>/ˈkrɑːp/</td><td>★★★</td><td>★★★</td><td>名词</td><td>一批，一群；作物</td><td>this year's crop of students<br>今年这批学生</td></tr>
 <tr><td colspan="7">例 This year's crop of graduates is the largest in the school's history.  今年这批毕业生是校史上人数最多的。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 grouping</td><td>/ˈɡruːpɪŋ/</td><td>★★☆</td><td>★★☆</td><td>名词</td><td>一组，一群；分组</td><td>a loose grouping<br>松散的一群</td></tr>
-<tr><td colspan="7">例 The parties formed a loose grouping to oppose the bill.  各党派组成松散的一伙反对该法案。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>comity</b></td><td>/ˈkɑːmɪti/</td><td>★</td><td>☆</td><td>名词</td><td>友好，礼让；和睦</td><td>the comity of nations<br>国家间的礼让</td></tr>
@@ -3525,24 +2145,8 @@
 <tr><td colspan="7">例 Their compatibility as roommates surprised everyone who knew them.  他们作为室友相处融洽，令认识他们的人都惊讶。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 concord</td><td>/ˈkɑːŋkɔːrd/</td><td>★★☆</td><td>★</td><td>名词</td><td>一致，和睦</td><td>live in concord<br>和睦相处</td></tr>
-<tr><td colspan="7">例 The treaty brought decades of concord between the two states.  该条约给两国带来数十年的和睦。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 peace</td><td>/ˈpiːs/</td><td>★★★★</td><td>★★★★</td><td>名词</td><td>和平，和睦；平静</td><td>live in peace<br>和睦相处</td></tr>
 <tr><td colspan="7">例 The two villages have lived in peace for over a century.  这两个村庄和睦相处已逾一个世纪。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 conflict</td><td>/ˈkɑːnflɪkt/</td><td>★★★☆</td><td>★★★☆</td><td>名词、动词</td><td>冲突，矛盾；抵触</td><td>a conflict of interest<br>利益冲突</td></tr>
-<tr><td colspan="7">例 The judge withdrew because of a possible conflict of interest.  法官因可能存在利益冲突而回避。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 discord</td><td>/ˈdɪskɔːrd/</td><td>★★☆</td><td>★★☆</td><td>名词</td><td>意见不一致，不和谐</td><td>sow discord<br>挑起不和</td></tr>
-<tr><td colspan="7">例 A single careless remark sowed discord among the previously friendly neighbors.  一句不慎的话在原本和睦的邻居间挑起了不和。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 dissension</td><td>/dɪˈsenʃn/</td><td>★☆</td><td>☆</td><td>名词</td><td>意见分歧，不和</td><td>internal dissension<br>内部分歧</td></tr>
-<tr><td colspan="7">例 Internal dissension over funding split the small research group into two camps.  关于经费的内部分歧把这个小研究组分成了两派。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>commencement</b></td><td>/kəˈmensmənt/</td><td>★★☆</td><td>★☆</td><td>名词</td><td>开始，开端；毕业典礼</td><td>the commencement of talks<br>谈判的开始</td></tr>
@@ -3553,24 +2157,8 @@
 <tr><td colspan="7">例 That meeting marked the birth of the modern computer industry.  那次会议标志着现代计算机产业的诞生。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 onset</td><td>/ˈɑːnset/</td><td>★★☆</td><td>★★☆</td><td>名词</td><td>起始，开始</td><td>the onset of winter<br>冬天的开始</td></tr>
-<tr><td colspan="7">例 The onset of winter caught the expedition without adequate shelter or fuel.  冬天的到来让探险队没有足够的庇护所和燃料。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 outset</td><td>/ˈaʊtset/</td><td>★★☆</td><td>★★☆</td><td>名词</td><td>开端，开始</td><td>from the outset<br>从一开始</td></tr>
-<tr><td colspan="7">例 From the outset, she made it clear that she would not compromise.  从一开始，她就明确表示自己不会妥协。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 start</td><td>/ˈstɑːrt/</td><td>★★★★☆</td><td>★★★★☆</td><td>名词、动词</td><td>开始，开端</td><td>from the start<br>从一开始</td></tr>
-<tr><td colspan="7">例 From the start it was clear the schedule was too tight.  从一开始就明显看出日程太紧。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 genesis</td><td>/ˈdʒenəsɪs/</td><td>★★☆</td><td>★★☆</td><td>名词</td><td>起源，创始</td><td>the genesis of the crisis<br>危机的起源</td></tr>
 <tr><td colspan="7">例 The genesis of the movement lies in a single student protest.  这场运动的起源是一次学生抗议。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 inception</td><td>/ɪnˈsepʃn/</td><td>★★☆</td><td>★</td><td>名词</td><td>开端，开始</td><td>since its inception<br>自创立以来</td></tr>
-<tr><td colspan="7">例 The club has doubled in size since its inception three years ago.  这个俱乐部自三年前创立以来规模翻了一倍。</td></tr>
 </tbody>
 <tbody>
 <tr><td><del>↳近 nascence</del></td><td>/ˈneɪsəns/</td><td>☆</td><td>☆</td><td>名词</td><td>诞生，发生，起源</td><td>the nascence of a movement<br>一场运动的诞生</td></tr>
@@ -3581,22 +2169,6 @@
 <tr><td colspan="7">例 The country stands on the threshold of a major reform.  这个国家正处于一场重大改革的开端。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 close</td><td>/kloʊz/</td><td>★★★★☆</td><td>★★★★☆</td><td>动词、名词</td><td>关闭；结束</td><td>close the meeting<br>结束会议</td></tr>
-<tr><td colspan="7">例 They closed the discussion before anyone could object.  他们在有人反对之前结束了讨论。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 conclusion</td><td>/kənˈkluːʒən/</td><td>★★★☆</td><td>★★</td><td>名词</td><td>结束；结论</td><td>bring to a conclusion<br>使结束</td></tr>
-<tr><td colspan="7">例 The trial reached its conclusion after eleven long weeks.  审判在漫长的十一周后结束。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 end</td><td>/ˈend/</td><td>★★★★★</td><td>★★★★★</td><td>动词、名词</td><td>结束；末端</td><td>end the war<br>结束战争</td></tr>
-<tr><td colspan="7">例 The strike ended after both sides agreed on wages.  双方就工资达成一致后罢工结束。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 ending</td><td>/ˈendɪŋ/</td><td>★★★☆</td><td>★★★☆</td><td>名词</td><td>结局，结尾</td><td>a happy ending<br>幸福的结局</td></tr>
-<tr><td colspan="7">例 The novel has an ending that nobody sees coming.  这部小说的结局谁都想不到。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 matriculation</td><td>/məˌtrɪkjəˈleɪʃən/</td><td>★☆</td><td>☆</td><td>名词</td><td>入学，注册入学</td><td>pass the matriculation exam<br>通过入学考试</td></tr>
 <tr><td colspan="7">例 Matriculation takes place during the first week of September.  入学注册在九月的第一周进行。</td></tr>
 </tbody>
@@ -3605,88 +2177,8 @@
 <tr><td colspan="7">例 The principal commended her courage in front of the whole school.  校长在全校面前赞扬了她的勇气。</td></tr>
 </tbody>
 <tbody>
-<tr><td><del>↳近 approbate</del></td><td>/ˈæprəbeɪt/</td><td>☆</td><td>☆</td><td>及物动词</td><td>赞许，认可</td><td>approbate the decision<br>认可这一决定</td></tr>
-<tr><td colspan="7">例 The board approbated the merger after a long private debate.  经过长时间闭门辩论，董事会认可了这次合并。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 praise</td><td>/ˈpreɪz/</td><td>★★★</td><td>★★★</td><td>名词、动词</td><td>赞扬，称赞</td><td>win high praise<br>获得高度赞扬</td></tr>
-<tr><td colspan="7">例 Her first novel won high praise from serious critics.  她的第一部小说赢得了严肃评论家的高度赞扬。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 acclaim</td><td>/əˈkleɪm/</td><td>★★</td><td>★★</td><td>名词、及物动词</td><td>称赞</td><td>win critical acclaim<br>赢得评论界赞誉</td></tr>
-<tr><td colspan="7">例 Her first novel won wide critical acclaim across Europe and Asia.  她的第一部小说在欧洲和亚洲赢得了广泛的评论界赞誉。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 applaud</td><td>/əˈplɔːd/</td><td>★★☆</td><td>★★☆</td><td>动词</td><td>称赞，赞成；鼓掌</td><td>applaud the decision<br>赞成这一决定</td></tr>
-<tr><td colspan="7">例 Teachers applauded the decision to reduce homework for young pupils.  老师们赞成给低年级学生减少作业的决定。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 compliment</td><td>/ˈkɑːmplɪmənt/</td><td>★★★</td><td>★★★</td><td>名词、及物动词</td><td>赞美，称赞；恭维</td><td>pay someone a compliment<br>赞美某人</td></tr>
-<tr><td colspan="7">例 He paid her a warm compliment on her new painting.  他对她的新画作说了一句诚挚的赞美。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 eulogize</td><td>/ˈjuːlədʒaɪz/</td><td>☆</td><td>☆</td><td>及物动词</td><td>称赞；颂扬</td><td>eulogize the late leader<br>颂扬已故领袖</td></tr>
-<tr><td colspan="7">例 Colleagues gathered to eulogize the scientist who had trained them all.  同事们聚在一起颂扬这位培养了他们所有人的科学家。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 extol</td><td>/ɪkˈstoʊl/</td><td>★</td><td>★</td><td>及物动词</td><td>赞美；吹捧</td><td>extol his virtues<br>赞美他的品德</td></tr>
-<tr><td colspan="7">例 Neighbors still extol his kindness during the long winter flood.  邻居们至今仍赞美他在漫长冬季洪水期间的善举。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 blame</td><td>/ˈbleɪm/</td><td>★★★☆</td><td>★★★★★</td><td>及物动词、名词</td><td>责备，归咎于</td><td>blame someone for something<br>因某事责怪某人</td></tr>
-<tr><td colspan="7">例 Don't blame me for the broken window.  别把窗户破了怪在我头上。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 criticize</td><td>/ˈkrɪtɪˌsaɪz/</td><td>★★☆</td><td>★★☆</td><td>动词</td><td>批评，指责；评论</td><td>criticize the decision<br>批评这个决定</td></tr>
 <tr><td colspan="7">例 Several members criticized the plan for ignoring small farmers.  几名成员批评该计划忽视了小农。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳反 reprehend</del></td><td>/reprɪˈhend/</td><td>☆</td><td>☆</td><td>及物动词</td><td>谴责，指责</td><td>reprehend such conduct<br>谴责这种行为</td></tr>
-<tr><td colspan="7">例 The committee did not hesitate to reprehend the officer for his careless report.  委员会毫不犹豫地谴责了那名官员草率的报告。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 reprobate</td><td>/ˈreprəbeɪt/</td><td>★</td><td>☆</td><td>名词</td><td>堕落者，道德败坏的人</td><td>an old reprobate<br>一个老无赖</td></tr>
-<tr><td colspan="7">例 The novel's hero is a charming reprobate with no money.  小说的主角是个迷人却身无分文的堕落者。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 chide</td><td>/tʃaɪd/</td><td>★</td><td>★</td><td>动词</td><td>责备</td><td>chide someone gently<br>温和地责备某人</td></tr>
-<tr><td colspan="7">例 She chided her son for forgetting his grandmother's birthday.  她责备儿子忘了祖母的生日。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 rebuke</td><td>/rɪˈbjuːk/</td><td>★★</td><td>★★</td><td>及物动词、名词</td><td>斥责，责难</td><td>a sharp rebuke<br>严厉的斥责</td></tr>
-<tr><td colspan="7">例 The judge rebuked the lawyer for interrupting the witness.  法官斥责律师打断证人发言。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 reprimand</td><td>/ˈreprəˌmænd/</td><td>★☆</td><td>★★</td><td>及物动词、名词</td><td>训斥，正式谴责</td><td>reprimand an employee<br>训斥员工</td></tr>
-<tr><td colspan="7">例 The officer was reprimanded for leaving his post early.  这名警官因提早离岗而受到训斥。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 reproach</td><td>/rɪˈproʊtʃ/</td><td>★☆</td><td>★★</td><td>及物动词</td><td>批评，责备</td><td>reproach oneself for<br>因某事自责</td></tr>
-<tr><td colspan="7">例 She reproached him for never returning her calls.  她责备他从不回她的电话。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 reprove</td><td>/rɪˈpruːv/</td><td>☆</td><td>★</td><td>及物动词</td><td>温和地责备，警告</td><td>reprove a student mildly<br>温和地批评学生</td></tr>
-<tr><td colspan="7">例 The coach reproved the player for arguing with the referee.  教练责备那名球员与裁判争辩。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 censure</td><td>/ˈsenʃər/</td><td>★☆</td><td>★☆</td><td>动词、名词</td><td>公开表示反对，谴责</td><td>a vote of censure<br>谴责性投票</td></tr>
-<tr><td colspan="7">例 The council voted to censure the mayor for his conduct.  议会投票谴责市长的行为。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 admonish</td><td>/ədˈmɑːnɪʃ/</td><td>★</td><td>★</td><td>动词</td><td>告诫，警告；责备</td><td>admonish someone for lying<br>因撒谎而责备某人</td></tr>
-<tr><td colspan="7">例 The teacher admonished the boys for shouting in the hallway.  老师责备男孩们在走廊里大喊大叫。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 berate</td><td>/bɪˈreɪt/</td><td>★</td><td>☆</td><td>及物动词</td><td>严厉指责，斥责</td><td>berate him publicly<br>公开斥责他</td></tr>
-<tr><td colspan="7">例 The coach began to berate his players in front of reporters.  教练开始在记者面前严厉斥责他的球员。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 deplore</td><td>/dɪˈplɔːr/</td><td>★</td><td>★</td><td>及物动词</td><td>谴责，强烈反对</td><td>deplore the violence<br>谴责暴力行为</td></tr>
-<tr><td colspan="7">例 Church leaders deplored the violence and called for immediate restraint.  教会领袖谴责暴力行为，呼吁立即克制。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳反 execrate</del></td><td>/ˈeksɪkreɪt/</td><td>☆</td><td>☆</td><td>动词</td><td>痛恨，咒骂</td><td>execrate a tyrant<br>痛斥暴君</td></tr>
-<tr><td colspan="7">例 Historians still execrate the tyrant for his cruelty.  史学家仍因其残暴而痛斥这个暴君。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>commensurate</b></td><td>/kəˈmensərət/</td><td>★☆</td><td>☆</td><td>形容词</td><td>相称的，与…相当的</td><td>commensurate with experience<br>与经验相称</td></tr>
@@ -3695,10 +2187,6 @@
 <tbody>
 <tr><td>↳近 equal</td><td>/ˈiːkwəl/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>相等的，同等的</td><td>equal pay for equal work<br>同工同酬</td></tr>
 <tr><td colspan="7">例 The two shares are equal in value but not in voting power.  这两份股份价值相等，但表决权不同。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 tantamount</td><td>/ˈtæntəmaʊnt/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>等价的，与…相等的</td><td>tantamount to a refusal<br>等于是拒绝</td></tr>
-<tr><td colspan="7">例 His long silence was tantamount to a refusal of our request.  他久久的沉默等于是拒绝了我们的请求。</td></tr>
 </tbody>
 <tbody>
 <tr><td><del>↳近 commensurable</del></td><td>/kəˈmɛnsərəbəl/</td><td>☆</td><td>☆</td><td>形容词</td><td>可通约的，可比较的</td><td>commensurable quantities<br>可通约的量</td></tr>
@@ -3713,32 +2201,12 @@
 <tr><td colspan="7">例 The two sides entered the contest on decidedly unequal terms.  双方是在明显不平等的条件下参赛的。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 disparate</td><td>/ˈdɪspərət/</td><td>★★</td><td>☆</td><td>形容词</td><td>迥然不同的，全然不同的</td><td>disparate viewpoints<br>迥然不同的观点</td></tr>
-<tr><td colspan="7">例 The committee somehow reconciled disparate viewpoints into a single workable proposal.  委员会竟把迥然不同的观点整合成一份可行的提案。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 preponderant</td><td>/prɪˈpɑndərənt/</td><td>☆</td><td>☆</td><td>形容词</td><td>占优势的，主要的</td><td>the preponderant influence<br>占主导的影响力</td></tr>
-<tr><td colspan="7">例 Trade remained the preponderant concern in every round of talks.  贸易在每一轮会谈中都是最主要的议题。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 disproportionate</td><td>/ˌdɪsprəˈpɔːrʃənɪt/</td><td>★★</td><td>☆</td><td>形容词</td><td>不成比例的，不相称的</td><td>a disproportionate share<br>不成比例的份额</td></tr>
 <tr><td colspan="7">例 Rural schools receive a disproportionate share of the budget cuts.  农村学校承担了不成比例的预算削减。</td></tr>
 </tbody>
 <tbody>
 <tr><td><b>commingle</b></td><td>/kəˈmɪŋɡl/</td><td>☆</td><td>☆</td><td>动词</td><td>充分混合</td><td>commingle funds<br>把资金混在一起</td></tr>
 <tr><td colspan="7">例 The lawyer never commingles client funds with his own money.  这位律师从不把客户资金与自己的钱混在一起。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 amalgamate</td><td>/əˈmælɡəmeɪt/</td><td>★</td><td>★</td><td>动词</td><td>合并，混合</td><td>amalgamate two companies<br>合并两家公司</td></tr>
-<tr><td colspan="7">例 The two small colleges amalgamated to cut administrative costs.  两所小学院合并以削减行政成本。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 fuse</td><td>/ˈfjuːz/</td><td>★★☆</td><td>★★★</td><td>动词</td><td>融合，熔合</td><td>fuse two traditions<br>融合两种传统</td></tr>
-<tr><td colspan="7">例 Her music fuses jazz rhythms with traditional folk melodies.  她的音乐把爵士节奏与传统民谣旋律融为一体。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 mix</td><td>/ˈmɪks/</td><td>★★★☆</td><td>★★★★★</td><td>动词、名词</td><td>混合，掺和</td><td>mix the ingredients<br>把配料混合</td></tr>
-<tr><td colspan="7">例 Mix the flour and water until the dough becomes smooth.  把面粉和水混合，直到面团变得光滑。</td></tr>
 </tbody>
 <tbody>
 <tr><td><del>↳近 immix</del></td><td>/ɪˈmɪks/</td><td>☆</td><td>☆</td><td>及物动词</td><td>混合，掺和</td><td>immix two substances<br>把两种物质混合</td></tr>
@@ -3749,24 +2217,8 @@
 <tr><td colspan="7">例 Old recipes tell the cook to commix the herbs with warm oil.  古老的食谱让厨师把香草与温油混合。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 compound</td><td>/kəmˈpaʊnd/</td><td>★★★</td><td>★★</td><td>及物动词、名词</td><td>混合，合成；使恶化</td><td>compound a medicine<br>配制药剂</td></tr>
-<tr><td colspan="7">例 The pharmacist compounded an ointment from three simple ingredients.  药剂师用三种简单原料配制出一种药膏。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 mingle</td><td>/ˈmɪŋɡl/</td><td>★★</td><td>★★★</td><td>动词</td><td>混合；与人交往</td><td>mingle with the crowd<br>混入人群</td></tr>
-<tr><td colspan="7">例 Smoke mingled with fog above the crowded harbor.  烟雾与雾气在拥挤的港口上方交织。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳近 immingle</del></td><td>/ɪˈmɪŋɡəl/</td><td>☆</td><td>☆</td><td>动词</td><td>混合，融入</td><td>immingle with the crowd<br>混入人群</td></tr>
 <tr><td colspan="7">例 Voices from the street immingled with the music inside the hall.  街上的声音与厅内的音乐混在了一起。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 intermingle</td><td>/ˌɪntərˈmɪŋɡl/</td><td>★</td><td>★</td><td>动词</td><td>混合，交融</td><td>intermingle freely<br>自由交融</td></tr>
-<tr><td colspan="7">例 At the fair, tourists and locals intermingled all afternoon.  在集市上，游客和当地人整个下午都混在一起。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 intermix</td><td>/ˌɪntərˈmɪks/</td><td>☆</td><td>★</td><td>动词</td><td>掺杂，混合在一起</td><td>intermix with water<br>与水混合</td></tr>
-<tr><td colspan="7">例 The two populations intermixed freely over several centuries.  这两个族群在几个世纪里自由混居。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 merge</td><td>/ˈmɜːrdʒ/</td><td>★★☆</td><td>★★☆</td><td>动词</td><td>合并，融合</td><td>merge two companies<br>合并两家公司</td></tr>
@@ -3777,14 +2229,6 @@
 <tr><td colspan="7">例 Bacteria break down the waste into simpler compounds.  细菌把废物分解成更简单的化合物。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 break up</td><td>/breɪk ʌp/</td><td>★★★★</td><td>★★★☆</td><td>动词</td><td>分开，分裂；解散</td><td>break up the group<br>拆散这个团体</td></tr>
-<tr><td colspan="7">例 Police arrived quickly to break up the noisy crowd.  警察迅速赶到驱散嘈杂的人群。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 separate</td><td>/ˈsepəreɪt/</td><td>★★★★</td><td>★★★★★</td><td>动词、形容词</td><td>分开，分离</td><td>separate the yolks<br>把蛋黄分离出来</td></tr>
-<tr><td colspan="7">例 Please separate the recyclable waste from the ordinary rubbish.  请把可回收垃圾与普通垃圾分开。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳反 unmix</del></td><td>/ʌnˈmɪks/</td><td>☆</td><td>☆</td><td>及物动词</td><td>使分离，解除混合</td><td>unmix the paints<br>把颜料分开</td></tr>
 <tr><td colspan="7">例 Once you stir them together, you cannot unmix the two powders.  两种粉末一旦搅在一起就无法再分开。</td></tr>
 </tbody>
@@ -3793,24 +2237,12 @@
 <tr><td colspan="7">例 She showed a deep commitment to protecting local wildlife.  她表现出保护当地野生动物的坚定投入。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 dedication</td><td>/ˌdedəˈkeɪʃən/</td><td>★★★</td><td>★★★</td><td>名词</td><td>献身，全心投入；奉献</td><td>dedication to one's work<br>对工作的全心投入</td></tr>
-<tr><td colspan="7">例 Her dedication to her students earned her the teaching award.  她对学生的全心投入为她赢得了教学奖。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳近 devotedness</del></td><td>/dɪˈvoʊtɪdnəs/</td><td>☆</td><td>☆</td><td>名词</td><td>忠诚，献身，专注</td><td>devotedness to duty<br>对职责的忠诚</td></tr>
 <tr><td colspan="7">例 Her devotedness to the patients impressed every nurse on the ward.  她对病人的忠诚打动了病房里每一位护士。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 fealty</td><td>/ˈfiːəlti/</td><td>★☆</td><td>★☆</td><td>名词</td><td>忠诚，效忠</td><td>swear fealty to the king<br>宣誓效忠国王</td></tr>
 <tr><td colspan="7">例 The barons swore fealty to the new king before the altar.  贵族们在祭坛前宣誓效忠新国王。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 piety</td><td>/ˈpaɪəti/</td><td>★★</td><td>★</td><td>名词</td><td>虔诚；孝顺</td><td>filial piety<br>孝道</td></tr>
-<tr><td colspan="7">例 The old woman was admired for her quiet piety and charity.  这位老妇人因其内敛的虔诚与善行而受人敬重。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 steadfastness</td><td>/ˈstedˌfæstnəs/</td><td>★</td><td>★</td><td>名词</td><td>坚定不移，忠贞</td><td>steadfastness in adversity<br>逆境中的坚定</td></tr>
-<tr><td colspan="7">例 Her steadfastness during the strike inspired the other workers.  她在罢工期间的坚定不移鼓舞了其他工人。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 ambivalence</td><td>/æmˈbɪvələns/</td><td>★☆</td><td>☆</td><td>名词</td><td>矛盾心理，举棋不定</td><td>feel ambivalence about it<br>对此心存矛盾</td></tr>
@@ -3875,10 +2307,6 @@
 <tr><td colspan="7">例 The constricted hallway made carrying furniture almost impossible.  狭窄的走廊让搬家具几乎无法进行。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 cramped</td><td>/kræmpt/</td><td>★★</td><td>★★</td><td>形容词</td><td>狭小的，狭窄的</td><td>a cramped office<br>狭小的办公室</td></tr>
-<tr><td colspan="7">例 Four of us shared a cramped room above the noisy bakery.  我们四个人挤在嘈杂面包店楼上一间狭小的房间里。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 snug</td><td>/ˈsnʌɡ/</td><td>★★</td><td>★★</td><td>形容词</td><td>紧凑的；温暖舒适的</td><td>a snug little room<br>小巧温馨的房间</td></tr>
 <tr><td colspan="7">例 The cabin was snug but far too small for four guests.  小屋很温馨，但对四位客人来说太小了。</td></tr>
 </tbody>
@@ -3899,14 +2327,6 @@
 <tr><td colspan="7">例 Selling the old machines was the logical next step.  卖掉旧机器是顺理成章的下一步。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 rational</td><td>/ˈræʃnəl/</td><td>★★★</td><td>★★★★</td><td>形容词</td><td>理性的，合理的</td><td>a rational decision<br>理性的决定</td></tr>
-<tr><td colspan="7">例 Try to make a rational decision instead of an emotional one.  试着做理性而非情绪化的决定。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 reasonable</td><td>/ˈriːzənəbəl/</td><td>★★★☆</td><td>★★★★★</td><td>形容词</td><td>合理的，通情达理的</td><td>a reasonable request<br>合理的请求</td></tr>
-<tr><td colspan="7">例 That seems like a perfectly reasonable request.  那似乎是完全合理的要求。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 reasoned</td><td>/ˈriːzənd/</td><td>★★</td><td>★★</td><td>形容词</td><td>经过推理的，理由充分的</td><td>a reasoned argument<br>有理有据的论证</td></tr>
 <tr><td colspan="7">例 She presented a reasoned case for keeping the library open.  她提出了有理有据的理由要求图书馆继续开放。</td></tr>
 </tbody>
@@ -3917,14 +2337,6 @@
 <tbody>
 <tr><td>↳近 well-founded</td><td>/ˌwɛl ˈfaʊndɪd/</td><td>★★★☆</td><td>★★</td><td>形容词</td><td>有充分根据的</td><td>a well-founded fear<br>有充分根据的担忧</td></tr>
 <tr><td colspan="7">例 Their fear of another flood proved to be well-founded.  他们对再次洪水的担忧被证明有充分根据。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 levelheaded</td><td>/ˌlevlˈhedɪd/</td><td>☆</td><td>☆</td><td>形容词</td><td>头脑冷静的，明智的</td><td>a levelheaded response<br>明智冷静的回应</td></tr>
-<tr><td colspan="7">例 Her levelheaded response to the emergency probably saved several lives that night.  她对紧急情况明智冷静的回应那晚可能救了好几条命。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 groundless</td><td>/ˈɡraʊndləs/</td><td>★</td><td>★</td><td>形容词</td><td>没有依据的</td><td>groundless accusations<br>毫无根据的指控</td></tr>
-<tr><td colspan="7">例 The court found the accusations entirely groundless and dismissed them.  法庭认定这些指控毫无根据，予以驳回。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 illogical</td><td>/ˌɪˈlɑːdʒɪkəl/</td><td>★★</td><td>★★</td><td>形容词</td><td>不合逻辑的，不合理的</td><td>an illogical conclusion<br>不合逻辑的结论</td></tr>
@@ -3943,20 +2355,12 @@
 <tr><td colspan="7">例 Many buying decisions rest on nonrational impulses rather than analysis.  许多购买决定基于非理性冲动而非分析。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 nonsensical</td><td>/nɑːnˈsensɪkəl/</td><td>★★</td><td>★★</td><td>形容词</td><td>荒谬的，无意义的</td><td>a nonsensical argument<br>荒谬的论点</td></tr>
-<tr><td colspan="7">例 The instructions were nonsensical and helped nobody.  说明荒谬无理，对谁都没帮助。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳反 nonvalid</del></td><td>/ˌnɑnˈvælɪd/</td><td>☆</td><td>☆</td><td>形容词</td><td>无效的，不成立的</td><td>a nonvalid permit<br>无效的许可证</td></tr>
 <tr><td colspan="7">例 The inspector declared the expired license nonvalid for commercial use.  检查员宣布过期执照对商业用途无效。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 unfounded</td><td>/ənˈfaʊndɪd/</td><td>★★</td><td>★★</td><td>形容词</td><td>毫无根据的</td><td>unfounded rumors<br>毫无根据的谣言</td></tr>
 <tr><td colspan="7">例 The company called the reports of bankruptcy completely unfounded.  公司称破产的报道完全没有根据。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 uninformed</td><td>/ˌʌnɪnˈfɔːrmd/</td><td>★★</td><td>★★</td><td>形容词</td><td>不了解情况的，无知的</td><td>an uninformed opinion<br>不明情况的看法</td></tr>
-<tr><td colspan="7">例 Uninformed criticism rarely helps anyone improve their work.  不了解情况的批评很少能帮助别人改进工作。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 unreasonable</td><td>/ənˈriːznəbəl/</td><td>★★☆</td><td>★★★</td><td>形容词</td><td>不合理的，过分的</td><td>unreasonable demands<br>不合理的要求</td></tr>
@@ -3975,32 +2379,12 @@
 <tr><td colspan="7">例 The escaped goat caused quite a commotion in the market.  逃跑的山羊在市场上引起一阵不小的骚动。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 tumult</td><td>/ˈtuːmʌlt/</td><td>★☆</td><td>★☆</td><td>名词</td><td>骚动，暴动</td><td>the tumult of the crowd<br>人群的骚动</td></tr>
-<tr><td colspan="7">例 The tumult in the square grew louder as more protesters arrived.  随着更多抗议者到来，广场上的骚动越来越大。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 turmoil</td><td>/ˈtɜːrmɔɪl/</td><td>★★☆</td><td>★★★</td><td>名词</td><td>混乱，动荡，骚动</td><td>in political turmoil<br>处于政治动荡中</td></tr>
-<tr><td colspan="7">例 The country remained in political turmoil for nearly a decade.  这个国家在近十年里一直处于政治动荡之中。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 pandemonium</td><td>/ˌpændɪˈmoʊniəm/</td><td>★☆</td><td>☆</td><td>名词</td><td>喧嚣，一片混乱</td><td>pandemonium broke out<br>顿时一片混乱</td></tr>
-<tr><td colspan="7">例 Pandemonium broke out when the final goal was scored.  最后一个进球时全场一片沸腾混乱。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 hurry-scurry</td><td>/ˈhɜri ˈskɜri/</td><td>★☆</td><td>☆</td><td>名词、副词</td><td>慌乱，忙乱奔忙</td><td>the morning hurry-scurry<br>清晨的忙乱</td></tr>
 <tr><td colspan="7">例 In the hurry-scurry of departure she left her passport behind.  在出发的慌乱中她把护照忘下了。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 tranquility</td><td>/træŋˈkwɪləti/</td><td>★★</td><td>☆</td><td>名词</td><td>宁静，淡定</td><td>an air of tranquility<br>宁静的气息</td></tr>
-<tr><td colspan="7">例 He enjoyed the tranquility of the snowy fields at dusk.  他享受黄昏时白雪覆盖的田野的静谧。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 calmness</td><td>/ˈkɑːmnəs/</td><td>★☆</td><td>★☆</td><td>名词</td><td>平静，镇定</td><td>with surprising calmness<br>以惊人的镇定</td></tr>
 <tr><td colspan="7">例 Her calmness during the fire kept the whole class safe.  火灾中她的镇定使全班安然无恙。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 quiet</td><td>/ˈkwaɪət/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>安静的；平静的</td><td>keep the room quiet<br>保持房间安静</td></tr>
-<tr><td colspan="7">例 The library stays quiet even during exam week.  即使在考试周，图书馆也保持安静。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 serenity</td><td>/səˈrenəti/</td><td>★★</td><td>☆</td><td>名词</td><td>宁静，安详</td><td>a sense of serenity<br>一种宁静感</td></tr>
@@ -4009,10 +2393,6 @@
 <tbody>
 <tr><td><b>compendium</b></td><td>/kəmˈpendiəm/</td><td>★★</td><td>★★</td><td>名词</td><td>纲要，汇编</td><td>a compendium of essays<br>文章汇编</td></tr>
 <tr><td colspan="7">例 The professor published a compendium of essays on early cinema.  教授出版了一部早期电影论文汇编。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 abstract</td><td>/æbˈstrækt/</td><td>★★★</td><td>★★★</td><td>及物动词</td><td>做总结，概括；使分心</td><td>abstract a long report<br>概括一份长报告</td></tr>
-<tr><td colspan="7">例 She abstracted the key findings into a single page.  她把主要发现概括成一页。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 brief</td><td>/ˈbriːf/</td><td>★★★☆</td><td>★★★☆</td><td>形容词</td><td>简短的，简洁的</td><td>a brief summary<br>简短的总结</td></tr>
@@ -4027,32 +2407,12 @@
 <tr><td colspan="7">例 Keep your answer concise; the interviewer has only ten minutes.  回答要简洁，面试官只有十分钟。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 laconic</td><td>/ləˈkɑːnɪk/</td><td>★</td><td>★</td><td>形容词</td><td>简洁（以至于显得粗鲁或难以理解）的</td><td>a laconic reply<br>简短生硬的回答</td></tr>
-<tr><td colspan="7">例 His laconic reply told us nothing about what had actually happened.  他简短生硬的回答没有告诉我们实际发生了什么。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳近 compendiary</del></td><td>/kəmˈpɛndiˌɛri/</td><td>☆</td><td>☆</td><td>形容词</td><td>简要的，概括的</td><td>a compendiary account<br>简要的叙述</td></tr>
 <tr><td colspan="7">例 The editor added a compendiary note before each long chapter.  编者在每个长章节前加了简要说明。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 succinct</td><td>/səkˈsɪŋkt/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>简明的，简洁的</td><td>a succinct summary<br>简洁的总结</td></tr>
-<tr><td colspan="7">例 Her succinct summary covered the entire report in three short paragraphs.  她简洁的总结用三小段概括了整份报告。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>complacency</b></td><td>/kəmˈpleɪsnsi/</td><td>★★</td><td>☆</td><td>名词</td><td>自满，得意</td><td>warn against complacency<br>警惕自满情绪</td></tr>
 <tr><td colspan="7">例 Early success bred a complacency that cost the team the title.  早期的成功滋生了自满，害球队丢了冠军。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 conceit</td><td>/kənˈsiːt/</td><td>★☆</td><td>★☆</td><td>名词</td><td>幻想，奇特的想法；自负</td><td>a poetic conceit<br>诗中的奇思妙喻</td></tr>
-<tr><td colspan="7">例 The novel rests on the conceit that memories can be traded.  这部小说建立在记忆可以交易的奇想之上。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 pomposity</td><td>/pɑːmˈpɑːsəti/</td><td>☆</td><td>☆</td><td>名词</td><td>自大，浮夸</td><td>academic pomposity<br>学术上的浮夸</td></tr>
-<tr><td colspan="7">例 The speech was ruined by pomposity and empty phrases.  演讲被浮夸和空话毁了。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳近 pompousness</del></td><td>/ˈpɑːmpəsnəs/</td><td>☆</td><td>☆</td><td>名词</td><td>自负，浮夸</td><td>unbearable pompousness<br>令人难忍的浮夸</td></tr>
-<tr><td colspan="7">例 His pompousness at dinner made the guests exchange glances.  他在晚餐上的浮夸让客人们交换眼神。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 pride</td><td>/ˈpraɪd/</td><td>★★★☆</td><td>★★★☆</td><td>名词</td><td>自豪；骄傲，自负</td><td>take pride in one's work<br>以自己的工作为荣</td></tr>
@@ -4075,24 +2435,8 @@
 <tr><td colspan="7">例 Pure vanity kept him from wearing the glasses he needed.  纯粹的虚荣心使他不肯戴自己需要的眼镜。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 anxiety</td><td>/æŋˈzaɪəti/</td><td>★★★☆</td><td>★★★☆</td><td>名词</td><td>焦虑，不安；担忧</td><td>a source of anxiety<br>焦虑的根源</td></tr>
-<tr><td colspan="7">例 Waiting for the test results caused her weeks of anxiety.  等待检查结果让她焦虑了好几周。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del><b>complaisance</b></del></td><td>/kəmˈpleɪzəns/</td><td>☆</td><td>☆</td><td>名词</td><td>殷勤，顺从他人的意愿</td><td>excessive complaisance<br>过分的顺从</td></tr>
 <tr><td colspan="7">例 Her complaisance toward every request left her with no free time.  她对每个请求都顺从，结果没有一点空闲时间。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 affability</td><td>/ˌæfəˈbɪləti/</td><td>☆</td><td>★</td><td>名词</td><td>和蔼可亲，友善</td><td>unfailing affability<br>始终如一的和蔼</td></tr>
-<tr><td colspan="7">例 His affability made even nervous newcomers feel at ease.  他的和蔼可亲让紧张的新人也感到自在。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳近 amenability</del></td><td>/əˌmiːnəˈbɪləti/</td><td>☆</td><td>☆</td><td>名词</td><td>顺从，乐意配合</td><td>amenability to change<br>乐于接受改变</td></tr>
-<tr><td colspan="7">例 Her amenability to new methods impressed the trainers.  她对新方法的乐于接受让培训师印象深刻。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 amiability</td><td>/ˌeɪmiəˈbɪləti/</td><td>☆</td><td>☆</td><td>名词</td><td>和蔼可亲，友善</td><td>her natural amiability<br>她天生的和善</td></tr>
-<tr><td colspan="7">例 Her amiability won over even the most difficult clients.  她的和善赢得了连最难缠的客户的好感。</td></tr>
 </tbody>
 <tbody>
 <tr><td><del>↳近 good-naturedness</del></td><td>/ˌɡʊd ˈneɪtʃərdnəs/</td><td>☆</td><td>☆</td><td>名词</td><td>和善，脾气好</td><td>unfailing good-naturedness<br>始终如一的和善</td></tr>
@@ -4107,32 +2451,8 @@
 <tr><td colspan="7">例 The children were unusually compliant during the long ceremony.  在漫长的仪式上，孩子们出奇地听话。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 amenable</td><td>/əˈmiːnəbl/</td><td>★☆</td><td>★★</td><td>形容词</td><td>顺从的，服从的</td><td>amenable to suggestion<br>愿意接受建议</td></tr>
-<tr><td colspan="7">例 The new manager is amenable to any reasonable suggestion.  这位新经理对任何合理的建议都乐于接受。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳近 conformable</td><td>/kənˈfɔrməbəl/</td><td>☆</td><td>☆</td><td>形容词</td><td>顺从的；一致的</td><td>conformable to the rules<br>符合规定的</td></tr>
 <tr><td colspan="7">例 The design must be conformable to the city's new safety code.  设计必须符合城市新的安全规范。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 docile</td><td>/ˈdɑːsəl/</td><td>★☆</td><td>★★</td><td>形容词</td><td>温顺的，听话的</td><td>a docile animal<br>温顺的动物</td></tr>
-<tr><td colspan="7">例 The old horse was docile enough for beginners to ride.  这匹老马很温顺，初学者也能骑。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 submissive</td><td>/səbˈmɪsɪv/</td><td>★★</td><td>★★</td><td>形容词</td><td>服从的，顺从的</td><td>a submissive attitude<br>顺从的态度</td></tr>
-<tr><td colspan="7">例 She spoke in a submissive tone that surprised her colleagues.  她以顺从的语气说话，令同事惊讶。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 tractable</td><td>/ˈtræktəbl/</td><td>★</td><td>★</td><td>形容词</td><td>易驾驭的，温顺的</td><td>a tractable student<br>听话的学生</td></tr>
-<tr><td colspan="7">例 The puppy proved surprisingly tractable during the first weeks of training.  这只小狗在最初几周的训练中出乎意料地听话。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 balky</td><td>/ˈbɔːlki/</td><td>☆</td><td>☆</td><td>形容词</td><td>执拗的，不肯前进的</td><td>a balky engine<br>不听使唤的引擎</td></tr>
-<tr><td colspan="7">例 The balky engine refused to start on the coldest morning.  在最冷的那个早晨，这台不听使唤的引擎怎么也发动不起来。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳反 contumacious</del></td><td>/ˌkɑːntuˈmeɪʃəs/</td><td>☆</td><td>☆</td><td>形容词</td><td>不服从的，倔强的</td><td>a contumacious witness<br>不服从的证人</td></tr>
-<tr><td colspan="7">例 The contumacious witness was fined for defying the judge.  那名抗命的证人因违抗法官而被罚款。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 disobedient</td><td>/ˌdɪsəˈbiːdiənt/</td><td>★☆</td><td>★★</td><td>形容词</td><td>不服从的，不听话的</td><td>a disobedient child<br>不听话的孩子</td></tr>
@@ -4143,20 +2463,8 @@
 <tr><td colspan="7">例 The incompliant staff refused to follow the new dress rule.  不顺从的员工拒绝遵守新的着装规定。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 insubordinate</td><td>/ɪnsəˈbɔːrdənət/</td><td>★</td><td>☆</td><td>形容词</td><td>不服从的，抗命的</td><td>insubordinate behavior<br>抗命的行为</td></tr>
-<tr><td colspan="7">例 The officer was discharged for insubordinate conduct at sea.  这名军官因在海上抗命行为被开除。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 intractable</td><td>/ˌɪnˈtræktəbəl/</td><td>★☆</td><td>☆</td><td>形容词</td><td>难对付的，棘手的</td><td>an intractable problem<br>棘手的问题</td></tr>
-<tr><td colspan="7">例 Poverty remains an intractable problem in many rural regions.  贫困在许多农村地区仍是棘手的问题。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 noncompliant</td><td>/ˌnɑnkəmˈplaɪənt/</td><td>☆</td><td>☆</td><td>形容词</td><td>不遵守的，不服从的</td><td>noncompliant equipment<br>不合规的设备</td></tr>
 <tr><td colspan="7">例 Inspectors shut down the noncompliant plant within a single day.  检查人员一天之内就关闭了这家不合规的工厂。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 obstreperous</td><td>/əbˈstrepərəs/</td><td>☆</td><td>☆</td><td>形容词</td><td>不听话的，任性的</td><td>an obstreperous child<br>不听话的孩子</td></tr>
-<tr><td colspan="7">例 An obstreperous child kept kicking the seat in front of him.  一个吵闹不驯的孩子一直踢着前排的座椅。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 rebel</td><td>/rɪˈbel/</td><td>★★★</td><td>★★★</td><td>不及物动词、名词</td><td>反抗，造反；反叛者</td><td>rebel against authority<br>反抗权威</td></tr>
@@ -4167,60 +2475,12 @@
 <tr><td colspan="7">例 Her rebellious streak showed early, long before high school.  她的叛逆性格早早就显露，远在高中之前。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 recalcitrant</td><td>/rɪˈkælsɪtrənt/</td><td>★☆</td><td>☆</td><td>形容词</td><td>顽抗的，不顺从的</td><td>a recalcitrant employee<br>不听劝的员工</td></tr>
-<tr><td colspan="7">例 A recalcitrant employee refused every instruction his new supervisor gave him.  一名顽抗的员工拒绝了新主管给他的每一条指示。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 refractory</td><td>/rɪˈfræktəri/</td><td>★☆</td><td>☆</td><td>形容词</td><td>倔强的，不顺从的</td><td>a refractory pupil<br>不顺从的学生</td></tr>
-<tr><td colspan="7">例 One refractory pupil disrupted the lesson for the entire class.  一个不顺从的学生扰乱了全班的课。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳反 unamenable</del></td><td>/ˌʌnəˈminəbəl/</td><td>☆</td><td>☆</td><td>形容词</td><td>不顺从的，不易接受的</td><td>unamenable to persuasion<br>劝不动的</td></tr>
 <tr><td colspan="7">例 The old machine proved unamenable to any modern repair method.  事实证明这台旧机器不适用于任何现代修理方法。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 ungovernable</td><td>/ʌnˈɡʌvərnəbl/</td><td>★</td><td>★</td><td>形容词</td><td>难以控制的，无法管束的</td><td>an ungovernable temper<br>无法控制的脾气</td></tr>
-<tr><td colspan="7">例 The crowd became ungovernable once the gates were opened.  大门一开，人群就变得无法控制。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 unruly</td><td>/ʌnˈruːli/</td><td>★★</td><td>★★★</td><td>形容词</td><td>难驾驭的，不守规矩的</td><td>an unruly crowd<br>不守规矩的人群</td></tr>
-<tr><td colspan="7">例 Two teachers struggled to calm the unruly class.  两位老师费力地安抚那个不守规矩的班级。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 willful</td><td>/ˈwɪlfl/</td><td>★★</td><td>★★</td><td>形容词</td><td>固执的，倔强的</td><td>willful disobedience<br>故意的违抗</td></tr>
-<tr><td colspan="7">例 His willful refusal to ask for help delayed the repair by weeks.  他固执地拒绝求助，使维修推迟了好几周。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 wayward</td><td>/ˈweɪwərd/</td><td>★★</td><td>★★</td><td>形容词</td><td>任性的，不服管束的</td><td>a wayward son<br>不服管束的儿子</td></tr>
-<tr><td colspan="7">例 Their wayward son ignored every rule his patient parents set.  他们不服管束的儿子无视父母耐心定下的每条规矩。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>compliment</b></td><td>/ˈkɑːmplɪmənt/</td><td>★★★</td><td>★★★</td><td>名词、及物动词</td><td>赞美，称赞；恭维</td><td>pay someone a compliment<br>赞美某人</td></tr>
 <tr><td colspan="7">例 He paid her a warm compliment on her new painting.  他对她的新画作说了一句诚挚的赞美。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 praise</td><td>/ˈpreɪz/</td><td>★★★</td><td>★★★</td><td>名词、动词</td><td>赞扬，称赞</td><td>win high praise<br>获得高度赞扬</td></tr>
-<tr><td colspan="7">例 Her first novel won high praise from serious critics.  她的第一部小说赢得了严肃评论家的高度赞扬。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 commend</td><td>/kəˈmend/</td><td>★★</td><td>★★</td><td>及物动词</td><td>赞扬，表扬</td><td>commend her courage<br>赞扬她的勇气</td></tr>
-<tr><td colspan="7">例 The principal commended her courage in front of the whole school.  校长在全校面前赞扬了她的勇气。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 eulogize</td><td>/ˈjuːlədʒaɪz/</td><td>☆</td><td>☆</td><td>及物动词</td><td>称赞；颂扬</td><td>eulogize the late leader<br>颂扬已故领袖</td></tr>
-<tr><td colspan="7">例 Colleagues gathered to eulogize the scientist who had trained them all.  同事们聚在一起颂扬这位培养了他们所有人的科学家。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 extol</td><td>/ɪkˈstoʊl/</td><td>★</td><td>★</td><td>及物动词</td><td>赞美；吹捧</td><td>extol his virtues<br>赞美他的品德</td></tr>
-<tr><td colspan="7">例 Neighbors still extol his kindness during the long winter flood.  邻居们至今仍赞美他在漫长冬季洪水期间的善举。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 laud</td><td>/ˈlɔːd/</td><td>★☆</td><td>★☆</td><td>及物动词</td><td>赞美，称赞</td><td>laud his courage<br>赞扬他的勇气</td></tr>
-<tr><td colspan="7">例 Critics lauded the young pianist for her fearless interpretation.  评论家赞扬这位年轻钢琴家大胆的演绎。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳反 vituperate</del></td><td>/vaɪˈtuːpəreɪt/</td><td>☆</td><td>☆</td><td>及物动词</td><td>谩骂，责骂</td><td>vituperate an opponent<br>谩骂对手</td></tr>
-<tr><td colspan="7">例 The columnist vituperated the mayor in every weekly article.  这位专栏作家在每周的文章里都痛骂市长。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳反 vituperative</td><td>/ˌvaɪˈtuːpərətɪv/</td><td>☆</td><td>☆</td><td>形容词</td><td>谩骂的，斥责的</td><td>a vituperative attack<br>谩骂式的攻击</td></tr>
@@ -4231,44 +2491,12 @@
 <tr><td colspan="7">例 His clownish antics amused the children but embarrassed his wife.  他滑稽的怪动作逗乐了孩子，却让妻子难堪。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 boorish</td><td>/ˈbʊrɪʃ/</td><td>★</td><td>★</td><td>形容词</td><td>粗鲁无礼的</td><td>boorish behavior<br>粗鲁无礼的举动</td></tr>
-<tr><td colspan="7">例 His boorish behavior at the table embarrassed everyone present.  他在餐桌上粗鲁无礼的举动让在场所有人难堪。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 churlish</td><td>/ˈtʃɜːrlɪʃ/</td><td>★</td><td>★</td><td>形容词</td><td>粗鲁无礼的</td><td>a churlish refusal<br>无礼的拒绝</td></tr>
-<tr><td colspan="7">例 It would be churlish to refuse such a generous gift.  拒绝如此丰厚的礼物就太无礼了。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 classless</td><td>/ˈklæsləs/</td><td>★☆</td><td>★☆</td><td>形容词</td><td>粗俗的，没有教养的</td><td>a classless remark<br>一句粗俗的话</td></tr>
-<tr><td colspan="7">例 Mocking the waiter was a classless thing to do.  取笑服务员是很没教养的行为。</td></tr>
-</tbody>
-<tbody>
 <tr><td><del>↳近 cloddish</del></td><td>/ˈklɑdɪʃ/</td><td>☆</td><td>☆</td><td>形容词</td><td>笨拙的，粗鲁愚钝的</td><td>cloddish manners<br>粗鲁的举止</td></tr>
 <tr><td colspan="7">例 His cloddish remarks embarrassed everyone at the dinner table.  他粗鲁的言论让餐桌上所有人都尴尬。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳近 loutish</td><td>/ˈlaʊtɪʃ/</td><td>☆</td><td>☆</td><td>形容词</td><td>粗鲁的</td><td>loutish manners<br>粗鲁的举止</td></tr>
-<tr><td colspan="7">例 His loutish manners at the dinner table embarrassed his entire family.  他在餐桌上粗鲁的举止让全家人都很难堪。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 uncouth</td><td>/ʌnˈkuːθ/</td><td>★</td><td>★</td><td>形容词</td><td>粗鲁的，无教养的</td><td>uncouth table manners<br>粗野的餐桌举止</td></tr>
-<tr><td colspan="7">例 His uncouth remarks at dinner offended nearly everyone at the table.  他在晚餐上粗鲁的言辞几乎惹恼了同桌所有人。</td></tr>
-</tbody>
-<tbody>
 <tr><td><b>compose</b></td><td>/kəmˈpoʊz/</td><td>★★☆</td><td>★★★</td><td>动词</td><td>使镇定；组成；创作</td><td>compose oneself<br>让自己镇定下来</td></tr>
 <tr><td colspan="7">例 He took a breath to compose himself before speaking.  他深吸一口气让自己镇定下来才开口。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 contain</td><td>/kənˈteɪn/</td><td>★★★☆</td><td>★★★☆</td><td>及物动词</td><td>控制，抑制；包含</td><td>contain the outbreak<br>控制疫情爆发</td></tr>
-<tr><td colspan="7">例 Doctors worked around the clock to contain the outbreak.  医生们昼夜不停地努力控制疫情。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 settle</td><td>/ˈsetəl/</td><td>★★★☆</td><td>★★★★</td><td>动词</td><td>解决，平息；定居</td><td>settle the dispute<br>解决争端</td></tr>
-<tr><td colspan="7">例 The two sides finally settled their dispute out of court.  双方最终在庭外解决了争端。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳近 constitute</td><td>/ˈkɑːnstətuːt/</td><td>★★☆</td><td>★★</td><td>及物动词</td><td>指派，设立；构成</td><td>constitute a committee<br>设立委员会</td></tr>
-<tr><td colspan="7">例 The board was properly constituted under the new rules.  依据新规则，董事会得以正式组成。</td></tr>
 </tbody>
 <tbody>
 <tr><td>↳近 comprise</td><td>/kəmˈpraɪz/</td><td>★★☆</td><td>★★☆</td><td>及物动词</td><td>包含，由…组成</td><td>comprise three parts<br>由三部分组成</td></tr>
@@ -4279,39 +2507,11 @@
 <tr><td colspan="7">例 Women make up more than half of the entering class.  女生占新生班级的一半以上。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 agitate</td><td>/ˈædʒɪteɪt/</td><td>★☆</td><td>★★</td><td>动词</td><td>煽动，激起；使不安</td><td>agitate for reform<br>鼓动改革</td></tr>
-<tr><td colspan="7">例 Students agitated for changes to the exam system.  学生们为改革考试制度而奔走呼吁。</td></tr>
-</tbody>
-<tbody>
-<tr><td><del>↳反 discompose</del></td><td>/ˌdɪskəmˈpoʊz/</td><td>☆</td><td>☆</td><td>及物动词</td><td>使不安；使混乱</td><td>discompose the audience<br>让观众不安</td></tr>
-<tr><td colspan="7">例 Nothing seemed to discompose the veteran pilot, not even engine failure.  似乎没什么能让这位老飞行员心慌，连引擎故障也不行。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 disquiet</td><td>/dɪsˈkwaɪət/</td><td>★</td><td>★</td><td>名词、及物动词</td><td>不安，忧虑；使不安</td><td>growing disquiet<br>日益增长的不安</td></tr>
-<tr><td colspan="7">例 There is growing disquiet among parents about the new curriculum.  家长中对新课程的不安情绪日益增长。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 disturb</td><td>/dɪˈstɜːrb/</td><td>★★☆</td><td>★★☆</td><td>及物动词</td><td>打扰，扰乱；使不安</td><td>disturb the peace<br>扰乱安宁</td></tr>
 <tr><td colspan="7">例 Please do not disturb the birds while they are nesting.  鸟类筑巢时请不要打扰它们。</td></tr>
 </tbody>
 <tbody>
-<tr><td>↳反 perturb</td><td>/pərˈtɜːrb/</td><td>☆</td><td>★</td><td>及物动词</td><td>使不安，使烦扰</td><td>perturb the balance<br>扰乱平衡</td></tr>
-<tr><td colspan="7">例 The sudden change of plan perturbed everyone on the team.  计划的突然改变让全队的人都心神不宁。</td></tr>
-</tbody>
-<tbody>
 <tr><td>↳反 upset</td><td>/əpˈset/</td><td>★★★☆</td><td>★★★☆</td><td>及物动词、形容词</td><td>使心烦，使不安；打乱</td><td>upset the schedule<br>打乱日程</td></tr>
 <tr><td colspan="7">例 The news of the closure upset the staff more than management expected.  停业的消息比管理层预想的更让员工不安。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 vex</td><td>/veks/</td><td>★☆</td><td>★★</td><td>及物动词</td><td>使烦恼，使恼怒</td><td>vex the teacher<br>使老师恼怒</td></tr>
-<tr><td colspan="7">例 Constant interruptions vexed the teacher throughout the long afternoon lesson.  不断的打扰让老师在漫长的下午课上十分恼怒。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 distraught</td><td>/dɪˈstrɔːt/</td><td>★★</td><td>★★</td><td>形容词</td><td>心烦意乱的，极度不安的</td><td>distraught with grief<br>因悲痛而狂乱</td></tr>
-<tr><td colspan="7">例 Distraught with grief, she sat by the window and refused to speak.  她因悲痛而狂乱，坐在窗边不肯说话。</td></tr>
-</tbody>
-<tbody>
-<tr><td>↳反 restless</td><td>/ˈrestləs/</td><td>★★☆</td><td>★★☆</td><td>形容词</td><td>焦躁不安的；不平静的</td><td>a restless night<br>不安宁的一夜</td></tr>
-<tr><td colspan="7">例 He spent a restless night listening to the wind rattle the windows.  他度过了一个不平静的夜晚，听着风摇窗户作响。</td></tr>
 </tbody>
 </table>

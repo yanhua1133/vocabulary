@@ -49,15 +49,31 @@ SHRINK_JS = """
     let guard = 0;
     while (rows(td) > 2 && guard++ < 40 && shrink(td)) {}
     if (rows(td) > 2) {
-      // 第二阶段：分行放不下了，才把中文接到英文后面连排，并重新缩
+      // 第二阶段：缩到下限还放不下，就改结构
       const l1 = td.querySelector('.l1'), l2 = td.querySelector('.l2');
+      const ipa = td.querySelector('.ipa');
       if (l1 && l2) {
+        // 短语/例句：把中文接到英文后面连排
         l1.style.display = 'inline';
         l2.style.display = 'inline';
         l1.insertAdjacentHTML('afterend', ' ');
+      } else if (ipa) {
+        // 第一列：多词条目的音标太长，丢掉音标保住「单词行 + 解释行」
+        ipa.remove();
+      }
+      for (const el of [td, ...td.querySelectorAll('*')]) el.style.fontSize = '';
+      let g2 = 0;
+      while (rows(td) > 2 && g2++ < 40 && shrink(td)) {}
+    }
+    if (rows(td) > 2) {
+      // 第三阶段：第一列的「单词行 + 解释行」也连排（多词条目太长时才会走到这）
+      const nb = td.querySelectorAll('.nb');
+      if (nb.length >= 2) {
+        nb.forEach(x => x.style.display = 'inline');
+        nb[0].insertAdjacentHTML('afterend', ' ');
         for (const el of [td, ...td.querySelectorAll('*')]) el.style.fontSize = '';
-        let g2 = 0;
-        while (rows(td) > 2 && g2++ < 40 && shrink(td)) {}
+        let g3 = 0;
+        while (rows(td) > 2 && g3++ < 40 && shrink(td)) {}
       }
     }
     if (rows(td) > 2) over++;
@@ -74,7 +90,10 @@ def print_pdfs(jobs):
     total = 0
     with sync_playwright() as pw:
         browser = pw.chromium.launch()
-        page = browser.new_page()
+        # 关键：viewport 必须等于纸张可用宽度、并切到 print 媒体，否则 JS 量的是
+        # 屏幕布局（默认 1280px），跟打印结果完全两样 —— 会误报「0 个超行」
+        page = browser.new_page(viewport={"width": 609, "height": 1000})
+        page.emulate_media(media="print")
         for html_path, pdf_path in jobs:
             page.goto("file://" + html_path)
             total += page.evaluate(SHRINK_JS)

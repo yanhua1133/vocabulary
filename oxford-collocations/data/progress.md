@@ -3,13 +3,16 @@
 更新：2026-08-05
 
 ## 结果在哪看
-- `out/牛津搭配词典.md` ← 五列：词头 / 义项 / 类型 / 搭配词 / 中文·例句。
-  一个搭配组一行（按小类铺开会有 7.6 万行太厚，按词头合并又太挤）。
+- `out/牛津搭配词典.md` ← 四列：**词头 / 搭配 / 中文 / 例句**，76752 行。
+  搭配写**完整形式**（`hastily abandon`、`abandon sb to their fate`、
+  `be found abandoned`），不留原书的省略写法和 `~`；一格多条就格内换行。
+  例句里把当前这条搭配加粗。「类型」「义项」两列去掉了——查搭配时用不上。
+- `_sample.pdf` ← 样张（前 200 行，8 页）
 - `data/book.json` ← 结构化骨架：词头 → 义项 → 搭配组
 - `data/groups.json` ← 在骨架上又把每组拆成小类 `{words, cn}` 和例句
 - `data/ocr/pNNN.json` ← 2024 页整页 OCR，带每行 bbox
 
-当前规模：**词头 6509，义项 8558，搭配组 20711，小类 76196**（95% 带中文，60% 的组带例句）。
+当前规模：**词头 6205，搭配组 20711，展开出 130854 条完整搭配**。
 
 ## 原书情况
 - Pdg2Pic 生成的**纯扫描件**，2058 页、499 MB，零文字层，只能 OCR（原书不入库）。
@@ -27,6 +30,7 @@ cd oxford-collocations
 ../.venv/bin/python scripts/03_gapfill.py 27 2050 # 补回 Vision 漏掉的整行（补了 3367 行）
 ../.venv/bin/python scripts/02_entries.py         # 抽骨架 → data/book.json
 ../.venv/bin/python scripts/03_split.py           # 拆小类和例句 → data/groups.json
+../.venv/bin/python scripts/04_expand.py          # 补成完整搭配 → data/expanded.json
 ../.venv/bin/python scripts/07_render.py          # 渲染 → out/牛津搭配词典.md
 ```
 
@@ -54,12 +58,26 @@ cd oxford-collocations
 - 代替词头的 `~` 常被认成汉字「一」，夹在英文中间时要还原——不还原的话
   「例句里不含汉字」这条边界判据就断了。
 
+## 词头串位：三个连环坑
+`ablaze` 名下曾经挂着 `have ablaze`、`retain ablaze`——那些其实是 `ability` 的搭配。
+根子是合并碎行时没保护词头，连修三次才干净：
+1. 词头片段**不能并进上一行**（`ablaze ad.` 被并进了 abhorrent 的 VERBS 行）。
+2. 词头行**也不能把后面的碎片吸进来**——`ablaze adj.` 吞掉 ability 的 ADJ 续行后，
+   它在栏内的位置就跑到 ability 前面去了，把人家十几条搭配全领走。
+3. **补回来的行只能当续行，除非整行干干净净只有「词 + 词性」**。
+   `ablaze adj. * đ „*x c` 就是 gapfill 补出来的乱码，还落在右栏中间。
+   一刀切地不让补行开词条会丢 738 个真词头，所以加了「整行无尾巴」这个条件。
+
 ## 眼下的质量水位
 - **词头层面很干净**：独立 agent 核了两页，召回和精确都 100%。
 - **短组拆得很好**（`ADV hastily | 仓促离开 + 例句`）。
-- **长组还乱**：一个组里有五六个小类、夹着两三条例句时，中文列会串进未摘干净的
-  例句片段。根子在 OCR——原书的排版分隔信息在扫描件里本来就丢了一部分，
-  纯规则到这儿差不多到顶了。
+- **长组还乱**，样张上看得很清楚，三种表现：
+  ① 同一个组的例句被**重复贴到组内每一行**（`altogether abandon` 到
+     `voluntarily abandon` 七行共用一条）——例句该按位置归属到对应小类，还没做；
+  ② 中文列**串进未摘干净的例句**（`完全/彻底/全部/统统放弃 This principle has
+     now been effectively ~ed. 这一原则事实上已被放弃。`）；
+  ③ 少量行带 OCR 垃圾（`computer: * PC abbreviation`、`nat– ural ability`）。
+  根子在 OCR——原书的排版分隔信息在扫描件里本来就丢了一部分，纯规则到这儿差不多到顶。
 
 ## 下一步（两条路，成本差很多）
 1. **先排 PDF 交付当前版本**：拷 `oxford-idioms/scripts/13_pdf.py`，那本的版式坑

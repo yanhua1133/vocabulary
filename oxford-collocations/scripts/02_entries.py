@@ -31,6 +31,7 @@ POS = (r"(?:nouns|noun|verbs|verb|advs|adv|adverb|adjs|adj|adjective|"
 # 构不成单词边界，加了 \b 会让所有带点的词性（adj. adv. prep.）全部匹配失败
 HEAD_RE = re.compile(rf"^([A-Za-z][A-Za-z'\- ]{{0,28}}?)\s+{POS}", re.I)
 SENSE_RE = re.compile(r"^(\d{1,2})\s+(.{2,})")
+HEAD_ONLY = re.compile(rf"^[A-Za-z][A-Za-z'\- ]{{0,28}}?\s+{POS}\s*$", re.I)
 # 搭配组标签：ADJ. / ADV. / VERB + NOUN / NOUN + VERB / PREP. / PHRASES / QUANT. …
 # 大小写放宽，OCR 常把 ADV. 认成 ADv.；靠下面那张词表兜底，不会误收普通句子。
 # 标签和后面的搭配词之间**不一定有空格**（OCR 出来常是 `ADJ.draft`），
@@ -56,20 +57,31 @@ def normalize(t):
 
 
 def merge_rows(col, tol=0.006):
-    """把被切碎的同一行拼回去：碎片必须横向排开、互不重叠。"""
+    """把被切碎的同一行拼回去：碎片必须横向排开、互不重叠。
+
+    词头片段绝不并进上一行——`ablaze ad.` 被并到 abhorrent 的 VERBS 行中间后，
+    词头位置就串了，后面 ability 的十几条搭配全挂到了 ablaze 名下。
+    """
     out = []
     for line in col:
         row = out[-1] if out else None
-        if row and line["y"] - row["y"] < tol and line["x"] >= row["_right"] - 0.01:
+        solo = bool(HEAD_RE.match(line["t"].strip())) and line["h"] >= 0.014
+        # 词头行两头都要挡住：既不能并进上一行，也不能把后面的碎片吸进来。
+        # 少了后半条，`ablaze adj.` 会把 ability 的 ADJ 续行吞掉，
+        # 于是 ablaze 跑到 ability 前面、把人家十几条搭配全领走了
+        if (row and not solo and not row.get("_solo")
+                and line["y"] - row["y"] < tol
+                and line["x"] >= row["_right"] - 0.01):
             row["_frag"].append((line["x"], line["t"]))
             row["_right"] = max(row["_right"], line["x"] + line["w"])
             row["h"] = max(row["h"], line["h"])
             continue
         out.append(dict(line, _frag=[(line["x"], line["t"])],
-                        _right=line["x"] + line["w"]))
+                        _right=line["x"] + line["w"], _solo=solo))
     for row in out:
         row["t"] = " ".join(t for _, t in sorted(row.pop("_frag")))
         row.pop("_right")
+        row.pop("_solo", None)
     return out
 
 
@@ -81,8 +93,13 @@ def columns(page):
             for lo, hi in ((0.0, 0.49), (0.49, 1.0))]
 
 
-def kind_of(t, x, col_x0):
-    """判断这一行是什么。只有顶格的行才可能开新块，缩进的都是续行。"""
+def kind_of(t, x, col_x0, fill=False):
+    """判断这一行是什么。只有顶格的行才可能开新块，缩进的都是续行。
+
+    `fill=True` 的行是 03_gapfill 补回来的，只当续行使——补行难免有乱码
+    （`ablaze adj. * đ „*x c` 就是补出来的，还落在了右栏中间），
+    让它开新词条会把后面十几条搭配全带偏。
+    """
     if x > col_x0 + 0.012:
         return None
     m = GROUP_RE.match(t)
@@ -96,6 +113,10 @@ def kind_of(t, x, col_x0):
         return ("sense", m.group(1), m.group(2))
     m = HEAD_RE.match(t)
     if m and not CJK.search(m.group(0)):
+        # 补回来的行也可以是词头，但整行必须干干净净只有「词 + 词性」。
+        # 带尾巴的多半是乱码（`ablaze adj. * đ „*x c`），认了会把后面的搭配带偏
+        if fill and not HEAD_ONLY.match(t):
+            return None
         return ("head", m.group(1).strip(), t[m.end(1):].strip())
     return None
 
@@ -123,7 +144,7 @@ def parse_page(page):
             t = normalize(line["t"])
             if len(t) < 2:
                 continue
-            got = kind_of(t, line["x"], col_x0)
+            got = kind_of(t, line["x"], col_x0, line.get("fill", False))
             if got:
                 out.append(list(got))
             elif out:

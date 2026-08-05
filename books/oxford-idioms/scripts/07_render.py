@@ -455,6 +455,29 @@ def with_book_examples(rows):
     return rows, used
 
 
+def letter_marks(rows):
+    """每个首字母在哪一行开始分节 → {行号: 字母}。
+
+    不能简单地「首字母一变就分节」：改挂关键词时会把 iron、money 这类补回原位，
+    个别会打乱字母序，照单全收的话字母段来回跳（书签排出来是 A B N T U…）。
+    改成给每个字母找**最长的一段连续块**，只在那一段的开头分节，
+    零星错位的关键词就并进它所在的字母段里。
+    """
+    word, letters = "", []
+    for r in rows:
+        word = r[0] or word
+        letters.append(word[:1].upper() if word[:1].isascii() else "")
+    best, i = {}, 0
+    while i < len(letters):
+        j = i
+        while j < len(letters) and letters[j] == letters[i]:
+            j += 1
+        if letters[i].isalpha() and j - i > best.get(letters[i], (0, 0))[1]:
+            best[letters[i]] = (i, j - i)
+        i = j
+    return {pos: letter for letter, (pos, _) in best.items()}
+
+
 def main():
     book, cache = load()
     rows, joined, dropped, made_up, fixed, cross, folded = final_rows(book, cache)
@@ -484,7 +507,12 @@ def main():
              "\n<table>",
              "<thead><tr><th>习语</th><th>中文解释</th><th>常用 / 口语</th>"
              "<th>例句</th></tr></thead>"]
-    for _word, idiom, cn, en_ex, cn_ex, *_ in rows:
+    marks = letter_marks(rows)
+    for n, (_word, idiom, cn, en_ex, cn_ex, *_) in enumerate(rows):
+        # 关键词首字母的分节条：Markdown 里是个小标题条，
+        # 排 PDF 时 13_pdf.py 靠它建 A-Z 书签（成品没有单词列，只能这么标）
+        if n in marks:
+            lines.append(f'<tr class="sec"><td colspan="4">{marks[n]}</td></tr>')
         sc = scores.get(re.sub(r"[^a-z]", "", idiom.lower()))
         if sc:
             scored += 1

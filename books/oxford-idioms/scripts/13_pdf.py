@@ -80,10 +80,13 @@ CSS = """
 body { font-family: "PingFang SC", "Helvetica Neue", "Arial Unicode MS", sans-serif;
        font-size: 7pt; color: #222; line-height: 1.35; margin: 0; }
 h1 { font-size: 15pt; margin: 0 0 8px; color: #0b6fa4; }
-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+/* 线要画得住：0.4px 的浅灰线在 300dpi 下只有一个像素多点，印出来几乎看不见，
+   最右那条贴着版心边界的更是像没画。加粗到 0.6px 并压深颜色 */
+table { width: 100%; border-collapse: collapse; table-layout: fixed;
+        border: 0.9px solid #7a7a7a; }
 th { background: #e8f4fb; font-size: 6.8pt; padding: 2px 3px; text-align: left;
-     border: 0.4px solid #a8cfe4; }
-td { border: 0.4px solid #d8d8d8; padding: 1.6px 3px; vertical-align: top;
+     border: 0.6px solid #6f9fbb; }
+td { border: 0.6px solid #9a9a9a; padding: 1.6px 3px; vertical-align: top;
      word-wrap: break-word; }
 tr { break-inside: avoid; page-break-inside: avoid; }
 thead { display: table-header-group; }

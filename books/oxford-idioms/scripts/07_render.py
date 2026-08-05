@@ -272,6 +272,59 @@ def final_rows(book, cache):
     return final, joined, dropped, made_up, fixed, cross + tagdup, folded
 
 
+def regroup(rows):
+    """把挂错关键词的条目改挂回去，顺带补出被漏识别的关键词。
+
+    02 偶尔整行漏掉一个关键词（`all`、`iron`、`money` 在 data/book.json 里根本
+    不存在），它底下的条目就顺延挂到了前一个关键词上——抽样验收时 60 条里有 6 条
+    是这样，而且全是字母序上的邻居（invitation↔iron、moments↔money）。
+
+    词典是按字母排的，漏掉的那个关键词一定落在「本组关键词」和「下一组关键词」
+    之间。拿这个区间去条目文本里筛，基本能唯一确定：
+    `have many/several irons in the fire` 挂在 invitation 下、下一组是 ironing，
+    区间 (invitation, ironing) 里只有 `irons` 对得上。
+    """
+    heads = [(i, r[0]) for i, r in enumerate(rows) if r[0]]
+    moved = 0
+    for n, (start, word) in enumerate(heads):
+        nxt = heads[n + 1][0] if n + 1 < len(heads) else len(rows)
+        after = heads[n + 1][1].lower() if n + 1 < len(heads) else "zzzzz"
+        lo = word.lower()
+        stem = STEM.sub("", lo)
+        pending = None
+        for i in range(start, nxt):
+            body = bare(rows[i][1])
+            if stem and (stem in body or lo in body):
+                pending = None
+                continue
+            # 边界错位一格：这一条其实属于下一组（`have ˌmoney to ˈburn` 排在
+            # moments 组末尾，而下一组正是 money）。把它划过去就行
+            nstem = STEM.sub("", after)
+            if nstem and (nstem in body or after in body):
+                rows[i][0] = after
+                if nxt < len(rows):
+                    rows[nxt][0] = ""
+                moved += 1
+                pending = after
+                continue
+            cands = {w for w in re.findall(r"[a-z]{3,}", body)
+                     if lo < w < after and STEM.sub("", w) != stem}
+            # 这里的虚词表要比 FUNC 窄——`all`、`that`、`there`、`one` 本身
+            # 就是牛津的关键词，拿 FUNC 去减会把它们一起滤掉
+            cands -= {"the", "and", "for", "with", "sth", "sbs", "sths",
+                      "etc", "your", "yours", "his", "her", "their", "our",
+                      "you", "she", "him", "them", "its", "was", "were",
+                      "are", "has", "had", "not", "but", "than", "too"}
+            if len(cands) != 1:
+                continue
+            new = cands.pop()
+            if new != pending:                # 同一个新关键词只在第一条上标
+                rows[i][0] = new
+                pending = new
+                moved += 1
+    return rows, moved
+
+
 def append_lost(rows):
     """把 09_lost.py 捞回来的条目插回它该在的关键词下面。
 
@@ -306,7 +359,9 @@ def append_lost(rows):
 def main():
     book, cache = load()
     rows, joined, dropped, made_up, fixed, cross, folded = final_rows(book, cache)
-    rows, recovered = append_lost(list(rows))
+    rows = [list(r) for r in rows]
+    rows, moved = regroup(rows)
+    rows, recovered = append_lost(rows)
     filled = sum(1 for r in rows if r[5])
 
     os.makedirs(OUT, exist_ok=True)
@@ -329,7 +384,7 @@ def main():
     print(f"  拼回断行条目 {joined} 条，去掉重复/音标残片 {dropped} 条，"
           f"剔除模型猜出来的 {made_up} 条，纠正关键词 {fixed} 个，"
           f"合并跨词条重复 {cross} 条，收拢断开的后半截 {folded} 条，"
-          f"捞回被挤掉的 {recovered} 条")
+          f"捞回被挤掉的 {recovered} 条，改挂错位条目 {moved} 条")
     print(p)
 
 

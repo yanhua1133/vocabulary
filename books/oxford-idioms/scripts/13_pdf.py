@@ -51,8 +51,10 @@ SHRINK_JS = """
     // 例句列最宽、内容也最长，允许三行；其余三列压两行
     // （都卡两行的话例句会被缩到 4pt 上下，根本没法看）
     if (td.colSpan > 1) return;               // 字母分隔行
-    // 习语列和例句列内容最长，允许三行；中间两列压两行
-    const MAX = (td.cellIndex === 0 || td.cellIndex === 3) ? 3 : 2;
+    // 列宽调匀之后四列基本都能压进两行；只有习语列里那些带 BrE/AmE 变体的
+    // 超长条目（`against your better ˈjudgement (especially BrE) (AmE usually…`）
+    // 放不下，给它留第三行——占比不到 1%，比缩到 4.2pt 看不清强
+    const MAX = td.cellIndex === 0 ? 3 : 2;
     let guard = 0;
     while (rows(td) > MAX && guard++ < 40 && shrink(td)) {}
     if (rows(td) > MAX) {
@@ -87,11 +89,15 @@ b { color: #000; font-weight: bold; }
 tr.sec td { background: #0b6fa4; color: #fff; font-size: 9pt; font-weight: bold;
             padding: 2px 4px; letter-spacing: 1px; }
 /* 四列：习语 / 中文解释 / 常用·口语 / 例句 */
-th:nth-child(1), td:nth-child(1) { width: 21%; }
-th:nth-child(2), td:nth-child(2) { width: 17%; }
-th:nth-child(3), td:nth-child(3) { width: 7%; color: #d48806; font-size: 6pt;
+/* 列宽按各列实际内容量分配（平均半角宽 30 / 19 / 6 / 108），
+   目标是四列都刚好两行、行高整齐。原来 21/17/55 的分法前两列大量留白，
+   例句列却要挤三行、还被缩到 4pt */
+th:nth-child(1), td:nth-child(1) { width: 17%; }
+th:nth-child(2), td:nth-child(2) { width: 10%; }
+th:nth-child(3), td:nth-child(3) { width: 9%; color: #d48806; font-size: 6pt;
                                    letter-spacing: -0.5px; white-space: nowrap; }
-th:nth-child(4), td:nth-child(4) { width: 55%; color: #333; }
+th:nth-child(4), td:nth-child(4) { width: 64%; color: #333; }
+.lab { color: #999; font-size: 5.2pt; margin-right: 1px; }
 """
 
 

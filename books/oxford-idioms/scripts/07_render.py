@@ -516,7 +516,9 @@ def main():
         sc = scores.get(re.sub(r"[^a-z]", "", idiom.lower()))
         if sc:
             scored += 1
-            rank = f'{stars(sc["u"])}<br>{stars(sc["s"])}'
+            # 两行星级要标清楚哪行是哪个，光两排星分不出来
+            rank = (f'<span class="lab">常</span>{stars(sc["u"])}<br>'
+                    f'<span class="lab">口</span>{stars(sc["s"])}')
         else:
             rank = ""
         ex = f"{cell(en_ex)}<br>{cell(cn_ex)}" if cn_ex else cell(en_ex)

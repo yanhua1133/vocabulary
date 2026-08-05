@@ -40,6 +40,7 @@ def keywords(idiom):
 def main():
     book, cache = p07.load()
     rows, joined, dropped, made_up, fixed, cross, folded = p07.final_rows(book, cache)
+    rows, recovered = p07.append_lost(list(rows))   # 跟渲染走同一条路
     problems = {"缺中文解释": [], "解释混英文": [], "例句不全": [],
                 "例句没用上习语": [], "条目像残片": []}
     word = ""
@@ -67,7 +68,7 @@ def main():
         for x in items[:3]:
             print(f"      {x}")
     print(f"  （渲染时已拼回断行 {joined} 条、去掉重复和残片 {dropped} 条、"
-          f"剔除模型猜出来的 {made_up} 条、纠正关键词 {fixed} 个、跨词条重复 {cross} 条、收拢后半截 {folded} 条）")
+          f"剔除模型猜出来的 {made_up} 条、纠正关键词 {fixed} 个、跨词条重复 {cross} 条、收拢后半截 {folded} 条、捞回 {recovered} 条）")
 
 
 if __name__ == "__main__":

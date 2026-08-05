@@ -135,13 +135,14 @@ def build(book, cache):
             rec = cache.get(str(idx))
             idx += 1
             body = bool(it["cn"] or it["ex_en"])   # 原书这条底下有没有释义正文
+            src = str(idx - 1)                     # 用来回查原书例句
             if rec:
                 flat.append([hid, h["word"], rec["i"], rec["cn"], rec["e"], True,
-                             it["idiom"], body])
+                             it["idiom"], body, src])
             else:
                 ex = f"{it['ex_en']}  {it['ex_cn']}" if it["ex_cn"] else it["ex_en"]
                 flat.append([hid, h["word"], it["idiom"], it["cn"], ex, False,
-                             it["idiom"], body])
+                             it["idiom"], body, src])
     return flat
 
 
@@ -169,7 +170,8 @@ def final_rows(book, cache):
                 and is_continuation(nxt[2])):
             merged.append([cur[0], cur[1], f"{cur[2].strip()} {nxt[2].strip()}",
                            nxt[3] or cur[3], nxt[4] or cur[4], cur[5],
-                           cur[6] + " " + nxt[6], cur[7] or nxt[7]])
+                           cur[6] + " " + nxt[6], cur[7] or nxt[7],
+                           cur[8] if cur[7] else nxt[8]])
             joined += 1
             i += 2
             continue
@@ -179,7 +181,7 @@ def final_rows(book, cache):
     # 2) 同一个单词下的重复条目只留一条，音标残片直接扔掉
     rows, dropped, made_up, last_hid = [], 0, 0, None
     seen = {}
-    for hid, word, idiom, cn, ex, from_cache, raw, body in merged:
+    for hid, word, idiom, cn, ex, from_cache, raw, body, src in merged:
         if hid != last_hid:
             seen = {}
         key = re.sub(r"[^a-z]", "", idiom.lower())
@@ -197,13 +199,14 @@ def final_rows(book, cache):
             j = seen[key]
             if body and not rows[j][6]:
                 en2, _, cn2 = ex.partition("  ")
-                rows[j] = [rows[j][0], idiom, cn, en2, cn2, from_cache, body]
+                rows[j] = [rows[j][0], idiom, cn, en2, cn2, from_cache,
+                           body, src]
             dropped += 1
             continue
         seen[key] = len(rows)
         en_ex, _, cn_ex = ex.partition("  ")
         rows.append([word if hid != last_hid else "",
-                     idiom, cn, en_ex, cn_ex, from_cache, body])
+                     idiom, cn, en_ex, cn_ex, from_cache, body, src])
         last_hid = hid
 
     # 关键词是按组给的，得先把整组收齐再判断这个词对不对
@@ -271,7 +274,7 @@ def final_rows(book, cache):
                             rows[j][0] = r[0]
                         break
             continue
-        kept.append(tuple(r[:7]))
+        kept.append(tuple(r[:8]))
     # 忽略括号标签后重合的，多半也是同一条挂了两处
     # （`beat/turn ˈswords into ˈploughshares (BrE)…` 同时挂在 plot 和 swords 下）。
     # 但只有在「一条有原书正文、另一条没有」时才敢删没正文的那条——
@@ -368,17 +371,41 @@ def append_lost(rows):
             if c.lower() in tail:
                 en, _, cn_ex = rec["e"].partition("  ")
                 added.append((tail[c.lower()],
-                              ("", rec["i"], rec["cn"], en, cn_ex, True, True)))
+                              ("", rec["i"], rec["cn"], en, cn_ex, True, True, "")))
                 break
     for at, row in sorted(added, key=lambda x: -x[0]):
         rows.insert(at + 1, row)
     return rows, len(added)
 
 
+def with_book_examples(rows):
+    """例句优先用原书的，只有原书那条被 OCR 毁了才退回模型自拟的。
+
+    原书例句是词典的权威内容。第一版成品全用了模型自拟的例句，是我沿用另一本书的
+    做法、没单独确认——改回来：`data/examples.json` 里是清理过、判定可用的原书例句
+    （5257 条抽出来，可用 4374 条），按条目序号回查。
+    """
+    path = os.path.join(DATA, "examples.json")
+    if not os.path.exists(path):
+        return rows, 0
+    ex = json.load(open(path))
+    used = 0
+    for r in rows:
+        got = ex.get(r[7]) if len(r) > 7 else None
+        if got:
+            r[3], r[4] = got["en"], got["cn"]
+            used += 1
+        elif r[3]:
+            r[4] = (r[4] + "（自拟）").lstrip("（") if r[4] else ""
+            r[4] = r[4] if r[4].endswith("（自拟）") else r[4] + "（自拟）"
+    return rows, used
+
+
 def main():
     book, cache = load()
     rows, joined, dropped, made_up, fixed, cross, folded = final_rows(book, cache)
     rows = [list(r) for r in rows]
+    rows, from_book = with_book_examples(rows)
     rows, moved = regroup(rows)
     rows, recovered = append_lost(rows)
     filled = sum(1 for r in rows if r[5])
@@ -403,7 +430,8 @@ def main():
     print(f"  拼回断行条目 {joined} 条，去掉重复/音标残片 {dropped} 条，"
           f"剔除模型猜出来的 {made_up} 条，纠正关键词 {fixed} 个，"
           f"合并跨词条重复 {cross} 条，收拢断开的后半截 {folded} 条，"
-          f"捞回被挤掉的 {recovered} 条，改挂错位条目 {moved} 条")
+          f"捞回被挤掉的 {recovered} 条，改挂错位条目 {moved} 条\n"
+          f"  例句：原书 {from_book} 条，其余自拟")
     print(p)
 
 

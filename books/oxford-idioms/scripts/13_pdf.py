@@ -85,15 +85,15 @@ h1 { font-size: 15pt; margin: 0 0 8px; color: #0b6fa4; }
 /* 线要画得住：细线在不少 PDF 阅读器里低缩放时会被丢掉，最右那条贴着版心
    边界的尤其容易「消失」。所以外框 1.5px、格线 0.8px，颜色也压深；
    最右一列再显式指定一次 border-right，不指望 border-collapse 兜底 */
-/* 外框画在一个 div 上：border-collapse 会把 table 自己的 border 跟 td 的合并，
-   合并后一律取 1px（Chrome 打印时 = 0.75pt），设多粗都没用。
-   div 不参与合并，想画多粗就多粗 */
-.wrap { border: 1.2pt solid #444; }
+/* 别拿外层 div 画边框：div 的高度跟表格对不齐，竖边会甩出表格外面去。
+   border-collapse 下 Chrome 打印时把所有边框都压成 0.75pt，粗细改不动，
+   那就改颜色——把最右那条压深，照样看得清楚 */
 table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 th { background: #e8f4fb; font-size: 6.8pt; padding: 2px 3px; text-align: left;
      border: 0.5pt solid #5a8fae; }
-td { border: 0.5pt solid #7d7d7d; padding: 1.6px 3px; vertical-align: top;
+td { border: 0.5pt solid #9a9a9a; padding: 1.6px 3px; vertical-align: top;
      word-wrap: break-word; }
+th:last-child, td:last-child { border-right-color: #333; }
 tr { break-inside: avoid; page-break-inside: avoid; }
 thead { display: table-header-group; }
 b { color: #000; font-weight: bold; }
@@ -122,8 +122,7 @@ def md_to_html(md, title):
     return (f"<!doctype html><html><head><meta charset='utf-8'>"
             f"<title>{title}</title><style>{CSS}</style></head>"
             f"<body><h1>{head}</h1>"
-            f"<div class='wrap'>{body.group(0) if body else ''}</div>"
-            f"</body></html>")
+            f"{body.group(0) if body else ''}</body></html>")
 
 
 def print_pdf(html_path, pdf_path):

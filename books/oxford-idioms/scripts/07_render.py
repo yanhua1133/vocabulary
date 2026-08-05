@@ -22,6 +22,8 @@ DATA = os.path.join(ROOT, "data")
 OUT = os.path.join(ROOT, "out")
 # 关键词行的音标偶尔会被切成独立一行，混进条目里（`ˈa:rmtʃer; a:rmˈtʃer/`）
 IPA_JUNK = re.compile(r"(;.*/|/\s*$|^[^A-Za-z]*[a-z]:)")
+# 只有音标里才会出现的字符，用来认出「关键词 + 音标」那种整行
+IPA_CHARS = re.compile(r"/[^/]*[ɑɒəɜɪʊʌæŋʃʒθðːˑ][^/]*/|/[^/]*[a-z]:[^/]*/")
 # 条目在栏底被断成两行、断点又不在括号里时，02 的合并逻辑接不上，就拆成了两条
 # （`…half a dozen of the` + `ˈother (saying)`）。下面这些虚词绝不可能是习语的
 # 结尾，拿来当断行信号很安全——注意别把 in/on/out/up 算进来，
@@ -35,7 +37,15 @@ def cell(s):
 
 
 def junk(idiom):
-    return bool(IPA_JUNK.search(idiom)) and " " not in idiom.strip(" /")
+    if IPA_JUNK.search(idiom) and " " not in idiom.strip(" /"):
+        return True
+    # 带音标的关键词行整行混进来（`labour (BrE) (AmE labor) /ˈleɪbə(r)/`）。
+    # 剥掉音标和括号后只剩一两个词的就是关键词；`je ne sais quoi /…/ (from French)`、
+    # `a ˌsine qua ˈnon /…/` 这类外来语条目本来就带音标，词数多，留着。
+    if IPA_CHARS.search(idiom):
+        bare = re.sub(r"/[^/]*/|\([^)]*\)|[;:]", " ", idiom)
+        return len(re.findall(r"[A-Za-zÀ-ÿ'-]+", bare)) <= 2
+    return False
 
 
 def fabricated(raw, final):

@@ -57,6 +57,13 @@ def fragment(idiom, score):
     `the/a ˌcurate's ˈegg`），所以再加两个条件——**没有重音符号**、
     **没有语域标签**。三条同时满足的 41 条里，只有 `now… now…` 一条是错杀。
     """
+    # NOTE 框里的说明句。它们常带 OCR 误认的重音符号，躲得过下面那三条，
+    # 只能靠措辞认：`This phrase originated in the 1940s as ˈthe`、
+    # `in which the child has to say the word ˈuncle`。判据要窄——
+    # 放宽到 this/these 开头会误杀 `these things are ˌsent to ˈtry us` 这种真谚语
+    if re.search(r"\b(originated|refers to|is often used)\b", idiom, re.I) \
+            or re.match(r"^in which\b", idiom, re.I):
+        return True
     if not score or score.get("u", 9) > 1:
         return False
     return ("ˈ" not in idiom and "ˌ" not in idiom

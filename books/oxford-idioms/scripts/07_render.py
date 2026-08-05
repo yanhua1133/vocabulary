@@ -64,6 +64,11 @@ def fragment(idiom, score):
     if re.search(r"\b(originated|refers to|is often used)\b", idiom, re.I) \
             or re.match(r"^in which\b", idiom, re.I):
         return True
+    # 右括号比左括号多 = 前半截丢了（`ˈfavor of sb/sth)`、
+    # `usually asleep at the ˈswitch) (informal)`）。finalize 会补右括号，
+    # 所以反过来左多右少不会出现，这条判据很安全
+    if idiom.count(")") > idiom.count("("):
+        return True
     if not score or score.get("u", 9) > 1:
         return False
     return ("ˈ" not in idiom and "ˌ" not in idiom

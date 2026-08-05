@@ -42,6 +42,27 @@ def stars(n):
     return "★" * full + ("☆" if v - full >= 0.5 else "")
 
 
+# 语域标签。带标签的一定是正经条目，哪怕它冷僻到没人用
+REGISTER = re.compile(r"\((BrE|AmE|informal|formal|spoken|saying|literary|"
+                      r"humorous|disapproving|approving|old-fashioned|old use|"
+                      r"slang|written|especially|figurative|taboo|law|"
+                      r"AustralE|NZE|New Zealand)", re.I)
+
+
+def fragment(idiom, score):
+    """靠打分结果兜最后一遍残片。
+
+    打分的子 agent 顺手提供了一个很好的信号：被误切进来的释义正文和例句碎片，
+    常用度一律打到最低。但光看分会误杀真·生僻习语（`like ˈbilly-o`、
+    `the/a ˌcurate's ˈegg`），所以再加两个条件——**没有重音符号**、
+    **没有语域标签**。三条同时满足的 41 条里，只有 `now… now…` 一条是错杀。
+    """
+    if not score or score.get("u", 9) > 1:
+        return False
+    return ("ˈ" not in idiom and "ˌ" not in idiom
+            and not REGISTER.search(idiom))
+
+
 def load_scores():
     path = os.path.join(DATA, "scores.json")
     return json.load(open(path)) if os.path.exists(path) else {}
@@ -427,6 +448,15 @@ def main():
 
     os.makedirs(OUT, exist_ok=True)
     scores = load_scores()
+    junked = 0
+    kept_rows = []
+    for r in rows:
+        sc = scores.get(re.sub(r"[^a-z]", "", r[1].lower()))
+        if fragment(r[1], sc):
+            junked += 1
+            continue
+        kept_rows.append(r)
+    rows = kept_rows
     scored = 0
     lines = ["# 牛津习语词典\n",
              f"\n{len(rows)} 条习语。例句 {from_book} 条用原书原文，"
@@ -449,7 +479,7 @@ def main():
     lines.append("</table>\n")
     p = os.path.join(OUT, "牛津习语词典.md")
     open(p, "w").write("\n".join(lines))
-    print(f"{len(rows)} 条习语（打了常用/口语分 {scored} 条）")
+    print(f"{scored} 条习语（按打分又剔掉 {junked} 条残片）")
     print(f"  拼回断行条目 {joined} 条，去掉重复/音标残片 {dropped} 条，"
           f"剔除模型猜出来的 {made_up} 条，纠正关键词 {fixed} 个，"
           f"合并跨词条重复 {cross} 条，收拢断开的后半截 {folded} 条，"

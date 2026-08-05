@@ -44,6 +44,10 @@ def main():
     rows, from_book = p07.with_book_examples(rows)
     rows, moved = p07.regroup(rows)
     rows, recovered = p07.append_lost(rows)
+    scores = p07.load_scores()                      # 打分兜的最后一遍残片过滤
+    rows = [r for r in rows
+            if not p07.fragment(r[1], scores.get(re.sub(r"[^a-z]", "",
+                                                        r[1].lower())))]
     problems = {"缺中文解释": [], "解释混英文": [], "例句不全": [],
                 "例句没用上习语": [], "条目像残片": []}
     word = ""

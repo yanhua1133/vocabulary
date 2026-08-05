@@ -1,0 +1,174 @@
+"""Pass 02: 从 data/ocr/*.json 抽出词条骨架 → data/book.json。
+
+原书是双栏，每栏自上而下四类行，靠「顶格 + 行首长相」就能分开：
+
+    ability noun                      ← 词头：小写词 + 词性
+    1 skill/power to do sth 能力       ← 义项：数字打头
+    ADJ. considerable, enormous …      ← 搭配组：全大写标签打头
+      续行一律缩进，跟着上一块走
+
+比习语词典好认得多——那本要靠重音符号和上下文猜，这本每类行的行首都有硬特征。
+
+Usage: 02_entries.py
+"""
+import json
+import os
+import re
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OCR = os.path.join(ROOT, "data", "ocr")
+DATA = os.path.join(ROOT, "data")
+FIRST_PDF_PAGE, FIRST_BOOK_PAGE, LAST_PDF_PAGE = 27, 1, 2050
+
+CJK = re.compile(r"[\u4e00-\u9fff]")
+# 词性：原书印的是 noun / verb / adj. / adv. 这几种
+# OCR 常把 adj. 认成 ad. / ady. / adi.，把 adv. 认成 adr.，一并认掉
+# 长的写在前面！正则交替是最左优先，`ad` 排在 `adv`/`adj` 前面会先吃掉前缀、
+# 再卡在后面的字母上整个匹配失败，形容词词头会漏掉九成
+POS = (r"(?:nouns|noun|verbs|verb|advs|adv|adverb|adjs|adj|adjective|"
+       r"ady|adi|adr|ad|preps|prep|conj|pron|det|number)\.?(?=\s|$)")
+# 末尾别再加 \b：POS 里的 `\.?` 会把那个点吃掉，`adj.` 之后是句点+行尾，
+# 构不成单词边界，加了 \b 会让所有带点的词性（adj. adv. prep.）全部匹配失败
+HEAD_RE = re.compile(rf"^([A-Za-z][A-Za-z'\- ]{{0,28}}?)\s+{POS}", re.I)
+SENSE_RE = re.compile(r"^(\d{1,2})\s+(.{2,})")
+# 搭配组标签：ADJ. / ADV. / VERB + NOUN / NOUN + VERB / PREP. / PHRASES / QUANT. …
+# 大小写放宽，OCR 常把 ADV. 认成 ADv.；靠下面那张词表兜底，不会误收普通句子。
+# 标签和后面的搭配词之间**不一定有空格**（OCR 出来常是 `ADJ.draft`），
+# 所以点后面的空格要可选——少了这条，那一整组会被并进义项文本里。
+GROUP_RE = re.compile(r"^([A-Z][A-Za-z]*(?:\s*\+\s*[A-Za-z]+)*)\.?\s*(?=[a-z(~\[])")
+# 别把 NUMBER 放进来：例句里换行开头的 number 会被当成组标签，
+# 还会把真正的那一组从中间腰斩（核对时抓到 12 处）
+GROUP_WORDS = {"ADJ", "ADV", "VERB", "NOUN", "PREP", "PHRASES", "QUANT",
+               "PHRASE", "PRON", "DET", "CONJ"}
+
+
+def normalize(t):
+    t = (t.replace("（", "(").replace("）", ")").replace("，", ",")
+          .replace("：", ":").replace("；", ";").replace("　", " ")
+          .replace("｜", "|").replace("Ⅰ", "|").replace("１", "1"))
+    # 组内小类的分隔符原书是 |，OCR 认成 I/l/丨/！ 的时候居多
+    t = re.sub(r"(?<=[\u4e00-\u9fff\s])[Il丨|！]\s+(?=[a-z(~])", " | ", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def merge_rows(col, tol=0.006):
+    """把被切碎的同一行拼回去：碎片必须横向排开、互不重叠。"""
+    out = []
+    for line in col:
+        row = out[-1] if out else None
+        if row and line["y"] - row["y"] < tol and line["x"] >= row["_right"] - 0.01:
+            row["_frag"].append((line["x"], line["t"]))
+            row["_right"] = max(row["_right"], line["x"] + line["w"])
+            row["h"] = max(row["h"], line["h"])
+            continue
+        out.append(dict(line, _frag=[(line["x"], line["t"])],
+                        _right=line["x"] + line["w"]))
+    for row in out:
+        row["t"] = " ".join(t for _, t in sorted(row.pop("_frag")))
+        row.pop("_right")
+    return out
+
+
+def columns(page):
+    """双栏切开，去掉页眉页脚。"""
+    body = [l for l in page["lines"] if 0.045 < l["y"] < 0.965]
+    return [merge_rows(sorted((l for l in body if lo <= l["x"] < hi),
+                              key=lambda l: l["y"]))
+            for lo, hi in ((0.0, 0.49), (0.49, 1.0))]
+
+
+def kind_of(t, x, col_x0):
+    """判断这一行是什么。只有顶格的行才可能开新块，缩进的都是续行。"""
+    if x > col_x0 + 0.012:
+        return None
+    m = GROUP_RE.match(t)
+    if m:
+        head = m.group(1).upper().replace(".", "").split("+")[0].strip()
+        if head in GROUP_WORDS:
+            tag = re.sub(r"\s*\+\s*", " + ", m.group(1).upper().rstrip("."))
+            return ("group", tag, t[m.end():])
+    m = SENSE_RE.match(t)
+    if m:
+        return ("sense", m.group(1), m.group(2))
+    m = HEAD_RE.match(t)
+    if m and not CJK.search(m.group(0)):
+        return ("head", m.group(1).strip(), t[m.end(1):].strip())
+    return None
+
+
+POS_FIX = {"adi": "adj", "ady": "adj", "ad": "adj", "adr": "adv",
+           "nouns": "noun", "verbs": "verb", "adjective": "adj",
+           "adverb": "adv", "preps": "prep"}
+
+
+def norm_pos(rest):
+    """词性归一化：OCR 把 adj. 认成 adi./ady./ad. 的很多，统一写法。"""
+    w = (rest.split() or [""])[0].strip(".").lower()
+    return POS_FIX.get(w, w)
+
+
+def parse_page(page):
+    """返回这一页的块。页首那些还没开新块的续行用 `cont` 标出来，
+    交给 main 拼回上一页的最后一块——每页各扫各的会把跨页的续尾整段丢掉。"""
+    out = []
+    for col in columns(page):
+        if not col:
+            continue
+        col_x0 = min(l["x"] for l in col)
+        for line in col:
+            t = normalize(line["t"])
+            if len(t) < 2:
+                continue
+            got = kind_of(t, line["x"], col_x0)
+            if got:
+                out.append(list(got))
+            elif out:
+                out[-1][2] += " " + t          # 续行拼进上一块
+            else:
+                out.append(["cont", "", t])    # 页首续行，归属在上一页
+    return out
+
+
+def main():
+    book, cur_head, cur_sense = [], None, None
+    pages = 0
+    for n in range(FIRST_PDF_PAGE, LAST_PDF_PAGE + 1):
+        p = os.path.join(OCR, f"p{n:03d}.json")
+        if not os.path.exists(p):
+            continue
+        pages += 1
+        page_no = n - FIRST_PDF_PAGE + FIRST_BOOK_PAGE
+        for kind, key, rest in parse_page(json.load(open(p))):
+            if kind == "cont":                        # 上一页最后一块的续尾
+                if cur_sense and cur_sense["groups"]:
+                    cur_sense["groups"][-1]["text"] += " " + rest
+                elif cur_sense:
+                    cur_sense["text"] += " " + rest
+                continue
+            if kind == "head":
+                cur_head = {"word": key, "pos": norm_pos(rest),
+                            "page": page_no, "senses": []}
+                cur_sense = None
+                book.append(cur_head)
+            elif kind == "sense":
+                if cur_head is None:
+                    continue
+                cur_sense = {"n": int(key), "text": rest, "groups": []}
+                cur_head["senses"].append(cur_sense)
+            elif kind == "group":
+                if cur_head is None:
+                    continue
+                if cur_sense is None:                 # 没分义项的词条
+                    cur_sense = {"n": 0, "text": "", "groups": []}
+                    cur_head["senses"].append(cur_sense)
+                cur_sense["groups"].append({"type": key, "text": rest})
+
+    json.dump(book, open(os.path.join(DATA, "book.json"), "w"),
+              ensure_ascii=False, indent=1)
+    senses = sum(len(h["senses"]) for h in book)
+    groups = sum(len(s["groups"]) for h in book for s in h["senses"])
+    print(f"{pages} 页：词头 {len(book)}，义项 {senses}，搭配组 {groups}")
+
+
+if __name__ == "__main__":
+    main()

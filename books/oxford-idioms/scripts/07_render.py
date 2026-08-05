@@ -67,6 +67,11 @@ def fabricated(raw, final):
     return m.size < min(6, len(a), len(b))
 
 
+# 条目被排版断开、后半截只剩一串标签时的开头（`(AmE usually run ˈroughshod…`）。
+# 只认这些词——`(up) in the ˈair`、`(not) at ˈall`、`(whether) by ˌaccident…`
+# 都是原书就以括号开头的正经条目，不能一并吞掉
+TAG_HEAD = re.compile(r"^\((AmE|BrE|also|informal|formal|especially|spoken|"
+                      r"saying|usually|or)\b", re.I)
 STEM = re.compile(r"(ies|es|s|ing|ed)$")
 # 判断关键词时要跳过的虚词
 FUNC = {"the", "a", "an", "of", "to", "in", "on", "at", "for", "with", "and",
@@ -197,6 +202,29 @@ def final_rows(book, cache):
             rows[i][0] = better
             fixed += 1
 
+    # 组内收尾：把只剩标签的后半截拼回前一条，删掉整条都被前一条包住的残片
+    folded = 0
+    keep = [True] * len(rows)
+    prev = None
+    for i, r in enumerate(rows):
+        if r[0]:
+            prev = i
+            continue
+        if prev is None:
+            continue
+        if TAG_HEAD.match(r[1].strip()):
+            rows[prev][1] = f"{rows[prev][1].strip()} {r[1].strip()}"
+            keep[i] = False
+            folded += 1
+            continue
+        a, b = (re.sub(r"[^a-z]", "", x.lower()) for x in (r[1], rows[prev][1]))
+        if a and a in b:
+            keep[i] = False
+            folded += 1
+            continue
+        prev = i
+    rows = [r for r, ok in zip(rows, keep) if ok]
+
     # 同一条习语挂在两个关键词下（一处是正文，另一处是交叉引用被还原成了条目）。
     # 保留原书底下有释义正文的那条——交叉引用行下面是空的
     best = {}
@@ -217,12 +245,12 @@ def final_rows(book, cache):
                         break
             continue
         kept.append(tuple(r[:6]))
-    return kept, joined, dropped, made_up, fixed, cross
+    return kept, joined, dropped, made_up, fixed, cross, folded
 
 
 def main():
     book, cache = load()
-    rows, joined, dropped, made_up, fixed, cross = final_rows(book, cache)
+    rows, joined, dropped, made_up, fixed, cross, folded = final_rows(book, cache)
     filled = sum(1 for r in rows if r[5])
 
     os.makedirs(OUT, exist_ok=True)
@@ -244,7 +272,7 @@ def main():
     print(f"{words} 个单词，{len(rows)} 条习语（校对过 {filled} 条）")
     print(f"  拼回断行条目 {joined} 条，去掉重复/音标残片 {dropped} 条，"
           f"剔除模型猜出来的 {made_up} 条，纠正关键词 {fixed} 个，"
-          f"合并跨词条重复 {cross} 条")
+          f"合并跨词条重复 {cross} 条，收拢断开的后半截 {folded} 条")
     print(p)
 
 

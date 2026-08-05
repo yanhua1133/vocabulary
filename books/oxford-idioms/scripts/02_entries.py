@@ -25,11 +25,15 @@ HEAD_H = 0.015                               # 关键词行高阈值（正文英
 CJK = re.compile(r"[\u4e00-\u9fff]")
 ACCENT = re.compile(r"(?:^|[\s(/])'[a-zA-Z]")   # 重音撇号：前面是行首/空格/括号/斜杠
 # 关键词是单个词（可带连字符/撇号），后面可跟一段音标
-HEAD_RE = re.compile(r"^([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ.'\-]{0,22})\s*(?:/([^/]{1,40})/)?\s*$")
+# 结尾那根斜杠常被 OCR 吃掉（`travel /ˈtrævl/` → `travel/travl`），所以设成可选，
+# 但只有斜杠齐全时才敢无视字号直接认作关键词
+HEAD_RE = re.compile(r"^([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ.'\-]{0,22})\s*(?:/([^/]{1,40})(/)?)?\s*$")
 # 交叉引用行：`• easy → (as) easy as ABC`。项目符号和箭头 OCR 得五花八门
 # （• 认成 o/+/空，→ 认成 -/+/空），但有个躲不掉的特征：箭头前的那个词一定会在
 # 后半句里再出现一次（`hedge → hedge your bets`）。
-XREF_ARROW = re.compile(r"^[o•●◆*◇+]?\s*[\w'/]+\s*[-—→>+]\s")
+# `→` 认成 `>` 时后面常常不留空格（`high >smell/stink to high heaven`），
+# 但 `-` 后面必须要有空格，否则 `old-fashioned…` 这种会被误当成交叉引用
+XREF_ARROW = re.compile(r"^[o•●◆*◇+]?\s*[\w'/]+\s*(?:[→>]\s*|[-—+]\s)")
 
 
 def is_xref(t):
@@ -41,7 +45,11 @@ def is_xref(t):
     # 只认「紧挨着重复」：`hedge hedge your bets`、`woe -woe betide sb`。
     # 放宽成「首词在后文任意位置重复」会误杀 `the ˈbigger… the ˈbetter`、
     # `for ˌbetter or (for) ˈworse`、`do better to do sth` 这些真条目。
+    if tok[1][0] in "-—→>+":                 # `gravy -the gravy train`
+        return True
     return tok[1].lstrip("-—→>+") == tok[0]
+
+
 # 一条释义/例句的结尾：中文句号、右引号、英文句点等
 END = ("。", "．", "」", "”", "\"", ".", "！", "？", "!", "?", "…")
 TAGS = ("informal", "formal", "spoken", "saying", "written", "literary", "humorous",
@@ -62,13 +70,68 @@ def normalize(t):
     t = (t.replace("（", "(").replace("）", ")").replace("，", ",")
           .replace("：", ":").replace("；", ";").replace("　", " ")
           .replace("？", "?").replace("！", "!"))
-    t = re.sub(r"^[,.·•\s]+", "", t)         # 行首残留的次重音符号/项目符号
+    t = re.sub(r"^[.·•\s]+", "", t)          # 行首的项目符号
+    t = re.sub(r"^,\s*(?=[a-zA-Z])", "ˌ", t)  # 行首逗号其实是次重音（`，tread`）
     # 重音符号有时被认成双引号（`"life`），行内只有这一个引号时才敢还原
     if t.count('"') == 1:
-        t = re.sub(r'(^|[\s(/])"(?=[a-zA-Z])', r"\1ˈ", t)
-    t = re.sub(r"(^|[\s(/)])'(?=[a-zA-Z])", r"\1ˈ", t)
+        t = re.sub(r'(^|[\s(/).,])"(?=[a-zA-Z])', r"\1ˈ", t)
+    t = re.sub(r"(^|[\s(/).,])'(?=[a-zA-Z])", r"\1ˈ", t)
     t = re.sub(r"(?<=[a-zA-Z])'(?!(?:t|ll|s|re|ve|d|m)\b)(?=[a-zA-Z])", "ˈ", t)
     return re.sub(r"\s+", " ", t).strip()
+
+
+def finalize(t):
+    """条目文本的收尾清理。只对已经判定是条目的行做，不影响判据。
+
+    - 次重音 ˌ：还原「逗号后面不留空格」的那种（`a,stiff` → `a ˌstiff`）。
+      真逗号后面一定有空格（`old-fashioned, BrE`），所以这条很安全。
+    - 重音号两侧丢空格（`tradeˈsecret`、`sb'sˈheels`）：只有当拼起来不是一个词、
+      而拆开的两半都是常用词时才补空格，`aˈback`、`beˈlieve` 这种词内重音要留着。
+    - 括号没配平就补上右括号。
+    """
+    t = re.sub(r"(?<=[a-zA-Z]),(?=[a-zA-Z])", " ˌ", t)
+    t = re.sub(r"([,.])(?=ˈ)", r"\1 ", t)     # `etc.ˈpath` / `carefully,ˈwarily`
+
+    def space(m):
+        a, b = m.group(1), m.group(2)
+        if zipf(a + b) >= 2.0 or zipf(b) < 2.0:
+            return m.group(0)
+        return f"{a} ˈ{b}"
+
+    t = re.sub(r"([a-zA-Z']+)ˈ([a-zA-Z]+)", space, t)
+    t += ")" * max(0, t.count("(") - t.count(")"))
+    return re.sub(r"\s+", " ", t).strip()
+
+
+CONFUSE = {"i": "l", "l": "i", "s": "g", "g": "s", "c": "e", "e": "c",
+           "a": "o", "o": "a", "u": "v", "v": "u", "0": "o", "1": "l", "5": "s"}
+
+
+def fix_word(w):
+    """关键词的 OCR 错字纠正：`iuck`→`luck`、`sood`→`good`、`CUstomer`→`customer`。
+
+    先试小写形式，再试单字符的形近替换，取词频最高的那个；都不认识就保持原样。
+    """
+    if len(w) < 3:
+        return w
+    if w.isupper():                          # 真缩写（ABC、AWOL）保持大写，
+        return w if zipf(w) < 3.0 else w.lower()   # COP/COW 这种是 OCR 大写化
+    if zipf(w) >= 2.0:                       # zipf() 本身不区分大小写
+        return w.lower()
+    best, score = w, zipf(w)
+    low = w.lower()
+    for i, ch in enumerate(low):
+        if ch not in CONFUSE:
+            continue
+        cand = low[:i] + CONFUSE[ch] + low[i + 1:]
+        if zipf(cand) > score:
+            best, score = cand, zipf(cand)
+    return best
+
+
+def zipf(w):
+    from wordfreq import zipf_frequency
+    return zipf_frequency(w.replace("'", "").lower(), "en")
 
 
 def columns(page):
@@ -79,7 +142,35 @@ def columns(page):
     body = [l for l in page["lines"] if l["y"] > 0.055]
     left = [l for l in body if l["x"] < 0.5]
     right = [l for l in body if l["x"] >= 0.5]
-    return [sorted(c, key=lambda l: l["y"]) for c in (left, right)]
+    return [merge_rows(sorted(c, key=lambda l: l["y"])) for c in (left, right)]
+
+
+def merge_rows(col, tol=0.006):
+    """把同一行被切碎的几块拼回去。
+
+    Vision 经常把一行吐成好几段（`used` / `when you` / `are emphasizing that sth is`），
+    彼此 y 只差千分之几；不合并的话按 y 排序会把语序彻底打乱，正文就没法用了。
+    """
+    out = []
+    for line in col:
+        row = out[-1] if out else None
+        # 同一行的碎片必须横向排开、互不重叠；只看 y 会把上下两行也并到一起，
+        # 关键词行首当其冲（大字号的 y 偏移大），一并就整条词条丢了
+        # 大字号且本身就是个「词 + 音标」的片段，一定是关键词，绝不并进上一行
+        solo = line["h"] >= HEAD_H and HEAD_RE.match(line["t"].strip())
+        if (row and not solo and line["y"] - row["y"] < tol
+                and line["x"] >= row["_right"] - 0.01):
+            row["_frag"].append((line["x"], line["t"]))
+            row["_right"] = max(row["_right"], line["x"] + line["w"])
+            row["h"] = max(row["h"], line["h"])
+            row["x"] = min(row["x"], line["x"])
+            continue
+        out.append(dict(line, _frag=[(line["x"], line["t"])],
+                        _right=line["x"] + line["w"]))
+    for row in out:
+        row["t"] = " ".join(t for _, t in sorted(row.pop("_frag")))
+        row.pop("_right")
+    return out
 
 
 def is_headword(line, t, col_x0):
@@ -90,8 +181,10 @@ def is_headword(line, t, col_x0):
     """
     if CJK.search(t) or line["x"] > col_x0 + 0.03:
         return False
+    if re.fullmatch(r"([A-Za-z])\1", t, re.I):   # `Aa` `Bb` 是字母分节标题
+        return False
     m = HEAD_RE.match(t)
-    return bool(m) and (bool(m.group(2)) or line["h"] >= HEAD_H)
+    return bool(m) and (bool(m.group(3)) or line["h"] >= HEAD_H)
 
 
 def is_idiom(line, t, col_x0, prev):
@@ -104,13 +197,17 @@ def is_idiom(line, t, col_x0, prev):
         return False
     if is_xref(t):
         return False
-    if t.endswith((",", ";", ":", "-")):     # 半句，肯定是正文折行
+    # 以逗号收尾且括号还没配平的，是标签写不下换了行
+    # （`ahead of/behind the ˈcurve (especially AmE,`），要留给后面的合并逻辑
+    if t.endswith((",", ";", ":")) and t.count("(") <= t.count(")"):
         return False
+    if re.search(r"\b(ORIGIN|NOTE|OPP|SEE|SYN)\b", t) or "(=" in t:
+        return False                         # 说明框标题、词源框里的释义
     if re.match(r"^\d", t):                  # 「1 used when asking...」是义项编号
         return False
     if re.match(r"^[（(][^）)]{1,18}[）)]$", t):  # 只剩 (saying) 这种标签的续行
         return False
-    if t.count('"') >= 2 or re.search(r"[.?!]['\"”]", t):   # 成对引号 = 例句
+    if t.count('"') >= 2 or re.search(r"[.?!]['\"”’]", t):  # 成对引号 = 例句
         return False
     if re.search(r"[a-z][.?!] +[A-Z]", t):   # 句中断句 = 例句
         return False
@@ -127,10 +224,11 @@ def is_idiom(line, t, col_x0, prev):
         return False
     # 没有重音符号的条目（`be about to do sth`）短而干净；释义折行则长、且多以
     # 连词/关系词起头，靠这两条把「上一条正好以句号收尾」造成的误判挡掉
+    # 只挡连词/关系词打头的折行。别把 the / it / you 之类也挡掉——
+    # `the curtain comes down on sth`、`you can bet…` 都是正经条目
     return len(t) <= 48 and not re.match(
-        r"^(that|which|who|whom|whose|and|but|or|so|because|when|while|if|"
-        r"than|then|there|here|this|these|those|it|they|he|she|you|we|"
-        r"used|especially|usually|often|sometimes|permission|the)\b", t, re.I)
+        r"^(that|which|who|whom|whose|and|but|because|while|than|"
+        r"used|especially|usually|often|sometimes|permission)\b", t, re.I)
 
 
 def parse_page(page):
@@ -149,9 +247,7 @@ def parse_page(page):
                 continue
             if is_headword(line, t, col_x0):
                 m = HEAD_RE.match(t)
-                w = m.group(1).strip()
-                if len(w) > 2 and w[0].isupper() and w[1:].islower():
-                    w = w.lower()            # OCR 常把词首字母认成大写
+                w = fix_word(m.group(1).strip())
                 out.append({"kind": "head", "word": w,
                             "ipa": (m.group(2) or "").strip(), "col": col_i})
                 prev = "head"
@@ -161,15 +257,20 @@ def parse_page(page):
                 # （`against your better judgement (especially` + `ˈjudgment)`），
                 # 括号没配平就把后面一两行接上来，别让续行单独成条
                 stop = i + 2
-                while t.count("(") > t.count(")") and i < len(col) and i < stop:
+                # 括号没配平、或行尾是断词连字符，都说明这一条还没写完
+                while (t.count("(") > t.count(")") or t.endswith(("-", ","))) \
+                        and i < len(col) and i < stop:
                     nxt = normalize(col[i]["t"])
                     # 别把关键词行或释义（带中文）吞进来：Vision 偶尔把大字号关键词
                     # 的 y 算得比它下面的条目行还大，排序后就插在中间
-                    if CJK.search(nxt) or is_headword(col[i], nxt, col_x0):
+                    # 括号里塞不下的只会是短标签；接到一长串小写英文说明括号是
+                    # OCR 弄丢的（`(informaf` ），再接下去就会把释义整段吞进来
+                    if (CJK.search(nxt) or is_headword(col[i], nxt, col_x0)
+                            or (len(nxt) > 35 and nxt[:1].islower())):
                         break
-                    t += " " + nxt
+                    t = t[:-1] + nxt if t.endswith("-") else t + " " + nxt
                     i += 1
-                out.append({"kind": "idiom", "text": t, "col": col_i})
+                out.append({"kind": "idiom", "text": finalize(t), "col": col_i})
             prev = t
     return out
 

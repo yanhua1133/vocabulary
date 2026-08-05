@@ -1,48 +1,70 @@
 # 牛津习语词典 进度
 
-更新：2026-08-05（第一步「列出词条」完成）
+更新：2026-08-05（成品已交付）
 
 ## 结果在哪看
-- **`out/词条清单.md`** ← 3654 个关键词、7893 条习语，按书内页码顺序
-- `data/entries.json` ← 同样的内容，机器可读（含 OCR 原样音标）
-- `data/ocr/pNNN.json` ← 630 页的整页 OCR 结果，带每行 bbox，后续都从这里取数
+- **`out/牛津习语词典.md`** ← 成品，四列：**单词 / 习语 / 中文解释 / 例句**
+  3541 个单词、7505 条习语，释义和例句 100% 经过校对重写
+- `out/词条清单.md` ← 只有单词和习语的骨架清单，方便快速翻检
+- `data/idioms.json` ← 机器可读的结构（含从扫描件抽出的原书释义和例句）
+- `data/cache.json` ← 子 agent 校对/重写后的 7609 条 `{i, cn, e}`
+- `data/ocr/pNNN.json` ← 630 页整页 OCR，带每行 bbox，所有后续步骤都从这里取数
+- 校验：`../../.venv/bin/python scripts/08_audit.py`（当前 25 条问题 / 7505，0.3%）
 
 ## 原书情况
-- 630 页，260 MB，FreePic2Pdf 生成的**纯扫描件**：每页一张 JPEG，没有任何文字层，
-  只能 OCR（这点跟 GRE3000 不同，那本是文字层被字形混淆，能无损解码）。
-- **原书 PDF 不进版本库**（超过 GitHub 单文件 100 MB 上限），只留在本地，已写进 `.gitignore`。
+- 630 页，260 MB，FreePic2Pdf 生成的**纯扫描件**：每页一张 JPEG，没有文字层，只能 OCR
+  （跟 GRE3000 不同，那本是文字层被字形混淆，能无损解码）。
+- **原书 PDF 不进版本库**（超 GitHub 单文件 100 MB 上限），只在本地，已写进 `.gitignore`。
 - PDF 第 18 页 = 书内页码 1，正文到 PDF 第 621 页 = 书内 604 页。
-- 双栏排版，每栏三类行：关键词（大字号 + 音标）、习语条目（加粗 + 重音符号）、
+- 双栏，每栏三类行：关键词（大字号 + 音标）、习语条目（加粗 + 重音符号 ˈ/ˌ）、
   交叉引用（`• easy → (as) easy as ABC`）。
 
 ## 管线
 ```
-../../.venv/bin/python scripts/01_ocr.py        # 整页 OCR → data/ocr/
-../../.venv/bin/python scripts/03_gapfill.py    # 补回 Vision 漏掉的整行
-../../.venv/bin/python scripts/02_entries.py    # 抽词条 → data/entries.json + out/
+cd books/oxford-idioms
+../../.venv/bin/python scripts/01_ocr.py       # 整页 OCR → data/ocr/
+../../.venv/bin/python scripts/03_gapfill.py   # 补回 Vision 漏掉的整行（补了 1834 行）
+../../.venv/bin/python scripts/02_entries.py   # 抽词条骨架 → data/entries.json
+../../.venv/bin/python scripts/04_expand.py    # 补原书释义/例句 → data/idioms.json
+../../.venv/bin/python scripts/05_batches.py   # 切批次 → work/batches/
+#   派 20 个子 agent，每个 7 批，按 prompts/INSTRUCTIONS.md 写 *.out.json
+../../.venv/bin/python scripts/06_merge.py     # 校验并入 → data/cache.json
+../../.venv/bin/python scripts/07_render.py    # 渲染成品 → out/牛津习语词典.md
+../../.venv/bin/python scripts/08_audit.py     # 确定性校验
 ```
 
 ## 踩过的坑（都写进脚本注释了，别踩第二遍）
-1. **OCR 用 macOS Vision，`language_preference` 第一位必须是 `zh-Hans`**。
-   写成 `en-US` 在前时中文整段丢失，只吐 `thiE#` 这种乱码。220dpi 够用，300dpi 不会更好。
-   机器上的 tesseract 只有 eng 语言包，不能用。
-2. **Vision 会静默丢整行**，丢的多半正好是加粗的习语条目行（p1 右栏
-   `absence makes the heart grow ˈfonder` 整行没输出）。靠「相邻行 y 间距 > 正常行距 1.75 倍」
-   检测，把空带单独裁出来用 `en-US` 重 OCR，全书补回 1834 行。
-3. **字重判据行不通**：Vision 的行 bbox 不够准，量笔画宽度时粗体反而比正文细。
-   改用版面规律——条目行只出现在关键词之后或上一条收尾之后，再叠加重音符号 ˈ。
-4. **重音符号 ˈ 被认成 ASCII 单引号，偶尔认成双引号**；次重音 ˌ 被认成逗号，
-   而英文正文里的逗号长得一模一样，**不能还原**，硬还原会把 `respect, etc.` 变成
-   `respectˌetc.` 再被当成条目，一下多召回 4000 多条垃圾。
-5. **交叉引用**的项目符号和箭头 OCR 得五花八门，但「箭头前那个词紧接着重复一次」
-   （`hedge hedge your bets`）是稳的。只能认**相邻**重复——放宽成「首词在后文任意位置重复」
-   会误杀 `the ˈbigger… the ˈbetter`、`for ˌbetter or (for) ˈworse`。
-6. **关键词不能只靠字号**：Vision 的行高逐页漂移，末页 `yore /jɔː(r)/` 的 h 跟同页正文
-   一样是 0.0147，卡 0.015 会整页漏光。改成「带音标的一律认，没音标的才看字号」。
+1. **OCR 用 macOS Vision，`language_preference` 第一位必须是 `zh-Hans`**，
+   写成 `en-US` 在前时中文整段丢失只吐乱码。220dpi 够用，300dpi 不会更好。
+   机器上的 tesseract 只装了 eng，不能用。
+2. **Vision 会静默丢整行**，丢的多半正好是加粗的习语条目行。靠「相邻行 y 间距 >
+   正常行距 1.75 倍」检测，把空带裁出来用 `en-US` 重 OCR，全书补回 1834 行。
+3. **Vision 还会把一行切成好几块**（`used` / `when you` / `are emphasizing…`），
+   y 只差千分之几。必须按行合并，否则按 y 排序会把语序打乱、正文没法用。
+   合并时要加两个保护：碎片必须横向不重叠；大字号的关键词片段绝不并进上一行——
+   少了这两条会一口气吞掉 160 多个关键词。
+4. **字重判据行不通**：Vision 的行 bbox 不够准，量笔画宽度时粗体反而比正文细。
+   改用版面规律（条目行只出现在关键词后或上一条收尾后）+ 重音符号 ˈ。
+5. **次重音 ˌ 被认成逗号**，跟英文正文里的逗号长得一模一样，判据阶段**不能还原**
+   （硬还原会把 `respect, etc.` 变成条目，多召回四千多条垃圾）；只在已确认是条目的
+   文本上，还原「逗号后不留空格」的那种（`a,stiff` → `a ˌstiff`）。
+6. **交叉引用**的项目符号和箭头 OCR 得五花八门，只能认「箭头前那个词紧挨着重复」
+   （`hedge hedge your bets`）。放宽成「首词在后文任意位置重复」会误杀
+   `the ˈbigger… the ˈbetter`、`for ˌbetter or (for) ˈworse`。
+7. **关键词不能只靠字号**：Vision 的行高逐页漂移，末页 `yore` 的 h 跟正文一样。
+   改成「音标斜杠齐全的一律认，其余才看字号」，另外结尾斜杠常被吃掉（`travel/travl`）。
+8. **别用「以 the 开头就不是条目」这种排除项**——`the curtain comes down on sth`
+   就是正经条目。只挡 that/which/and/but 这类连词关系词。
+9. 关键词的 OCR 错字用 wordfreq 兜底纠正（`iuck`→`luck`、`sood`→`good`、
+   `CUstomer`→`customer`），全大写的要留住真缩写（ABC、AWOL）。
 
-## 已知缺口（下一步「展开」时处理）
-- **音标质量差**：中文优先的 OCR 把 IPA 认得很烂（`/əˈbæk/` → `/abaek/`）。
-  修法跟补漏行一样——把关键词行单独裁出来用 `en-US` 重 OCR。
-- 少量条目被排版断成两行后没能拼回（`against your better judgement (especially` /
-  `ˈjudgment)`），页眉词偶尔会被吞进相邻条目。
-- 释义、例句、中文翻译都还没抽，`data/ocr/` 里有全部原始行，展开时按同样的版面规律切。
+## 抽样复核记录（派独立 agent 看扫描图逐条对）
+- 第一轮（p500、p550）：召回 93.3%，精度 87.5% —— 暴露出条目断行截断、交叉引用漏过滤等问题。
+- 修完管线后（p100、p300）：这两页的条目**全部抽到**，关键词 17/17 全对。
+
+## 已知缺口
+- 5 条关键词的音标残片被当成了条目（`ˈa:rmtʃer; a:rmˈtʃer/`），渲染时已按形状过滤掉
+  一部分，剩下的靠 `08_audit.py` 报出来。
+- 20 条例句里没直接出现习语的实词，多数是模型换了近义说法。
+- 音标整体没做：中文优先的 OCR 把 IPA 认得很差，成品里干脆不列。要补的话，
+  跟补漏行同一个办法——把关键词行单独裁出来用 `en-US` 重 OCR。

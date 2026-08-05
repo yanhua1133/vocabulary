@@ -9,8 +9,11 @@ work/
 .DS_Store
 
 # 牛津习语词典原书 260 MB，超过 GitHub 单文件 100 MB 上限，只留在本地
-books/oxford-idioms/牛津习语词典.pdf
+oxford-idioms/牛津习语词典.pdf
 
 # 另外两本原书也超 GitHub 单文件 100 MB 上限，只留在本地
-books/oxford-collocations/牛津搭配词典.pdf
-books/oxford-phrasal-verbs/牛津短语动词词典.pdf
+oxford-collocations/牛津搭配词典.pdf
+oxford-phrasal-verbs/牛津短语动词词典.pdf
+
+# 看版式用的临时样张
+*/_sample.pdf

@@ -411,7 +411,8 @@ def merge():
         src.close()
         print(f"  合入 {f} ({len(book)} 页)")
     book.set_toc(toc)
-    out = os.path.join(PDF, "GRE3000-合订本.pdf")
+    # 合订本放书目录顶层，名字带「重排版」——埋在 pdf/ 里跟 31 个分册混在一起找不着
+    out = os.path.join(ROOT, "GRE3000 重排版.pdf")
     book.set_metadata({"title": "GRE3000", "producer": "", "creator": "",
                        "author": "", "subject": "", "keywords": ""})
     book.save(out, garbage=4, deflate=True)

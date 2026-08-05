@@ -3,11 +3,11 @@
 更新：2026-08-04（四列版式 + 全书去重完成）
 
 ## 结果在哪看
-- **`pdf/GRE3000-合订本.pdf`** ← 全书一册，368 页 / 14 MB，带 List+Unit 两级书签（336 条）
+- **`GRE3000 重排版.pdf`**（书目录顶层） ← 全书一册，368 页 / 14 MB，带 List+Unit 两级书签（336 条）
 - `pdf/List1.pdf` ～ `pdf/List31.pdf` ← 分册版，方便单独打印
 - 开本：16 开 185×260mm 竖版
 - **`out/List1.md` ～ `out/List31.md`** ← Markdown 源，可在编辑器里搜索
-- 校验报告：`.venv/bin/python scripts/15_audit.py`（当前 0 问题）
+- 校验报告：`../.venv/bin/python scripts/15_audit.py`（当前 0 问题）
 - 数据源：`data/book.json`（原书结构）、`data/words.json`（每词字段）
 
 ## 状态：全部完成并通过校验

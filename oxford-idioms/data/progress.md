@@ -8,12 +8,12 @@
   例句 **4357 条用原书原文**，其余原书那句被 OCR 毁了、退回自拟（标「（自拟）」）
   常用度和口语度各 0-5 分，`★` 一颗 `☆` 半颗
   （原书 3569 个关键词里有 960 个只有交叉引用、本身不带条目）
-- **`pdf/牛津习语词典.pdf`** ← 打印版，241 页 / 6 MB，16 开 185×260mm 竖版，A-Z 书签 24 条
+- **`牛津习语词典 重排版.pdf`**（书目录顶层）← 打印版，241 页 / 6 MB，16 开 185×260mm 竖版，A-Z 书签 24 条
 - `out/词条清单.md` ← 只有单词和习语的骨架清单，方便快速翻检
 - `data/idioms.json` ← 机器可读的结构（含从扫描件抽出的原书释义和例句）
 - `data/cache.json` ← 子 agent 校对/重写后的 7609 条 `{i, cn, e}`
 - `data/ocr/pNNN.json` ← 630 页整页 OCR，带每行 bbox，所有后续步骤都从这里取数
-- 校验：`../../.venv/bin/python scripts/08_audit.py`（当前 37 条问题 / 6956，0.5%）
+- 校验：`../.venv/bin/python scripts/08_audit.py`（当前 37 条问题 / 6956，0.5%）
   校验脚本直接复用 `07_render.py::final_rows`，查的就是成品本身而不是中间数据
 
 ## 原书情况
@@ -26,23 +26,23 @@
 
 ## 管线
 ```
-cd books/oxford-idioms
-../../.venv/bin/python scripts/01_ocr.py       # 整页 OCR → data/ocr/
-../../.venv/bin/python scripts/03_gapfill.py   # 补回 Vision 漏掉的整行（补了 1834 行）
-../../.venv/bin/python scripts/02_entries.py   # 抽词条骨架 → data/entries.json
-../../.venv/bin/python scripts/04_expand.py    # 补原书释义/例句 → data/idioms.json
-../../.venv/bin/python scripts/05_batches.py   # 切批次 → work/batches/
+cd oxford-idioms
+../.venv/bin/python scripts/01_ocr.py       # 整页 OCR → data/ocr/
+../.venv/bin/python scripts/03_gapfill.py   # 补回 Vision 漏掉的整行（补了 1834 行）
+../.venv/bin/python scripts/02_entries.py   # 抽词条骨架 → data/entries.json
+../.venv/bin/python scripts/04_expand.py    # 补原书释义/例句 → data/idioms.json
+../.venv/bin/python scripts/05_batches.py   # 切批次 → work/batches/
 #   派 20 个子 agent，每个 7 批，按 prompts/INSTRUCTIONS.md 写 *.out.json
-../../.venv/bin/python scripts/06_merge.py     # 校验并入 → data/cache.json
-../../.venv/bin/python scripts/10_clean_ex.py  # 清理原书例句 → data/examples.json
-../../.venv/bin/python scripts/11_score_batches.py  # 打分批次 → work/scores/
+../.venv/bin/python scripts/06_merge.py     # 校验并入 → data/cache.json
+../.venv/bin/python scripts/10_clean_ex.py  # 清理原书例句 → data/examples.json
+../.venv/bin/python scripts/11_score_batches.py  # 打分批次 → work/scores/
 #   派 10 个子 agent，按 prompts/INSTRUCTIONS_SCORE.md 打常用度/口语度
-../../.venv/bin/python scripts/12_merge_scores.py   # 并入 → data/scores.json
-../../.venv/bin/python scripts/09_lost.py      # 捞回被挤掉的条目 → work/lost.json
+../.venv/bin/python scripts/12_merge_scores.py   # 并入 → data/scores.json
+../.venv/bin/python scripts/09_lost.py      # 捞回被挤掉的条目 → work/lost.json
 #   再派 1 个子 agent 甄别并补全，结果放 data/lost.json
-../../.venv/bin/python scripts/07_render.py    # 渲染成品 → out/牛津习语词典.md
-../../.venv/bin/python scripts/08_audit.py     # 确定性校验
-../../.venv/bin/python scripts/13_pdf.py       # 排 PDF（--sample 只排前 200 条看版式）
+../.venv/bin/python scripts/07_render.py    # 渲染成品 → out/牛津习语词典.md
+../.venv/bin/python scripts/08_audit.py     # 确定性校验
+../.venv/bin/python scripts/13_pdf.py       # 排 PDF（--sample 只排前 200 条看版式）
 ```
 
 ## 踩过的坑（都写进脚本注释了，别踩第二遍）

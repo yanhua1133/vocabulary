@@ -9,8 +9,8 @@ description: |
 
 # GRE3000 词表重排
 
-**工作目录：`books/gre3000/`**（每本书一个目录，仓库根只放 `.venv/` 和 `.claude/`）。
-下文所有相对路径都相对它，命令一律先 `cd books/gre3000`，解释器用 `../../.venv/bin/python`。
+**工作目录：`gre3000/`**（仓库根下每本书一个目录，另外只有 `.venv/` 和 `.claude/`）。
+下文所有相对路径都相对它，命令一律先 `cd gre3000`，解释器用 `../.venv/bin/python`。
 
 原书结构：31 个 List × 10 个 Unit × 10 个词头（约 2970 词条；连同近义词/反义词共约 11600 个不同单词）。
 
@@ -23,18 +23,18 @@ description: |
 | `/gre3000 build all` | 对 `data/todo_llm.json` 里还有缺口的 List 依次执行同样流程。 |
 | `/gre3000 verify` | 跑 `scripts/15_audit.py`，只报数字。 |
 | `/gre3000 pdf [N]` | 跑 `scripts/18_pdf.py [N]` → `pdf/List<N>.pdf`（playwright 打印，16 开 185×260mm 竖版）。 |
-| `/gre3000 pdf merge` | 跑 `scripts/18_pdf.py --merge` → `pdf/GRE3000-合订本.pdf`，带 List/Unit 两级书签。 |
+| `/gre3000 pdf merge` | 跑 `scripts/18_pdf.py --merge` → `GRE3000 重排版.pdf`，带 List/Unit 两级书签。 |
 | `/gre3000 fix "<抱怨>"` | 按用户指出的问题修，重渲染那个 List，把改好的行贴出来。 |
 
 ### `build <N>` 的执行步骤
 
 ```
-cd books/gre3000
-../../.venv/bin/python scripts/13_llm_batches.py <N> 45   # 生成 work/batches/L<N>_*.json
+cd gre3000
+../.venv/bin/python scripts/13_llm_batches.py <N> 45   # 生成 work/batches/L<N>_*.json
 # 在同一条消息里并行派发约 6 个 general-purpose 子 agent，每个负责 3 个批次文件
-../../.venv/bin/python scripts/14_merge_cache.py L<N>_    # 校验后并入 data/enrich_cache.json
-../../.venv/bin/python scripts/11_enrich.py
-../../.venv/bin/python scripts/12_render.py <N>
+../.venv/bin/python scripts/14_merge_cache.py L<N>_    # 校验后并入 data/enrich_cache.json
+../.venv/bin/python scripts/11_enrich.py
+../.venv/bin/python scripts/12_render.py <N>
 ```
 
 给子 agent 的任务说明：读取批次文件（`{word, pos, cn, related_to, need}` 的 JSON 数组），

@@ -19,8 +19,11 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "out")
-PDF = os.path.join(ROOT, "pdf")
+# 成品直接放在书目录顶层，名字带「重排版」跟同目录的原书区分开——
+# 埋在 pdf/ 子目录里、又跟原书同名，找起来太费劲
+PDF = ROOT
 WORK = os.path.join(ROOT, "work", "html")
+FINAL = "牛津习语词典 重排版.pdf"
 PAGE = {"width": "185mm", "height": "260mm",
         "margin": {"top": "13mm", "bottom": "13mm", "left": "11mm",
                    "right": "11mm"}}
@@ -203,13 +206,13 @@ def main():
     os.makedirs(PDF, exist_ok=True)
     os.makedirs(WORK, exist_ok=True)
     md = open(os.path.join(OUT, "牛津习语词典.md")).read()
-    if "--sample" in sys.argv:                # 只排前 200 条，用来看版式
+    if "--sample" in sys.argv:                # 只排前 200 条，用来看版式（临时文件）
         rows = re.findall(r"<tr>.*?</tr>", md, re.S)
         md = (md.split("<table>")[0] + "<table>" + rows[0]
               + "".join(rows[1:201]) + "</table>")
         name = "_sample"
     else:
-        name = "牛津习语词典"
+        name = FINAL[:-4]
     html_path = os.path.join(WORK, f"{name}.html")
     open(html_path, "w").write(md_to_html(md, name))
     pdf_path = os.path.join(PDF, f"{name}.pdf")

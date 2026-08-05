@@ -17,7 +17,7 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
-CJK = re.compile(r"[\u4e00-\u9fff]")
+CJK = re.compile(r"[\u4e00-\u9fff]")   # .findall 数汉字，.search 判有无
 TRUNC = re.compile(r"\b(a|an|the|of|to|in|on|at|for|with|and|or|from|by|"
                    r"that|his|her|my|your|their|is|are|was|were)$", re.I)
 
@@ -54,8 +54,17 @@ def clean_cn(t):
 
 
 def usable(en, cn, idiom):
-    """够不够格用作例句：完整句、有中译、且真的用上了这条习语。"""
+    """够不够格用作例句：完整句、中译完整、且真的用上了这条习语。"""
     if len(en.split()) < 4 or not CJK.search(cn):
+        return False
+    # 中译长度必须跟英文对得上。原书的中译经常跨行，而抽取时只抓到了头一个字
+    # （`…it was like apples and oranges.` 的中译只剩一个「他」），
+    # 这种残缺宁可整条弃用、退回自拟例句，也不能印到书上
+    if len(CJK.findall(cn)) < max(4, len(en.split()) * 0.45):
+        return False
+    # 太长的排不进两行。PDF 里每格最多两行，例句列一行约 78 个半角宽，
+    # 超过这个量只能把字号压到 4pt 以下，还不如换成自拟的那句短例句
+    if sum(2 if ord(c) > 0x2e80 else 1 for c in en + cn) > 170:
         return False
     if not en[0].isupper():
         return False

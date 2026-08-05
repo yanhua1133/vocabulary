@@ -69,6 +69,10 @@ def fragment(idiom, score):
     # 所以反过来左多右少不会出现，这条判据很安全
     if idiom.count(")") > idiom.count("("):
         return True
+    # `> Investors are wary of getting into bed with an get out of bed on the
+    # wrong ˈside` 这种，是正文碎片跟条目粘在一起了，开头那个 > 是原书的例句标记
+    if idiom.lstrip().startswith((">", "◇", "»")):
+        return True
     if not score or score.get("u", 9) > 1:
         return False
     return ("ˈ" not in idiom and "ˌ" not in idiom
@@ -82,6 +86,29 @@ def load_scores():
 
 def cell(s):
     return (s or "").replace("|", "／").replace("\n", " ").strip()
+
+
+# 习语里的次要成分：语域标签，以及 (also …)/(or …) 这类变体写法
+TAGS_RE = re.compile(
+    r"(\((?:also|or)\s[^)]*\)"
+    r"|\((?:especially |usually |also |or )?"
+    r"(?:BrE|AmE|informal|formal|spoken|saying|literary|humorous|disapproving|"
+    r"approving|old-fashioned|old use|slang|written|figurative|taboo|law|"
+    r"AustralE|NZE)[^)]*\))")
+
+
+def shrink_tags(idiom):
+    """把习语后面的语域标签和 also 变体包起来，排 PDF 时用更小的字号。
+
+    `against your better ˈjudgement (especially BrE) (AmE usually against your
+    ˈjudgment)`、`get your ˈact together ◆ get sth/it toˈgether (informal)
+    (also get/have your ˈshit together)` 这种，括号里的比习语本身还长。
+    这些都是次要信息，缩小它们就能把整条压进两行，不用整体缩到看不清、
+    也不用占第三行。
+
+    注意要一次 sub 完，分两次包会产生嵌套 span、把后一个正则的匹配搞坏。
+    """
+    return TAGS_RE.sub(r'<span class="tag">\1</span>', idiom)
 
 
 def strip_marker(idiom):
@@ -522,7 +549,7 @@ def main():
         else:
             rank = ""
         ex = f"{cell(en_ex)}<br>{cell(cn_ex)}" if cn_ex else cell(en_ex)
-        lines.append(f"<tr><td><b>{cell(strip_marker(idiom))}</b></td>"
+        lines.append(f"<tr><td><b>{shrink_tags(cell(strip_marker(idiom)))}</b></td>"
                      f"<td>{cell(cn)}</td><td>{rank}</td><td>{ex}</td></tr>")
     lines.append("</table>\n")
     p = os.path.join(OUT, "牛津习语词典.md")

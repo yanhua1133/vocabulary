@@ -27,7 +27,11 @@ PAGE = {"width": "185mm", "height": "260mm",
 
 SHRINK_JS = """
 () => {
-  const MIN = 4.2 * 96 / 72;
+  // 每列的字号下限分开定。习语列里有几十条带三四个变体的超长条目
+  // （`get your ˈact together ◆ get sth/it toˈgether (informal) (also
+  // get/have your ˈshit together)`），要压进两行只能让它比别处小得多；
+  // 好在这些都是英文，小字比中文耐看。中文那两列绝不能低于 4.6pt
+  const MIN_BY_COL = [2.9 * 96 / 72, 4.6 * 96 / 72, 4.6 * 96 / 72, 4.4 * 96 / 72];
   let over = 0;
   const rows = (td) => {
     const r = document.createRange();
@@ -40,6 +44,7 @@ SHRINK_JS = """
     return n;
   };
   const shrink = (td) => {                    // 返回 false 表示已到字号下限
+    const MIN = MIN_BY_COL[td.cellIndex] || 4.4 * 96 / 72;
     for (const el of [td, ...td.querySelectorAll('*')]) {
       const s = parseFloat(getComputedStyle(el).fontSize) * 0.93;
       if (s < MIN) return false;
@@ -51,10 +56,7 @@ SHRINK_JS = """
     // 例句列最宽、内容也最长，允许三行；其余三列压两行
     // （都卡两行的话例句会被缩到 4pt 上下，根本没法看）
     if (td.colSpan > 1) return;               // 字母分隔行
-    // 列宽调匀之后四列基本都能压进两行；只有习语列里那些带 BrE/AmE 变体的
-    // 超长条目（`against your better ˈjudgement (especially BrE) (AmE usually…`）
-    // 放不下，给它留第三行——占比不到 1%，比缩到 4.2pt 看不清强
-    const MAX = td.cellIndex === 0 ? 3 : 2;
+    const MAX = 2;                            // 四列一律两行，不许出现第三行
     let guard = 0;
     while (rows(td) > MAX && guard++ < 40 && shrink(td)) {}
     if (rows(td) > MAX) {
@@ -92,12 +94,16 @@ tr.sec td { background: #0b6fa4; color: #fff; font-size: 9pt; font-weight: bold;
 /* 列宽按各列实际内容量分配（平均半角宽 30 / 19 / 6 / 108），
    目标是四列都刚好两行、行高整齐。原来 21/17/55 的分法前两列大量留白，
    例句列却要挤三行、还被缩到 4pt */
-th:nth-child(1), td:nth-child(1) { width: 17%; }
-th:nth-child(2), td:nth-child(2) { width: 10%; }
-th:nth-child(3), td:nth-child(3) { width: 9%; color: #d48806; font-size: 6pt;
-                                   letter-spacing: -0.5px; white-space: nowrap; }
-th:nth-child(4), td:nth-child(4) { width: 64%; color: #333; }
+th:nth-child(1), td:nth-child(1) { width: 22%; }
+th:nth-child(2), td:nth-child(2) { width: 12%; }
+/* 星级列 nowrap 是为了不让星号断行，那它就必须留够宽度——
+   宽度不够时 nowrap 会把整张表撑破，最后一列被顶出纸面 */
+th:nth-child(3), td:nth-child(3) { width: 11%; color: #d48806; font-size: 6pt;
+                                   letter-spacing: -0.4px; white-space: nowrap; }
+th:nth-child(4), td:nth-child(4) { width: 55%; color: #333; }
 .lab { color: #999; font-size: 5.2pt; margin-right: 1px; }
+/* 语域标签是次要信息，缩小它好把长条目压进两行 */
+.tag { font-size: 0.72em; color: #777; font-weight: normal; }
 """
 
 

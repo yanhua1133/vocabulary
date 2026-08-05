@@ -6,3 +6,7 @@ __pycache__/
 
 # 中间产物：字形裁图、批次文件、打印用 html，均可由脚本重新生成
 work/
+.DS_Store
+
+# 牛津习语词典原书 260 MB，超过 GitHub 单文件 100 MB 上限，只留在本地
+books/oxford-idioms/牛津习语词典.pdf

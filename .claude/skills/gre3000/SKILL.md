@@ -9,6 +9,9 @@ description: |
 
 # GRE3000 词表重排
 
+**工作目录：`books/gre3000/`**（每本书一个目录，仓库根只放 `.venv/` 和 `.claude/`）。
+下文所有相对路径都相对它，命令一律先 `cd books/gre3000`，解释器用 `../../.venv/bin/python`。
+
 原书结构：31 个 List × 10 个 Unit × 10 个词头（约 2970 词条；连同近义词/反义词共约 11600 个不同单词）。
 
 ## 命令
@@ -26,11 +29,12 @@ description: |
 ### `build <N>` 的执行步骤
 
 ```
-.venv/bin/python scripts/13_llm_batches.py <N> 45      # 生成 work/batches/L<N>_*.json
+cd books/gre3000
+../../.venv/bin/python scripts/13_llm_batches.py <N> 45   # 生成 work/batches/L<N>_*.json
 # 在同一条消息里并行派发约 6 个 general-purpose 子 agent，每个负责 3 个批次文件
-.venv/bin/python scripts/14_merge_cache.py L<N>_       # 校验后并入 data/enrich_cache.json
-.venv/bin/python scripts/11_enrich.py
-.venv/bin/python scripts/12_render.py <N>
+../../.venv/bin/python scripts/14_merge_cache.py L<N>_    # 校验后并入 data/enrich_cache.json
+../../.venv/bin/python scripts/11_enrich.py
+../../.venv/bin/python scripts/12_render.py <N>
 ```
 
 给子 agent 的任务说明：读取批次文件（`{word, pos, cn, related_to, need}` 的 JSON 数组），

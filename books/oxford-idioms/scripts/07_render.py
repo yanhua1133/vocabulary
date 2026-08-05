@@ -67,6 +67,47 @@ def fabricated(raw, final):
     return m.size < min(6, len(a), len(b))
 
 
+STEM = re.compile(r"(ies|es|s|ing|ed)$")
+# 判断关键词时要跳过的虚词
+FUNC = {"the", "a", "an", "of", "to", "in", "on", "at", "for", "with", "and",
+        "or", "be", "is", "are", "was", "were", "do", "does", "did", "have",
+        "has", "had", "not", "no", "it", "its", "you", "your", "sb", "sth",
+        "sbs", "sths", "one", "ones", "as", "so", "that", "this", "up", "out",
+        "off", "down", "over", "into", "from", "by", "about", "all", "etc",
+        "my", "his", "her", "their", "our", "me", "him", "them", "us", "if"}
+
+
+def bare(t):
+    return re.sub(r"[ˈˌ]", "", t).lower()
+
+
+def fix_group_word(word, idioms):
+    """整组条目都不含这个关键词时，说明关键词认错了或整组挂错了地方。
+
+    牛津的条目一定含它所属的关键词，所以：
+    - 组里有跟它形近的词 → 是 OCR 错字（`albsence` → `absence`），照组里的写法改；
+    - 组里每一条都含同一个实词 → 那才是真关键词（关键词行被漏识别，条目挂到了
+      上一个关键词底下）；
+    - 都不满足就别猜，原样留着，交给 08_audit 报出来。
+    """
+    stem = STEM.sub("", word.lower())
+    bodies = [bare(t) for t in idioms]
+    if any(stem and stem in b for b in bodies):
+        return word
+    words = set(re.findall(r"[a-z']+", " ".join(bodies)))
+    close = difflib.get_close_matches(word.lower(), words, n=1, cutoff=0.75)
+    if close:
+        return close[0]
+    common = None
+    for w in re.findall(r"[a-z']+", bodies[0]):
+        if w in FUNC or len(w) < 3:
+            continue
+        if all(STEM.sub("", w) in b for b in bodies):
+            common = w
+            break
+    return common or word
+
+
 def is_continuation(nxt):
     """下一条看着像上一条的后半截：短，且以小写词或重音符号起头。"""
     n = (nxt or "").strip()
@@ -139,12 +180,27 @@ def final_rows(book, cache):
         rows.append((word if hid != last_hid else "",
                      idiom, cn, en_ex, cn_ex, from_cache))
         last_hid = hid
-    return rows, joined, dropped, made_up
+
+    # 关键词是按组给的，得先把整组收齐再判断这个词对不对
+    groups, cur = [], None
+    for i, r in enumerate(rows):
+        if r[0]:
+            cur = (i, [])
+            groups.append(cur)
+        if cur:
+            cur[1].append(r[1])
+    fixed = 0
+    for i, idioms in groups:
+        better = fix_group_word(rows[i][0], idioms)
+        if better != rows[i][0]:
+            rows[i] = (better,) + rows[i][1:]
+            fixed += 1
+    return rows, joined, dropped, made_up, fixed
 
 
 def main():
     book, cache = load()
-    rows, joined, dropped, made_up = final_rows(book, cache)
+    rows, joined, dropped, made_up, fixed = final_rows(book, cache)
     filled = sum(1 for r in rows if r[5])
 
     os.makedirs(OUT, exist_ok=True)
@@ -165,7 +221,7 @@ def main():
     open(p, "w").write("\n".join(lines))
     print(f"{words} 个单词，{len(rows)} 条习语（校对过 {filled} 条）")
     print(f"  拼回断行条目 {joined} 条，去掉重复/音标残片 {dropped} 条，"
-          f"剔除模型猜出来的 {made_up} 条")
+          f"剔除模型猜出来的 {made_up} 条，纠正关键词 {fixed} 个")
     print(p)
 
 

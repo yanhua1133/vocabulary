@@ -83,6 +83,11 @@ cd books/oxford-idioms
    补全（`ˈjudgment)` → `against your better ˈjudgement…`）和从例句还原
    （`the biter bit — she'd tried…` → `the biter ˈbit`）公共子串都很长，这些留着。
 
+5. **纠正认错的关键词** 71 个。牛津的条目一定含它所属的关键词，所以整组条目都不含
+   当前关键词时就有问题：组里有形近词的是 OCR 错字（`albsence`→`absence`、
+   `allive`→`alive`、`LI`→`labour`），组里每条都含同一个实词的说明关键词行被漏识别、
+   条目挂到了上一个关键词底下，改挂过去。两条都不满足就不猜，交给校验报出来。
+
 ## 已知缺口
 - 5 条关键词的音标残片被当成了条目（`ˈa:rmtʃer; a:rmˈtʃer/`），渲染时已按形状过滤掉
   一部分，剩下的靠 `08_audit.py` 报出来。

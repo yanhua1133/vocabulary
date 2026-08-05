@@ -121,13 +121,14 @@ def build(book, cache):
         for it in h["idioms"]:
             rec = cache.get(str(idx))
             idx += 1
+            body = bool(it["cn"] or it["ex_en"])   # 原书这条底下有没有释义正文
             if rec:
                 flat.append([hid, h["word"], rec["i"], rec["cn"], rec["e"], True,
-                             it["idiom"]])
+                             it["idiom"], body])
             else:
                 ex = f"{it['ex_en']}  {it['ex_cn']}" if it["ex_cn"] else it["ex_en"]
                 flat.append([hid, h["word"], it["idiom"], it["cn"], ex, False,
-                             it["idiom"]])
+                             it["idiom"], body])
     return flat
 
 
@@ -155,7 +156,7 @@ def final_rows(book, cache):
                 and is_continuation(nxt[2])):
             merged.append([cur[0], cur[1], f"{cur[2].strip()} {nxt[2].strip()}",
                            nxt[3] or cur[3], nxt[4] or cur[4], cur[5],
-                           cur[6] + " " + nxt[6]])
+                           cur[6] + " " + nxt[6], cur[7] or nxt[7]])
             joined += 1
             i += 2
             continue
@@ -165,7 +166,7 @@ def final_rows(book, cache):
     # 2) 同一个单词下的重复条目只留一条，音标残片直接扔掉
     rows, dropped, made_up, last_hid = [], 0, 0, None
     seen = set()
-    for hid, word, idiom, cn, ex, from_cache, raw in merged:
+    for hid, word, idiom, cn, ex, from_cache, raw, body in merged:
         if hid != last_hid:
             seen = set()
         key = re.sub(r"[^a-z]", "", idiom.lower())
@@ -177,8 +178,8 @@ def final_rows(book, cache):
             continue
         seen.add(key)
         en_ex, _, cn_ex = ex.partition("  ")
-        rows.append((word if hid != last_hid else "",
-                     idiom, cn, en_ex, cn_ex, from_cache))
+        rows.append([word if hid != last_hid else "",
+                     idiom, cn, en_ex, cn_ex, from_cache, body])
         last_hid = hid
 
     # 关键词是按组给的，得先把整组收齐再判断这个词对不对
@@ -193,14 +194,35 @@ def final_rows(book, cache):
     for i, idioms in groups:
         better = fix_group_word(rows[i][0], idioms)
         if better != rows[i][0]:
-            rows[i] = (better,) + rows[i][1:]
+            rows[i][0] = better
             fixed += 1
-    return rows, joined, dropped, made_up, fixed
+
+    # 同一条习语挂在两个关键词下（一处是正文，另一处是交叉引用被还原成了条目）。
+    # 保留原书底下有释义正文的那条——交叉引用行下面是空的
+    best = {}
+    for i, r in enumerate(rows):
+        k = re.sub(r"[^a-z]", "", r[1].lower())
+        if k not in best or (r[6] and not rows[best[k]][6]):
+            best[k] = i
+    kept, cross = [], 0
+    for i, r in enumerate(rows):
+        k = re.sub(r"[^a-z]", "", r[1].lower())
+        if best[k] != i:
+            cross += 1
+            if r[0]:                     # 组首被删掉时，单词标记交给下一行
+                for j in range(i + 1, len(rows)):
+                    if best[re.sub(r"[^a-z]", "", rows[j][1].lower())] == j:
+                        if not rows[j][0]:
+                            rows[j][0] = r[0]
+                        break
+            continue
+        kept.append(tuple(r[:6]))
+    return kept, joined, dropped, made_up, fixed, cross
 
 
 def main():
     book, cache = load()
-    rows, joined, dropped, made_up, fixed = final_rows(book, cache)
+    rows, joined, dropped, made_up, fixed, cross = final_rows(book, cache)
     filled = sum(1 for r in rows if r[5])
 
     os.makedirs(OUT, exist_ok=True)
@@ -221,7 +243,8 @@ def main():
     open(p, "w").write("\n".join(lines))
     print(f"{words} 个单词，{len(rows)} 条习语（校对过 {filled} 条）")
     print(f"  拼回断行条目 {joined} 条，去掉重复/音标残片 {dropped} 条，"
-          f"剔除模型猜出来的 {made_up} 条，纠正关键词 {fixed} 个")
+          f"剔除模型猜出来的 {made_up} 条，纠正关键词 {fixed} 个，"
+          f"合并跨词条重复 {cross} 条")
     print(p)
 
 

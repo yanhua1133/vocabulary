@@ -178,18 +178,29 @@ def final_rows(book, cache):
 
     # 2) 同一个单词下的重复条目只留一条，音标残片直接扔掉
     rows, dropped, made_up, last_hid = [], 0, 0, None
-    seen = set()
+    seen = {}
     for hid, word, idiom, cn, ex, from_cache, raw, body in merged:
         if hid != last_hid:
-            seen = set()
+            seen = {}
         key = re.sub(r"[^a-z]", "", idiom.lower())
-        if not key or key in seen or junk(idiom):
+        if not key or junk(idiom):
             dropped += 1
             continue
         if fabricated(raw, idiom):
             made_up += 1
             continue
-        seen.add(key)
+        if key in seen:
+            # 同一条在组里出现两次时，留下**原书底下有正文**的那条。
+            # 先入为主会出事：`a ˌbird in the ˈhand…` 被拆成两行、两半都补成了
+            # 整条，前一半没正文；留下它，后面的去重又会因为它没正文把它删掉，
+            # 整条习语就只剩交叉引用那个没有重音符号的版本了
+            j = seen[key]
+            if body and not rows[j][6]:
+                en2, _, cn2 = ex.partition("  ")
+                rows[j] = [rows[j][0], idiom, cn, en2, cn2, from_cache, body]
+            dropped += 1
+            continue
+        seen[key] = len(rows)
         en_ex, _, cn_ex = ex.partition("  ")
         rows.append([word if hid != last_hid else "",
                      idiom, cn, en_ex, cn_ex, from_cache, body])
@@ -227,8 +238,16 @@ def final_rows(book, cache):
             continue
         a, b = (re.sub(r"[^a-z]", "", x.lower()) for x in (r[1], rows[prev][1]))
         if a and a in b:
-            keep[i] = False
+            # 两条内容重合时，留下**原书底下有正文**的那条。默认删后一条会出事：
+            # `a ˌbird in the ˈhand…` 被拆成两行、两半都补成了整条，前一条没正文、
+            # 后一条有；删了后一条，前一条又会在后面的去重里因为没正文被删，
+            # 结果整条习语只剩下交叉引用那个没有重音符号的劣质版本
+            drop = prev if (r[6] and not rows[prev][6]) else i
+            keep[drop] = False
             folded += 1
+            if drop == prev:
+                rows[i][0] = rows[i][0] or rows[prev][0]
+                prev = i
             continue
         prev = i
     rows = [r for r, ok in zip(rows, keep) if ok]

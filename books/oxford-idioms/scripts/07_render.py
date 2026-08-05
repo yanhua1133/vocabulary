@@ -12,6 +12,7 @@
 
 Usage: 07_render.py
 """
+import difflib
 import json
 import os
 import re
@@ -37,6 +38,25 @@ def junk(idiom):
     return bool(IPA_JUNK.search(idiom)) and " " not in idiom.strip(" /")
 
 
+def fabricated(raw, final):
+    """模型把 OCR 残片「救」成了另一条习语——这种要扔掉。
+
+    有个子 agent 报告说，它遇到例句碎片、词源框、乱码时（`In this sense, ˈcheese'
+    comes from the Urdu`、`anyway?`），会按关键词猜一条该词条下真实存在的习语填上
+    （猜成了 `a ˌbig ˈwheel (informal)`）。猜得对不对无从验证，来源行本身也不是条目，
+    所以一律剔除。
+
+    判据是两者有没有实质性的公共内容：模型把残片**补全**（`ˈjudgment)` →
+    `against your better ˈjudgement…`）或从例句里**还原**出条目（`the biter bit —
+    she'd tried…` → `the biter ˈbit`）时，公共子串都很长，这些要留。
+    """
+    a, b = (re.sub(r"[^a-z]", "", x.lower()) for x in (raw, final))
+    if not a or not b:
+        return False
+    m = difflib.SequenceMatcher(None, a, b).find_longest_match(0, len(a), 0, len(b))
+    return m.size < min(6, len(a), len(b))
+
+
 def is_continuation(nxt):
     """下一条看着像上一条的后半截：短，且以小写词或重音符号起头。"""
     n = (nxt or "").strip()
@@ -51,10 +71,12 @@ def build(book, cache):
             rec = cache.get(str(idx))
             idx += 1
             if rec:
-                flat.append([hid, h["word"], rec["i"], rec["cn"], rec["e"], True])
+                flat.append([hid, h["word"], rec["i"], rec["cn"], rec["e"], True,
+                             it["idiom"]])
             else:
                 ex = f"{it['ex_en']}  {it['ex_cn']}" if it["ex_cn"] else it["ex_en"]
-                flat.append([hid, h["word"], it["idiom"], it["cn"], ex, False])
+                flat.append([hid, h["word"], it["idiom"], it["cn"], ex, False,
+                             it["idiom"]])
     return flat
 
 
@@ -81,7 +103,8 @@ def final_rows(book, cache):
         if (nxt and cur[0] == nxt[0] and DANGLING.search(cur[2].strip())
                 and is_continuation(nxt[2])):
             merged.append([cur[0], cur[1], f"{cur[2].strip()} {nxt[2].strip()}",
-                           nxt[3] or cur[3], nxt[4] or cur[4], cur[5]])
+                           nxt[3] or cur[3], nxt[4] or cur[4], cur[5],
+                           cur[6] + " " + nxt[6]])
             joined += 1
             i += 2
             continue
@@ -89,26 +112,29 @@ def final_rows(book, cache):
         i += 1
 
     # 2) 同一个单词下的重复条目只留一条，音标残片直接扔掉
-    rows, dropped, last_hid = [], 0, None
+    rows, dropped, made_up, last_hid = [], 0, 0, None
     seen = set()
-    for hid, word, idiom, cn, ex, from_cache in merged:
+    for hid, word, idiom, cn, ex, from_cache, raw in merged:
         if hid != last_hid:
             seen = set()
         key = re.sub(r"[^a-z]", "", idiom.lower())
         if not key or key in seen or junk(idiom):
             dropped += 1
             continue
+        if fabricated(raw, idiom):
+            made_up += 1
+            continue
         seen.add(key)
         en_ex, _, cn_ex = ex.partition("  ")
         rows.append((word if hid != last_hid else "",
                      idiom, cn, en_ex, cn_ex, from_cache))
         last_hid = hid
-    return rows, joined, dropped
+    return rows, joined, dropped, made_up
 
 
 def main():
     book, cache = load()
-    rows, joined, dropped = final_rows(book, cache)
+    rows, joined, dropped, made_up = final_rows(book, cache)
     filled = sum(1 for r in rows if r[5])
 
     os.makedirs(OUT, exist_ok=True)
@@ -128,7 +154,8 @@ def main():
     p = os.path.join(OUT, "牛津习语词典.md")
     open(p, "w").write("\n".join(lines))
     print(f"{words} 个单词，{len(rows)} 条习语（校对过 {filled} 条）")
-    print(f"  拼回断行条目 {joined} 条，去掉重复/音标残片 {dropped} 条")
+    print(f"  拼回断行条目 {joined} 条，去掉重复/音标残片 {dropped} 条，"
+          f"剔除模型猜出来的 {made_up} 条")
     print(p)
 
 

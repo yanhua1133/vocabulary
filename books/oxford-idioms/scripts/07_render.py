@@ -43,9 +43,17 @@ def junk(idiom):
     # 剥掉音标和括号后只剩一两个词的就是关键词；`je ne sais quoi /…/ (from French)`、
     # `a ˌsine qua ˈnon /…/` 这类外来语条目本来就带音标，词数多，留着。
     if IPA_CHARS.search(idiom):
-        bare = re.sub(r"/[^/]*/|\([^)]*\)|[;:]", " ", idiom)
-        return len(re.findall(r"[A-Za-zÀ-ÿ'-]+", bare)) <= 2
-    return False
+        stripped = re.sub(r"/[^/]*/|\([^)]*\)|[;:]", " ", idiom)
+        return len(re.findall(r"[A-Za-zÀ-ÿ'-]+", stripped)) <= 2
+    t = idiom.strip()
+    # 没闭合的音标（`ˈa:rmtʃer; a:rmˈtʃer/`、`armour (BrE) (AmE armor) /ˈa:mə(r); AmE`）
+    if re.search(r"[a-zA-Z]:", t) and ("/" in t or ";" in t):
+        return True
+    # 例句片段：大写起头的长句，且没有重音符号。习语哪怕大写起头也带 ˈ
+    # （`Bob's your ˈuncle`、`God ˈknows`），例句正文不带
+    if t[:1].isupper() and len(t) > 35 and "ˈ" not in t:
+        return True
+    return t.endswith("-")                   # 断词换行的正文残片
 
 
 def fabricated(raw, final):

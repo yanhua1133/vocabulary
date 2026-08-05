@@ -4,13 +4,13 @@
 
 ## 结果在哪看
 - **`out/牛津习语词典.md`** ← 成品，四列：**单词 / 习语 / 中文解释 / 例句**
-  2515 个单词、7078 条习语，释义和例句 100% 经过校对重写
+  2515 个单词、7088 条习语，释义和例句 100% 经过校对重写
   （原书 3569 个关键词里有 960 个只有交叉引用、本身不带条目）
 - `out/词条清单.md` ← 只有单词和习语的骨架清单，方便快速翻检
 - `data/idioms.json` ← 机器可读的结构（含从扫描件抽出的原书释义和例句）
 - `data/cache.json` ← 子 agent 校对/重写后的 7609 条 `{i, cn, e}`
 - `data/ocr/pNNN.json` ← 630 页整页 OCR，带每行 bbox，所有后续步骤都从这里取数
-- 校验：`../../.venv/bin/python scripts/08_audit.py`（当前 37 条问题 / 7078，0.5%）
+- 校验：`../../.venv/bin/python scripts/08_audit.py`（当前 37 条问题 / 7088，0.5%）
   校验脚本直接复用 `07_render.py::final_rows`，查的就是成品本身而不是中间数据
 
 ## 原书情况
@@ -31,6 +31,8 @@ cd books/oxford-idioms
 ../../.venv/bin/python scripts/05_batches.py   # 切批次 → work/batches/
 #   派 20 个子 agent，每个 7 批，按 prompts/INSTRUCTIONS.md 写 *.out.json
 ../../.venv/bin/python scripts/06_merge.py     # 校验并入 → data/cache.json
+../../.venv/bin/python scripts/09_lost.py      # 捞回被挤掉的条目 → work/lost.json
+#   再派 1 个子 agent 甄别并补全，结果放 data/lost.json
 ../../.venv/bin/python scripts/07_render.py    # 渲染成品 → out/牛津习语词典.md
 ../../.venv/bin/python scripts/08_audit.py     # 确定性校验
 ```
@@ -100,6 +102,13 @@ cd books/oxford-idioms
    - 后一条整个被前一条包住（`ˈvanishing act` ⊂ `do/perform/stage a
      disapˈpearing/ˈvanishing act`）→ 删。只比**紧邻**的那条，比整组会误删
      `be about to do sth` ⊂ `not be about to do sth` 这种两条都成立的。
+
+8. **捞回被挤掉的条目** 10 条。原书两条习语被 OCR 挤进同一行时
+   （`drive a hard ˈbargain what sb is ˈdriving at`），子 agent 只会留下一条，
+   另一条整条消失。`09_lost.py` 拿原始行减去已收录的那条，剩下部分自带重音符号、
+   词数像习语、全书别处又没有的，捞出来交给模型甄别（40 个候选里 12 条是真习语）。
+   这些不参与全书去重——`now, ˈnow` 和已有的 `now… now…` 去掉标点后长得一样，
+   但它们是两条。
 
 ## 已知缺口
 - 5 条关键词的音标残片被当成了条目（`ˈa:rmtʃer; a:rmˈtʃer/`），渲染时已按形状过滤掉

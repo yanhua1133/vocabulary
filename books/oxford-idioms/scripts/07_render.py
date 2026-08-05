@@ -248,9 +248,41 @@ def final_rows(book, cache):
     return kept, joined, dropped, made_up, fixed, cross, folded
 
 
+def append_lost(rows):
+    """把 09_lost.py 捞回来的条目插回它该在的关键词下面。
+
+    这些是原书两条习语被 OCR 挤进同一行、抽取时只留下一条而整条丢掉的
+    （`drive a hard ˈbargain what sb is ˈdriving at` 丢了前半）。
+    子 agent 已经逐条核过、去掉了全书已有的，所以这里不再参与去重——
+    `now, ˈnow` 和已有的 `now... now...` 去掉标点后长得一样，但它们是两条。
+    """
+    path = os.path.join(DATA, "lost.json")
+    if not os.path.exists(path):
+        return rows, 0
+    lost = [v for v in json.load(open(path)).values() if v]
+    # 关键词 → 该组最后一行的下标
+    tail, word = {}, ""
+    for i, r in enumerate(rows):
+        word = r[0] or word
+        tail[word.lower()] = i
+    added = []
+    for rec in lost:
+        cands = [rec.get("w", "")] + re.findall(r"[A-Za-z]{3,}", bare(rec["i"]))
+        for c in cands:
+            if c.lower() in tail:
+                en, _, cn_ex = rec["e"].partition("  ")
+                added.append((tail[c.lower()],
+                              ("", rec["i"], rec["cn"], en, cn_ex, True)))
+                break
+    for at, row in sorted(added, key=lambda x: -x[0]):
+        rows.insert(at + 1, row)
+    return rows, len(added)
+
+
 def main():
     book, cache = load()
     rows, joined, dropped, made_up, fixed, cross, folded = final_rows(book, cache)
+    rows, recovered = append_lost(list(rows))
     filled = sum(1 for r in rows if r[5])
 
     os.makedirs(OUT, exist_ok=True)
@@ -272,7 +304,8 @@ def main():
     print(f"{words} 个单词，{len(rows)} 条习语（校对过 {filled} 条）")
     print(f"  拼回断行条目 {joined} 条，去掉重复/音标残片 {dropped} 条，"
           f"剔除模型猜出来的 {made_up} 条，纠正关键词 {fixed} 个，"
-          f"合并跨词条重复 {cross} 条，收拢断开的后半截 {folded} 条")
+          f"合并跨词条重复 {cross} 条，收拢断开的后半截 {folded} 条，"
+          f"捞回被挤掉的 {recovered} 条")
     print(p)
 
 

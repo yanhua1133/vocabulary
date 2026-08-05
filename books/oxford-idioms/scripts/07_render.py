@@ -111,6 +111,19 @@ def shrink_tags(idiom):
     return TAGS_RE.sub(r'<span class="tag">\1</span>', idiom)
 
 
+def glue_stress(t):
+    """在重音符号后面插一个 word joiner，别让浏览器从这儿断行。
+
+    ˈ ˌ 是修饰字母（Lm），Chrome 会把它当成可断点，于是排出
+    `ˈ` 换行 `action stations` 这种——重音符号孤零零留在行尾，
+    而且平白多出一行、把字号也连累得缩到看不清。
+
+    别用 word joiner（U+2060）粘：那个字符在正文字体里没有字形，会触发字体回退，
+    连带把 ˈ 本身渲染没了（排出来成了 `take ad vantage`）。用 nowrap 包着才稳。
+    """
+    return re.sub(r"([ˈˌ][A-Za-z'’-]+)", r'<span class="nw">\1</span>', t)
+
+
 def strip_marker(idiom):
     """剥掉原书的提示前缀。`OPP` 是反义提示、`SYN` 是同义提示、`SEE` 是参见，
     它们印在条目前面，OCR 时会粘进条目文本里。"""
@@ -549,7 +562,7 @@ def main():
         else:
             rank = ""
         ex = f"{cell(en_ex)}<br>{cell(cn_ex)}" if cn_ex else cell(en_ex)
-        lines.append(f"<tr><td><b>{shrink_tags(cell(strip_marker(idiom)))}</b></td>"
+        lines.append(f"<tr><td><b>{glue_stress(shrink_tags(cell(strip_marker(idiom))))}</b></td>"
                      f"<td>{cell(cn)}</td><td>{rank}</td><td>{ex}</td></tr>")
     lines.append("</table>\n")
     p = os.path.join(OUT, "牛津习语词典.md")

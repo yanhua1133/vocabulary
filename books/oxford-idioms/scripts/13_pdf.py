@@ -59,6 +59,18 @@ SHRINK_JS = """
     const MAX = 2;                            // 四列一律两行，不许出现第三行
     let guard = 0;
     while (rows(td) > MAX && guard++ < 40 && shrink(td)) {}
+    // 缩完再尽量涨回去：一步缩 7% 常常缩过头，排出来字小得可怜、宽度却剩一大截。
+    // 每次放大 3%，一超行就整格还原并停手，拿到的就是「放得下的最大字号」。
+    // 只对真缩过的格子做——八成的格子还是原始字号，白跑一遍要多花好几分钟
+    for (let g = 0; guard > 0 && g < 12; g++) {
+      const els = [td, ...td.querySelectorAll('*')];
+      const saved = els.map(el => getComputedStyle(el).fontSize);
+      els.forEach((el, i) => { el.style.fontSize = parseFloat(saved[i]) * 1.03 + 'px'; });
+      if (rows(td) > MAX) {
+        els.forEach((el, i) => { el.style.fontSize = saved[i]; });
+        break;
+      }
+    }
     if (rows(td) > MAX) {
       // 缩到下限还放不下：例句的中英文改成连排，省掉一整行
       const br = td.querySelector('br');
@@ -125,6 +137,7 @@ th:nth-child(3), td:nth-child(3) { width: 11%; color: #d48806; font-size: 6pt;
                                    letter-spacing: -0.4px; white-space: nowrap; }
 th:nth-child(4), td:nth-child(4) { width: 55%; color: #333; }
 .lab { color: #999; font-size: 5.2pt; margin-right: 1px; }
+.nw { white-space: nowrap; }            /* 别在重音符号后面断行 */
 /* 语域标签是次要信息，缩小它好把长条目压进两行 */
 .tag { font-size: 0.72em; color: #777; font-weight: normal; }
 """

@@ -32,6 +32,21 @@ DANGLING = re.compile(r"\b(the|a|an|of|and|or|to|for|with|from|that|by|as|"
                       r"your|his|her|their|its|our|my)$", re.I)
 
 
+def stars(n):
+    """0-5 的分打成星：★ 一颗，☆ 半颗。跟 GRE3000 一个写法，最低半颗星。"""
+    try:
+        v = max(0.5, min(5.0, round(float(n) * 2) / 2))
+    except (TypeError, ValueError):
+        return ""
+    full = int(v)
+    return "★" * full + ("☆" if v - full >= 0.5 else "")
+
+
+def load_scores():
+    path = os.path.join(DATA, "scores.json")
+    return json.load(open(path)) if os.path.exists(path) else {}
+
+
 def cell(s):
     return (s or "").replace("|", "／").replace("\n", " ").strip()
 
@@ -411,22 +426,30 @@ def main():
     filled = sum(1 for r in rows if r[5])
 
     os.makedirs(OUT, exist_ok=True)
-    words = sum(1 for r in rows if r[0])
+    scores = load_scores()
+    scored = 0
     lines = ["# 牛津习语词典\n",
-             f"\n{words} 个单词，{len(rows)} 条习语。"
-             f"其中 {filled} 条（{filled/max(len(rows),1):.1%}）的释义和例句经过校对重写。\n",
+             f"\n{len(rows)} 条习语。例句 {from_book} 条用原书原文，"
+             f"其余原书那句被 OCR 毁了，退回自拟并标「（自拟）」。\n",
+             "\n常用 / 口语：★ 一颗，☆ 半颗，五颗为满。"
+             "常用 = 在当代英语里有多常见；口语 = 多大程度上属于口头表达。\n",
              "\n<table>",
-             "<thead><tr><th>单词</th><th>习语</th><th>中文解释</th>"
+             "<thead><tr><th>习语</th><th>中文解释</th><th>常用 / 口语</th>"
              "<th>例句</th></tr></thead>"]
-    for word, idiom, cn, en_ex, cn_ex, *_ in rows:
-        w = f"<b>{cell(word)}</b>" if word else ""
+    for _word, idiom, cn, en_ex, cn_ex, *_ in rows:
+        sc = scores.get(re.sub(r"[^a-z]", "", idiom.lower()))
+        if sc:
+            scored += 1
+            rank = f'{stars(sc["u"])}<br>{stars(sc["s"])}'
+        else:
+            rank = ""
         ex = f"{cell(en_ex)}<br>{cell(cn_ex)}" if cn_ex else cell(en_ex)
-        lines.append(f"<tr><td>{w}</td><td>{cell(idiom)}</td>"
-                     f"<td>{cell(cn)}</td><td>{ex}</td></tr>")
+        lines.append(f"<tr><td><b>{cell(idiom)}</b></td>"
+                     f"<td>{cell(cn)}</td><td>{rank}</td><td>{ex}</td></tr>")
     lines.append("</table>\n")
     p = os.path.join(OUT, "牛津习语词典.md")
     open(p, "w").write("\n".join(lines))
-    print(f"{words} 个单词，{len(rows)} 条习语（校对过 {filled} 条）")
+    print(f"{len(rows)} 条习语（打了常用/口语分 {scored} 条）")
     print(f"  拼回断行条目 {joined} 条，去掉重复/音标残片 {dropped} 条，"
           f"剔除模型猜出来的 {made_up} 条，纠正关键词 {fixed} 个，"
           f"合并跨词条重复 {cross} 条，收拢断开的后半截 {folded} 条，"

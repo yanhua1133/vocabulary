@@ -3,9 +3,10 @@
 更新：2026-08-05（成品已交付）
 
 ## 结果在哪看
-- **`out/牛津习语词典.md`** ← 成品，四列：**单词 / 习语 / 中文解释 / 例句**
-  2668 个单词、7007 条习语
-  例句 **4308 条用原书原文**，其余 2699 条原书那句被 OCR 毁了、退回模型自拟（标「（自拟）」）
+- **`out/牛津习语词典.md`** ← 成品，四列：**习语 / 中文解释 / 常用·口语 / 例句**
+  7007 条习语
+  例句 **4749 条用原书原文**，其余原书那句被 OCR 毁了、退回自拟（标「（自拟）」）
+  常用度和口语度各 0-5 分，`★` 一颗 `☆` 半颗
   （原书 3569 个关键词里有 960 个只有交叉引用、本身不带条目）
 - `out/词条清单.md` ← 只有单词和习语的骨架清单，方便快速翻检
 - `data/idioms.json` ← 机器可读的结构（含从扫描件抽出的原书释义和例句）
@@ -32,6 +33,10 @@ cd books/oxford-idioms
 ../../.venv/bin/python scripts/05_batches.py   # 切批次 → work/batches/
 #   派 20 个子 agent，每个 7 批，按 prompts/INSTRUCTIONS.md 写 *.out.json
 ../../.venv/bin/python scripts/06_merge.py     # 校验并入 → data/cache.json
+../../.venv/bin/python scripts/10_clean_ex.py  # 清理原书例句 → data/examples.json
+../../.venv/bin/python scripts/11_score_batches.py  # 打分批次 → work/scores/
+#   派 10 个子 agent，按 prompts/INSTRUCTIONS_SCORE.md 打常用度/口语度
+../../.venv/bin/python scripts/12_merge_scores.py   # 并入 → data/scores.json
 ../../.venv/bin/python scripts/09_lost.py      # 捞回被挤掉的条目 → work/lost.json
 #   再派 1 个子 agent 甄别并补全，结果放 data/lost.json
 ../../.venv/bin/python scripts/07_render.py    # 渲染成品 → out/牛津习语词典.md
@@ -135,6 +140,14 @@ cd books/oxford-idioms
 `a ˌbird in the ˈhand is worth two in the ˈbush` 被 OCR 拆成两行、两半都被子 agent
 补成了整条，前一半没正文、后一半有：组内去重先入为主留下前一半，后面的去重又因为
 它没正文把它删掉，整条习语就只剩交叉引用来的、连重音符号都没有的劣质版本。
+
+## 常用度 / 口语度
+两个 0-5 分，`★` 一颗、`☆` 半颗。跟 GRE3000 不同，这里**没法用 wordfreq 客观算**——
+wordfreq 只有单词频率，习语是多词组合查不到，只能交给模型判断。
+评分标准写死在 `prompts/INSTRUCTIONS_SCORE.md` 里（含分档说明和例子、以及
+「标了 (old-fashioned) 的常用度一律 ≤2」「标了 (spoken)(informal) 的口语度一般 ≥4」
+这类硬规则），让不同批次之间的尺度尽量一致。
+对应关系用**条目文本的归一化形式**做 key，不用行号——成品的行会随去重、改挂变动。
 
 ## 例句从哪来
 - **原书优先**。第一版成品的例句全是模型自拟的——我沿用了 GRE3000「例句一律自写」

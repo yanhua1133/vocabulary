@@ -24,6 +24,8 @@ TRUNC = re.compile(r"\b(a|an|the|of|to|in|on|at|for|with|and|or|from|by|"
 
 def clean_en(t):
     t = t.strip(" •◆◇*·-—")
+    t = re.sub(r"^[/1l|]\s+(?=[a-z])", "I ", t)         # 句首的 I 被认成 / 1 l |
+    t = re.sub(r"^([/1|])(?=[a-z'])", "I", t)
     t = re.sub(r"\bT'(ve|re|ll|m|d)\b", r"I'\1", t)      # T've → I've
     t = re.sub(r"\bT\b", "I", t)
     t = re.sub(r"\bIm\b", "I'm", t)
@@ -55,18 +57,22 @@ def usable(en, cn, idiom):
     """够不够格用作例句：完整句、有中译、且真的用上了这条习语。"""
     if len(en.split()) < 4 or not CJK.search(cn):
         return False
-    if not en[0].isupper() or not en.rstrip().endswith((".", "!", "?", "'", "”")):
+    if not en[0].isupper():
         return False
-    if TRUNC.search(en.rstrip(".!?")):
+    if not en.rstrip().endswith((".", "!", "?", "'", "\u201d")):
+        # 没有句末标点才算截断；`How about Ruth? Have you heard from her?`
+        # 是完整的两句，不能因为末词是 her 就判成半句
+        return False if TRUNC.search(en.rstrip()) else False
+    # 只拒绝汉字和混进来的重音符号；破折号、弯引号、重音字母都是正常英文排版
+    if CJK.search(en) or "ˈ" in en or "ˌ" in en:
         return False
-    if re.search(r"[^\x00-\x7f]", en.replace("’", "'").replace("‘", "'")):
-        return False                                    # 英文里混进了别的字符
     core = [w for w in re.findall(r"[a-z]{4,}",
                                   re.sub(r"\([^)]*\)", "", idiom).lower())
             if w not in ("sth", "sbs", "your", "yours", "that", "this", "with",
                          "have", "been", "from", "into", "them", "they", "etc")]
     low = en.lower()
-    return not core or any(w[:4] in low for w in core)
+    # 按词干比，例句里的习语常有屈折变化（`take ˈaim` → `taking aim`）
+    return not core or any(w[:max(3, len(w) - 2)] in low for w in core)
 
 
 def main():

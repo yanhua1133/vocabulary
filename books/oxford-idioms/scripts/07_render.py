@@ -1,10 +1,14 @@
 """Pass 07: 渲染最终成品 → out/牛津习语词典.md。
 
-四列：**单词 / 习语 / 中文解释 / 例句**。单词就是原书的关键词，一个单词下面的
-若干条习语连排在一起，单词列只在第一行写一次。
+四列：**单词 / 习语 / 中文解释 / 例句**。一个单词下面的若干条习语连排在一起，
+单词列只在第一行写一次。
 
 条目文本、中文释义、例句都优先取 data/cache.json（子 agent 校对/重写过的），
 没有缓存就退回 data/idioms.json 里从扫描件抽出来的原文。
+
+渲染时还做三件收尾：拼回被排版断成两条的习语、去掉重复条目、扔掉音标残片。
+这三件都放在这一步而不是回头改 02——缓存是按 data/idioms.json 的序号存的，
+上游一动序号就全错位，7600 条得重跑。
 
 Usage: 07_render.py
 """
@@ -17,6 +21,12 @@ DATA = os.path.join(ROOT, "data")
 OUT = os.path.join(ROOT, "out")
 # 关键词行的音标偶尔会被切成独立一行，混进条目里（`ˈa:rmtʃer; a:rmˈtʃer/`）
 IPA_JUNK = re.compile(r"(;.*/|/\s*$|^[^A-Za-z]*[a-z]:)")
+# 条目在栏底被断成两行、断点又不在括号里时，02 的合并逻辑接不上，就拆成了两条
+# （`…half a dozen of the` + `ˈother (saying)`）。下面这些虚词绝不可能是习语的
+# 结尾，拿来当断行信号很安全——注意别把 in/on/out/up 算进来，
+# `keep your ˈhand in` 本身就是完整条目。
+DANGLING = re.compile(r"\b(the|a|an|of|and|or|to|for|with|from|that|by|as|"
+                      r"your|his|her|their|its|our|my)$", re.I)
 
 
 def cell(s):
@@ -27,52 +37,98 @@ def junk(idiom):
     return bool(IPA_JUNK.search(idiom)) and " " not in idiom.strip(" /")
 
 
-def main():
-    book = json.load(open(os.path.join(DATA, "idioms.json")))
-    cache_path = os.path.join(DATA, "cache.json")
-    cache = json.load(open(cache_path)) if os.path.exists(cache_path) else {}
+def is_continuation(nxt):
+    """下一条看着像上一条的后半截：短，且以小写词或重音符号起头。"""
+    n = (nxt or "").strip()
+    return bool(n) and len(n) < 45 and (n[0] in "ˈˌ" or n[0].islower())
 
-    rows, idx, filled, dropped = [], 0, 0, 0
-    for h in book:
-        first, seen = True, set()
+
+def build(book, cache):
+    """按 data/idioms.json 的顺序摊平成 (单词, 条目, 释义, 例句原文) 列表。"""
+    flat, idx = [], 0
+    for hid, h in enumerate(book):           # hid 用来分组：同名的两个词头是两组
         for it in h["idioms"]:
             rec = cache.get(str(idx))
             idx += 1
-            # 同一个单词下同一条习语被抽到两次（跨栏、跨页续行造成的），只留一条。
-            # 去重放在渲染这一步做，不动 data/idioms.json 的序号——缓存是按序号存的
-            key = re.sub(r"[^a-z]", "", (rec["i"] if rec else it["idiom"]).lower())
-            if not key or key in seen or junk(rec["i"] if rec else it["idiom"]):
-                dropped += 1
-                continue
-            seen.add(key)
             if rec:
-                filled += 1
-                idiom, cn = rec["i"], rec["cn"]
-                en_ex, _, cn_ex = rec["e"].partition("  ")
+                flat.append([hid, h["word"], rec["i"], rec["cn"], rec["e"], True])
             else:
-                idiom, cn = it["idiom"], it["cn"]
-                en_ex, cn_ex = it["ex_en"], it["ex_cn"]
-            ex = f"{cell(en_ex)}<br>{cell(cn_ex)}" if cn_ex else cell(en_ex)
-            rows.append((cell(h["word"]) if first else "", cell(idiom),
-                         cell(cn), ex))
-            first = False
+                ex = f"{it['ex_en']}  {it['ex_cn']}" if it["ex_cn"] else it["ex_en"]
+                flat.append([hid, h["word"], it["idiom"], it["cn"], ex, False])
+    return flat
+
+
+def load():
+    book = json.load(open(os.path.join(DATA, "idioms.json")))
+    cache_path = os.path.join(DATA, "cache.json")
+    cache = json.load(open(cache_path)) if os.path.exists(cache_path) else {}
+    return book, cache
+
+
+def final_rows(book, cache):
+    """成品的每一行：(单词, 条目, 中文解释, 英文例句, 例句中译, 是否校对过)。
+
+    校验脚本也用这个函数，保证查的就是成品本身，不是中间数据。
+    """
+    flat = build(book, cache)
+
+    # 1) 拼回断成两条的习语；释义和例句取后半截那条的——子 agent 是按完整习语写的，
+    #    后半截带着 (saying) 之类的标签，信息更全
+    merged, joined, i = [], 0, 0
+    while i < len(flat):
+        cur = flat[i]
+        nxt = flat[i + 1] if i + 1 < len(flat) else None
+        if (nxt and cur[0] == nxt[0] and DANGLING.search(cur[2].strip())
+                and is_continuation(nxt[2])):
+            merged.append([cur[0], cur[1], f"{cur[2].strip()} {nxt[2].strip()}",
+                           nxt[3] or cur[3], nxt[4] or cur[4], cur[5]])
+            joined += 1
+            i += 2
+            continue
+        merged.append(cur)
+        i += 1
+
+    # 2) 同一个单词下的重复条目只留一条，音标残片直接扔掉
+    rows, dropped, last_hid = [], 0, None
+    seen = set()
+    for hid, word, idiom, cn, ex, from_cache in merged:
+        if hid != last_hid:
+            seen = set()
+        key = re.sub(r"[^a-z]", "", idiom.lower())
+        if not key or key in seen or junk(idiom):
+            dropped += 1
+            continue
+        seen.add(key)
+        en_ex, _, cn_ex = ex.partition("  ")
+        rows.append((word if hid != last_hid else "",
+                     idiom, cn, en_ex, cn_ex, from_cache))
+        last_hid = hid
+    return rows, joined, dropped
+
+
+def main():
+    book, cache = load()
+    rows, joined, dropped = final_rows(book, cache)
+    filled = sum(1 for r in rows if r[5])
 
     os.makedirs(OUT, exist_ok=True)
+    words = sum(1 for r in rows if r[0])
     lines = ["# 牛津习语词典\n",
-             f"\n{sum(1 for r in rows if r[0])} 个单词，{len(rows)} 条习语。"
+             f"\n{words} 个单词，{len(rows)} 条习语。"
              f"其中 {filled} 条（{filled/max(len(rows),1):.1%}）的释义和例句经过校对重写。\n",
              "\n<table>",
              "<thead><tr><th>单词</th><th>习语</th><th>中文解释</th>"
              "<th>例句</th></tr></thead>"]
-    for word, idiom, cn, ex in rows:
-        w = f"<b>{word}</b>" if word else ""
-        lines.append(f"<tr><td>{w}</td><td>{idiom}</td>"
-                     f"<td>{cn}</td><td>{ex}</td></tr>")
+    for word, idiom, cn, en_ex, cn_ex, _ in rows:
+        w = f"<b>{cell(word)}</b>" if word else ""
+        ex = f"{cell(en_ex)}<br>{cell(cn_ex)}" if cn_ex else cell(en_ex)
+        lines.append(f"<tr><td>{w}</td><td>{cell(idiom)}</td>"
+                     f"<td>{cell(cn)}</td><td>{ex}</td></tr>")
     lines.append("</table>\n")
     p = os.path.join(OUT, "牛津习语词典.md")
     open(p, "w").write("\n".join(lines))
-    print(f"{len(rows)} 行，其中 {filled} 行用了校对后的内容；"
-          f"去掉重复/音标残片 {dropped} 条")
+    print(f"{words} 个单词，{len(rows)} 条习语（校对过 {filled} 条）")
+    print(f"  拼回断行条目 {joined} 条，去掉重复/音标残片 {dropped} 条")
     print(p)
 
 

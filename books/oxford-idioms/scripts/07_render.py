@@ -252,8 +252,24 @@ def final_rows(book, cache):
                             rows[j][0] = r[0]
                         break
             continue
-        kept.append(tuple(r[:6]))
-    return kept, joined, dropped, made_up, fixed, cross, folded
+        kept.append(tuple(r[:7]))
+    # 忽略括号标签后重合的，多半也是同一条挂了两处
+    # （`beat/turn ˈswords into ˈploughshares (BrE)…` 同时挂在 plot 和 swords 下）。
+    # 但只有在「一条有原书正文、另一条没有」时才敢删没正文的那条——
+    # `in the ˈair` 和 `(up) in the ˈair` 两条都有正文，是两个词条，不能合。
+    def core(t):
+        return re.sub(r"[^a-z]", "", re.sub(r"\([^)]*\)", "", t).lower())
+
+    bodies = {}
+    for r in kept:
+        bodies.setdefault(core(r[1]), set()).add(bool(r[6]))
+    final, tagdup = [], 0
+    for r in kept:
+        if bodies.get(core(r[1])) == {True, False} and not r[6]:
+            tagdup += 1
+            continue
+        final.append(r)
+    return final, joined, dropped, made_up, fixed, cross + tagdup, folded
 
 
 def append_lost(rows):
@@ -280,7 +296,7 @@ def append_lost(rows):
             if c.lower() in tail:
                 en, _, cn_ex = rec["e"].partition("  ")
                 added.append((tail[c.lower()],
-                              ("", rec["i"], rec["cn"], en, cn_ex, True)))
+                              ("", rec["i"], rec["cn"], en, cn_ex, True, True)))
                 break
     for at, row in sorted(added, key=lambda x: -x[0]):
         rows.insert(at + 1, row)
@@ -301,7 +317,7 @@ def main():
              "\n<table>",
              "<thead><tr><th>单词</th><th>习语</th><th>中文解释</th>"
              "<th>例句</th></tr></thead>"]
-    for word, idiom, cn, en_ex, cn_ex, _ in rows:
+    for word, idiom, cn, en_ex, cn_ex, *_ in rows:
         w = f"<b>{cell(word)}</b>" if word else ""
         ex = f"{cell(en_ex)}<br>{cell(cn_ex)}" if cn_ex else cell(en_ex)
         lines.append(f"<tr><td>{w}</td><td>{cell(idiom)}</td>"

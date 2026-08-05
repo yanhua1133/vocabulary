@@ -44,7 +44,7 @@ def main():
     problems = {"缺中文解释": [], "解释混英文": [], "例句不全": [],
                 "例句没用上习语": [], "条目像残片": []}
     word = ""
-    for w, idiom, cn, en_ex, cn_ex, _ in rows:
+    for w, idiom, cn, en_ex, cn_ex, *_ in rows:
         word = w or word
         tag = f"{word} / {idiom}"
         if not CJK.search(cn):

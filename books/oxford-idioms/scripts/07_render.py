@@ -72,6 +72,12 @@ def cell(s):
     return (s or "").replace("|", "／").replace("\n", " ").strip()
 
 
+def strip_marker(idiom):
+    """剥掉原书的提示前缀。`OPP` 是反义提示、`SYN` 是同义提示、`SEE` 是参见，
+    它们印在条目前面，OCR 时会粘进条目文本里。"""
+    return re.sub(r"^(OPP|SYN|SEE|NOTE)\s+", "", idiom.strip())
+
+
 def junk(idiom):
     if IPA_JUNK.search(idiom) and " " not in idiom.strip(" /"):
         return True
@@ -474,7 +480,7 @@ def main():
         else:
             rank = ""
         ex = f"{cell(en_ex)}<br>{cell(cn_ex)}" if cn_ex else cell(en_ex)
-        lines.append(f"<tr><td><b>{cell(idiom)}</b></td>"
+        lines.append(f"<tr><td><b>{cell(strip_marker(idiom))}</b></td>"
                      f"<td>{cell(cn)}</td><td>{rank}</td><td>{ex}</td></tr>")
     lines.append("</table>\n")
     p = os.path.join(OUT, "牛津习语词典.md")

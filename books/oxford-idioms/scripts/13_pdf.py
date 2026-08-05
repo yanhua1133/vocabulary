@@ -85,15 +85,29 @@ h1 { font-size: 15pt; margin: 0 0 8px; color: #0b6fa4; }
 /* 线要画得住：细线在不少 PDF 阅读器里低缩放时会被丢掉，最右那条贴着版心
    边界的尤其容易「消失」。所以外框 1.5px、格线 0.8px，颜色也压深；
    最右一列再显式指定一次 border-right，不指望 border-collapse 兜底 */
-/* 别拿外层 div 画边框：div 的高度跟表格对不齐，竖边会甩出表格外面去。
-   border-collapse 下 Chrome 打印时把所有边框都压成 0.75pt，粗细改不动，
-   那就改颜色——把最右那条压深，照样看得清楚 */
-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+/* 用 separate 而不是 collapse：collapse 模式下 Chrome 打印时会把所有边框
+   压成 0.75pt，想让某条线粗一点根本改不动（试过 1.5px、1.2pt 都没用）。
+   separate + border-spacing:0 看起来一样，但每条边框的宽度是各画各的。
+   也别拿外层 div 画外框——div 高度跟表格对不齐，竖边会甩到表格外面去。
+   每格只画右边和下边，左边和上边由表格自己补，才不会画重。 */
+table { width: 100%; border-collapse: separate; border-spacing: 0;
+        table-layout: fixed; }
 th { background: #e8f4fb; font-size: 6.8pt; padding: 2px 3px; text-align: left;
-     border: 0.5pt solid #5a8fae; }
-td { border: 0.5pt solid #9a9a9a; padding: 1.6px 3px; vertical-align: top;
-     word-wrap: break-word; }
-th:last-child, td:last-child { border-right-color: #333; }
+     border-right: 0.5pt solid #5a8fae; border-bottom: 0.5pt solid #5a8fae;
+     border-top: 0.5pt solid #5a8fae; }
+th:first-child { border-left: 0.5pt solid #5a8fae; }
+td { border-right: 0.5pt solid #9a9a9a; border-bottom: 0.5pt solid #9a9a9a;
+     padding: 1.6px 3px; vertical-align: top; word-wrap: break-word; }
+td:first-child { border-left: 0.5pt solid #9a9a9a; }
+/* 最右这条贴着版心边界，细线在阅读器里低缩放时会被丢掉。
+   Chrome 打印时无论 border 写多粗都只画 0.75pt（collapse、separate、
+   px、pt 全试过），所以改用背景渐变画这条线——背景不走 border 那套渲染 */
+th:last-child, td:last-child {
+  border-right: none;
+  background-image: linear-gradient(to right, transparent calc(100% - 1.6pt),
+                                    #444 calc(100% - 1.6pt));
+}
+th:last-child { background-color: #e8f4fb; }
 tr { break-inside: avoid; page-break-inside: avoid; }
 thead { display: table-header-group; }
 b { color: #000; font-weight: bold; }

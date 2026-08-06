@@ -90,6 +90,20 @@ cd oxford-collocations
    `ablaze adj. * đ „*x c` 就是 gapfill 补出来的乱码，还落在右栏中间。
    一刀切地不让补行开词条会丢 738 个真词头，所以加了「整行无尾巴」这个条件。
 
+## 首字母被扫描件吃掉：规则能修，别只交给 agent
+`n accepting the award`（in）、`m expecting a call`（am）、`t is accountable`（it）、
+`s this an appropriate time`（is）——扫描件左边缘常把行首第一个字母切掉，剩个孤字母。
+这类**全书 341 处**，我一开始只在已校对的 3535 行里让 agent 修，
+未校对的 94978 行里照样在，用户一眼就看见了。
+
+`04_expand.py::fix_lone_letter` 用固定映射修：wordfreq 只有单词频率、比不了词组，
+`in` 和 `an` 分不出高下，所以直接写死 n→in、m→am、t→it、s→is、f→of、e→be、
+y→by、o→to、r→or、g→go、p→up。两个坑：
+- 后面跟的词卡两个字母就够（`t is accountable` 的 is 只有两个字母，卡三个会漏掉一大半）；
+- 补出来的词要跟后面那个词比一下，别把 `o to` 补成 `to to`。
+
+**教训：规则能覆盖全书，agent 只覆盖校对过的那部分。能写成规则的就别只让 agent 修。**
+
 ## 自查：搭配和例句对不上，就是搭配坏了
 拿「搭配里的实词有没有出现在例句里」交叉验证 4081 条已校对条目。
 第一版检测报了 1438 条，大半是误报——一格有四条搭配时例句只会用其中一条，

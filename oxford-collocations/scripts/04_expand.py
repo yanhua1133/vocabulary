@@ -93,10 +93,31 @@ def fix_token(w):
     return out
 
 
+# 丢了首字母之后剩下的那个字母 → 它原本是什么词。
+# wordfreq 只有单词频率、比不了词组，`in` 和 `an` 分不出高下，所以直接写死。
+# 这几个是扫描件左边缘最常吃掉的：介词、系动词、代词
+LONE = {"n": "in", "m": "am", "t": "it", "s": "is", "f": "of", "e": "be",
+        "y": "by", "o": "to", "r": "or", "g": "go", "p": "up"}
+
+
+def fix_lone_letter(t):
+    """补回被吃掉的首字母：`n accepting the award`（in）、`m expecting a call`（am）、
+    `t stayed hot`（it）、`s this an appropriate time`（is）。"""
+    def one2(m):
+        got = LONE[m.group(1).lower()]
+        # 别把 `o to` 补成 `to to`
+        return m.group(0) if got == m.group(2).lower() else f"{got} {m.group(2)}"
+
+    # 后面跟的词两个字母就够——`t is accountable` 里的 is 只有两个字母，
+    # 卡三个字母会把这一大类（341 条）全放过去
+    return re.sub(r"\b([%s])\s+([a-z]{2,})" % "".join(LONE), one2, t)
+
+
 def fix_phrase(t):
     # 连字符要拆开分别修：`ife-support` 整体查不到词频，拆成 ife / support
     # 才认得出 ife 少了个 l
     # 字符集要带上数字，`g00d`、`detedt` 这类混了数字的词否则根本进不了纠错
+    t = fix_lone_letter(t)
     return re.sub(r"[a-zA-Z][a-zA-Z0-9']{2,}",
                   lambda m: fix_token(m.group(0)), t)
 

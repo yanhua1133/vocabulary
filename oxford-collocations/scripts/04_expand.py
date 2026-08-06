@@ -217,7 +217,9 @@ def put_head(w, head):
     """把 `~` 换回词头。`~ed` `~ing` `~s` 是词形变化，要按拼写规则变，
     不能直接拼——`be found~ed` 硬拼出来是 `be foundabandoned`。"""
     def form(m):
-        suf = m.group(1) or ""
+        # 词尾大小写要归一：原书印的是小型大写字母，OCR 读成 `~S`，
+        # 直接拼出来就是 `fallen logS`
+        suf = (m.group(1) or "").lower()
         vowel_y = len(head) > 1 and head[-1] == "y" and head[-2] not in "aeiou"
         if suf in ("ed", "d"):
             if vowel_y:
@@ -236,7 +238,7 @@ def put_head(w, head):
     w = re.sub(r"(?<=[a-zA-Z])~", " ~", w)         # OCR 常把 ~ 前的空格吃掉
     # `~of` 里的 of 是下一个词不是词尾，不隔开会拼成 `canof`
     w = re.sub(r"~(?!(?:ing|ed|es|s|d)\b)(?=[a-z])", "~ ", w)
-    return re.sub(r"~(ing|ed|es|s|d)?", form, w)
+    return re.sub(r"~(ing|ed|es|s|d)?", form, w, flags=re.I)
 
 
 def expand_one(w, head, gtype, pos):
@@ -262,7 +264,8 @@ def bold(text, head, phrases):
         return text
     out = re.sub(r"(?<=[a-zA-Z])~", " ~", text)
     out = re.sub(r"~(ing|ed|es|s|d)?",
-                 lambda m: f"<b>{put_head('~' + (m.group(1) or ''), head)}</b>", out)
+                 lambda m: f"<b>{put_head('~' + (m.group(1) or ''), head)}</b>",
+                 out, flags=re.I)
     stem = head[:-1] if len(head) > 4 and head.endswith("e") else head
     out = re.sub(rf"(?<![>\w]){re.escape(stem)}(\w{{0,3}})(?!\w)",
                  rf"<b>{stem}\1</b>", out, flags=re.I)
@@ -286,12 +289,41 @@ def clean_cn(t, head):
     return re.sub(r"\s+", " ", t).strip(" ,;·|")
 
 
+TYPE_WORD = {"verb", "noun", "adj", "adv", "prep", "phrases", "phrase",
+             "quant", "brе", "ame"}
+
+
+def sense_head(sense, word):
+    """义项真正的词头。**组类型行里写着**：`VERB + LOG` 说明这一段讲的是 log。
+
+    扫描件常把词头那一行整行吃掉，后面几个义项就顺延挂到了上一个词条名下——
+    `locust` 底下挂着 log / logic / logo 三个词的搭配，印出来是
+    `cut locust 砍下的原木`，看着像模像样其实全错。
+
+    两道闸：认回来的词得是**正经英语词**（`ANTIBIOTICBE` 这种 OCR 渣不算），
+    而且得**排在词条名后面**——原书按字母序，丢掉的词头只可能在后面。
+    """
+    for g in sense.get("groups", []):
+        for m in re.findall(r"\b([A-Z][A-Z'\-]{2,})\b", g.get("type", "")):
+            n = m.lower()
+            if n in TYPE_WORD or n.startswith(word[:4].lower()):
+                continue
+            if len(n) >= 3 and n > word.lower() and real_word(n):
+                return n
+    return word
+
+
 def main():
     book = json.load(open(os.path.join(DATA, "groups.json")))
     total = 0
+    moved = 0
     for h in book:
-        head, pos = h["word"], h.get("pos", "")
+        pos = h.get("pos", "")
         for s in h["senses"]:
+            head = sense_head(s, h["word"])
+            if head != h["word"]:
+                moved += 1
+                s["head"] = head
             for g in s["groups"]:
                 for sub in g.get("subs", []):
                     full = [fix_phrase(expand_one(w, head, g["type"], pos))
@@ -308,7 +340,7 @@ def main():
 
     json.dump(book, open(os.path.join(DATA, "expanded.json"), "w"),
               ensure_ascii=False, indent=1)
-    print(f"展开出 {total} 条完整搭配")
+    print(f"展开出 {total} 条完整搭配；按组类型认回词头的义项 {moved} 个")
     for h in book[:1]:
         for s in h["senses"][:1]:
             for g in s["groups"][:2]:

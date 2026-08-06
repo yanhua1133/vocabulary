@@ -120,19 +120,22 @@ def iter_rows(book, cache):
     渲染改了口径自查还按老口径查，报出来的数字是假的。
     """
     for h in book:
-        # 词头列以前完全没过纠错，印着 `thanktul`——查都查不到的词条，
-        # 修不好就整条不要
-        word = _p09.norm_phrase(_p04.fix_phrase(h["word"]))
-        if _p09.bad_head(word):
-            continue
         for s in h["senses"]:
+            # 词头按义项取：扫描件吃掉整行词头时，`log` 的几个义项会挂到
+            # `locust` 名下，04_expand 按组类型（`VERB + LOG`）认了回来
+            # 词头列以前完全没过纠错，印着 `thanktul` 这种查都查不到的词条。
+            # 词头还要按义项取：扫描件吃掉整行词头时，`log` 的几个义项会挂到
+            # `locust` 名下，04_expand 按组类型（`VERB + LOG`）认了回来
+            word = _p09.norm_phrase(_p04.fix_phrase(s.get("head") or h["word"]))
+            if _p09.bad_head(word):
+                continue
             for g in s["groups"]:
                 for sub in g.get("subs") or []:
                     full = sub.get("full") or []
                     if not full:
                         continue
                     # 校对过的优先——OCR 抽出来的解释常带错字和串行，例句还缺七成
-                    key = h["word"] + "||" + re.sub(r"[^a-z]", "", full[0].lower())
+                    key = word + "||" + re.sub(r"[^a-z]", "", full[0].lower())
                     if "!drop!" + key in cache:
                         continue          # 搭配被 OCR 毁得没法还原，整行不要
                     got = cache.get(key)

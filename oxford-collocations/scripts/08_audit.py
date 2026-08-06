@@ -41,8 +41,8 @@ CJK = re.compile(r"[\u4e00-\u9fff]")
 
 def check(rows):
     bad = {k: [] for k in (
-        "词头坏", "搭配坏格子", "解释混英文", "解释残留碎字", "例句混中文",
-        "例句不完整", "例句缺搭配词", "例句加粗不全")}
+        "词头坏", "搭配坏格子", "解释混英文", "解释残留碎字", "例句坏",
+        "例句加粗不全")}
     for word, pos, full, cn, en, zh in rows:
         if p09.bad_head(word):
             bad["词头坏"].append(word)
@@ -60,16 +60,10 @@ def check(rows):
         if not en:
             continue
         plain = re.sub(r"</?b>", "", en)
-        if CJK.search(plain):
-            bad["例句混中文"].append(plain[:50])
-        if not plain.rstrip().endswith((".", "!", "?", "'", '"', "’", "”")) \
-                or len(plain.split()) < 5 or not plain[:1].isupper():
-            bad["例句不完整"].append(plain[:50])
-            continue
-        # 例句得真的在讲这条搭配：搭配里的实词至少要出现一个
         want = p09.content_words(full[0])
-        if want and not any(p09.hits(w, plain) for w in want):
-            bad["例句缺搭配词"].append(f"{full[0]} → {plain[:44]}")
+        why = p09.bad_sentence(plain, want)
+        if why:
+            bad["例句坏"].append(f"{plain[:44]}  ←{why}")
             continue
         # 加粗只查**句子里真有的那些词**。句子里压根没有的词标不上是分组问题，
         # 不是加粗的毛病，混在一起数永远收敛不了

@@ -64,6 +64,19 @@ SUBJ = re.compile(
 LEAD_SUBJ = re.compile(r"^(this|that|these|those|there|it|he|she|they|we|you)\s", re.I)
 
 
+# 上面那条规则会误伤的短词，都是全书里实际出现过的正经词条
+SHORT_OK = {"writ", "loo", "omen", "tart", "rout", "nigh", "lass", "stag",
+            "vie", "boa", "hem", "gent", "whit", "pus", "nit", "bran", "fro",
+            "wag", "vet", "ebb", "awe", "vow", "wry", "apt", "eel", "oak"}
+
+
+def odd_caps(w):
+    """词中间冒出大写字母：`terracE`、`minuteS`、`accoladeS`。
+    原书用的是小型大写字母，OCR 认成了大写，拼出来就是这德行。
+    `BrE`/`AmE` 这些词典标签是正经的，放过。"""
+    return bool(re.search(r"[a-z][A-Z]", w)) and w.lower() not in PLACE
+
+
 def bad_word(w):
     """这个词是不是坏词。`fix_token` 已经修过一轮，还坏就是修不动的。"""
     from wordfreq import zipf_frequency as z
@@ -79,6 +92,14 @@ def bad_word(w):
     if len(low) > 11 or re.search(
             r"(ingly|edly|ously|ily|ness|ment|ship|able|less)$", low):
         return False
+    # 三四个字母的残词 web2 全都收（ast、ike、ost、ist、dea、fil、rea 都在里面），
+    # 查词表和查词频一个都拦不住，印出来就是 `ast to arrive`、`dea affair`。
+    # 判据：**补一个字母就能变成常见得多的词**，那它多半就是被吃掉了首字母
+    if len(low) <= 4 and z(low, "en") < 3.5 and low not in SHORT_OK:
+        base = z(low, "en")
+        if any(max(z(c + low, "en"), z(low + c, "en")) > base + 1.5
+               for c in "abcdefghijklmnopqrstuvwxyz"):
+            return True
     return not p04.real_word(low) and z(low, "en") < 3.0
 
 
@@ -135,6 +156,8 @@ def bad_phrase(p):
     if re.search(r"(?:^|\s)[b-hj-z](?:\s|$)", p, re.I):
         return "缺首字母"
     for w in re.findall(r"[A-Za-z][A-Za-z'’]*", p):
+        if odd_caps(w):
+            return f"词中大写 {w}"
         if bad_word(w):
             return f"坏词 {w}"
     return ""
@@ -166,7 +189,9 @@ def clean_cn(cn):
     # 卡「前后不是汉字」的话紧贴汉字的这些一个也清不掉
     cn = re.sub(r"[0-9A-Za-z|｜]+", "；", cn)
     cn = re.sub(r"[；;]\s*(?=[；;])", "", cn)
-    cn = re.sub(r"\s+", "", cn).strip(" ,.;:、，。；：·-—")
+    # 空格留一个别全抹掉：几条解释挤一格时，`富有创意的 想象丰富的 有创新的`
+    # 抹成一坨就读不断句了
+    cn = re.sub(r"\s+", " ", cn).strip(" ,.;:、，。；：·-—")
     return cn if CJK.search(cn) else ""
 
 
@@ -259,26 +284,55 @@ def hits(word, text):
     return re.search(r"\b" + inflect(word) + r"\b", text or "", re.I) is not None
 
 
+# 正经的两字母词。剩下的两字母「词」都是 OCR 渣：`Lo throw a big party` 的 Lo 是 to
+TWO_OK = {"a", "i", "am", "an", "as", "at", "be", "by", "do", "go", "he", "hi",
+          "if", "in", "is", "it", "me", "my", "no", "of", "oh", "ok", "on",
+          "or", "so", "to", "up", "us", "we", "ah", "eh", "id", "ex", "tv",
+          "pm", "ye", "ox", "re"}
+
+
+def bad_sentence(plain, words=()):
+    """例句坏在哪儿，好的返回空串。**清洗和自查用的是同一个函数**。"""
+    if not plain[:1].isupper() or len(plain.split()) < 5:
+        return "不完整"
+    if not plain.rstrip().endswith((".", "!", "?", "'", '"', "’", "”")):
+        return "不完整"
+    if CJK.search(plain):
+        return "混中文"
+    if MARKER.search(plain) or not OK_CHARS.match(plain):
+        return "混标记"
+    # 交叉引用被卷进来了：`Special page at BUSINESS arrangement with a`
+    if any(t.isupper() and len(t) >= 3 and t not in CAPS_OK
+           for t in re.findall(r"[A-Za-z]{2,}", plain)):
+        return "混标记"
+    # 例句里也会掉首字母：`We provide assistance i your car breaks down.`（i 是 if）
+    if re.search(r"(?:^|\s)[b-hj-z](?:\s|$)", plain, re.I):
+        return "缺首字母"
+    # 缩写的 t 被吃掉：`We don' have the finances`
+    if re.search(r"\b\w+n'(?![\w])", plain):
+        return "缩写残缺"
+    # 书里的 `~ed` 扫成了 `-d`，孤零零一个连字符开头的词
+    if re.search(r"(?:^|\s)-", plain):
+        return "残缺词"
+    for w in re.findall(r"[A-Za-z][A-Za-z'’]*", plain):
+        if odd_caps(w):
+            return f"词中大写 {w}"
+        if len(w) == 2 and w.lower() not in TWO_OK:
+            return f"坏词 {w}"
+        if bad_word(w):
+            return f"坏词 {w}"
+    # 例句得真的在讲这条搭配。一个词都对不上就是归错了小类
+    if words and not any(hits(w, plain) for w in words):
+        return "跟搭配对不上"
+    return ""
+
+
 def clean_ex(full, en, zh):
     """例句列。修不好就整条不要——宁可这行没例句，也不能印半句。"""
     en = re.sub(r"\s+", " ", (en or "").replace("’", "'").strip())
     zh = re.sub(r"\s+", " ", (zh or "").strip())
     plain = re.sub(r"</?b>", "", en)
-    if not plain:
-        return "", ""
-    words = content_words(full[0])
-    ok = (plain[:1].isupper() and len(plain.split()) >= 5
-          and plain.rstrip().endswith((".", "!", "?", "'", '"', "’", "”"))
-          and not CJK.search(plain)
-          and not MARKER.search(plain)
-          and OK_CHARS.match(plain)
-          # 交叉引用被卷进来了：`Special page at BUSINESS arrangement with a`
-          and not any(t.isupper() and len(t) >= 3 and t not in CAPS_OK
-                      for t in re.findall(r"[A-Za-z]{2,}", plain))
-          and not any(bad_word(w) for w in re.findall(r"[A-Za-z][A-Za-z'’]*", plain))
-          # 例句得真的在讲这条搭配。一个词都对不上就是归错了小类
-          and (not words or any(hits(w, plain) for w in words)))
-    if not ok:
+    if not plain or bad_sentence(plain, content_words(full[0])):
         return "", ""
     return en, clean_cn(zh)
 

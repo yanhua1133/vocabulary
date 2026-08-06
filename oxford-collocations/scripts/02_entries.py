@@ -56,6 +56,16 @@ def normalize(t):
     return re.sub(r"\s+", " ", t).strip()
 
 
+def dehyphen(t):
+    """抹掉原书换行处的断词连字符：`Trad- itional` → `Traditional`、
+    `nat– ural` → `natural`、`punish– ment` → `punishment`。
+
+    得在**跨行拼接之后**做——断词的两半本来就在两行上，normalize 只看得见单行。
+    连字符后面带空格才算断词，`slash-and-burn` 这种真连字符没有空格。
+    """
+    return re.sub(r"(?<=[a-zA-Z])[-–—]\s+(?=[a-z])", "", t)
+
+
 def merge_rows(col, tol=0.006):
     """把被切碎的同一行拼回去：碎片必须横向排开、互不重叠。
 
@@ -187,6 +197,12 @@ def main():
                     cur_sense = {"n": 0, "text": "", "groups": []}
                     cur_head["senses"].append(cur_sense)
                 cur_sense["groups"].append({"type": key, "text": rest})
+
+    for h in book:                                # 块都拼完了，再统一抹断词
+        for sense in h["senses"]:
+            sense["text"] = dehyphen(sense["text"])
+            for g in sense["groups"]:
+                g["text"] = dehyphen(g["text"])
 
     json.dump(book, open(os.path.join(DATA, "book.json"), "w"),
               ensure_ascii=False, indent=1)

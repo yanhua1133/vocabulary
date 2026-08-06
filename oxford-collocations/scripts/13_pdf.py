@@ -59,7 +59,9 @@ SHRINK_JS = """
     // 例句列最宽、内容也最长，允许三行；其余三列压两行
     // （都卡两行的话例句会被缩到 4pt 上下，根本没法看）
     if (td.colSpan > 1) return;               // 字母分隔行
-    const MAX = 2;                            // 四列一律两行，不许出现第三行
+    // 搭配列一格常有三四条搭配，竖着排本来就该占三四行（7.4% 的格子有 ≥4 条）；
+    // 硬压两行只会把字缩到看不清。其余列还是两行
+    const MAX = td.cellIndex === 1 ? 4 : 2;
     let guard = 0;
     while (rows(td) > MAX && guard++ < 40 && shrink(td)) {}
     // 缩完再尽量涨回去：一步缩 7% 常常缩过头，排出来字小得可怜、宽度却剩一大截。
@@ -131,10 +133,10 @@ tr.sec td { background: #0b6fa4; color: #fff; font-size: 9pt; font-weight: bold;
 /* 四列：习语 / 中文解释 / 常用·口语 / 例句 */
 /* 五列，按实测内容量分配（平均半角宽 3 / 6 / 7 / 75 / 285）。
    词头和义项列很多行是空的（同一词头/义项只在第一行写），但要留得下最宽的那些 */
-th:nth-child(1), td:nth-child(1) { width: 11%; }
-th:nth-child(2), td:nth-child(2) { width: 24%; }
-th:nth-child(3), td:nth-child(3) { width: 22%; }
-th:nth-child(4), td:nth-child(4) { width: 43%; color: #333; }
+th:nth-child(1), td:nth-child(1) { width: 10%; vertical-align: top; }
+th:nth-child(2), td:nth-child(2) { width: 26%; }
+th:nth-child(3), td:nth-child(3) { width: 22%; color: #444; }
+th:nth-child(4), td:nth-child(4) { width: 42%; color: #333; }
 .lab { color: #999; font-size: 5.2pt; margin-right: 1px; }
 .nw { white-space: nowrap; }            /* 别在重音符号后面断行 */
 /* 语域标签是次要信息，缩小它好把长条目压进两行 */

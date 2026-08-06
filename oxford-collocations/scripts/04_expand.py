@@ -37,10 +37,19 @@ def put_head(w, head):
     不能直接拼——`be found~ed` 硬拼出来是 `be foundabandoned`。"""
     def form(m):
         suf = m.group(1) or ""
+        vowel_y = len(head) > 1 and head[-1] == "y" and head[-2] not in "aeiou"
         if suf in ("ed", "d"):
+            if vowel_y:
+                return head[:-1] + "ied"
             return head + ("d" if head.endswith("e") else "ed")
         if suf == "ing":
             return (head[:-1] if head.endswith("e") else head) + "ing"
+        if suf in ("s", "es"):
+            if vowel_y:                            # ability + ~s → abilities
+                return head[:-1] + "ies"
+            if re.search(r"(s|x|z|ch|sh)$", head):
+                return head + "es"
+            return head + "s"
         return head + suf
 
     w = re.sub(r"(?<=[a-zA-Z])~", " ~", w)         # OCR 常把 ~ 前的空格吃掉

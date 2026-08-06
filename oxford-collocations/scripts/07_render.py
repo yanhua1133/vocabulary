@@ -55,9 +55,19 @@ def main():
              "\n<table>",
              "<thead><tr><th>词头</th><th>搭配</th><th>中文</th>"
              "<th>例句</th></tr></thead>"]
-    for word, words, cn, ex in rows:
-        w = f"<b>{word}</b>" if word else ""
-        lines.append(f"<tr><td>{w}</td><td><b>{words}</b></td>"
+    # 词头列合并单元格：同一个词头底下有多少行就跨多少行，
+    # 不然那一列全是空格子，看着像散的
+    spans, i = {}, 0
+    while i < len(rows):
+        j = i + 1
+        while j < len(rows) and not rows[j][0]:
+            j += 1
+        spans[i] = j - i
+        i = j
+    for k, (word, words, cn, ex) in enumerate(rows):
+        head = (f'<td rowspan="{spans[k]}"><b>{word}</b></td>'
+                if k in spans else "")
+        lines.append(f"<tr>{head}<td><b>{words}</b></td>"
                      f"<td>{cn}</td><td>{ex}</td></tr>")
     lines.append("</table>\n")
     p = os.path.join(OUT, "牛津搭配词典.md")

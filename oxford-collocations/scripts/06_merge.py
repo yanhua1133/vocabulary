@@ -32,10 +32,16 @@ def ok(rec):
 def merge_fix(cache):
     """并入 work/fix/ 里修好的搭配。这批不光改 cn/ex，还改搭配文本本身
     （`time him` → `the mists of time`），推不出来的标了 `__DROP__`，整条删掉。"""
-    d = os.path.join(ROOT, "work", "fix")
-    if not os.path.isdir(d):
-        return 0, 0
     fixed = dropped = 0
+    for d in (os.path.join(ROOT, "work", "fix"),
+              os.path.join(ROOT, "work", "fix2")):
+        if not os.path.isdir(d):
+            continue
+        fixed, dropped = _merge_dir(d, cache, fixed, dropped)
+    return fixed, dropped
+
+
+def _merge_dir(d, cache, fixed, dropped):
     for f in sorted(os.listdir(d)):
         if not f.endswith(".out.json"):
             continue

@@ -9,6 +9,7 @@
 
 Usage: 07_render.py
 """
+import importlib.util
 import json
 import os
 import re
@@ -16,6 +17,12 @@ import re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 OUT = os.path.join(ROOT, "out")
+
+
+_spec = importlib.util.spec_from_file_location(
+    "p04", os.path.join(os.path.dirname(os.path.abspath(__file__)), "04_expand.py"))
+_p04 = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_p04)
 
 
 def cell(s):
@@ -92,7 +99,7 @@ def main():
                         continue          # 搭配被 OCR 毁得没法还原，整行不要
                     got = cache.get(key)
                     if got:
-                        full = got.get("c") or full     # 用修好的搭配
+                        full = [_p04.fix_phrase(x) for x in (got.get("c") or full)]
                         fixed += 1
                         cn = got["cn"]
                         en, _, zh = got["ex"].partition("  ")

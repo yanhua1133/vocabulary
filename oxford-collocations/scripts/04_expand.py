@@ -29,7 +29,8 @@ CONFUSE = {"i": "l", "l": "i", "t": "l", "f": "l", "o": "c", "c": "o",
            "l": "d", "d": "l", "t2": "f", "f2": "t", "r": "h", "h2": "r",
            "v": "w", "w": "v", "c2": "d", "g": "q", "q": "g", "s": "g"}
 # 展平成 (错, 对) 的列表——字典的 key 不能重复，同一个字母有好几种认错方向
-PAIRS = [("i", "l"), ("l", "i"), ("t", "l"), ("f", "l"), ("o", "c"),
+PAIRS = [("i", "l"), ("l", "i"), ("t", "l"), ("f", "l"), ("o", "c"), ("d", "c"),
+         ("c", "s"), ("h", "b"), ("b", "h"), ("k", "b"), ("j", "i"),
          ("c", "o"), ("a", "o"), ("u", "n"), ("n", "u"), ("e", "c"),
          ("h", "b"), ("y", "v"), ("rn", "m"), ("ii", "u"), ("1", "l"),
          ("0", "o"), ("l", "d"), ("d", "l"), ("t", "f"), ("f", "t"),
@@ -51,6 +52,13 @@ def fix_token(w):
     if w in _CACHE:
         return _CACHE[w]
     low = out = w.lower()
+    # 数字混进单词里是 OCR 认错，不是真数字：g00d→good、detedt→detect。
+    # 原来先 isalpha() 再纠错，这类词一进来就被挡在门外了
+    if re.search(r"[0135]", out) and re.search(r"[a-z]", out):
+        digits = str.maketrans("0135", "olse")
+        cand = out.translate(digits)
+        if z(cand, "en") > z(out, "en") + 1.0:
+            out = cand
     # 迭代两轮：有些词错了两处，`ciress` 得先删掉多认的 i 变 cress、再把 c 认回 d
     for _ in range(2):
         base = z(out, "en")
@@ -88,7 +96,9 @@ def fix_token(w):
 def fix_phrase(t):
     # 连字符要拆开分别修：`ife-support` 整体查不到词频，拆成 ife / support
     # 才认得出 ife 少了个 l
-    return re.sub(r"[a-zA-Z][a-zA-Z']{2,}", lambda m: fix_token(m.group(0)), t)
+    # 字符集要带上数字，`g00d`、`detedt` 这类混了数字的词否则根本进不了纠错
+    return re.sub(r"[a-zA-Z][a-zA-Z0-9']{2,}",
+                  lambda m: fix_token(m.group(0)), t)
 
 
 def split_words(s):

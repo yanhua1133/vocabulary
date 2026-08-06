@@ -109,13 +109,15 @@ h1 { font-size: 15pt; margin: 0 0 8px; color: #0b6fa4; }
    每格只画右边和下边，左边和上边由表格自己补，才不会画重。 */
 table { width: 100%; border-collapse: separate; border-spacing: 0;
         table-layout: fixed; }
+/* flex 布局下 border-collapse 不起作用，每格只画右边和下边，
+   左边和上边由整张表的外框和上一行补 */
 th { background: #e8f4fb; font-size: 6.8pt; padding: 2px 3px; text-align: left;
-     border-right: 0.5pt solid #5a8fae; border-bottom: 0.5pt solid #5a8fae;
-     border-top: 0.5pt solid #5a8fae; }
-th:first-child { border-left: 0.5pt solid #5a8fae; }
+     border-right: 0.5pt solid #5a8fae; border-bottom: 0.5pt solid #5a8fae; }
 td { border-right: 0.5pt solid #9a9a9a; border-bottom: 0.5pt solid #9a9a9a;
-     padding: 1.6px 3px; vertical-align: top; word-wrap: break-word; }
-td:first-child { border-left: 0.5pt solid #9a9a9a; }
+     padding: 1.6px 3px; word-wrap: break-word; overflow-wrap: break-word; }
+th:first-child, td:first-child { border-left: 0.5pt solid #9a9a9a; }
+thead tr { border-top: 0.5pt solid #5a8fae; }
+tbody tr:first-child { border-top: 0.5pt solid #9a9a9a; }
 /* 最右这条贴着版心边界，细线在阅读器里低缩放时会被丢掉。
    Chrome 打印时无论 border 写多粗都只画 0.75pt（collapse、separate、
    px、pt 全试过），所以改用背景渐变画这条线——背景不走 border 那套渲染 */
@@ -125,9 +127,13 @@ th:last-child, td:last-child {
                                     #444 calc(100% - 1.6pt));
 }
 th:last-child { background-color: #e8f4fb; }
-/* 行不许被分页切开——切开了上半页留半句、下半页留半句，
-   而且「每页顶上补写单词」也就无从落脚了。td 也要加，光给 tr 加 Chrome 不认 */
-tr, td { break-inside: avoid; page-break-inside: avoid; }
+/* **不用真表格布局**：Chrome 打印时不认 `tr` 上的 break-inside，
+   行照样被分页拦腰切断，上半页留半句、下半页留半句。
+   改成 flex 排出来的伪表格——每行是个 block 级的 flex 容器，
+   block 元素的 break-inside Chrome 是认的。 */
+table, thead, tbody { display: block; }
+tr { display: flex; break-inside: avoid; page-break-inside: avoid; }
+th, td { display: block; flex: 0 0 auto; box-sizing: border-box; }
 thead { display: table-header-group; }
 b { color: #000; font-weight: bold; }
 tr.sec td { background: #0b6fa4; color: #fff; font-size: 9pt; font-weight: bold;
@@ -135,11 +141,16 @@ tr.sec td { background: #0b6fa4; color: #fff; font-size: 9pt; font-weight: bold;
 /* 四列：习语 / 中文解释 / 常用·口语 / 例句 */
 /* 五列，按实测内容量分配（平均半角宽 3 / 6 / 7 / 75 / 285）。
    词头和义项列很多行是空的（同一词头/义项只在第一行写），但要留得下最宽的那些 */
-th:nth-child(1), td:nth-child(1) { width: 10%; vertical-align: top; }
-th:nth-child(2), td:nth-child(2) { width: 26%; }
-th:nth-child(3), td:nth-child(3) { width: 22%; color: #444; }
-th:nth-child(4), td:nth-child(4) { width: 42%; color: #333; }
+th:nth-child(1), td:nth-child(1) { flex-basis: 10%; }
+th:nth-child(2), td:nth-child(2) { flex-basis: 26%; }
+th:nth-child(3), td:nth-child(3) { flex-basis: 22%; color: #444; }
+th:nth-child(4), td:nth-child(4) { flex-basis: 42%; color: #333; }
 .lab { color: #999; font-size: 5.2pt; margin-right: 1px; }
+tr.newpage { break-before: page; page-break-before: always; }
+/* 每页顶上重复的表头 */
+tr.repeat-head > * { background: #e8f4fb; font-size: 6.8pt; font-weight: normal;
+                     color: #222; border-right: 0.5pt solid #5a8fae;
+                     border-bottom: 0.5pt solid #5a8fae; padding: 2px 3px; }
 .nw { white-space: nowrap; }            /* 别在重音符号后面断行 */
 /* 单词列要真的连成一片：border-collapse 下只去掉续行格的上边框没用，
    上一格的下边框还在，横线照样一条条画出来。得把这一列的横线全撤掉，
@@ -162,50 +173,44 @@ def md_to_html(md, title):
 
 # 排完版之后再跑一遍：合并单元格跨页时，在新页顶上把单词重新写一遍。
 # 纸面上看不到上一页，光靠 border 连一片的话，翻过来那页第一列就是空的
-def page_top_rows(pdf_path):
-    """读出 PDF 每页最上面那一行的搭配文本，用来定位分页处。
-
-    分页位置只有真排出 PDF 才知道——JS 在 print 模拟下看到的是连续流，
-    量不出页边界。所以排两遍：第一遍看分在哪儿，第二遍在每页顶上补写单词。
-    """
-    import fitz
-
-    tops = []
-    doc = fitz.open(pdf_path)
-    for page in doc:
-        cells = []
-        for b in page.get_text("dict")["blocks"]:
-            for l in b.get("lines", []):
-                t = "".join(s["text"] for s in l["spans"]).strip()
-                # 搭配列大致在这个横向范围，取最靠上的那一条；
-                # 纵向要避开每页重复的表头（它也落在这一列里）
-                if t and 78 < l["bbox"][0] < 200 and l["bbox"][1] > 80:
-                    cells.append((round(l["bbox"][1]), t))
-        if cells:
-            cells.sort()
-            tops.append(cells[0][1])
-    doc.close()
-    return tops
-
-
-def repage(md, tops):
-    """把每页顶上那一行的单词格补出来。"""
-    rows = re.findall(r"<tr>.*?</tr>", md, re.S)
-    want = set(tops)
-    word, out, added = "", [], 0
-    for r in rows:
-        m = re.search(r'class="c1[^"]*"[^>]*>(?:<b>)?(.*?)(?:</b>)?</td>', r, re.S)
-        if m and m.group(1).strip():
-            word = m.group(1)
-        first = re.search(r'<td class="c2"><b>(.*?)(?:<br>|</b>)', r, re.S)
-        if (first and first.group(1).strip() in want and word
-                and 'class="c1 cont"' in r):
-            r = r.replace('<td class="c1 cont"></td>',
-                          f'<td class="c1 newword"><b>{word}</b></td>')
-            added += 1
-        out.append(r)
-    head = md.split("<tr>")[0]
-    return head + "\n".join(out) + "\n</table>\n", added
+# 自己算分页，不指望 CSS。Chrome 打印时既不认表格行的 break-inside，
+# JS 又量不出它把页切在哪儿——那就干脆自己按累计高度切，切完顺手把单词补上。
+PAGINATE_JS = """
+(pageH) => {
+  const rows = [...document.querySelectorAll('tbody tr')];
+  const head = document.querySelector('thead');
+  const headH = head ? head.getBoundingClientRect().height : 0;
+  const title = document.querySelector('h1');
+  let acc = (title ? title.getBoundingClientRect().height + 8 : 0) + headH;
+  let word = '', added = 0;
+  for (const tr of rows) {
+    const c1 = tr.querySelector('td.c1');
+    if (c1 && !c1.classList.contains('cont')) word = c1.innerHTML;
+    let h = tr.getBoundingClientRect().height;
+    if (acc + h > pageH) {                 // 这一行放不下了，从它开始翻页
+      tr.classList.add('newpage');
+      // flex 布局下 thead 不会自动在每页重复，自己插一份
+      if (head) {
+        const clone = head.firstElementChild.cloneNode(true);
+        clone.classList.add('repeat-head');
+        tr.parentNode.insertBefore(clone, tr);
+        clone.classList.add('newpage');
+        tr.classList.remove('newpage');
+      }
+      acc = headH;
+      if (c1 && c1.classList.contains('cont') && word) {
+        c1.innerHTML = word;               // 新页第一行，把单词重写一遍
+        c1.classList.remove('cont');
+        c1.classList.add('newword');
+        added++;
+        h = tr.getBoundingClientRect().height;   // 补完字行可能变高，重量一次
+      }
+    }
+    acc += h;
+  }
+  return added;
+}
+"""
 
 
 def print_pdf(html_path, pdf_path):
@@ -218,12 +223,14 @@ def print_pdf(html_path, pdf_path):
         page.emulate_media(media="print")
         page.goto("file://" + html_path)
         over = page.evaluate(SHRINK_JS)
+        # 正文区高度：纸高 260mm 减上下边距 26mm，留 4px 余量防止贴边溢出
+        added = page.evaluate(PAGINATE_JS, (260 - 26) / 25.4 * 96 - 4)
 
         page.pdf(path=pdf_path, print_background=True, **PAGE)
         browser.close()
     if not os.path.exists(pdf_path) or os.path.getmtime(pdf_path) <= before:
         raise RuntimeError("PDF 没有被写出来：" + pdf_path)
-    print(f"实测仍超过两行的格子：{over} 个")
+    print(f"实测仍超过两行的格子：{over} 个；翻页处补写单词 {added} 次")
 
 
 def add_bookmarks(path):
@@ -273,17 +280,7 @@ def main():
     open(html_path, "w").write(md_to_html(md, name))
     pdf_path = os.path.join(PDF, f"{name}.pdf")
     print_pdf(html_path, pdf_path)
-    # 补写单词本身会把布局撑开一点、分页位置跟着挪，所以要迭代到不再新增为止
-    total = 0
-    for _ in range(4):
-        md, added = repage(md, page_top_rows(pdf_path))
-        if not added:
-            break
-        total += added
-        open(html_path, "w").write(md_to_html(md, name))
-        print_pdf(html_path, pdf_path)
-    if total:
-        print(f"跨页处补写单词 {total} 次")
+
     add_bookmarks(pdf_path)
     print(pdf_path)
 

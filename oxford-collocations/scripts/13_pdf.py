@@ -34,7 +34,9 @@ SHRINK_JS = """
   // （`get your ˈact together ◆ get sth/it toˈgether (informal) (also
   // get/have your ˈshit together)`），要压进两行只能让它比别处小得多；
   // 好在这些都是英文，小字比中文耐看。中文那两列绝不能低于 4.6pt
-  const MIN_BY_COL = [2.9 * 96 / 72, 4.6 * 96 / 72, 4.6 * 96 / 72, 4.4 * 96 / 72];
+  // 按 class 取列号，不能用 td.cellIndex——有 rowspan 时它会左移一位
+  const COL = (td) => "c1 c2 c3 c4".split(" ").indexOf(td.className) + 1 || 1;
+  const MIN_BY_COL = [4.8, 5.4, 5.2, 5.0].map(x => x * 96 / 72);
   let over = 0;
   const rows = (td) => {
     const r = document.createRange();
@@ -47,7 +49,7 @@ SHRINK_JS = """
     return n;
   };
   const shrink = (td) => {                    // 返回 false 表示已到字号下限
-    const MIN = MIN_BY_COL[td.cellIndex] || 4.4 * 96 / 72;
+    const MIN = MIN_BY_COL[COL(td) - 1];
     for (const el of [td, ...td.querySelectorAll('*')]) {
       const s = parseFloat(getComputedStyle(el).fontSize) * 0.93;
       if (s < MIN) return false;
@@ -59,9 +61,10 @@ SHRINK_JS = """
     // 例句列最宽、内容也最长，允许三行；其余三列压两行
     // （都卡两行的话例句会被缩到 4pt 上下，根本没法看）
     if (td.colSpan > 1) return;               // 字母分隔行
-    // 搭配列一格常有三四条搭配，竖着排本来就该占三四行（7.4% 的格子有 ≥4 条）；
-    // 硬压两行只会把字缩到看不清。其余列还是两行
-    const MAX = td.cellIndex === 1 ? 4 : 2;
+    // 每列各有各的合理行数。搭配列一格能有八九条，竖着排本来就该占那么多行，
+    // 卡死行数只会把字号压到看不清——宁可行高参差，也不要小到没法读。
+    // 解释和例句允许三行（英文两行 + 中文一行）
+    const MAX = [2, 14, 3, 3][COL(td) - 1];
     let guard = 0;
     while (rows(td) > MAX && guard++ < 40 && shrink(td)) {}
     // 缩完再尽量涨回去：一步缩 7% 常常缩过头，排出来字小得可怜、宽度却剩一大截。
@@ -204,10 +207,12 @@ def main():
     os.makedirs(PDF, exist_ok=True)
     os.makedirs(WORK, exist_ok=True)
     md = open(os.environ.get("MD") or os.path.join(OUT, "牛津搭配词典.md")).read()
-    if "--sample" in sys.argv:                # 只排前 200 条，用来看版式（临时文件）
-        rows = re.findall(r"<tr>.*?</tr>", md, re.S)
-        md = (md.split("<table>")[0] + "<table>" + rows[0]
-              + "".join(rows[1:201]) + "</table>")
+    if "--sample" in sys.argv:                # 看版式用的临时文件
+        # 指定了 MD 就直接排它，别再切一遍——外面拼好的片段会被切没
+        if not os.environ.get("MD"):
+            rows = re.findall(r"<tr>.*?</tr>", md, re.S)
+            md = (md.split("<table>")[0] + "<table>" + rows[0]
+                  + "".join(rows[1:201]) + "</table>")
         name = "_sample"
     else:
         name = FINAL[:-4]

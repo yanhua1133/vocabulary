@@ -77,20 +77,26 @@ def main():
              "\n<table>",
              "<thead><tr><th>词头</th><th>搭配</th><th>解释</th>"
              "<th>例句</th></tr></thead>"]
-    # 词头列合并单元格：同一个词头底下有多少行就跨多少行，
-    # 不然那一列全是空格子，看着像散的
-    spans, i = {}, 0
+    # 词头列合并单元格。但 rowspan 不能无限长：`system` 这种词条有好几百行，
+    # 一个 rowspan 跨完，打印时整块挤不进一页，第一页就只剩个表头。
+    # 每 18 行断一次、重复写词头，每页都看得到自己在查哪个词
+    spans, i, LIMIT = {}, 0, 18
     while i < len(rows):
         j = i + 1
         while j < len(rows) and not rows[j][0]:
             j += 1
-        spans[i] = j - i
+        for k in range(i, j, LIMIT):
+            spans[k] = min(LIMIT, j - k)
+            if k > i:
+                rows[k] = (rows[i][0],) + tuple(rows[k][1:])
         i = j
     for k, (word, words, cn, ex) in enumerate(rows):
-        head = (f'<td rowspan="{spans[k]}"><b>{word}</b></td>'
+        head = (f'<td class="c1" rowspan="{spans[k]}"><b>{word}</b></td>'
                 if k in spans else "")
-        lines.append(f"<tr>{head}<td><b>{words}</b></td>"
-                     f"<td>{cn}</td><td>{ex}</td></tr>")
+        # 每格都打上列号：有 rowspan 时没有词头格的行，td.cellIndex 会整体左移一位，
+        # 排版脚本就把搭配列当成词头列处理了（只给两行、还能缩到 2.9pt）
+        lines.append(f'<tr>{head}<td class="c2"><b>{words}</b></td>'
+                     f'<td class="c3">{cn}</td><td class="c4">{ex}</td></tr>')
     lines.append("</table>\n")
     p = os.path.join(OUT, "牛津搭配词典.md")
     open(p, "w").write("\n".join(lines))

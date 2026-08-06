@@ -21,6 +21,76 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 
 
+# 形近字母对。前一批修完还剩 2886 处，看剩下的样子补出来的：
+# lefeat→defeat、tirm→firm、readquarters→headquarters、vork→work
+CONFUSE = {"i": "l", "l": "i", "t": "l", "f": "l", "o": "c", "c": "o",
+           "a": "o", "u": "n", "n": "u", "e": "c", "h": "b", "y": "v",
+           "rn": "m", "ii": "u", "1": "l", "0": "o",
+           "l": "d", "d": "l", "t2": "f", "f2": "t", "r": "h", "h2": "r",
+           "v": "w", "w": "v", "c2": "d", "g": "q", "q": "g", "s": "g"}
+# 展平成 (错, 对) 的列表——字典的 key 不能重复，同一个字母有好几种认错方向
+PAIRS = [("i", "l"), ("l", "i"), ("t", "l"), ("f", "l"), ("o", "c"),
+         ("c", "o"), ("a", "o"), ("u", "n"), ("n", "u"), ("e", "c"),
+         ("h", "b"), ("y", "v"), ("rn", "m"), ("ii", "u"), ("1", "l"),
+         ("0", "o"), ("l", "d"), ("d", "l"), ("t", "f"), ("f", "t"),
+         ("r", "h"), ("h", "r"), ("v", "w"), ("w", "v"), ("c", "d"),
+         ("g", "q"), ("q", "g"), ("s", "g"), ("m", "rn")]
+_CACHE = {}
+
+
+def fix_token(w):
+    """搭配词里的 OCR 错字。扫描件左边缘常把首字母吃掉，尤其是 `l`——
+    `ocal`→local、`argely`→largely、`ikely`→likely、`aunch`→launch、
+    `anguage`→language，全书 6911 处。也有形近认错的（`lefeat`→defeat）。
+
+    只在原词本身不是词、且候选唯一又够常见时才改。原书是权威词典，
+    「搭配疑误」几乎都是这儿丢的字母，不是书错。
+    """
+    from wordfreq import zipf_frequency as z
+
+    if w in _CACHE:
+        return _CACHE[w]
+    low = out = w.lower()
+    # 迭代两轮：有些词错了两处，`ciress` 得先删掉多认的 i 变 cress、再把 c 认回 d
+    for _ in range(2):
+        base = z(out, "en")
+        # 门槛不能卡在「查不到的词」上——`ife` 的词频有 2.69 却是 life 掉了首字母。
+        # 改成：本身不常见（<3.0），且换法明显更常见（高出 1.5 个数量级）才动
+        if not out.isalpha() or len(out) < 3 or base >= 3.0:
+            break
+        best, score = out, base + 1.5
+        for c in "abcdefghijklmnopqrstuvwxyz":       # 首/尾字母被吃掉
+            for cand in (c + out, out + c):
+                if z(cand, "en") > score:
+                    best, score = cand, z(cand, "en")
+        for i in range(len(out)):                    # 形近认错
+            for a, b in PAIRS:
+                if out[i:i + len(a)] != a:
+                    continue
+                cand = out[:i] + b + out[i + len(a):]
+                if z(cand, "en") > score:
+                    best, score = cand, z(cand, "en")
+        for i in range(len(out)):                    # 多认了一个字母
+            cand = out[:i] + out[i + 1:]
+            if len(cand) >= 3 and z(cand, "en") > score:
+                best, score = cand, z(cand, "en")
+        if best == out:
+            break
+        out = best
+    if out != w.lower():
+        out = out.capitalize() if w[0].isupper() else out
+    else:
+        out = w
+    _CACHE[w] = out
+    return out
+
+
+def fix_phrase(t):
+    # 连字符要拆开分别修：`ife-support` 整体查不到词频，拆成 ife / support
+    # 才认得出 ife 少了个 l
+    return re.sub(r"[a-zA-Z][a-zA-Z']{2,}", lambda m: fix_token(m.group(0)), t)
+
+
 def split_words(s):
     """搭配词串切成一个个词。按逗号切；`/` 是同一个词的两种拼法，不能切。"""
     out = []
@@ -113,7 +183,7 @@ def main():
         for s in h["senses"]:
             for g in s["groups"]:
                 for sub in g.get("subs", []):
-                    full = [expand_one(w, head, g["type"], pos)
+                    full = [fix_phrase(expand_one(w, head, g["type"], pos))
                             for w in split_words(sub["words"])]
                     sub["full"] = full
                     sub["cn"] = clean_cn(sub["cn"], head)

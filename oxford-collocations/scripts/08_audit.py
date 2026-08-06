@@ -1,143 +1,111 @@
 """Pass 08: 成品自查。把已经踩过的坑逐条查一遍，跑到数字收敛为止。
 
-查的是**渲染成品的每一个格子**，不是中间数据。每一条都对应一个真实犯过的错：
+查的是**渲染成品的每一个格子**——直接调 `07_render.iter_rows()`，不再自己抄
+一份取数逻辑。以前两边各写各的，渲染改了口径自查还按老口径查，
+报出来的数字是假的。
 
-- 搭配里夹数字      `g0od time`（OCR 把 o 认成 0，纠错时被 isalpha 挡掉了）
-- 搭配其实是例句    `s this an appropriate time to discuss salary?`（还掉了首字母）
-- 搭配首字母缺失    `ocal`→local、`ife`→life
-- 解释里混英文      没摘干净的例句
+每一条判据都对应一个真实犯过的错：
+
+- 搭配其实是例句    `n accepting the award work`（原文 `In accepting the award...`）
+- 搭配里有坏词      `it wil work`（wil 是 will 掉了个 l，词频却有 3.28）
+- 搭配混组类型标记  `admission rates /ERB + ADMISSION app for seek`
+- 搭配夹数字/怪符号 `g0od time`、`adapt to idmż 2 change a thing tx4i`
+- 解释里混英文      没摘干净的隔壁栏搭配
 - 例句不完整        缺主语、没有句末标点
 - 例句加粗不全      `an appropriate time` 只标了 time
 
-Usage: 08_audit.py
+前几类由 `09_clean.py` 在渲染时挡掉，这里复查确认真的挡住了；
+后面几条清洗管不了，只能报数。
+
+Usage: 08_audit.py [-v]
 """
 import importlib.util
-import json
 import os
 import re
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.dirname(HERE)
-DATA = os.path.join(ROOT, "data")
+
+
+def _load(name, mod):
+    spec = importlib.util.spec_from_file_location(mod, os.path.join(HERE, name))
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+p07 = _load("07_render.py", "p07")
+p09 = _load("09_clean.py", "p09")
 CJK = re.compile(r"[\u4e00-\u9fff]")
-
-spec = importlib.util.spec_from_file_location("p07", os.path.join(HERE, "07_render.py"))
-p07 = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(p07)
-
-# 搭配里允许出现的非字母：占位符、括号标签、斜杠变体
-PLACE = {"sb", "sth", "sb's", "sth's", "one's", "etc", "esp", "brE", "amE"}
-# 英式拼写在 wordfreq 里词频普遍偏低，别当成 OCR 错字
-BRITISH = {"belabour", "labour", "favour", "honour", "colour", "flavour",
-           "behaviour", "neighbour", "endeavour", "rumour", "humour",
-           "practise", "organise", "recognise", "realise", "analyse"}
-
-
-def rows_of():
-    """跟渲染走同一条路，查的就是印出来的东西。"""
-    book = json.load(open(os.path.join(DATA, "expanded.json")))
-    cpath = os.path.join(DATA, "cache.json")
-    cache = json.load(open(cpath)) if os.path.exists(cpath) else {}
-    out = []
-    for h in book:
-        for s in h["senses"]:
-            for g in s["groups"]:
-                for sub in g.get("subs") or []:
-                    full = sub.get("full") or []
-                    if not full:
-                        continue
-                    key = h["word"] + "||" + re.sub(r"[^a-z]", "", full[0].lower())
-                    if "!drop!" + key in cache:
-                        continue
-                    got = cache.get(key)
-                    if got:
-                        full = got.get("c") or full
-                    full = [p07._p04.fix_phrase(x) for x in full]   # 跟渲染同一口径
-                    if got:
-                        en, _, zh = got["ex"].partition("  ")
-                        out.append((h["word"], full, got["cn"], en, zh, True))
-                    else:
-                        ex = (sub.get("ex") or [["", ""]])[0]
-                        out.append((h["word"], full, sub["cn"], ex[0], ex[1], False))
-
-    return out
 
 
 def check(rows):
-    from wordfreq import zipf_frequency as z
-
     bad = {k: [] for k in (
-        "搭配夹数字", "搭配其实是句子", "搭配有坏词", "搭配缺首字母",
-        "解释混英文", "解释为空", "例句不完整", "例句加粗不全")}
-    for word, full, cn, en, zh, *_ in rows:
+        "词头坏", "搭配坏格子", "解释混英文", "解释残留碎字", "例句混中文",
+        "例句不完整", "例句缺搭配词", "例句加粗不全")}
+    for word, pos, full, cn, en, zh in rows:
+        if p09.bad_head(word):
+            bad["词头坏"].append(word)
         for f in full:
-            # `a 16-digit number`、`an under-16 team` 里的数字是正经的
-            if re.search(r"\d", f) and not re.search(r"[\d]+-\w|\w-[\d]+", f):
-                bad["搭配夹数字"].append(f)
-            # `what use is sth?`、`Way to go!` 是词典收的固定表达，不算句子；
-            # 真正的毛病是整句正文被抽成了搭配，那种更长、而且有主谓宾
-            # 带问号叹号的短表达是词典收的（`what use is sth?`、`Way to go!`），
-            # 长的就是整句正文被抽进来了（`s this an appropriate time to discuss salary?`）
-            if (re.search(r"[?!]", f) and len(f.split()) > 5) \
-                    or len(f.split()) > 9 or re.search(
-                    r"\b(this|that|there|it|he|she|they)\s+(is|was|are|were|has|had)\b",
-                    f, re.I):
-                bad["搭配其实是句子"].append(f)
-            # 首字母被吃掉，剩个孤零零的字母打头：`n accepting the award`、
-            # `s this an appropriate time`、`t stayed hot`。
-            # a 和 I 是正经开头（`a matter of time`），排除掉
-            if re.match(r"^[b-hj-z]\s", f, re.I) or re.search(r"\s[b-hj-z]\s", f):
-                bad["搭配缺首字母"].append(f)
-            for w in re.findall(r"[A-Za-z][a-z']{2,}", f):
-                # 连字符复合词、加了前缀的词 wordfreq 常查不到，
-                # 但它们是正经英语（semidetached、nanoplankton），别误报
-                # 连字符复合词、带前缀后缀的派生词 wordfreq 常查不到，
-                # 但都是正经英语（semidetached、pityingly、enquiringly），别误报
-                if len(w) > 11 or re.match(
-                        r"(semi|nano|micro|multi|inter|over|under|non|anti|pre|post)", w) \
-                        or re.search(r"(ingly|edly|ously|ily|ness|ment|ship)$", w):
-                    continue
-                if w.lower() in BRITISH:      # 英式拼写 wordfreq 收得少
-                    continue
-                if w.lower() not in PLACE and z(w.lower(), "en") < 1.5:
-                    bad["搭配有坏词"].append(f"{f}  ←{w}")
-                    break
-        if not cn or not CJK.search(cn):
-            bad["解释为空"].append(f"{word}: {full[:1]}")
-        elif re.search(r"[a-zA-Z]{4,}", cn):
-            bad["解释混英文"].append(cn[:40])
-        if en:
-            if not en.rstrip().endswith((".", "!", "?")) or len(en.split()) < 5 \
-                    or not en[:1].isupper():
-                bad["例句不完整"].append(en[:50])
-            else:
-                marked = p07.bold_words(en, full)
-                want = [w for w in re.split(r"[\s/]+", full[0])
-                        if len(w) > 2 and w.lower() not in PLACE]
-                miss = [w for w in want
-                        if f"<b>" not in marked or w.lower()[:4] not in
-                        " ".join(re.findall(r"<b>(.*?)</b>", marked)).lower()]
-                if want and len(miss) > len(want) / 2:
-                    bad["例句加粗不全"].append(f"{full[0]} → {marked[:56]}")
+            why = p09.bad_phrase(f)
+            if why:
+                bad["搭配坏格子"].append(f"{f}  ←{why}")
+        if cn:
+            # 清洗过后中文列不该再有成串英文
+            if re.search(r"[A-Za-z]{2,}", cn):
+                bad["解释混英文"].append(cn[:40])
+            # 也不该剩下孤立的拉丁字母、竖线这些 OCR 碎渣
+            elif re.search(r"[A-Za-z0-9|｜~～*#$]", cn):
+                bad["解释残留碎字"].append(cn[:40])
+        if not en:
+            continue
+        plain = re.sub(r"</?b>", "", en)
+        if CJK.search(plain):
+            bad["例句混中文"].append(plain[:50])
+        if not plain.rstrip().endswith((".", "!", "?", "'", '"', "’", "”")) \
+                or len(plain.split()) < 5 or not plain[:1].isupper():
+            bad["例句不完整"].append(plain[:50])
+            continue
+        # 例句得真的在讲这条搭配：搭配里的实词至少要出现一个
+        want = p09.content_words(full[0])
+        if want and not any(p09.hits(w, plain) for w in want):
+            bad["例句缺搭配词"].append(f"{full[0]} → {plain[:44]}")
+            continue
+        # 加粗只查**句子里真有的那些词**。句子里压根没有的词标不上是分组问题，
+        # 不是加粗的毛病，混在一起数永远收敛不了
+        marked = p07.bold_words(plain, full)
+        hit = " ".join(re.findall(r"<b>(.*?)</b>", marked))
+        there = [w for w in want if p09.hits(w, plain)]
+        miss = [w for w in there if not p09.hits(w, hit)]
+        if miss:
+            bad["例句加粗不全"].append(f"{full[0]} → {marked[:56]}")
     return bad
 
 
 def main():
-    rows = rows_of()
-    done = [r for r in rows if r[5]]
-    todo = [r for r in rows if not r[5]]
+    book, cache = p07.load()
+    done, todo = [], []
+    for word, pos, full, cn, en, zh, ok in p07.iter_rows(book, cache):
+        (done if ok else todo).append((word, pos, full, cn, en, zh))
+    raw = sum(1 for h in book for s in h["senses"] for g in s["groups"]
+              for x in (g.get("subs") or []) if x.get("full"))
+    kept = len(done) + len(todo)
+    print(f"抽出 {raw} 行，印出 {kept} 行，清洗丢掉 {raw - kept} 行"
+          f"（{(raw - kept) / raw:.1%}）")
+    total = 0
     for label, part in (("已校对", done), ("未校对", todo)):
         bad = check(part)
-        total = sum(len(v) for v in bad.values())
-        print(f"\n【{label}】{len(part)} 行，问题 {total} 处"
-              f"（{total / max(len(part), 1):.2f} 处/行）")
+        n = sum(len(v) for v in bad.values())
+        total += n
+        print(f"\n【{label}】{len(part)} 行，问题 {n} 处"
+              f"（{n / max(len(part), 1):.3f} 处/行）")
         for name, items in bad.items():
             if not items:
                 continue
             print(f"  {name}: {len(items)}")
-            if label == "已校对":
-                for x in items[:3]:
-                    print(f"      {x}")
+            for x in items[:(10 if "-v" in sys.argv else 3)]:
+                print(f"      {x}")
+    print(f"\n合计 {total} 处")
 
 
 if __name__ == "__main__":

@@ -37,6 +37,91 @@ PAIRS = [("i", "l"), ("l", "i"), ("t", "l"), ("f", "l"), ("o", "c"), ("d", "c"),
          ("r", "h"), ("h", "r"), ("v", "w"), ("w", "v"), ("c", "d"),
          ("g", "q"), ("q", "g"), ("s", "g"), ("m", "rn")]
 _CACHE = {}
+# 系统词表（web2）。**光靠词频判不出坏词**：`wil` 的 zipf 有 3.28，比 `ife`(2.69)
+# 还高，所以 `it wil work` 怎么都修不掉。查词表一眼就知道它不是英语单词。
+# 反过来词表也不够用——1913 年的韦氏，没有 email/website，屈折形式也缺一大半，
+# 所以两条判据要合起来：**词表里没有、词频又不高，才算坏词**。
+_REAL = None
+_REAL_CACHE = {}
+WORDS_TXT = "/usr/share/dict/words"
+# web2 只收词根，屈折形式得自己还原：emaciated→emaciate、misgivings→misgiving、
+# mystified→mystify、empirically→empirical。不还原就会把 60 处 emaciated
+# 当成 OCR 错字，整行丢掉
+SUFFIX = [("s", ""), ("es", ""), ("ies", "y"), ("ed", ""), ("ed", "e"),
+          ("ied", "y"), ("ing", ""), ("ing", "e"), ("ly", ""), ("ally", "al"),
+          ("ably", "able"), ("ibly", "ible"), ("er", ""), ("er", "e"),
+          ("est", ""), ("est", "e"), ("ness", ""), ("ers", ""), ("ings", "")]
+# 英式拼写 → web2 收的美式：woollen→woolen、favourably→favorably、
+# exorcize→exorcise、travelled→traveled。
+# **只做 ll→l 这一个方向**。反过来写成 l→ll 会把 `wil` 变成 `will` 认成好词，
+# `it wil work` 就永远修不掉了——这正是用户点名的那条。
+SPELL = [("our", "or"), ("ise", "ize"), ("ize", "ise"), ("isation", "ization"),
+         ("yse", "yze"), ("ll", "l"), ("re", "er"), ("ae", "e"), ("oe", "e")]
+# 少写一个 l 的英式词就那么几个，列出来，别用通配规则
+BRIT_L = {"instil", "skilful", "wilful", "fulfil", "enrol", "distil", "appal",
+          "annul", "extol", "enthral", "instalment", "enrolment", "fulfilment",
+          "instil", "counsellor", "marvellous"}
+
+
+def real_word(w):
+    """是不是一个正经英语词。三条路都认：词表、词频、还原成词表里的形式。"""
+    from wordfreq import zipf_frequency as z
+    global _REAL
+    if _REAL is None:
+        try:
+            _REAL = {x.strip().lower() for x in open(WORDS_TXT)}
+        except OSError:
+            _REAL = set()
+    w = w.lower().strip("'’")
+    if w in _REAL_CACHE:
+        return _REAL_CACHE[w]
+    _REAL_CACHE[w] = out = _real(w, z)
+    return out
+
+
+def _real(w, z):
+    if len(w) < 3 or w in _REAL or w in BRIT_L or z(w, "en") >= 3.5:
+        return True
+    if w.endswith("'s") or w.endswith("’s"):          # coroner's、tear's
+        return real_word(w[:-2])
+    if "-" in w:                                       # 连字符复合词逐段看
+        return all(real_word(p) for p in w.split("-") if p)
+    for suf, rep in SUFFIX:
+        # 递归剥：floorboards → floorboard（合成词）→ 真
+        if w.endswith(suf) and len(w) - len(suf) + len(rep) >= 3:
+            if real_word(w[:-len(suf)] + rep):
+                return True
+    # 双写辅音再加后缀：bogged→bog、shopping→shop
+    m = re.fullmatch(r"(.*?)([bcdfglmnprstz])\2(ed|ing|er|est|y)", w)
+    if m and (m.group(1) + m.group(2)) in _REAL:
+        return True
+    for a, b in SPELL:
+        cand = w.replace(a, b)
+        if cand != w and cand in _REAL:
+            return True
+    # 合成词：minefield、boardroom、suntan、floorboard。两半都得是常用词，
+    # 不然 `latural` 会被拆成 lat + ural 蒙混过去
+    for i in range(3, len(w) - 2):
+        if w[:i] in _REAL and w[i:] in _REAL \
+                and z(w[:i], "en") >= 3.0 and z(w[i:], "en") >= 3.0:
+            return True
+    return False
+
+
+def _cands(out):
+    """给出 (候选, 加分)。加分是**先验**：这本扫描件吃的几乎全是行首的 `l`
+    （ocal/argely/ikely/aunch/anguage 都是），所以补 `l` 的候选先加 0.6，
+    不然 `ife` 会卡在 life(5.89) / wife(5.23) 分不出高下，白白丢掉整行。"""
+    for c in "abcdefghijklmnopqrstuvwxyz":           # 首/尾字母被吃掉
+        yield c + out, 0.6 if c == "l" else 0.0
+        yield out + c, 0.0
+    for i in range(len(out)):                        # 形近认错
+        for a, b in PAIRS:
+            if out[i:i + len(a)] == a:
+                yield out[:i] + b + out[i + len(a):], 0.0
+    for i in range(len(out)):                        # 多认了一个字母
+        if len(out) > 3:
+            yield out[:i] + out[i + 1:], 0.0
 
 
 def fix_token(w):
@@ -44,14 +129,15 @@ def fix_token(w):
     `ocal`→local、`argely`→largely、`ikely`→likely、`aunch`→launch、
     `anguage`→language，全书 6911 处。也有形近认错的（`lefeat`→defeat）。
 
-    只在原词本身不是词、且候选唯一又够常见时才改。原书是权威词典，
-    「搭配疑误」几乎都是这儿丢的字母，不是书错。
+    只在原词不是英语单词、且候选**唯一**又明显更常见时才改。
+    候选打平就别猜：`ost` 可能是 lost/cost/most/post，猜错比留着更糟——
+    原样留着，`09_clean.py` 会认出它是坏词，把整行丢掉。
     """
     from wordfreq import zipf_frequency as z
 
     if w in _CACHE:
         return _CACHE[w]
-    low = out = w.lower()
+    out = w.lower()
     # 数字混进单词里是 OCR 认错，不是真数字：g00d→good、detedt→detect。
     # 原来先 isalpha() 再纠错，这类词一进来就被挡在门外了
     if re.search(r"[0135]", out) and re.search(r"[a-z]", out):
@@ -62,33 +148,23 @@ def fix_token(w):
     # 迭代两轮：有些词错了两处，`ciress` 得先删掉多认的 i 变 cress、再把 c 认回 d
     for _ in range(2):
         base = z(out, "en")
-        # 门槛不能卡在「查不到的词」上——`ife` 的词频有 2.69 却是 life 掉了首字母。
-        # 改成：本身不常见（<3.0），且换法明显更常见（高出 1.5 个数量级）才动
-        if not out.isalpha() or len(out) < 3 or base >= 3.0:
+        # 两条判据都要过才算好词：词表里有、而且不算生僻。web2 收了一堆
+        # `ife`、`ost` 这样的偏僻词条，只查词表会把丢首字母的词放过去
+        if not out.isalpha() or len(out) < 3 or (real_word(out) and base >= 3.0):
             break
-        best, score = out, base + 1.5
-        for c in "abcdefghijklmnopqrstuvwxyz":       # 首/尾字母被吃掉
-            for cand in (c + out, out + c):
-                if z(cand, "en") > score:
-                    best, score = cand, z(cand, "en")
-        for i in range(len(out)):                    # 形近认错
-            for a, b in PAIRS:
-                if out[i:i + len(a)] != a:
-                    continue
-                cand = out[:i] + b + out[i + len(a):]
-                if z(cand, "en") > score:
-                    best, score = cand, z(cand, "en")
-        for i in range(len(out)):                    # 多认了一个字母
-            cand = out[:i] + out[i + 1:]
-            if len(cand) >= 3 and z(cand, "en") > score:
-                best, score = cand, z(cand, "en")
-        if best == out:
+        seen = {}
+        for c, bonus in _cands(out):
+            if len(c) < 3 or c == out or not real_word(c):
+                continue
+            s = z(c, "en") + bonus
+            if s > base + 1.0:
+                seen[c] = max(seen.get(c, 0), s)
+        good = sorted(seen.items(), key=lambda kv: -kv[1])
+        # 候选打平就别猜，留着让 09_clean 整行丢掉
+        if not good or (len(good) > 1 and good[0][1] - good[1][1] < 0.8):
             break
-        out = best
-    if out != w.lower():
-        out = out.capitalize() if w[0].isupper() else out
-    else:
-        out = w
+        out = good[0][0]
+    out = (out.capitalize() if w[0].isupper() else out) if out != w.lower() else w
     _CACHE[w] = out
     return out
 

@@ -19,14 +19,23 @@ DATA = os.path.join(ROOT, "data")
 OUT = os.path.join(ROOT, "out")
 
 
-_spec = importlib.util.spec_from_file_location(
-    "p04", os.path.join(os.path.dirname(os.path.abspath(__file__)), "04_expand.py"))
-_p04 = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(_p04)
+def _load(name, mod):
+    spec = importlib.util.spec_from_file_location(
+        mod, os.path.join(os.path.dirname(os.path.abspath(__file__)), name))
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+_p04 = _load("04_expand.py", "p04")
+_p09 = _load("09_clean.py", "p09")
 
 
 def cell(s):
     return (s or "").replace("|", "／").replace("\n", " ").strip()
+
+
+inflect = _p09.inflect
 
 
 def bold_words(text, phrases):
@@ -48,26 +57,44 @@ def bold_words(text, phrases):
         # `in a/the system` 就永远匹配不上例句里的 `in the system`
         parts = []
         for w in raw:
-            alts = [x for x in w.split("/") if x]
-            parts.append("(?:" + "|".join(re.escape(x) for x in alts) + ")"
-                         if len(alts) > 1 else re.escape(alts[0]) if alts else "")
+            alts = [inflect(x) for x in w.split("/") if x]
+            # 例句里也常把两种拼法一起写出来（`They honour/honor their ancestors`），
+            # 前后各留一个 `词/` 的口子，不然只标得住后半截
+            parts.append(r"(?:\w+/)?(?:" + "|".join(alts) + r")(?:/\w+)?"
+                         if len(alts) > 1 else alts[0] if alts else "")
         parts = [x for x in parts if x]
         words = [x for w in raw for x in w.split("/") if x]
-        # 整条短语：词之间允许屈折后缀，也允许插进一两个修饰语
-        pat = r"\w{0,4}[\s,]+(?:\w+[\s,]+){0,2}".join(parts)
+        # 整条短语：词之间允许插进一两个修饰语
+        pat = r"[\s,]+(?:\w+[\s,]+){0,2}".join(parts)
         # 前后要卡词边界，否则 `in` 会匹配到 `links` 里面去
-        m = re.search(r"\b" + pat + r"\w{0,4}\b", text, flags=re.I)
+        m = re.search(r"\b" + pat + r"\b", text, flags=re.I)
         if m and "<b>" not in m.group(0):
             text = text[:m.start()] + f"<b>{m.group(0)}</b>" + text[m.end():]
             continue
         for w in words:                       # 整条对不上，逐词标实词
             if len(w) < 3 or w.lower() in FUNCTION:
                 continue
-            stem = w[:-1] if len(w) > 4 and w.endswith("e") else w
-            text = re.sub(rf"(?<![>\w]){re.escape(stem)}(\w{{0,5}})(?!\w)",
-                          rf"<b>{stem}\1</b>", text, flags=re.I)
-    text = re.sub(r"<b>(<b>.*?</b>)</b>", r"\1", text)      # 别嵌套
-    return re.sub(r"</b>([\s,]*)<b>", r"\1", text)
+            text = re.sub(rf"(?<![>\w])({inflect(w)})(?!\w)",
+                          r"<b>\1</b>", text, flags=re.I)
+    return re.sub(r"</b>([\s,]*)<b>", r"\1", flatten(text))
+
+
+def flatten(text):
+    """一格里常有好几条搭配，整条标完再逐词标就会套出
+    `<b>finished our <b>business</b> early</b>`。按深度扫一遍，只留最外层。"""
+    out, depth = [], 0
+    for tok in re.split(r"(</?b>)", text):
+        if tok == "<b>":
+            if depth == 0:
+                out.append(tok)
+            depth += 1
+        elif tok == "</b>":
+            depth = max(depth - 1, 0)
+            if depth == 0:
+                out.append(tok)
+        else:
+            out.append(tok)
+    return "".join(out) + "</b>" * (1 if depth else 0)
 
 
 # 例句里不会原样出现的占位符
@@ -77,16 +104,27 @@ FUNCTION = {"a", "an", "the", "of", "to", "in", "on", "at", "for", "with",
             "and", "or", "be", "your", "his", "her", "their", "its"}
 
 
-def main():
+def load():
     src = os.path.join(DATA, "expanded.json")
     book = json.load(open(src if os.path.exists(src)
                           else os.path.join(DATA, "book.json")))
     cache_path = os.path.join(DATA, "cache.json")
     cache = json.load(open(cache_path)) if os.path.exists(cache_path) else {}
+    return book, cache
 
-    rows, fixed = [], 0
+
+def iter_rows(book, cache):
+    """产出 (词头, 词性, 搭配列表, 解释, 例句英, 例句中, 是否校对过)。
+
+    **自查脚本走的是同一个函数**，不再各抄一份——之前两边各写各的，
+    渲染改了口径自查还按老口径查，报出来的数字是假的。
+    """
     for h in book:
-        first_head = True
+        # 词头列以前完全没过纠错，印着 `thanktul`——查都查不到的词条，
+        # 修不好就整条不要
+        word = _p09.norm_phrase(_p04.fix_phrase(h["word"]))
+        if _p09.bad_head(word):
+            continue
         for s in h["senses"]:
             for g in s["groups"]:
                 for sub in g.get("subs") or []:
@@ -99,7 +137,6 @@ def main():
                         continue          # 搭配被 OCR 毁得没法还原，整行不要
                     got = cache.get(key)
                     if got:
-                        fixed += 1
                         full = got.get("c") or full
                         cn = got["cn"]
                         en, _, zh = got["ex"].partition("  ")
@@ -113,18 +150,32 @@ def main():
                     # 四列都要纠：解释和例句中译里也会混着 g00d 这种英文碎片
                     cn = _p04.fix_phrase(cn)
                     zh = _p04.fix_phrase(cell(zh))
-                    ex = f"{bold_words(en, full)}<br>{cell(zh)}" if zh else en
-                    rows.append((
-                        f"{h['word']} <i>{h['pos']}</i>" if first_head else "",
-                        "<br>".join(cell(x) for x in full), cn, ex))
-                    first_head = False
+                    # 修不好的整行丢掉，宁可少印一行也不印错一行
+                    row = _p09.clean_row(full, cn, en, zh)
+                    if row is None:
+                        continue
+                    full, cn, en, zh = row
+                    yield word, h["pos"], full, cn, en, zh, bool(got)
+
+
+def main():
+    book, cache = load()
+    rows, fixed, prev = [], 0, None
+    for word, pos, full, cn, en, zh, done in iter_rows(book, cache):
+        fixed += done
+        # 换词条才重写词头。`name` 名词和 `name` 动词是两个词条，各出各的头
+        first_head = (word, pos) != prev
+        prev = (word, pos)
+        ex = f"{bold_words(en, full)}<br>{cell(zh)}" if zh else bold_words(en, full)
+        rows.append((f"{word} <i>{pos}</i>" if first_head else "",
+                     "<br>".join(cell(x) for x in full), cn, ex))
 
     os.makedirs(OUT, exist_ok=True)
     n_words = sum(1 for r in rows if r[0])
 
     lines = ["# 牛津搭配词典\n",
              f"\n{n_words} 个词头，{len(rows)} 行，"
-             f"{sum(len(x.get('full') or []) for h in book for s in h['senses'] for g in s['groups'] for x in (g.get('subs') or []))} 条完整搭配。"
+             f"{sum(r[1].count('<br>') + 1 for r in rows)} 条完整搭配。"
              f"其中 {fixed} 行的解释和例句经过校对。例句里加粗的是当前这条搭配。\n",
              "\n<table>",
              "<thead><tr><th>单词</th><th>搭配</th><th>解释</th>"

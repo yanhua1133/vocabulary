@@ -116,6 +116,8 @@ def fix_lone_letter(t):
 
 
 def fix_phrase(t):
+    # OCR 爱在缩写的撇号后面多塞个 i：don'it / couldn'it / isn'it
+    t = re.sub(r"n'i?t\b", "n't", t)
     # 连字符要拆开分别修：`ife-support` 整体查不到词频，拆成 ife / support
     # 才认得出 ife 少了个 l
     # 字符集要带上数字，`g00d`、`detedt` 这类混了数字的词否则根本进不了纠错

@@ -99,16 +99,21 @@ def main():
                         continue          # 搭配被 OCR 毁得没法还原，整行不要
                     got = cache.get(key)
                     if got:
-                        full = [_p04.fix_phrase(x) for x in (got.get("c") or full)]
                         fixed += 1
+                        full = got.get("c") or full
                         cn = got["cn"]
                         en, _, zh = got["ex"].partition("  ")
-                        ex = f"{cell(bold_words(en, full))}<br>{cell(zh)}"
                     else:
                         cn = cell(sub["cn"])
-                        ex = ""
-                        for en, zh in (sub.get("ex") or [])[:1]:
-                            ex = f"{cell(en)}<br>{cell(zh)}" if zh else cell(en)
+                        en, zh = ((sub.get("ex") or [["", ""]])[0] + ["", ""])[:2]
+                    # 纠错要放在 if/else 之后，两条路都得走——之前只在校对过的
+                    # 那一支调了，未校对的九万多行照样印着 g00d coach
+                    full = [_p04.fix_phrase(x) for x in full]
+                    en = _p04.fix_phrase(cell(en))
+                    # 四列都要纠：解释和例句中译里也会混着 g00d 这种英文碎片
+                    cn = _p04.fix_phrase(cn)
+                    zh = _p04.fix_phrase(cell(zh))
+                    ex = f"{bold_words(en, full)}<br>{cell(zh)}" if zh else en
                     rows.append((
                         f"{h['word']} <i>{h['pos']}</i>" if first_head else "",
                         "<br>".join(cell(x) for x in full), cn, ex))

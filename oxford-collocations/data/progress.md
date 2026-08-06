@@ -100,9 +100,16 @@ cd oxford-collocations
 例句是 `lost in the mists of time`，那搭配就是 `the mists of time`。
 **修好 350 条，推不出来的 49 条整行删掉**。
 
-那 49 条几乎都是**词头在 OCR 里整行丢了**：`weak`、`tub`、`yelp`、`T-shirt` 的词头行
-Vision 没识别、gapfill 也没补回来，它们的搭配就顺延挂到了前一个词头（way/try/year）下。
-判据够不着这种，只能丢。
+那 49 条几乎都是**词头在 OCR 里整行丢了**，两个 agent 各自独立指认出同一批：
+`weak`/`tub`/`yelp`/`T-shirt`（挂到了 way/try/year 下）、
+`kerb`（挂到 keep 下）、`numerous`（挂到 number 下）、`pitch` 的棒球义
+（挂到 small 下）、`badge`（挂到 bad 下）。
+这些词头行 Vision 没识别、gapfill 也没补回来，搭配就顺延挂到了前一个词头名下。
+判据够不着，只能整行丢——硬留着会往 way、try、number 这些词条里灌垃圾。
+
+**这是目前最大的一类残留问题**：原书约 9000 个词头，抽到 7947，
+差的那一千来个里就有不少是这种整行丢失，它们的搭配全都错挂在邻近词条下。
+要根治得回到 OCR 层：对「相邻两个词头之间跨度异常大」的位置做二次识别。
 
 ## 例句里搭配要整条加粗
 原来逐词标、还特意跳过虚词，结果 `a matter of time` 只有 matter 和 time 是黑的，

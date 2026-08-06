@@ -67,8 +67,8 @@ def check(rows):
     from wordfreq import zipf_frequency as z
 
     bad = {k: [] for k in (
-        "搭配夹数字", "搭配其实是句子", "搭配有坏词", "解释混英文",
-        "解释为空", "例句不完整", "例句加粗不全")}
+        "搭配夹数字", "搭配其实是句子", "搭配有坏词", "搭配缺首字母",
+        "解释混英文", "解释为空", "例句不完整", "例句加粗不全")}
     for word, full, cn, en, zh, *_ in rows:
         for f in full:
             # `a 16-digit number`、`an under-16 team` 里的数字是正经的
@@ -83,6 +83,11 @@ def check(rows):
                     r"\b(this|that|there|it|he|she|they)\s+(is|was|are|were|has|had)\b",
                     f, re.I):
                 bad["搭配其实是句子"].append(f)
+            # 首字母被吃掉，剩个孤零零的字母打头：`n accepting the award`、
+            # `s this an appropriate time`、`t stayed hot`。
+            # a 和 I 是正经开头（`a matter of time`），排除掉
+            if re.match(r"^[b-hj-z]\s", f, re.I) or re.search(r"\s[b-hj-z]\s", f):
+                bad["搭配缺首字母"].append(f)
             for w in re.findall(r"[A-Za-z][a-z']{2,}", f):
                 # 连字符复合词、加了前缀的词 wordfreq 常查不到，
                 # 但它们是正经英语（semidetached、nanoplankton），别误报

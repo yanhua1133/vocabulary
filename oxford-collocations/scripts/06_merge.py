@@ -34,11 +34,63 @@ def merge_fix(cache):
     （`time him` → `the mists of time`），推不出来的标了 `__DROP__`，整条删掉。"""
     fixed = dropped = 0
     for d in (os.path.join(ROOT, "work", "fix"),
-              os.path.join(ROOT, "work", "fix2")):
+              os.path.join(ROOT, "work", "fix2"),
+              os.path.join(ROOT, "work", "fix3")):
         if not os.path.isdir(d):
             continue
         fixed, dropped = _merge_dir(d, cache, fixed, dropped)
     return fixed, dropped
+
+
+def reconcile(cache):
+    """对账：把渲染查不到的孤儿 key 搬回正确的 key 上。
+
+    自查脚本导出 id 时用的是修正后的搭配、渲染查缓存用的是抽取阶段的原始搭配，
+    改过一轮之后两边就对不上了。孤儿 key 存着最新的修正结果，却永远读不到，
+    成品里显示的还是上一轮的旧内容。
+    """
+    book = json.load(open(os.path.join(DATA, "expanded.json")))
+    valid = set()
+    for h in book:
+        for s in h["senses"]:
+            for g in s["groups"]:
+                for sub in g.get("subs") or []:
+                    full = sub.get("full") or []
+                    if full:
+                        valid.add(h["word"] + "||"
+                                  + re.sub(r"[^a-z]", "", full[0].lower()))
+    moved = 0
+    for k in list(cache):
+        if k in valid or k.startswith("!drop!"):
+            continue
+        rec = cache[k]
+        word, _, tail = k.partition("||")
+        for vk in valid:
+            if not vk.startswith(word + "||"):
+                continue
+            c = (cache.get(vk) or {}).get("c") or []
+            if c and re.sub(r"[^a-z]", "", c[0].lower()) == tail:
+                cache[vk] = rec       # 孤儿里存的是更新的那份
+                del cache[k]
+                moved += 1
+                break
+    return moved
+
+
+def _resolve(key, cache):
+    """key 漂移的补救：自查脚本导出 id 时用的是**修正后**的搭配，
+    而渲染查缓存用的是抽取阶段的原始搭配，两边对不上，改好的东西就落不到成品里。
+    对不上时，拿 key 后半去比对已有条目修好的搭配，找回原来的 key。"""
+    if key in cache:
+        return key
+    word, _, tail = key.partition("||")
+    for k, v in cache.items():
+        if not k.startswith(word + "||"):
+            continue
+        c = v.get("c") or []
+        if c and re.sub(r"[^a-z]", "", c[0].lower()) == tail:
+            return k
+    return key
 
 
 def _merge_dir(d, cache, fixed, dropped):
@@ -51,6 +103,7 @@ def _merge_dir(d, cache, fixed, dropped):
             print(f"  {f} 解析失败：{e}")
             continue
         for key, rec in data.items():
+            key = _resolve(key, cache)
             c = rec.get("c") or []
             if "__DROP__" in c:
                 cache.pop(key, None)
@@ -87,10 +140,13 @@ def main():
             else:
                 bad += 1
     fixed, dropped = merge_fix(cache)
+    moved = reconcile(cache)
     json.dump(cache, open(CACHE, "w"), ensure_ascii=False)
     print(f"{files} 个输出文件：合格 {good}，丢弃 {bad}；缓存共 {len(cache)} 条")
     if fixed or dropped:
         print(f"  修好搭配 {fixed} 条，推不出来丢掉 {dropped} 条")
+    if moved:
+        print(f"  把 {moved} 条搬回渲染能查到的 key 上")
 
 
 if __name__ == "__main__":

@@ -29,6 +29,34 @@ def ok(rec):
             and bool(CJK.search(zh)))
 
 
+def merge_fix(cache):
+    """并入 work/fix/ 里修好的搭配。这批不光改 cn/ex，还改搭配文本本身
+    （`time him` → `the mists of time`），推不出来的标了 `__DROP__`，整条删掉。"""
+    d = os.path.join(ROOT, "work", "fix")
+    if not os.path.isdir(d):
+        return 0, 0
+    fixed = dropped = 0
+    for f in sorted(os.listdir(d)):
+        if not f.endswith(".out.json"):
+            continue
+        try:
+            data = json.load(open(os.path.join(d, f)))
+        except Exception as e:
+            print(f"  {f} 解析失败：{e}")
+            continue
+        for key, rec in data.items():
+            c = rec.get("c") or []
+            if "__DROP__" in c:
+                cache.pop(key, None)
+                cache["!drop!" + key] = {"cn": "", "ex": "", "drop": True}
+                dropped += 1
+            elif c and ok(rec):
+                cache[key] = {"cn": rec["cn"].strip(), "ex": rec["ex"].strip(),
+                              "c": c}
+                fixed += 1
+    return fixed, dropped
+
+
 def main():
     cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
     good = bad = files = 0
@@ -52,8 +80,11 @@ def main():
                 good += 1
             else:
                 bad += 1
+    fixed, dropped = merge_fix(cache)
     json.dump(cache, open(CACHE, "w"), ensure_ascii=False)
     print(f"{files} 个输出文件：合格 {good}，丢弃 {bad}；缓存共 {len(cache)} 条")
+    if fixed or dropped:
+        print(f"  修好搭配 {fixed} 条，推不出来丢掉 {dropped} 条")
 
 
 if __name__ == "__main__":

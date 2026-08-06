@@ -125,9 +125,14 @@ def columns(page):
     # 页眉长这样：`pleased 1282`——书眉词 + 页码，在 y≈0.06。
     # 光按 y 切会连栏顶的词头一起切掉（`can noun` 就这么没的），
     # 所以只认「页顶 + 带页码数字」的那种
-    body = [l for l in page["lines"]
-            if l["y"] < 0.955
-            and not (l["y"] < 0.085 and re.search(r"\d", l["t"]))]
+    def header(l):
+        # 页眉是「书眉词 + 页码」，有时页码被 OCR 丢了只剩一个词（`weak`）。
+        # 词头至少是「词 + 词性」两个词，所以页顶的单词行一律当页眉
+        if l["y"] >= 0.085:
+            return False
+        return bool(re.search(r"\d", l["t"])) or len(l["t"].split()) <= 1
+
+    body = [l for l in page["lines"] if l["y"] < 0.955 and not header(l)]
     return [merge_rows(sorted((l for l in body if lo <= l["x"] < hi),
                               key=lambda l: l["y"]))
             for lo, hi in ((0.0, 0.49), (0.49, 1.0))]

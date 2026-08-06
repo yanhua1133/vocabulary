@@ -22,27 +22,52 @@ def cell(s):
     return (s or "").replace("|", "／").replace("\n", " ").strip()
 
 
-# 搭配里的占位词，例句里不会原样出现
-SKIP = {"sb", "sth", "sb's", "sth's", "one's", "your", "a", "an", "the",
-        "of", "to", "in", "on", "at", "for", "with", "and", "or", "etc"}
-
-
 def bold_words(text, phrases):
-    """例句里把这一格的搭配**整个**标粗，不是挑几个词。
+    """例句里把整条搭配标粗，**连虚词一起**。
 
-    词形变化的后缀要给够：`clog` 在例句里是 `clogging`，只放 3 个字母的余量
-    就匹配不上，那条搭配在例句里等于没标。
+    先当成一个短语整体去找：`a matter of time`、`in the system` 要连 a / of / in / the
+    一起标黑，只标实词的话中间夹着没加粗的虚词，看着像标漏了。
+    词与词之间允许有屈折后缀和插入的修饰语。
+
+    整条对不上（`clog system` 在例句里是 `clogging up the court system`）才退回
+    逐词标，这时虚词就不标了——它们在句中位置对不上，标了反而误导。
     """
     for p in phrases:
-        for w in p.replace("/", " ").split():
-            w = w.strip("()")
-            if len(w) < 3 or w.lower() in SKIP:
+        raw = [w.strip("()") for w in p.split()]
+        raw = [w for w in raw if w and w.lower() not in PLACEHOLDER]
+        if not raw:
+            continue
+        # `a/the` 是二选一，得转成正则的「或」；拆成两个词的话
+        # `in a/the system` 就永远匹配不上例句里的 `in the system`
+        parts = []
+        for w in raw:
+            alts = [x for x in w.split("/") if x]
+            parts.append("(?:" + "|".join(re.escape(x) for x in alts) + ")"
+                         if len(alts) > 1 else re.escape(alts[0]) if alts else "")
+        parts = [x for x in parts if x]
+        words = [x for w in raw for x in w.split("/") if x]
+        # 整条短语：词之间允许屈折后缀，也允许插进一两个修饰语
+        pat = r"\w{0,4}[\s,]+(?:\w+[\s,]+){0,2}".join(parts)
+        # 前后要卡词边界，否则 `in` 会匹配到 `links` 里面去
+        m = re.search(r"\b" + pat + r"\w{0,4}\b", text, flags=re.I)
+        if m and "<b>" not in m.group(0):
+            text = text[:m.start()] + f"<b>{m.group(0)}</b>" + text[m.end():]
+            continue
+        for w in words:                       # 整条对不上，逐词标实词
+            if len(w) < 3 or w.lower() in FUNCTION:
                 continue
             stem = w[:-1] if len(w) > 4 and w.endswith("e") else w
             text = re.sub(rf"(?<![>\w]){re.escape(stem)}(\w{{0,5}})(?!\w)",
                           rf"<b>{stem}\1</b>", text, flags=re.I)
     text = re.sub(r"<b>(<b>.*?</b>)</b>", r"\1", text)      # 别嵌套
-    return re.sub(r"</b>(\s*)<b>", r"\1", text)
+    return re.sub(r"</b>([\s,]*)<b>", r"\1", text)
+
+
+# 例句里不会原样出现的占位符
+PLACEHOLDER = {"sb", "sth", "sb's", "sth's", "one's", "etc", "etc."}
+# 逐词标时跳过的虚词——位置对不上，标了误导
+FUNCTION = {"a", "an", "the", "of", "to", "in", "on", "at", "for", "with",
+            "and", "or", "be", "your", "his", "her", "their", "its"}
 
 
 def main():
@@ -62,9 +87,12 @@ def main():
                     if not full:
                         continue
                     # 校对过的优先——OCR 抽出来的解释常带错字和串行，例句还缺七成
-                    got = cache.get(h["word"] + "||" +
-                                    re.sub(r"[^a-z]", "", full[0].lower()))
+                    key = h["word"] + "||" + re.sub(r"[^a-z]", "", full[0].lower())
+                    if "!drop!" + key in cache:
+                        continue          # 搭配被 OCR 毁得没法还原，整行不要
+                    got = cache.get(key)
                     if got:
+                        full = got.get("c") or full     # 用修好的搭配
                         fixed += 1
                         cn = got["cn"]
                         en, _, zh = got["ex"].partition("  ")

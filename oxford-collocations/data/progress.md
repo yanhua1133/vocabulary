@@ -90,6 +90,29 @@ cd oxford-collocations
    `ablaze adj. * đ „*x c` 就是 gapfill 补出来的乱码，还落在右栏中间。
    一刀切地不让补行开词条会丢 738 个真词头，所以加了「整行无尾巴」这个条件。
 
+## 自查：搭配和例句对不上，就是搭配坏了
+拿「搭配里的实词有没有出现在例句里」交叉验证 4081 条已校对条目。
+第一版检测报了 1438 条，大半是误报——一格有四条搭配时例句只会用其中一条，
+要求全部命中太严。改成「任一条完全对上就算过」后剩 **405 条**，那才是真坏的
+（`time him`、`enough without you constantly telling me how it was al bad`）。
+
+派 agent 从 `cn` 和 `ex` 反推真正的搭配：`time him` 的解释是「时间的迷雾」、
+例句是 `lost in the mists of time`，那搭配就是 `the mists of time`。
+**修好 350 条，推不出来的 49 条整行删掉**。
+
+那 49 条几乎都是**词头在 OCR 里整行丢了**：`weak`、`tub`、`yelp`、`T-shirt` 的词头行
+Vision 没识别、gapfill 也没补回来，它们的搭配就顺延挂到了前一个词头（way/try/year）下。
+判据够不着这种，只能丢。
+
+## 例句里搭配要整条加粗
+原来逐词标、还特意跳过虚词，结果 `a matter of time` 只有 matter 和 time 是黑的，
+中间夹着没加粗的 a 和 of，看着像标漏了。改成**整条短语匹配**：
+- `a/the` 这种二选一转成正则的「或」，不然 `in a/the system` 永远对不上
+  例句里的 `in the system`；
+- 词之间允许屈折后缀和插进一两个修饰语；
+- 前后要卡词边界，否则 `in` 会匹配到 `links` 里面去；
+- 整条对不上才退回逐词标（`clog system` 在例句里是 `clogging up the court system`）。
+
 ## 眼下的质量水位
 - **词头层面很干净**：独立 agent 核了两页，召回和精确都 100%。
 - **短组拆得很好**（`ADV hastily | 仓促离开 + 例句`）。

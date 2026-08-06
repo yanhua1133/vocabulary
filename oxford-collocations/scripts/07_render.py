@@ -22,27 +22,48 @@ def cell(s):
     return (s or "").replace("|", "／").replace("\n", " ").strip()
 
 
+def bold_words(text, phrases):
+    """例句里把这一格的搭配标粗。"""
+    for p in phrases:
+        for w in p.split():
+            if len(w) < 4:
+                continue
+            text = re.sub(rf"(?<![>\w]){re.escape(w)}(\w{{0,3}})(?!\w)",
+                          rf"<b>{w}\1</b>", text, count=1, flags=re.I)
+    return re.sub(r"</b>(\s*)<b>", r"\1", text)
+
+
 def main():
     src = os.path.join(DATA, "expanded.json")
     book = json.load(open(src if os.path.exists(src)
                           else os.path.join(DATA, "book.json")))
-    rows = []
+    cache_path = os.path.join(DATA, "cache.json")
+    cache = json.load(open(cache_path)) if os.path.exists(cache_path) else {}
+
+    rows, fixed = [], 0
     for h in book:
         first_head = True
-        for s in h["senses"]:
-            first_sense = True
-            for g in s["groups"]:
-                for sub in g.get("subs") or []:
+        for si, s in enumerate(h["senses"]):
+            for gi, g in enumerate(s["groups"]):
+                for bi, sub in enumerate(g.get("subs") or []):
                     full = sub.get("full") or []
                     if not full:
                         continue
-                    ex = ""
-                    for en, zh in (sub.get("ex") or [])[:1]:
-                        ex = f"{cell(en)}<br>{cell(zh)}" if zh else cell(en)
+                    # 校对过的优先——OCR 抽出来的解释常带错字和串行，例句还缺七成
+                    got = cache.get(f"{h['word']}|{si}|{gi}|{bi}")
+                    if got:
+                        fixed += 1
+                        cn = got["cn"]
+                        en, _, zh = got["ex"].partition("  ")
+                        ex = f"{cell(bold_words(en, full))}<br>{cell(zh)}"
+                    else:
+                        cn = cell(sub["cn"])
+                        ex = ""
+                        for en, zh in (sub.get("ex") or [])[:1]:
+                            ex = f"{cell(en)}<br>{cell(zh)}" if zh else cell(en)
                     rows.append((
                         f"{h['word']} <i>{h['pos']}</i>" if first_head else "",
-                        "<br>".join(cell(x) for x in full),
-                        cell(sub["cn"]), ex))
+                        "<br>".join(cell(x) for x in full), cn, ex))
                     first_head = False
 
     os.makedirs(OUT, exist_ok=True)
@@ -51,9 +72,9 @@ def main():
     lines = ["# 牛津搭配词典\n",
              f"\n{n_words} 个词头，{len(rows)} 行，"
              f"{sum(len(x.get('full') or []) for h in book for s in h['senses'] for g in s['groups'] for x in (g.get('subs') or []))} 条完整搭配。"
-             "例句里加粗的是当前这条搭配。\n",
+             f"其中 {fixed} 行的解释和例句经过校对。例句里加粗的是当前这条搭配。\n",
              "\n<table>",
-             "<thead><tr><th>词头</th><th>搭配</th><th>中文</th>"
+             "<thead><tr><th>词头</th><th>搭配</th><th>解释</th>"
              "<th>例句</th></tr></thead>"]
     # 词头列合并单元格：同一个词头底下有多少行就跨多少行，
     # 不然那一列全是空格子，看着像散的

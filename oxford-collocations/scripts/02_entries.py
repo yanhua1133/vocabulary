@@ -41,6 +41,11 @@ GROUP_RE = re.compile(r"^([A-Z][A-Za-z]*(?:\s*\+\s*[A-Za-z]+)*)\.?\s*(?=[a-z(~\[
 # 还会把真正的那一组从中间腰斩（核对时抓到 12 处）
 GROUP_WORDS = {"ADJ", "ADV", "VERB", "NOUN", "PREP", "PHRASES", "QUANT",
                "PHRASE", "PRON", "DET", "CONJ"}
+# 搭配词典不会拿虚词当词头。`the number` 这种是把正文里的
+# `the number of…` 误认了，认下来会把邻近词条的搭配全领走
+NOT_HEAD = {"the", "a", "an", "of", "in", "on", "at", "to", "and", "or",
+            "but", "that", "this", "it", "is", "are", "be", "as", "for",
+            "with", "by", "from", "not", "no", "so", "if", "than", "then"}
 
 
 def normalize(t):
@@ -48,7 +53,8 @@ def normalize(t):
           .replace("：", ":").replace("；", ";").replace("　", " ")
           .replace("｜", "|").replace("Ⅰ", "|").replace("１", "1"))
     # 组内小类的分隔符原书是 |，OCR 认成 I/l/丨/！ 的时候居多
-    t = re.sub(r"(?<=[\u4e00-\u9fff\s])[Il丨|！]\s+(?=[a-z(~])", " | ", t)
+    # 分隔符 `|` 还被认成 」』〕 这些右括号类字形
+    t = re.sub(r"(?<=[\u4e00-\u9fff\s])[Il丨|！」』〕]\s*(?=[a-z(~])", " | ", t)
     # 代替词头的 `~` 常被认成汉字「一」，夹在英文中间时还原回去——
     # 不还原的话例句里凭空多个汉字，按「例句里不含汉字」找边界就断了
     t = re.sub(r"(?<=[a-zA-Z ])一(?=[\s.,;:)])", "~", t)
@@ -122,7 +128,9 @@ def kind_of(t, x, col_x0, fill=False):
     if m:
         return ("sense", m.group(1), m.group(2))
     m = HEAD_RE.match(t)
-    if m and not CJK.search(m.group(0)):
+    # 看第一个词就够：`of a` 这种误判也是虚词打头
+    if (m and not CJK.search(m.group(0))
+            and (m.group(1).strip().lower().split() or [""])[0] not in NOT_HEAD):
         # 补回来的行也可以是词头，但整行必须干干净净只有「词 + 词性」。
         # 带尾巴的多半是乱码（`ablaze adj. * đ „*x c`），认了会把后面的搭配带偏
         if fill and not HEAD_ONLY.match(t):

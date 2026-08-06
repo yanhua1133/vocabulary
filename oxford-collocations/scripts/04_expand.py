@@ -53,6 +53,8 @@ def put_head(w, head):
         return head + suf
 
     w = re.sub(r"(?<=[a-zA-Z])~", " ~", w)         # OCR 常把 ~ 前的空格吃掉
+    # `~of` 里的 of 是下一个词不是词尾，不隔开会拼成 `canof`
+    w = re.sub(r"~(?!(?:ing|ed|es|s|d)\b)(?=[a-z])", "~ ", w)
     return re.sub(r"~(ing|ed|es|s|d)?", form, w)
 
 
@@ -92,6 +94,17 @@ def bold(text, head, phrases):
     return re.sub(r"</b>(\s*)<b>", r"\1", out)      # 相邻的粗体并起来
 
 
+def clean_cn(t, head):
+    """解释列只留中文释义：`~` 换回词头，英文句子、残留标记一律清掉。"""
+    t = put_head(t, head)
+    # 整句英文是没摘干净的例句
+    t = re.sub(r"[A-Z][^\u4e00-\u9fff]{12,}?(?:[.!?]|(?=[\u4e00-\u9fff]))", " ", t)
+    t = re.sub(r"[a-zA-Z][a-zA-Z'\-]{2,}(?:\s+[a-zA-Z'\-]{2,}){2,}", " ", t)
+    t = re.sub(r"[•◎○●※◇*|]+", " ", t)
+    t = re.sub(r"\s*[,;]\s*$", "", t)
+    return re.sub(r"\s+", " ", t).strip(" ,;·|")
+
+
 def main():
     book = json.load(open(os.path.join(DATA, "groups.json")))
     total = 0
@@ -103,10 +116,14 @@ def main():
                     full = [expand_one(w, head, g["type"], pos)
                             for w in split_words(sub["words"])]
                     sub["full"] = full
+                    sub["cn"] = clean_cn(sub["cn"], head)
                     total += len(full)
                 for sub in g.get("subs", []):
-                    sub["ex"] = [[bold(en, head, sub.get("full") or []), cn]
-                                 for en, cn in sub.get("ex", [])]
+                    # 例句必须是完整句：够长、以句末标点收尾
+                    sub["ex"] = [[bold(put_head(en, head), head, sub.get("full") or []),
+                                  put_head(cn, head)]
+                                 for en, cn in sub.get("ex", [])
+                                 if len(en.split()) >= 4 and en.rstrip().endswith((".", "!", "?"))]
 
     json.dump(book, open(os.path.join(DATA, "expanded.json"), "w"),
               ensure_ascii=False, indent=1)

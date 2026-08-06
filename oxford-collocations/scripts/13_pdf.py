@@ -203,7 +203,7 @@ def add_bookmarks(path):
 def main():
     os.makedirs(PDF, exist_ok=True)
     os.makedirs(WORK, exist_ok=True)
-    md = open(os.path.join(OUT, "牛津搭配词典.md")).read()
+    md = open(os.environ.get("MD") or os.path.join(OUT, "牛津搭配词典.md")).read()
     if "--sample" in sys.argv:                # 只排前 200 条，用来看版式（临时文件）
         rows = re.findall(r"<tr>.*?</tr>", md, re.S)
         md = (md.split("<table>")[0] + "<table>" + rows[0]

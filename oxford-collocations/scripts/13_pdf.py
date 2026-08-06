@@ -157,6 +157,9 @@ tr.repeat-head > * { background: #e8f4fb; font-size: 6.8pt; font-weight: normal;
    再单独给「换了单词」的那一格补一条上边框 */
 td.c1 { border-top: none; border-bottom: none; }
 td.c1.newword { border-top: 0.5pt solid #9a9a9a; }
+/* 每页最后一格、以及整张表的最后一格，都要把底边封上 */
+td.c1.pageend, tbody tr:last-child > td.c1 {
+  border-bottom: 0.5pt solid #9a9a9a; }
 /* 语域标签是次要信息，缩小它好把长条目压进两行 */
 .tag { font-size: 0.72em; color: #777; font-weight: normal; }
 """
@@ -182,12 +185,18 @@ PAGINATE_JS = """
   const headH = head ? head.getBoundingClientRect().height : 0;
   const title = document.querySelector('h1');
   let acc = (title ? title.getBoundingClientRect().height + 8 : 0) + headH;
-  let word = '', added = 0;
+  let word = '', added = 0, prev = null;
   for (const tr of rows) {
     const c1 = tr.querySelector('td.c1');
     if (c1 && !c1.classList.contains('cont')) word = c1.innerHTML;
     let h = tr.getBoundingClientRect().height;
     if (acc + h > pageH) {                 // 这一行放不下了，从它开始翻页
+      // 单词列整列没有横线，翻页时上一页最后一格就没了底边、开着口。
+      // 给这一页的最后一行补一条
+      if (prev) {
+        const p1 = prev.querySelector('td.c1');
+        if (p1) p1.classList.add('pageend');
+      }
       tr.classList.add('newpage');
       // flex 布局下 thead 不会自动在每页重复，自己插一份
       if (head) {
@@ -207,6 +216,7 @@ PAGINATE_JS = """
       }
     }
     acc += h;
+    prev = tr;
   }
   return added;
 }

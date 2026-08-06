@@ -133,18 +133,18 @@ th:last-child { background-color: #e8f4fb; }
    block 元素的 break-inside Chrome 是认的。 */
 table, thead, tbody { display: block; }
 tr { display: flex; break-inside: avoid; page-break-inside: avoid; }
-th, td { display: block; flex: 0 0 auto; box-sizing: border-box; }
-thead { display: table-header-group; }
+th, td { display: block; box-sizing: border-box; }
 b { color: #000; font-weight: bold; }
 tr.sec td { background: #0b6fa4; color: #fff; font-size: 9pt; font-weight: bold;
             padding: 2px 4px; letter-spacing: 1px; }
 /* 四列：习语 / 中文解释 / 常用·口语 / 例句 */
 /* 五列，按实测内容量分配（平均半角宽 3 / 6 / 7 / 75 / 285）。
    词头和义项列很多行是空的（同一词头/义项只在第一行写），但要留得下最宽的那些 */
-th:nth-child(1), td:nth-child(1) { flex-basis: 10%; }
-th:nth-child(2), td:nth-child(2) { flex-basis: 26%; }
-th:nth-child(3), td:nth-child(3) { flex-basis: 22%; color: #444; }
-th:nth-child(4), td:nth-child(4) { flex-basis: 42%; color: #333; }
+/* 用 flex 简写一次写全，别让 `flex: 0 0 auto` 和 flex-basis 打架 */
+th:nth-child(1), td:nth-child(1) { flex: 0 0 10%; }
+th:nth-child(2), td:nth-child(2) { flex: 0 0 26%; }
+th:nth-child(3), td:nth-child(3) { flex: 0 0 22%; color: #444; }
+th:nth-child(4), td:nth-child(4) { flex: 0 0 42%; color: #333; }
 .lab { color: #999; font-size: 5.2pt; margin-right: 1px; }
 tr.newpage { break-before: page; page-break-before: always; }
 /* 每页顶上重复的表头 */

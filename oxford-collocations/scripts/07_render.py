@@ -77,24 +77,14 @@ def main():
              "\n<table>",
              "<thead><tr><th>词头</th><th>搭配</th><th>解释</th>"
              "<th>例句</th></tr></thead>"]
-    # 词头列合并单元格。但 rowspan 不能无限长：`system` 这种词条有好几百行，
-    # 一个 rowspan 跨完，打印时整块挤不进一页，第一页就只剩个表头。
-    # 每 18 行断一次、重复写词头，每页都看得到自己在查哪个词
-    spans, i, LIMIT = {}, 0, 18
-    while i < len(rows):
-        j = i + 1
-        while j < len(rows) and not rows[j][0]:
-            j += 1
-        for k in range(i, j, LIMIT):
-            spans[k] = min(LIMIT, j - k)
-            if k > i:
-                rows[k] = (rows[i][0],) + tuple(rows[k][1:])
-        i = j
-    for k, (word, words, cn, ex) in enumerate(rows):
-        head = (f'<td class="c1" rowspan="{spans[k]}"><b>{word}</b></td>'
-                if k in spans else "")
-        # 每格都打上列号：有 rowspan 时没有词头格的行，td.cellIndex 会整体左移一位，
-        # 排版脚本就把搭配列当成词头列处理了（只给两行、还能缩到 2.9pt）
+    # 词头列**不能用 rowspan**：`system` 这种词条几百行，rowspan 一跨页，
+    # Chrome 会把那一格的边框重画一遍，第一、二列之间冒出两条竖线，
+    # 而且格子高度算错、竖线直接戳出表格底边。
+    # 改成每行都出一个 td，空的那些去掉上边框——看着照样是合并的，还没有跨页毛病。
+    for word, words, cn, ex in rows:
+        head = (f'<td class="c1"><b>{word}</b></td>' if word
+                else '<td class="c1 cont"></td>')
+        # 每格都打上列号：排版脚本按 class 认列，不靠 td.cellIndex
         lines.append(f'<tr>{head}<td class="c2"><b>{words}</b></td>'
                      f'<td class="c3">{cn}</td><td class="c4">{ex}</td></tr>')
     lines.append("</table>\n")

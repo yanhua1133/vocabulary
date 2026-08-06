@@ -35,7 +35,8 @@ SHRINK_JS = """
   // get/have your ˈshit together)`），要压进两行只能让它比别处小得多；
   // 好在这些都是英文，小字比中文耐看。中文那两列绝不能低于 4.6pt
   // 按 class 取列号，不能用 td.cellIndex——有 rowspan 时它会左移一位
-  const COL = (td) => "c1 c2 c3 c4".split(" ").indexOf(td.className) + 1 || 1;
+  const COL = (td) => "c1 c2 c3 c4".split(" ")
+      .findIndex(c => td.classList.contains(c)) + 1 || 1;
   const MIN_BY_COL = [4.8, 5.4, 5.2, 5.0].map(x => x * 96 / 72);
   let over = 0;
   const rows = (td) => {
@@ -64,7 +65,10 @@ SHRINK_JS = """
     // 每列各有各的合理行数。搭配列一格能有八九条，竖着排本来就该占那么多行，
     // 卡死行数只会把字号压到看不清——宁可行高参差，也不要小到没法读。
     // 解释和例句允许三行（英文两行 + 中文一行）
-    const MAX = [2, 14, 3, 3][COL(td) - 1];
+    // 解释和例句一律压两行：宁可字号小一点，也别让 `fields.` 这种半截
+    // 单独占第三行——别的列都只有两行，就它拖长，看着最难受。
+    // 搭配列例外，一格能有八九条，竖排本来就该占那么多行
+    const MAX = [2, 14, 2, 2][COL(td) - 1];
     let guard = 0;
     while (rows(td) > MAX && guard++ < 40 && shrink(td)) {}
     // 缩完再尽量涨回去：一步缩 7% 常常缩过头，排出来字小得可怜、宽度却剩一大截。
@@ -142,6 +146,8 @@ th:nth-child(3), td:nth-child(3) { width: 22%; color: #444; }
 th:nth-child(4), td:nth-child(4) { width: 42%; color: #333; }
 .lab { color: #999; font-size: 5.2pt; margin-right: 1px; }
 .nw { white-space: nowrap; }            /* 别在重音符号后面断行 */
+/* 词头续行的空格子：去掉上边框，视觉上跟上一格连成一片 */
+td.cont { border-top: none; }
 /* 语域标签是次要信息，缩小它好把长条目压进两行 */
 .tag { font-size: 0.72em; color: #777; font-weight: normal; }
 """

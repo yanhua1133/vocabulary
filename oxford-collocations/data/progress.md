@@ -4,7 +4,7 @@
 
 ## 结果在哪看
 - `out/牛津搭配词典.md` ← 四列：**词头 / 搭配 / 中文 / 例句**，76752 行。
-  搭配写**完整形式**（`hastily abandon`、`abandon sb to their fate`、
+  84037 行。搭配写**完整形式**（`hastily abandon`、`abandon sb to their fate`、
   `be found abandoned`），不留原书的省略写法和 `~`；一格多条就格内换行。
   例句里把当前这条搭配加粗。「类型」「义项」两列去掉了——查搭配时用不上。
 - `_sample.pdf` ← 样张（前 200 行，8 页）
@@ -12,7 +12,7 @@
 - `data/groups.json` ← 在骨架上又把每组拆成小类 `{words, cn}` 和例句
 - `data/ocr/pNNN.json` ← 2024 页整页 OCR，带每行 bbox
 
-当前规模：**词头 6205，搭配组 20711，展开出 130854 条完整搭配**。
+当前规模：**词头 6205，搭配组 20711，小类 84048，展开出 144170 条完整搭配**（30% 的小类带例句）。
 
 ## 原书情况
 - Pdg2Pic 生成的**纯扫描件**，2058 页、499 MB，零文字层，只能 OCR（原书不入库）。
@@ -72,11 +72,15 @@ cd oxford-collocations
 - **词头层面很干净**：独立 agent 核了两页，召回和精确都 100%。
 - **短组拆得很好**（`ADV hastily | 仓促离开 + 例句`）。
 - **长组还乱**，样张上看得很清楚，三种表现：
-  ① 同一个组的例句被**重复贴到组内每一行**（`altogether abandon` 到
-     `voluntarily abandon` 七行共用一条）——例句该按位置归属到对应小类，还没做；
-  ② 中文列**串进未摘干净的例句**（`完全/彻底/全部/统统放弃 This principle has
-     now been effectively ~ed. 这一原则事实上已被放弃。`）；
-  ③ 少量行带 OCR 垃圾（`computer: * PC abbreviation`、`nat– ural ability`）。
+  ① ~~例句重复贴到组内每一行~~ **已修**：`take_examples` 留下的 `｜EX｜` 占位符
+     标着例句在原文里的位置，切完小类按占位符个数顺序分配，谁的例句归谁。
+  ② ~~例句中译一路吃到下一个小类~~ **已修**：中译必须以句末标点收尾、中间不许有
+     小类分隔符。原来写成 `[^A-Z]{0,80}`，例句后面拖着
+     `／ effectively, largely virtually 事实上终止…` 这种尾巴。
+  ③ 中文列**仍会串进例句片段**（`事实上终止;很大程度上停止;几乎停止o This principle
+     has now been effectively ~ed. 这一原则事实上已被放弃。`）——这些例句前面没有
+     可识别的引导符，规则找不到边界。
+  ④ 少量行带 OCR 垃圾（`computer: * PC abbreviation`、`nat– ural ability`）。
   根子在 OCR——原书的排版分隔信息在扫描件里本来就丢了一部分，纯规则到这儿差不多到顶。
 
 ## 下一步（两条路，成本差很多）

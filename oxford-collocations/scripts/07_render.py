@@ -37,8 +37,8 @@ def main():
                     if not full:
                         continue
                     ex = ""
-                    for en, zh in (g.get("examples") or [])[:1]:
-                        ex = f"{cell(en)}<br>{cell(zh)}"
+                    for en, zh in (sub.get("ex") or [])[:1]:
+                        ex = f"{cell(en)}<br>{cell(zh)}" if zh else cell(en)
                     rows.append((
                         f"{h['word']} <i>{h['pos']}</i>" if first_head else "",
                         "<br>".join(cell(x) for x in full),

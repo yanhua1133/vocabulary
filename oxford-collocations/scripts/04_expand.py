@@ -95,9 +95,9 @@ def main():
                             for w in split_words(sub["words"])]
                     sub["full"] = full
                     total += len(full)
-                words = [w for sub in g.get("subs", []) for w in sub.get("full", [])]
-                g["examples"] = [[bold(en, head, words), cn]
-                                 for en, cn in g.get("examples", [])]
+                for sub in g.get("subs", []):
+                    sub["ex"] = [[bold(en, head, sub.get("full") or []), cn]
+                                 for en, cn in sub.get("ex", [])]
 
     json.dump(book, open(os.path.join(DATA, "expanded.json"), "w"),
               ensure_ascii=False, indent=1)

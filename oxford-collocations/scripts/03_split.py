@@ -30,7 +30,10 @@ SUBSEP = re.compile(r"\s*[|Il丨！]\s+(?=[a-z(~])")
 EXAMPLE = re.compile(
     r"(?:[•◎○●※◇]|\s\*\s|(?<=[\u4e00-\u9fff])\s*[。.;:]\s*)"
     r"\s*([A-Z(][^\u4e00-\u9fff]{10,}?[.!?])"
-    r"\s*([\u4e00-\u9fff][^A-Z]{0,80})?")
+    # 中译必须**以句末标点收尾**，而且中间不许出现小类分隔符。
+    # 原来写成 `[^A-Z]{0,80}`，会一路吃到下一个小类里去，例句后面拖着
+    # `／ effectively, largely virtually 事实上终止…` 这种狗屁不通的尾巴
+    r"\s*([\u4e00-\u9fff][^A-Z|Il丨！]{0,60}?[。！？])?")
 
 
 def take_examples(text):
@@ -67,24 +70,29 @@ def main():
             for g in s["groups"]:
                 total += 1
                 body, examples = take_examples(g["text"])
-                out = []
+                out, used = [], 0
+                # 例句按它在原文里的位置归属到所在的小类——占位符 ｜EX｜ 就是为此留的。
+                # 整组共用一条例句的话，同一句会重复印在七八行上
                 for part in SUBSEP.split(body):
+                    n_ex = part.count("｜EX｜")
                     got = split_sub(part)
                     if got:
+                        got["ex"] = examples[used:used + n_ex]
                         out.append(got)
                         subs += 1
                         with_words += bool(got["words"])
                         with_cn += bool(got["cn"])
+                        with_ex += bool(got["ex"])
+                    used += n_ex
                 g["subs"] = out
-                g["examples"] = examples
-                with_ex += bool(examples)
+                g["examples"] = examples[used:]      # 没落到任何小类里的
 
     json.dump(book, open(os.path.join(DATA, "groups.json"), "w"),
               ensure_ascii=False, indent=1)
     print(f"{total} 个搭配组 → {subs} 个小类")
     print(f"  有搭配词 {with_words} ({with_words/max(subs,1):.0%})，"
           f"有中文 {with_cn} ({with_cn/max(subs,1):.0%})")
-    print(f"  带例句的组 {with_ex} ({with_ex/max(total,1):.0%})")
+    print(f"  带例句的小类 {with_ex} ({with_ex/max(subs,1):.0%})")
 
 
 if __name__ == "__main__":

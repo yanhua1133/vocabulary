@@ -42,6 +42,11 @@ def main():
             print(f"  {f} 解析失败：{e}")
             continue
         for key, rec in data.items():
+            # 只收新式 key（`词头||搭配`）。上一轮用的是位置型 id（`词头|义项|组|小类`），
+            # 那批 agent 是在批次目录清空之后才写完的，混进来会污染
+            if "||" not in key:
+                bad += 1
+                continue
             if ok(rec):
                 cache[key] = {"cn": rec["cn"].strip(), "ex": rec["ex"].strip()}
                 good += 1

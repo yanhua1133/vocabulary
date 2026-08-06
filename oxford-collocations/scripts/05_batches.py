@@ -12,11 +12,21 @@ Usage: 05_batches.py [词头数] [每批小类数]   (默认 100 个词头、40 
 """
 import json
 import os
+import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 WORK = os.path.join(ROOT, "work", "batches")
+
+
+def key_of(word, full):
+    """用「词头 + 第一条搭配」当 key，不用位置。
+
+    位置型 id（`word|义项|组|小类`）有两个毛病：抽取结构一改就全错位，
+    而且 `name` 名词和 `name` 动词是两个词头、位置下标却一样，会撞 key。
+    """
+    return word + "||" + re.sub(r"[^a-z]", "", (full[0] if full else "").lower())
 
 
 def main():
@@ -28,16 +38,20 @@ def main():
     ranked = sorted(book, key=lambda h: -zipf_frequency(h["word"].lower(), "en"))
     picked = ranked[:n_head]
 
-    items = []
+    items, seen = [], set()
     for h in picked:
-        for si, s in enumerate(h["senses"]):
-            for gi, g in enumerate(s["groups"]):
-                for bi, sub in enumerate(g.get("subs") or []):
+        for s in h["senses"]:
+            for g in s["groups"]:
+                for sub in g.get("subs") or []:
                     if not sub.get("full"):
                         continue
+                    k = key_of(h["word"], sub["full"])
+                    if k in seen:
+                        continue
+                    seen.add(k)
                     ex = sub.get("ex") or [["", ""]]
                     items.append({
-                        "id": f"{h['word']}|{si}|{gi}|{bi}",
+                        "id": key_of(h["word"], sub["full"]),
                         "w": h["word"], "c": sub["full"],
                         "cn": sub["cn"],
                         "ex": f"{ex[0][0]}  {ex[0][1]}".strip()})

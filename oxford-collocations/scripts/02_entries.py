@@ -45,7 +45,26 @@ GROUP_WORDS = {"ADJ", "ADV", "VERB", "NOUN", "PREP", "PHRASES", "QUANT",
 # `the number of…` 误认了，认下来会把邻近词条的搭配全领走
 NOT_HEAD = {"the", "a", "an", "of", "in", "on", "at", "to", "and", "or",
             "but", "that", "this", "it", "is", "are", "be", "as", "for",
-            "with", "by", "from", "not", "no", "so", "if", "than", "then"}
+            "with", "by", "from", "not", "no", "so", "if", "than", "then",
+            "more", "most", "such", "very", "too", "just", "only", "even",
+            "still", "there", "here", "what", "which", "who", "whom", "whose",
+            "when", "where", "how", "why", "has", "have", "had", "was", "were",
+            "been", "being", "am", "does", "did", "doing", "its", "their",
+            "our", "your", "my", "his", "her", "them", "they", "we", "you",
+            "she", "he", "him", "us", "me", "all", "any", "some", "each"}
+
+
+def valid_head(w):
+    """词头长什么样：一个实词，最多两个（`baby carriage`、`black market`）。
+
+    挡掉的是 OCR 从正文里捞出来的假词头——`has helped reduce the`、
+    `advertisement attracted a`、`AVOCADD t`、单字母的 `S` `B`。
+    这些认下来会把邻近词条的搭配全领走。
+    """
+    parts = w.lower().split()
+    if not parts or len(parts) > 2 or len(w) < 3:
+        return False
+    return all(p not in NOT_HEAD and len(p) >= 2 for p in parts)
 
 
 def normalize(t):
@@ -103,7 +122,12 @@ def merge_rows(col, tol=0.006):
 
 def columns(page):
     """双栏切开，去掉页眉页脚。"""
-    body = [l for l in page["lines"] if 0.045 < l["y"] < 0.965]
+    # 页眉长这样：`pleased 1282`——书眉词 + 页码，在 y≈0.06。
+    # 光按 y 切会连栏顶的词头一起切掉（`can noun` 就这么没的），
+    # 所以只认「页顶 + 带页码数字」的那种
+    body = [l for l in page["lines"]
+            if l["y"] < 0.955
+            and not (l["y"] < 0.085 and re.search(r"\d", l["t"]))]
     return [merge_rows(sorted((l for l in body if lo <= l["x"] < hi),
                               key=lambda l: l["y"]))
             for lo, hi in ((0.0, 0.49), (0.49, 1.0))]
@@ -116,7 +140,7 @@ def kind_of(t, x, col_x0, fill=False):
     （`ablaze adj. * đ „*x c` 就是补出来的，还落在了右栏中间），
     让它开新词条会把后面十几条搭配全带偏。
     """
-    if x > col_x0 + 0.012:
+    if x > col_x0 + 0.014:
         return None
     m = GROUP_RE.match(t)
     if m:
@@ -128,9 +152,7 @@ def kind_of(t, x, col_x0, fill=False):
     if m:
         return ("sense", m.group(1), m.group(2))
     m = HEAD_RE.match(t)
-    # 看第一个词就够：`of a` 这种误判也是虚词打头
-    if (m and not CJK.search(m.group(0))
-            and (m.group(1).strip().lower().split() or [""])[0] not in NOT_HEAD):
+    if m and not CJK.search(m.group(0)) and valid_head(m.group(1).strip()):
         # 补回来的行也可以是词头，但整行必须干干净净只有「词 + 词性」。
         # 带尾巴的多半是乱码（`ablaze adj. * đ „*x c`），认了会把后面的搭配带偏
         if fill and not HEAD_ONLY.match(t):
@@ -157,7 +179,11 @@ def parse_page(page):
     for col in columns(page):
         if not col:
             continue
-        col_x0 = min(l["x"] for l in col)
+        # 顶格基线不能取最小值——一两个 x 偏小的异常行就能把基线拉低，
+        # 真正顶格的词头（`pleasure noun` x=0.063）反倒被判成缩进续行。
+        # 取 15% 分位稳得多
+        xs = sorted(l["x"] for l in col)
+        col_x0 = xs[len(xs) // 7]
         for line in col:
             t = normalize(line["t"])
             if len(t) < 2:

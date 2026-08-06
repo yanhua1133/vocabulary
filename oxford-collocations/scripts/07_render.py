@@ -43,14 +43,15 @@ def main():
     rows, fixed = [], 0
     for h in book:
         first_head = True
-        for si, s in enumerate(h["senses"]):
-            for gi, g in enumerate(s["groups"]):
-                for bi, sub in enumerate(g.get("subs") or []):
+        for s in h["senses"]:
+            for g in s["groups"]:
+                for sub in g.get("subs") or []:
                     full = sub.get("full") or []
                     if not full:
                         continue
                     # 校对过的优先——OCR 抽出来的解释常带错字和串行，例句还缺七成
-                    got = cache.get(f"{h['word']}|{si}|{gi}|{bi}")
+                    got = cache.get(h["word"] + "||" +
+                                    re.sub(r"[^a-z]", "", full[0].lower()))
                     if got:
                         fixed += 1
                         cn = got["cn"]

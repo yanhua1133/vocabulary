@@ -59,21 +59,24 @@ SHRINK_JS = """
     return true;
   };
   document.querySelectorAll('tbody td').forEach(td => {
-    // 例句列最宽、内容也最长，允许三行；其余三列压两行
-    // （都卡两行的话例句会被缩到 4pt 上下，根本没法看）
-    if (td.colSpan > 1) return;               // 字母分隔行
-    // 每列各有各的合理行数。搭配列一格能有八九条，竖着排本来就该占那么多行，
-    // 卡死行数只会把字号压到看不清——宁可行高参差，也不要小到没法读。
-    // 解释和例句允许三行（英文两行 + 中文一行）
-    // 解释和例句一律压两行：宁可字号小一点，也别让 `fields.` 这种半截
-    // 单独占第三行——别的列都只有两行，就它拖长，看着最难受。
-    // 搭配列例外，一格能有八九条，竖排本来就该占那么多行
+    if (td.colSpan > 1) return;
+    // 解释和例句一律压两行；搭配列例外，一格能有八九条，竖排本来就该占那么多行
     const MAX = [2, 14, 2, 2][COL(td) - 1];
+    if (rows(td) <= MAX) return;
+
+    // **先拆掉中英之间那个换行**，让中文接在英文后面连排——省下来的一整行
+    // 往往就够了，不必动字号。先缩字号是本末倒置：
+    // `under the new system, all children will be monitored by a social worker.`
+    // 这种英文占满一行的，缩字号只会把整格都缩小，连排却能原样两行放下
+    const br = td.querySelector('br');
+    if (br) {
+      br.replaceWith(document.createTextNode('  '));
+      if (rows(td) <= MAX) return;
+    }
+    // 连排还放不下才缩字号
     let guard = 0;
     while (rows(td) > MAX && guard++ < 40 && shrink(td)) {}
-    // 缩完再尽量涨回去：一步缩 7% 常常缩过头，排出来字小得可怜、宽度却剩一大截。
-    // 每次放大 3%，一超行就整格还原并停手，拿到的就是「放得下的最大字号」。
-    // 只对真缩过的格子做——八成的格子还是原始字号，白跑一遍要多花好几分钟
+    // 缩完再尽量涨回去：一步缩 7% 常常缩过头，字小得可怜宽度却剩一大截
     for (let g = 0; guard > 0 && g < 12; g++) {
       const els = [td, ...td.querySelectorAll('*')];
       const saved = els.map(el => getComputedStyle(el).fontSize);
@@ -81,16 +84,6 @@ SHRINK_JS = """
       if (rows(td) > MAX) {
         els.forEach((el, i) => { el.style.fontSize = saved[i]; });
         break;
-      }
-    }
-    if (rows(td) > MAX) {
-      // 缩到下限还放不下：例句的中英文改成连排，省掉一整行
-      const br = td.querySelector('br');
-      if (br) {
-        br.replaceWith(document.createTextNode('  '));
-        for (const el of [td, ...td.querySelectorAll('*')]) el.style.fontSize = '';
-        let g2 = 0;
-        while (rows(td) > MAX && g2++ < 40 && shrink(td)) {}
       }
     }
     if (rows(td) > MAX) over++;

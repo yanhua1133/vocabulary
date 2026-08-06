@@ -22,14 +22,26 @@ def cell(s):
     return (s or "").replace("|", "／").replace("\n", " ").strip()
 
 
+# 搭配里的占位词，例句里不会原样出现
+SKIP = {"sb", "sth", "sb's", "sth's", "one's", "your", "a", "an", "the",
+        "of", "to", "in", "on", "at", "for", "with", "and", "or", "etc"}
+
+
 def bold_words(text, phrases):
-    """例句里把这一格的搭配标粗。"""
+    """例句里把这一格的搭配**整个**标粗，不是挑几个词。
+
+    词形变化的后缀要给够：`clog` 在例句里是 `clogging`，只放 3 个字母的余量
+    就匹配不上，那条搭配在例句里等于没标。
+    """
     for p in phrases:
-        for w in p.split():
-            if len(w) < 4:
+        for w in p.replace("/", " ").split():
+            w = w.strip("()")
+            if len(w) < 3 or w.lower() in SKIP:
                 continue
-            text = re.sub(rf"(?<![>\w]){re.escape(w)}(\w{{0,3}})(?!\w)",
-                          rf"<b>{w}\1</b>", text, count=1, flags=re.I)
+            stem = w[:-1] if len(w) > 4 and w.endswith("e") else w
+            text = re.sub(rf"(?<![>\w]){re.escape(stem)}(\w{{0,5}})(?!\w)",
+                          rf"<b>{stem}\1</b>", text, flags=re.I)
+    text = re.sub(r"<b>(<b>.*?</b>)</b>", r"\1", text)      # 别嵌套
     return re.sub(r"</b>(\s*)<b>", r"\1", text)
 
 

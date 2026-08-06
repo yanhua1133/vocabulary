@@ -121,6 +121,13 @@ cd oxford-collocations
   那一格的边框重画一遍，第一、二列之间冒出两条竖线（x=81.0 和 81.8 并排），
   格子高度还算错、竖线直接戳出表格底边。改成每行都出一个 td，
   空的那些加 `.cont` 去掉上边框——看着照样是合并的，没有跨页毛病。
+- **放不下时先拆中英换行、再考虑缩字号**。顺序反了会很难看：
+  `under the new system, all children will be monitored by a social worker.`
+  这种英文正好占满一行的，缩字号是把整格都缩小，而把中文接到英文后面连排，
+  省下一整行、原样两行就放下了。改完 7pt 的占比从 63% 升到 94%，最小 5.8pt。
+- **例句里搭配要整个加粗，不是挑几个词**。词形变化的后缀余量要给够：
+  `clog` 在例句里是 `clogging`，只留 3 个字母的余量就匹配不上，
+  那条搭配等于没标。占位词（sb/sth/a/the）跳过。
 - **解释和例句一律压两行**：给三行的余地，脚本一看放得下就不缩字号了，
   结果 `An ancient irrigation system still waters these terraced / fields. /
   一套古老的灌溉系统仍在浇灌这些梯田。` 排成三行，`fields.` 半截单独占一行，

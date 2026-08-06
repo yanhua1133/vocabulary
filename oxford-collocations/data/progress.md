@@ -73,6 +73,13 @@ cd oxford-collocations
   捞出来的。规则：最多两个词、每个词至少两个字母、都不能是虚词
   （`baby carriage`、`black market` 要留住）。最终词头 7948。
 
+## 词头 OCR 纠错
+子 agent 报 `ow point`、`ife point`、`biock`、`coai` 这些——词头一错整个词条就查不到。
+两类毛病：首字母被吃掉（`djective`→`adjective`、`elegate`→`delegate`）、
+形近字母认错（`biock`→`block`、`assauit`→`assault`、`cuiture`→`culture`）。
+用 wordfreq 兜底：原词本身不是常见词、且补首字母或换一个形近字母后候选唯一又够常见，
+才改。坏词头 120 → 48（剩下的是多字母同时认错，如 `lecorative`、`commierce`）。
+
 ## 词头串位：三个连环坑
 `ablaze` 名下曾经挂着 `have ablaze`、`retain ablaze`——那些其实是 `ability` 的搭配。
 根子是合并碎行时没保护词头，连修三次才干净：

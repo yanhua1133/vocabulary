@@ -166,6 +166,37 @@ POS_FIX = {"adi": "adj", "ady": "adj", "ad": "adj", "adr": "adv",
            "adverb": "adv", "preps": "prep"}
 
 
+CONFUSE = {"i": "l", "l": "i", "t": "l", "o": "c", "c": "o", "a": "o",
+           "u": "n", "n": "u", "e": "c", "h": "b", "b": "h", "y": "v",
+           "1": "l", "0": "o", "5": "s", "rn": "m", "m": "rn", "ii": "u"}
+
+
+def fix_word(w):
+    """词头的 OCR 纠错。词头一错，整个词条就查不到了。
+
+    两类毛病：首字母被吃掉（`djective` → `adjective`、`elegate` → `delegate`），
+    和形近字母认错（`biock` → `block`、`coai` → `coal`、`assauit` → `assault`）。
+    只在原词本身不是常见词、且候选唯一又足够常见时才改，不瞎猜。
+    """
+    from wordfreq import zipf_frequency as z
+
+    if " " in w or len(w) < 4 or z(w.lower(), "en") >= 1.5:
+        return w
+    low = w.lower()
+    best, score = w, 3.0
+    for c in "abcdefghijklmnopqrstuvwxyz":          # 补回被吃掉的首字母
+        if z(c + low, "en") > score:
+            best, score = c + low, z(c + low, "en")
+    for i, ch in enumerate(low):                     # 形近字母认错
+        for a, b in CONFUSE.items():
+            if low[i:i + len(a)] != a:
+                continue
+            cand = low[:i] + b + low[i + len(a):]
+            if z(cand, "en") > score:
+                best, score = cand, z(cand, "en")
+    return best
+
+
 def norm_pos(rest):
     """词性归一化：OCR 把 adj. 认成 adi./ady./ad. 的很多，统一写法。"""
     w = (rest.split() or [""])[0].strip(".").lower()
@@ -215,7 +246,7 @@ def main():
                     cur_sense["text"] += " " + rest
                 continue
             if kind == "head":
-                cur_head = {"word": key, "pos": norm_pos(rest),
+                cur_head = {"word": fix_word(key), "pos": norm_pos(rest),
                             "page": page_no, "senses": []}
                 cur_sense = None
                 book.append(cur_head)

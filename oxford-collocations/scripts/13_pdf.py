@@ -125,7 +125,9 @@ th:last-child, td:last-child {
                                     #444 calc(100% - 1.6pt));
 }
 th:last-child { background-color: #e8f4fb; }
-tr { break-inside: avoid; page-break-inside: avoid; }
+/* 行不许被分页切开——切开了上半页留半句、下半页留半句，
+   而且「每页顶上补写单词」也就无从落脚了。td 也要加，光给 tr 加 Chrome 不认 */
+tr, td { break-inside: avoid; page-break-inside: avoid; }
 thead { display: table-header-group; }
 b { color: #000; font-weight: bold; }
 tr.sec td { background: #0b6fa4; color: #fff; font-size: 9pt; font-weight: bold;
@@ -139,8 +141,11 @@ th:nth-child(3), td:nth-child(3) { width: 22%; color: #444; }
 th:nth-child(4), td:nth-child(4) { width: 42%; color: #333; }
 .lab { color: #999; font-size: 5.2pt; margin-right: 1px; }
 .nw { white-space: nowrap; }            /* 别在重音符号后面断行 */
-/* 词头续行的空格子：去掉上边框，视觉上跟上一格连成一片 */
-td.cont { border-top: none; }
+/* 单词列要真的连成一片：border-collapse 下只去掉续行格的上边框没用，
+   上一格的下边框还在，横线照样一条条画出来。得把这一列的横线全撤掉，
+   再单独给「换了单词」的那一格补一条上边框 */
+td.c1 { border-top: none; border-bottom: none; }
+td.c1.newword { border-top: 0.5pt solid #9a9a9a; }
 /* 语域标签是次要信息，缩小它好把长条目压进两行 */
 .tag { font-size: 0.72em; color: #777; font-weight: normal; }
 """
@@ -155,6 +160,54 @@ def md_to_html(md, title):
             f"{body.group(0) if body else ''}</body></html>")
 
 
+# 排完版之后再跑一遍：合并单元格跨页时，在新页顶上把单词重新写一遍。
+# 纸面上看不到上一页，光靠 border 连一片的话，翻过来那页第一列就是空的
+def page_top_rows(pdf_path):
+    """读出 PDF 每页最上面那一行的搭配文本，用来定位分页处。
+
+    分页位置只有真排出 PDF 才知道——JS 在 print 模拟下看到的是连续流，
+    量不出页边界。所以排两遍：第一遍看分在哪儿，第二遍在每页顶上补写单词。
+    """
+    import fitz
+
+    tops = []
+    doc = fitz.open(pdf_path)
+    for page in doc:
+        cells = []
+        for b in page.get_text("dict")["blocks"]:
+            for l in b.get("lines", []):
+                t = "".join(s["text"] for s in l["spans"]).strip()
+                # 搭配列大致在这个横向范围，取最靠上的那一条；
+                # 纵向要避开每页重复的表头（它也落在这一列里）
+                if t and 78 < l["bbox"][0] < 200 and l["bbox"][1] > 80:
+                    cells.append((round(l["bbox"][1]), t))
+        if cells:
+            cells.sort()
+            tops.append(cells[0][1])
+    doc.close()
+    return tops
+
+
+def repage(md, tops):
+    """把每页顶上那一行的单词格补出来。"""
+    rows = re.findall(r"<tr>.*?</tr>", md, re.S)
+    want = set(tops)
+    word, out, added = "", [], 0
+    for r in rows:
+        m = re.search(r'class="c1[^"]*"[^>]*>(?:<b>)?(.*?)(?:</b>)?</td>', r, re.S)
+        if m and m.group(1).strip():
+            word = m.group(1)
+        first = re.search(r'<td class="c2"><b>(.*?)(?:<br>|</b>)', r, re.S)
+        if (first and first.group(1).strip() in want and word
+                and 'class="c1 cont"' in r):
+            r = r.replace('<td class="c1 cont"></td>',
+                          f'<td class="c1 newword"><b>{word}</b></td>')
+            added += 1
+        out.append(r)
+    head = md.split("<tr>")[0]
+    return head + "\n".join(out) + "\n</table>\n", added
+
+
 def print_pdf(html_path, pdf_path):
     from playwright.sync_api import sync_playwright
 
@@ -165,6 +218,7 @@ def print_pdf(html_path, pdf_path):
         page.emulate_media(media="print")
         page.goto("file://" + html_path)
         over = page.evaluate(SHRINK_JS)
+
         page.pdf(path=pdf_path, print_background=True, **PAGE)
         browser.close()
     if not os.path.exists(pdf_path) or os.path.getmtime(pdf_path) <= before:
@@ -219,6 +273,17 @@ def main():
     open(html_path, "w").write(md_to_html(md, name))
     pdf_path = os.path.join(PDF, f"{name}.pdf")
     print_pdf(html_path, pdf_path)
+    # 补写单词本身会把布局撑开一点、分页位置跟着挪，所以要迭代到不再新增为止
+    total = 0
+    for _ in range(4):
+        md, added = repage(md, page_top_rows(pdf_path))
+        if not added:
+            break
+        total += added
+        open(html_path, "w").write(md_to_html(md, name))
+        print_pdf(html_path, pdf_path)
+    if total:
+        print(f"跨页处补写单词 {total} 次")
     add_bookmarks(pdf_path)
     print(pdf_path)
 

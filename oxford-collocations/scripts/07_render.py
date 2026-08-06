@@ -115,14 +115,14 @@ def main():
              f"{sum(len(x.get('full') or []) for h in book for s in h['senses'] for g in s['groups'] for x in (g.get('subs') or []))} 条完整搭配。"
              f"其中 {fixed} 行的解释和例句经过校对。例句里加粗的是当前这条搭配。\n",
              "\n<table>",
-             "<thead><tr><th>词头</th><th>搭配</th><th>解释</th>"
+             "<thead><tr><th>单词</th><th>搭配</th><th>解释</th>"
              "<th>例句</th></tr></thead>"]
     # 词头列**不能用 rowspan**：`system` 这种词条几百行，rowspan 一跨页，
     # Chrome 会把那一格的边框重画一遍，第一、二列之间冒出两条竖线，
     # 而且格子高度算错、竖线直接戳出表格底边。
     # 改成每行都出一个 td，空的那些去掉上边框——看着照样是合并的，还没有跨页毛病。
     for word, words, cn, ex in rows:
-        head = (f'<td class="c1"><b>{word}</b></td>' if word
+        head = (f'<td class="c1 newword"><b>{word}</b></td>' if word
                 else '<td class="c1 cont"></td>')
         # 每格都打上列号：排版脚本按 class 认列，不靠 td.cellIndex
         lines.append(f'<tr>{head}<td class="c2"><b>{words}</b></td>'

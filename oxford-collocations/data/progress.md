@@ -100,7 +100,10 @@ cd oxford-collocations
 `in` 和 `an` 分不出高下，所以直接写死 n→in、m→am、t→it、s→is、f→of、e→be、
 y→by、o→to、r→or、g→go、p→up。两个坑：
 - 后面跟的词卡两个字母就够（`t is accountable` 的 is 只有两个字母，卡三个会漏掉一大半）；
-- 补出来的词要跟后面那个词比一下，别把 `o to` 补成 `to to`。
+- 补出来的词要跟后面那个词比一下，别把 `o to` 补成 `to to`；
+- **前面必须是空格或行首**，用 `\b` 会把 `couldn't believe` 里的 t 当成孤立字母，
+  补成 `couldn'it believe`——我就是这么把已校对部分从 57 处搞回 97 处的，
+  改完一定要重跑自查看数字有没有反弹。
 
 **教训：规则能覆盖全书，agent 只覆盖校对过的那部分。能写成规则的就别只让 agent 修。**
 

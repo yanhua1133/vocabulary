@@ -110,7 +110,9 @@ def fix_lone_letter(t):
 
     # 后面跟的词两个字母就够——`t is accountable` 里的 is 只有两个字母，
     # 卡三个字母会把这一大类（341 条）全放过去
-    return re.sub(r"\b([%s])\s+([a-z]{2,})" % "".join(LONE), one2, t)
+    # 前面必须是空格或行首。用 \b 会把 `couldn't believe` 里的 t 当成孤立字母，
+    # 补成 `couldn'it believe`
+    return re.sub(r"(?<![\w'’])([%s])\s+([a-z]{2,})" % "".join(LONE), one2, t)
 
 
 def fix_phrase(t):

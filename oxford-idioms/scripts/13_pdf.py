@@ -30,12 +30,16 @@ PAGE = {"width": "185mm", "height": "260mm",
 
 SHRINK_JS = """
 () => {
-  // 每列的字号下限分开定。习语列里有几十条带三四个变体的超长条目
+  // 字号只允许取这几档，不做连续缩放。
+  // 老做法是「每次缩 7%、再每次涨回 3%」，最后落在 0.93^n × 1.03^m 上，
+  // 一页里能冒出二十几种字号（3.3pt 到 9.0pt），相邻两行大小不一，看着就是脏。
+  // 改成固定档位后同一页最多五种字号，而且档与档之间差得够明显、不会像没对齐。
+  const STEPS = [7.0, 6.4, 5.8, 5.2, 4.6, 4.0, 3.4, 2.9];
+  // 每列能降到第几档。中文两列绝不能太小；习语列有几十条带三四个变体的超长条目
   // （`get your ˈact together ◆ get sth/it toˈgether (informal) (also
-  // get/have your ˈshit together)`），要压进两行只能让它比别处小得多；
-  // 好在这些都是英文，小字比中文耐看。中文那两列绝不能低于 4.6pt
-  const MIN_BY_COL = [2.9 * 96 / 72, 4.6 * 96 / 72, 4.6 * 96 / 72, 4.4 * 96 / 72];
-  let over = 0;
+  // get/have your ˈshit together)`），只能让它一路降到底——好在都是英文，比中文耐看
+  const FLOOR = [2.9, 4.6, 4.6, 4.6];
+  const over = [];
   const rows = (td) => {
     const r = document.createRange();
     r.selectNodeContents(td);
@@ -46,45 +50,27 @@ SHRINK_JS = """
     for (const t of tops) { if (t - last > 4) { n++; last = t; } }
     return n;
   };
-  const shrink = (td) => {                    // 返回 false 表示已到字号下限
-    const MIN = MIN_BY_COL[td.cellIndex] || 4.4 * 96 / 72;
-    for (const el of [td, ...td.querySelectorAll('*')]) {
-      const s = parseFloat(getComputedStyle(el).fontSize) * 0.93;
-      if (s < MIN) return false;
-      el.style.fontSize = s + 'px';
-    }
-    return true;
-  };
   document.querySelectorAll('tbody td').forEach(td => {
-    // 例句列最宽、内容也最长，允许三行；其余三列压两行
-    // （都卡两行的话例句会被缩到 4pt 上下，根本没法看）
     if (td.colSpan > 1) return;               // 字母分隔行
     const MAX = 2;                            // 四列一律两行，不许出现第三行
-    let guard = 0;
-    while (rows(td) > MAX && guard++ < 40 && shrink(td)) {}
-    // 缩完再尽量涨回去：一步缩 7% 常常缩过头，排出来字小得可怜、宽度却剩一大截。
-    // 每次放大 3%，一超行就整格还原并停手，拿到的就是「放得下的最大字号」。
-    // 只对真缩过的格子做——八成的格子还是原始字号，白跑一遍要多花好几分钟
-    for (let g = 0; guard > 0 && g < 12; g++) {
-      const els = [td, ...td.querySelectorAll('*')];
-      const saved = els.map(el => getComputedStyle(el).fontSize);
-      els.forEach((el, i) => { el.style.fontSize = parseFloat(saved[i]) * 1.03 + 'px'; });
-      if (rows(td) > MAX) {
-        els.forEach((el, i) => { el.style.fontSize = saved[i]; });
-        break;
-      }
-    }
-    if (rows(td) > MAX) {
-      // 缩到下限还放不下：例句的中英文改成连排，省掉一整行
+    // 例句列：英文一行、中文一行本来就放得下的，原样不动。
+    // 只有放不下的才拆掉 <br> 让中英文连排——那个 <br> 会把格子钉死成两行，
+    // 逼着英文缩字号硬挤进第一行，中文那行却空掉大半；连排后英文能用大字号
+    // 溢到第二行、中文接着排，两行都填满
+    if (td.cellIndex === 3 && rows(td) > MAX) {
       const br = td.querySelector('br');
-      if (br) {
-        br.replaceWith(document.createTextNode('  '));
-        for (const el of [td, ...td.querySelectorAll('*')]) el.style.fontSize = '';
-        let g2 = 0;
-        while (rows(td) > MAX && g2++ < 40 && shrink(td)) {}
-      }
+      if (br) br.replaceWith(document.createTextNode('\\u2003\\u2003'));
     }
-    if (rows(td) > MAX) over++;
+    if (rows(td) <= MAX) return;              // 八成的格子本来就放得下
+    // 从大到小挑第一个放得下的档位。子元素的字号全用 em 写，跟着 td 一起缩，
+    // 不用逐个 querySelectorAll 去改（那样会把 em 关系压平）
+    const floor = FLOOR[td.cellIndex];
+    for (const pt of STEPS) {
+      if (pt > 7.0 || pt < floor) continue;
+      td.style.fontSize = pt + 'pt';
+      if (rows(td) <= MAX) return;
+    }
+    over.push(td.cellIndex + '列 ' + td.textContent.slice(0, 40));
   });
   return over;
 }
@@ -129,17 +115,21 @@ b { color: #000; font-weight: bold; }
 tr.sec td { background: #0b6fa4; color: #fff; font-size: 9pt; font-weight: bold;
             padding: 2px 4px; letter-spacing: 1px; }
 /* 四列：习语 / 中文解释 / 常用·口语 / 例句 */
-/* 列宽按各列实际内容量分配（平均半角宽 30 / 19 / 6 / 108），
-   目标是四列都刚好两行、行高整齐。原来 21/17/55 的分法前两列大量留白，
-   例句列却要挤三行、还被缩到 4pt */
-th:nth-child(1), td:nth-child(1) { width: 22%; }
-th:nth-child(2), td:nth-child(2) { width: 12%; }
+/* 列宽按各列内容宽度的 **P90** 分配，不是按平均值——目标是「九成的格子刚好两行满」。
+   实测半角宽 P90 是 46 / 26 / 12 / 136，扣掉星级列固定要的宽度后按这个比例分。
+   按平均值分会让长尾大量超行、被迫缩字号；这正是上一版一页里蹦出二十几种字号的原因。
+   中文解释列从 10.5% 调到 11.5%：算宽度时忘了左右各 3px 的 padding，
+   19 字以上的长释义在 4.6pt 下面差半个字放不下，全书有 9 条 */
+th:nth-child(1), td:nth-child(1) { width: 19%; }
+th:nth-child(2), td:nth-child(2) { width: 11.5%; }
 /* 星级列 nowrap 是为了不让星号断行，那它就必须留够宽度——
    宽度不够时 nowrap 会把整张表撑破，最后一列被顶出纸面 */
-th:nth-child(3), td:nth-child(3) { width: 11%; color: #d48806; font-size: 6pt;
+th:nth-child(3), td:nth-child(3) { width: 10.5%; color: #d48806; font-size: 0.86em;
                                    letter-spacing: -0.4px; white-space: nowrap; }
-th:nth-child(4), td:nth-child(4) { width: 55%; color: #333; }
-.lab { color: #999; font-size: 5.2pt; margin-right: 1px; }
+th:nth-child(4), td:nth-child(4) { width: 59%; color: #333; }
+/* 格子里的字号一律用 em：13_pdf.py 缩排时只改 td 一个值，子元素跟着一起缩。
+   写成绝对 pt 的话，缩完子元素还是原大小，比正文还大 */
+.lab { color: #999; font-size: 0.74em; margin-right: 1px; }
 .nw { white-space: nowrap; }            /* 别在重音符号后面断行 */
 /* 语域标签是次要信息，缩小它好把长条目压进两行 */
 .tag { font-size: 0.72em; color: #777; font-weight: normal; }
@@ -169,7 +159,9 @@ def print_pdf(html_path, pdf_path):
         browser.close()
     if not os.path.exists(pdf_path) or os.path.getmtime(pdf_path) <= before:
         raise RuntimeError("PDF 没有被写出来：" + pdf_path)
-    print(f"实测仍超过两行的格子：{over} 个")
+    print(f"实测仍超过两行的格子：{len(over)} 个")
+    for x in over[:12]:
+        print(f"      {x}")
 
 
 def add_bookmarks(path):

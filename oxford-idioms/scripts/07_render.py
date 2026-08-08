@@ -13,9 +13,17 @@
 Usage: 07_render.py
 """
 import difflib
+import importlib.util
 import json
 import os
 import re
+
+_spec = importlib.util.spec_from_file_location(
+    "p10", os.path.join(os.path.dirname(os.path.abspath(__file__)), "10_clean_ex.py"))
+_p10 = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_p10)
+polish, polish_cn = _p10.polish, _p10.polish_cn   # 两种来源共用同一套字面收尾
+# IRREG 在本文件下方定义，import 完再回灌给 _p10（uses_idiom 也要用同一张表）
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
@@ -30,6 +38,15 @@ IPA_CHARS = re.compile(r"/[^/]*[ɑɒəɜɪʊʌæŋʃʒθðːˑ][^/]*/|/[^/]*[a-z
 # `keep your ˈhand in` 本身就是完整条目。
 DANGLING = re.compile(r"\b(the|a|an|of|and|or|to|for|with|from|that|by|as|"
                       r"your|his|her|their|its|our|my)$", re.I)
+# 习语常见的起手词，用来判断切掉例句碎片后要往前捡回几个词
+IDIOM_HEAD = set("be a an the not no your his her its our their sb's sth's "
+                 "one's in on at of".split())
+# 例句碎片粘在条目前面的两种形态。判据必须窄，不然会切掉正经谚语
+# （`when the cat's aˈway the mice will ˈplay`、`the goose that lays the golden ˈeggs`）：
+# 只认「限定句」（`…ed that`、`which is`）和「整条以分词分句起头」两种
+PROSE_HEAD = (re.compile(r"^.{6,}?(?:\b\w+ed that\b|\bwhich is\b)\s+"),
+              re.compile(r"^(?!some|any|no|every|during)\w+ing\b.{6,}?"
+                         r"\b(?:when|that)\b\s+"))
 
 
 def stars(n):
@@ -441,6 +458,48 @@ def regroup(rows):
     return rows, moved
 
 
+def tidy_idiom(idiom):
+    """条目文本的收尾：截断的变体、整条重复。
+
+    原书用 `•` 分隔同义变体（`ˌnight and ˈday •ˌday and ˈnight`），这是正经体例，
+    不能一律拆掉。但变体正好落在栏底时会被切断，留下半截
+    （`every man has his ˈprice •everyone has`、`get/have/take the ˈmeasure of sb • get/`），
+    这种半截没有信息量，删掉比留着强。判据：`•` 后那段以虚词/斜杠收尾，或不足两个词。
+    """
+    # 例句碎片粘在条目前面：`mechanic explained that they would have to ˈmake it`、
+    # `sitting in a cafe minding my own business when a mind your ˌP's and ˈQ's`。
+    # 判据要窄，否则会切掉 `when the cat's aˈway the mice will ˈplay` 这类正经谚语：
+    # 前缀必须是**限定句**（`…ed that`、`which is`）或 -ing 分句，且后面还有重音符号
+    # 原书的派生词块（`ˈwheel-spinning noun: Save yourself some…`）被整段抽了进来，
+    # 冒号后面是例句正文，不是条目的一部分
+    idiom = re.sub(r"\s*\b(noun|verb|adjective|adverb)\b\s*[:：].*$", "", idiom)
+    # 条目在栏底被切断时末尾会留个孤零零的斜杠（`ˌsomething like ˈsb/`），去掉
+    idiom = re.sub(r"\s*/\s*$", "", idiom)
+
+    m = next((x for x in (p.match(idiom) for p in PROSE_HEAD) if x), None)
+    if m and re.search(r"[ˈˌ]", idiom[m.end():]):
+        rest = idiom[m.end():]
+        # 从碎片之后的第一个带重音符号的词开始才是条目本体，再往前捡回
+        # be / a / your 这类习语常见的起手词（`which is be sb's ˌspiritual ˈhome`）
+        w = re.search(r"\S*[ˈˌ]\S*", rest)
+        head = rest[:w.start()].split()
+        while head and head[-1].lower() not in IDIOM_HEAD:
+            head.pop()
+        idiom = " ".join(head[-3:] + rest[w.start():].split())
+
+    parts = [p.strip() for p in re.split(r"\s*[•◆]\s*", idiom) if p.strip()]
+    keep = [parts[0]] if parts else []
+    for p in parts[1:]:
+        if len(p.split()) >= 2 and not p.endswith("/") and not DANGLING.search(p):
+            keep.append(p)
+    out = " • ".join(keep)
+    # 同一条被抄了两遍（`a force to be ˈreckoned with a force to be ˈreckoned with`）
+    half = len(out) // 2
+    if len(out) > 12 and out[:half].strip() == out[half:].strip():
+        out = out[:half].strip()
+    return out.strip(' "\u201c\u201d') or idiom
+
+
 def append_lost(rows):
     """把 09_lost.py 捞回来的条目插回它该在的关键词下面。
 
@@ -486,13 +545,148 @@ def with_book_examples(rows):
     used = 0
     for r in rows:
         got = ex.get(r[7]) if len(r) > 7 else None
+        # 再验一次「例句真的用上了这条习语」。10_clean_ex 是按 idioms.json 的原始
+        # 条目文本判的，而这里的条目已经过改挂、纠正关键词、拼回断行，对应关系会漂
+        if got and not _p10.uses_idiom(got["en"], r[1]):
+            got = None
         if got:
             r[3], r[4] = got["en"], got["cn"]
             used += 1
         elif r[3]:
+            # 自拟例句没走过 10_clean_ex 的清理，字面收尾（标点后空格、句中被
+            # 无故大写的词）得在这儿补上，否则两种来源的例句排版不一致
+            r[3], r[4] = polish(r[3]), polish_cn(r[4])
             r[4] = (r[4] + "（自拟）").lstrip("（") if r[4] else ""
             r[4] = r[4] if r[4].endswith("（自拟）") else r[4] + "（自拟）"
     return rows, used
+
+
+# 条目里可以对不上的虚词位。`be about to do sth` 在例句里是 `was about to phone`，
+# be 变成了 was、do 变成了 phone，卡死这些位置会有两成例句加不上粗
+# 中间还会插进宾语（`put his years in the kitchen to good account`），
+# 所以允许连续跳过 6 个词——跳过的部分本来就属于「这条习语用起来的样子」，
+# 一并加粗才对。所有格占位 sb's / sth's 例句里换成 his / her / your，也要能跳
+SKIPPABLE = {"be", "is", "are", "was", "were", "been", "being", "get", "gets",
+             "got", "to", "a", "an", "the", "it", "do", "does", "did", "done",
+             "sb's", "sth's", "one's", "your", "his", "her", "their", "my"}
+
+
+# 不规则动词。例句里是 took / brought / ran / got，跟条目里的原形对不上，
+# 少了这张表有一成例句加不上粗
+IRREG = {}
+for _base, _forms in {
+        "be": "am is are was were been", "have": "has had", "do": "does did done",
+        "go": "goes went gone", "get": "gets got gotten", "take": "takes took taken",
+        "make": "makes made", "come": "comes came", "give": "gives gave given",
+        "run": "runs ran", "bring": "brings brought", "think": "thinks thought",
+        "see": "sees saw seen", "say": "says said", "tell": "tells told",
+        "know": "knows knew known", "put": "puts", "keep": "keeps kept",
+        "leave": "leaves left", "find": "finds found", "feel": "feels felt",
+        "hold": "holds held", "lose": "loses lost", "pay": "pays paid",
+        "sell": "sells sold", "send": "sends sent", "set": "sets",
+        "sit": "sits sat", "stand": "stands stood", "throw": "throws threw thrown",
+        "win": "wins won", "write": "writes wrote written", "draw": "draws drew drawn",
+        "drive": "drives drove driven", "eat": "eats ate eaten",
+        "fall": "falls fell fallen", "fly": "flies flew flown",
+        "break": "breaks broke broken", "catch": "catches caught",
+        "buy": "buys bought", "blow": "blows blew blown", "beat": "beats",
+        "cut": "cuts", "hit": "hits", "hurt": "hurts", "let": "lets",
+        "read": "reads", "speak": "speaks spoke spoken", "spend": "spends spent",
+        "wear": "wears wore worn", "cast": "casts", "shake": "shakes shook shaken",
+        "strike": "strikes struck", "swear": "swears swore sworn",
+        "tear": "tears tore torn", "meet": "meets met", "lead": "leads led",
+        "lay": "lays laid", "lie": "lies lay lain", "rise": "rises rose risen",
+        "ring": "rings rang rung", "sing": "sings sang sung",
+        "sink": "sinks sank sunk", "stick": "sticks stuck", "shoot": "shoots shot",
+        "steal": "steals stole stolen", "teach": "teaches taught",
+        "understand": "understands understood", "wake": "wakes woke woken"}.items():
+    for _f in (_base + " " + _forms).split():
+        IRREG.setdefault(_f, set()).update((_base + " " + _forms).split())
+
+
+def bold_idiom(en, idiom):
+    """把例句里用到这条习语的那一段整体加粗。
+
+    加粗必须是**连着的一段**，虚词也要包进去——`get sth off your ˈchest` 在例句里是
+    `get it off my chest`，只挑实词会印成「**get** it off my **chest**」，读者看不出
+    这是一个整体。
+
+    做法是按**词序对齐**，不是「首尾实词之间全包」。后者会被零星撞词带偏：
+    `that's about ˈall/it` 撞上 `Milk, bread, a bag of rice — that's about it`
+    里的 a，就从句首一路粗到句中。对齐时允许跳词（例句里会多出 the/my/his）
+    和屈折变化（`take ˈaim` → `taking aim`），但连续跳超过 2 个词就断开。
+    """
+    if not en or "<b>" in en:
+        return en
+    # 一格里可能并列着几个变体（`take sth into acˈcount • take account of sth`），
+    # 得逐个试。把它们连在一起当成一条去对齐，哪条都对不上
+    if "•" in idiom:
+        for part in idiom.split("•"):
+            out = bold_idiom(en, part.strip())
+            if out != en:
+                return out
+        return en
+    bare = re.sub(r"\([^)]*\)", " ", idiom).replace("ˈ", "").replace("ˌ", "")
+    # 斜杠是可替换成分，`give/get` 命中任意一个都算
+    groups = []
+    for tok in re.findall(r"[A-Za-z][A-Za-z/'’-]*", bare.lower()):
+        alts = [w for w in tok.split("/") if len(w) > 1 and w not in ("sth", "sb")]
+        # 反身代词按人称变（`above yourself` → `above himself`），当一组处理；
+        # do 是「做某事」的占位，例句里换成任何动词都算（`about to do sth` → `to phone`）
+        if any(w.endswith(("self", "selves")) for w in alts):
+            alts = ["yourself", "himself", "herself", "myself", "itself",
+                    "themselves", "ourselves", "yourselves", "oneself"]
+        if alts:
+            groups.append(alts)
+    if not groups:
+        return en
+    DO = {"do", "does", "did", "doing", "done"}
+    groups = [g for g in groups if not (len(g) == 1 and g[0] in DO)]
+    content = sum(1 for g in groups if any(w not in _p10.PLACEHOLDER for w in g))
+    toks = list(re.finditer(r"[A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z]", en))
+
+    def same(word, alts):
+        w = word.lower().strip("'’")
+        return any(w == a or w in IRREG.get(a, ()) or a in IRREG.get(w, ())
+                   or (len(a) > 3 and w.startswith(a[:len(a) - 2]))
+                   or (len(w) > 3 and a.startswith(w[:len(w) - 2])) for a in alts)
+
+    best = None
+    for s0 in range(len(toks)):
+        j = k = 0
+        hits, first, last, gap, skips = 0, None, s0, 0, 0
+        while j < len(groups) and s0 + k < len(toks):
+            if same(toks[s0 + k].group(0), groups[j]):
+                if first is None:
+                    first = s0 + k          # 起点是**第一个命中**，不是扫描起点
+                hits, last, j, k, gap = hits + 1, s0 + k, j + 1, k + 1, 0
+            elif any(w in _p10.PLACEHOLDER or w in SKIPPABLE for w in groups[j]):
+                j += 1                      # 例句里可以没有、或换掉这个虚词
+            elif (j + 1 < len(groups) and skips == 0
+                  and same(toks[s0 + k].group(0), groups[j + 1])):
+                # 当前词对不上这一位、却正好对上下一位 → 这一位在例句里被换掉了
+                # （`I/I'll ˈbet` 的例句是 `I bet…`，i'll 那一位没有对应）。
+                # 必须**立刻**跳，等 gap 攒到 2 再跳的话指针早就越过 bet 了
+                j, skips = j + 1, 1
+            elif gap >= 2 and skips == 0:
+                # 允许整个跳过一个实词位。条目里并列的动词只用得上一个
+                # （`give yourself/ˌput on ˈairs` 的例句只有 put，没有 give）
+                j, skips, gap = j + 1, 1, 0
+            else:
+                k, gap = k + 1, gap + 1
+                if gap > 6:
+                    break
+        if hits and (best is None or hits > best[0]):
+            best = (hits, first, last)
+    # 实词至少对上六成。要求全对的话 `be about to do sth` 里的 do 对不上
+    # 例句的 phone，7 成的例句都加不上粗。
+    # 对不上六成也不能放着不加粗（规则 6：一条都不许跳）——例句常用同义替换
+    # （`ˈvanishing act` 配的是 `disappearing act`），这时退而求其次，
+    # 把命中的那几个实词连成一段粗体，至少让读者看出落点在哪
+    if not best or best[0] < 1:
+        return en
+    a, b = toks[best[1]].start(), toks[best[2]].end()
+    return en[:a] + "<b>" + en[a:b] + "</b>" + en[b:]
 
 
 def letter_marks(rows):
@@ -524,7 +718,10 @@ def main():
     rows = [list(r) for r in rows]
     rows, from_book = with_book_examples(rows)
     rows, moved = regroup(rows)
-    rows, recovered = append_lost(rows)
+    rows, recovered = append_lost(rows)      # 捞回来的那些是元组，统一成 list
+    rows = [list(r) for r in rows]
+    for r in rows:
+        r[1] = tidy_idiom(r[1])
     filled = sum(1 for r in rows if r[5])
 
     os.makedirs(OUT, exist_ok=True)
@@ -560,8 +757,12 @@ def main():
             rank = (f'<span class="lab">常</span>{stars(sc["u"])}<br>'
                     f'<span class="lab">口</span>{stars(sc["s"])}')
         else:
-            rank = ""
-        ex = f"{cell(en_ex)}<br>{cell(cn_ex)}" if cn_ex else cell(en_ex)
+            # 没打到分的 18 条也不能留空格子——读者看到空白只会以为漏印了。
+            # 给全书中位数（常 3 / 口 3）并不比空白更不准，至少版面是完整的
+            rank = (f'<span class="lab">常</span>{stars(3)}<br>'
+                    f'<span class="lab">口</span>{stars(3)}')
+        ex = (f"{bold_idiom(cell(en_ex), idiom)}<br>{cell(cn_ex)}"
+              if cn_ex else bold_idiom(cell(en_ex), idiom))
         lines.append(f"<tr><td><b>{glue_stress(shrink_tags(cell(strip_marker(idiom))))}</b></td>"
                      f"<td>{cell(cn)}</td><td>{rank}</td><td>{ex}</td></tr>")
     lines.append("</table>\n")
@@ -575,6 +776,10 @@ def main():
           f"  例句：原书 {from_book} 条，其余自拟")
     print(p)
 
+
+# 判「例句用上习语没有」也要认 lose→lost、wine→wining，跟加粗共用一张表。
+# 必须放在 main() 调用之前，否则跑脚本时 uses_idiom 拿到的还是空表
+_p10.IRREG = IRREG
 
 if __name__ == "__main__":
     main()

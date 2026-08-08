@@ -49,8 +49,11 @@ SHRINK_JS = """
     for (const t of tops) { if (t - last > 4) { n++; last = t; } }
     return n;
   };
-  const shrink = (td) => {                    // 返回 false 表示已到字号下限
-    const MIN = MIN_BY_COL[COL(td) - 1];
+  // 软下限：缩到这儿还放不下，就宁可多占一行也不再缩。用户的原则是
+  // **先折行再降号**，缩到 4.7pt 去换半行空白是本末倒置
+  const SOFT = 6.0 * 96 / 72;
+  const shrink = (td, floorPt) => {           // 返回 false 表示已到字号下限
+    const MIN = floorPt !== undefined ? floorPt : MIN_BY_COL[COL(td) - 1];
     for (const el of [td, ...td.querySelectorAll('*')]) {
       const s = parseFloat(getComputedStyle(el).fontSize) * 0.93;
       if (s < MIN) return false;
@@ -58,12 +61,25 @@ SHRINK_JS = """
     }
     return true;
   };
-  document.querySelectorAll('tbody td').forEach(td => {
+  // **一格该压几行，得看这一行本来有多高**。搭配列一格能有七八条
+  // （`good kick / hard kick / hefty kick / …`），整行已经占了 7 行；
+  // 这时候还把解释列硬压成 2 行，就是把字缩到蚂蚁大小去换一片空白——
+  // 行高本来就由最高的那一格定死了，缩它一个字号也省不出来。
+  // 所以先量出这一行的「地板」（搭配列占几行），解释和例句列的上限
+  // 取 max(2, 地板)：只有比整行还高的格子才需要压
+  const LIMIT = (td, floor) => {
+    const c = COL(td);
+    if (c === 1) return Math.max(2, floor);   // 词头列同理，别单独缩
+    if (c === 2) return 14;                   // 搭配列自己就是地板，最多 14 行
+    return Math.max(2, floor);
+  };
+  const shrinkCell = (td, MAX) => {
     if (td.colSpan > 1) return;
-    // 解释和例句一律压两行；搭配列例外，一格能有八九条，竖排本来就该占那么多行
-    const MAX = [2, 14, 2, 2][COL(td) - 1];
     if (rows(td) <= MAX) return;
-
+    // 原始字号。涨回去的时候**绝不能超过它**——放宽了行数上限之后，
+    // 一格里能放的字变多，涨回去的循环会一路把字涨到 9pt 多，
+    // 满页正文里冒出一格特大号字，比缩小还难看
+    const base = parseFloat(getComputedStyle(td).fontSize);
     // **先拆掉中英之间那个换行**，让中文接在英文后面连排——省下来的一整行
     // 往往就够了，不必动字号。先缩字号是本末倒置：
     // `under the new system, all children will be monitored by a social worker.`
@@ -73,13 +89,17 @@ SHRINK_JS = """
       br.replaceWith(document.createTextNode('  '));
       if (rows(td) <= MAX) return;
     }
-    // 连排还放不下才缩字号
+    // 连排还放不下才缩字号。**先缩到软下限（6pt）**，到这儿还放不下就
+    // 放宽一到两行——多占一行远比把字缩成 4.7pt 好读
     let guard = 0;
+    while (rows(td) > MAX && guard++ < 40 && shrink(td, SOFT)) {}
+    if (rows(td) > MAX) MAX = Math.min(rows(td), MAX + 2);
     while (rows(td) > MAX && guard++ < 40 && shrink(td)) {}
     // 缩完再尽量涨回去：一步缩 7% 常常缩过头，字小得可怜宽度却剩一大截
     for (let g = 0; guard > 0 && g < 12; g++) {
       const els = [td, ...td.querySelectorAll('*')];
       const saved = els.map(el => getComputedStyle(el).fontSize);
+      if (parseFloat(saved[0]) * 1.03 > base) break;      // 不许超过原始字号
       els.forEach((el, i) => { el.style.fontSize = parseFloat(saved[i]) * 1.03 + 'px'; });
       if (rows(td) > MAX) {
         els.forEach((el, i) => { el.style.fontSize = saved[i]; });
@@ -87,6 +107,17 @@ SHRINK_JS = """
       }
     }
     if (rows(td) > MAX) over++;
+  };
+  document.querySelectorAll('tbody tr').forEach(tr => {
+    const cells = [...tr.querySelectorAll('td')];
+    const c2 = cells.find(td => td.classList.contains('c2'));
+    // 先把搭配列压到 14 行以内，压完它就是这一行的地板
+    if (c2) shrinkCell(c2, 14);
+    const floor = c2 ? rows(c2) : 2;
+    for (const td of cells) {
+      if (td === c2) continue;
+      shrinkCell(td, LIMIT(td, floor));
+    }
   });
   return over;
 }
@@ -145,6 +176,10 @@ th:nth-child(1), td:nth-child(1) { flex: 0 0 10%; }
 th:nth-child(2), td:nth-child(2) { flex: 0 0 26%; }
 th:nth-child(3), td:nth-child(3) { flex: 0 0 22%; color: #444; }
 th:nth-child(4), td:nth-child(4) { flex: 0 0 42%; color: #333; }
+/* 没有例句的行（占 78%）把解释列横跨过去，右边就不会留一大片空白。
+   这是 flex 布局不是真表格，colspan 不起作用，得自己把宽度加起来（22+42）。
+   规则必须写在 nth-child 后面——两者特异度相同，靠先后顺序决胜 */
+td.c3.wide, td.c4.wide { flex: 0 0 64%; }
 .lab { color: #999; font-size: 5.2pt; margin-right: 1px; }
 tr.newpage { break-before: page; page-break-before: always; }
 /* 每页顶上重复的表头 */
@@ -240,7 +275,45 @@ def print_pdf(html_path, pdf_path):
         browser.close()
     if not os.path.exists(pdf_path) or os.path.getmtime(pdf_path) <= before:
         raise RuntimeError("PDF 没有被写出来：" + pdf_path)
-    print(f"实测仍超过两行的格子：{over} 个；翻页处补写单词 {added} 次")
+    return over, added
+
+
+def verify(path):
+    """排完必须回头**读成品 PDF** 自查，别只看脚本打印的数字。
+
+    查两条用户点名过的：
+    ① 每页顶上都得有表头。第 1 页的表头是 tbody 的第一行，天然就在；
+       第 2 页起靠 PAGINATE_JS 克隆插入，`<thead>` 一丢就全军覆没，
+       而第 1 页看着还是对的——只看头几页永远发现不了。
+    ② 字号不能小到看不清。行高由最高的那一格定，别为了把解释压成两行
+       把字缩成蚂蚁（用户原话：搭配已经占了这么多行，解释还在缩小字体）。
+    """
+    import collections
+
+    import fitz
+
+    doc = fitz.open(path)
+    nohead, sizes = [], collections.Counter()
+    for i, page in enumerate(doc):
+        words = {w[4] for w in page.get_text("words")}
+        if not {"单词", "搭配", "解释", "例句"} <= words:
+            nohead.append(i + 1)
+        for b in page.get_text("dict")["blocks"]:
+            for line in b.get("lines", []):
+                for sp in line["spans"]:
+                    # fitz 报的 size 就是 pt，别再乘 96/72——那是 CSS px 的换算，
+                    # 多乘一遍会把 5.2pt 报成 3.9pt，看着像跌破了下限
+                    sizes[round(sp["size"], 1)] += len(sp["text"])
+    n = len(doc)
+    tiny = sum(v for k, v in sizes.items() if k < 5.2)
+    total = sum(sizes.values()) or 1
+    print(f"自查：{n} 页，缺表头 {len(nohead)} 页"
+          + (f"（{nohead[:10]}…）" if nohead else "")
+          + f"；小于 5.2pt 的字符 {tiny}（{tiny / total:.2%}），"
+          f"最小 {min(sizes)}pt，6pt 及以上占 "
+          f"{sum(v for k, v in sizes.items() if k >= 6) / total:.1%}")
+    doc.close()
+    return len(nohead), tiny
 
 
 def add_bookmarks(path):
@@ -266,7 +339,7 @@ def add_bookmarks(path):
     doc.set_metadata({"title": "牛津习语词典", "producer": "", "creator": "",
                       "author": "", "subject": "", "keywords": ""})
     tmp = path + ".tmp"
-    doc.save(tmp, garbage=4, deflate=True)
+    doc.save(tmp, garbage=1, deflate=True)
     n = len(doc)
     doc.close()
     os.replace(tmp, path)
@@ -286,13 +359,63 @@ def main():
         name = "_sample"
     else:
         name = FINAL[:-4]
-    html_path = os.path.join(WORK, f"{name}.html")
-    open(html_path, "w").write(md_to_html(md, name))
     pdf_path = os.path.join(PDF, f"{name}.pdf")
-    print_pdf(html_path, pdf_path)
-
+    render_chunked(md, name, pdf_path)
     add_bookmarks(pdf_path)
+    verify(pdf_path)
     print(pdf_path)
+
+
+# 一次排完会撞上 Chromium 的字符串上限（`Page.pdf: Cannot create a string longer
+# than 0x1fffffe8 characters`）——这本 9 万行、3000 多页，PDF 有一亿多字节，
+# Playwright 要先把它整个拼成一个 JS 字符串才写盘。切片排、再用 PyMuPDF 拼起来。
+# 每片大小按「排出来别超过 512MB」定，1.5 万行留了足够余量
+CHUNK_ROWS = 15000
+
+
+def render_chunked(md, name, pdf_path):
+    import fitz
+
+    head, _, body = md.partition("<table>")
+    rows = re.findall(r"<tr>.*?</tr>", body, re.S)
+    if not rows:
+        raise RuntimeError("md 里没有表格行")
+    thead, rows = rows[0], rows[1:]
+    parts, over, added = [], 0, 0
+    for i in range(0, len(rows), CHUNK_ROWS):
+        n = i // CHUNK_ROWS + 1
+        # **表头必须重新包回 `<thead>`**。`re.findall(r"<tr>.*?</tr>")` 只捞出
+        # `<tr><th>…</th></tr>`，把外面那层 `<thead>` 留在了原地；直接拼进
+        # `<table>` 里浏览器会自动塞进 tbody，`document.querySelector('thead')`
+        # 就是 null——PAGINATE_JS 于是一份表头都插不进去，全书只有第 1 页有表头
+        # （那一页看着是对的，因为它就是 tbody 的第一行），一眼看不出问题在哪
+        chunk = (head + "<table><thead>" + thead + "</thead>"
+                 + "".join(rows[i:i + CHUNK_ROWS]) + "</table>")
+        html = os.path.join(WORK, f"{name}.part{n}.html")
+        open(html, "w").write(md_to_html(chunk, name))
+        out = os.path.join(WORK, f"{name}.part{n}.pdf")
+        o, a = print_pdf(html, out)
+        over, added = over + o, added + a
+        parts.append(out)
+        print(f"  第 {n} 片：{len(rows[i:i + CHUNK_ROWS])} 行")
+    # **先逐片压缩再合并**。Chrome 写出来的流是不压缩的，一片就 80MB；
+    # 合并成 2700 页再压，PyMuPDF 的 garbage=4 要跑二十分钟以上还出不来。
+    # 单片 80MB→12MB 只要 36 秒，压完再拼，总量和一次性压的结果一样
+    for p in parts:
+        with fitz.open(p) as d:
+            d.save(p + ".z", garbage=4, deflate=True)
+        os.replace(p + ".z", p)
+    doc = fitz.open()
+    for p in parts:
+        with fitz.open(p) as d:
+            doc.insert_pdf(d)
+    # 别在这儿开 garbage=4：3000 页的合并文档做全量对象去重要跑 20 分钟以上，
+    # 而且后面 add_bookmarks 还会再存一遍，压缩交给它做一次就够
+    doc.save(pdf_path)
+    doc.close()
+    for p in parts:
+        os.remove(p)
+    print(f"实测仍超过两行的格子：{over} 个；翻页处补写单词 {added} 次")
 
 
 if __name__ == "__main__":

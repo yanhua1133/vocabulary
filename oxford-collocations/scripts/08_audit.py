@@ -39,9 +39,66 @@ p09 = _load("09_clean.py", "p09")
 CJK = re.compile(r"[\u4e00-\u9fff]")
 
 
+def close(a, b):
+    """两个词是不是同一个词的两种拼法：改一个字母、增删一个字母、
+    或者相邻两个字母调个位（fibre/fiber）。"""
+    a, b = a.lower(), b.lower()
+    if a == b:
+        return True
+    if len(a) == len(b):
+        d = [i for i, (x, y) in enumerate(zip(a, b)) if x != y]
+        return len(d) <= 1 or (len(d) == 2 and d[1] == d[0] + 1
+                               and a[d[0]] == b[d[1]] and a[d[1]] == b[d[0]])
+    if abs(len(a) - len(b)) == 1:
+        s, t = (a, b) if len(a) < len(b) else (b, a)
+        return any(s == t[:i] + t[i + 1:] for i in range(len(t)))
+    return False
+
+
+def bad_gloss(cn):
+    """解释格坏在哪儿，好的返回空串。**每一条都是用户点名过的**：
+
+        向一踢              「一」是省略号被认成汉字，读出来不是人话
+        对⋯踢；违抗⋯(       括号没闭合
+        在⋯上的一吻！        解释里加感叹号
+        …；(这个城市需要好好鞭策一下   例句译文卷进了解释格
+
+    判据跟 `09_clean.clean_gloss` 共用（这里只查，不修），
+    所以自查报的 0 是真的 0，不是自己查自己。
+    """
+    if re.search(r"[A-Za-z]{2,}", cn):
+        return "混英文"
+    if re.search(r"[A-Za-z0-9|｜~～*#$］［【】「」_]", cn):
+        return "残留碎字"
+    if " " in cn:
+        return "夹空格"
+    if (cn.count("(") + cn.count("（")) != (cn.count(")") + cn.count("）")):
+        return "括号不配对"
+    if "⋯" in cn:
+        return "省略号变体"
+    if re.search(r"[！!？?：:]", cn):
+        return "怪标点"
+    if cn[0] in "；，、。·-—)）" or cn[-1] in "；，、。·-—(（":
+        return "首尾标点"
+    for x in p09.GLOSS_SEP.split(cn):
+        x = x.strip(" ·-—")
+        if not x:
+            continue
+        if len(x) == 1 or not re.search(r"[\u4e00-\u9fff]", x):
+            return f"碎渣义项 {x}"
+        if len(x) > 15 or p09.SENT_ITEM.search(x):
+            return f"混进句子 {x[:16]}"
+        # 逐条查，不看整格：整格里别处有省略号不能给这一条背书
+        if p09.LONE_YI.search(x) and "…" not in x:
+            return f"省略号认成一 {x}"
+        if x != p09.drop_orphan_paren(x):
+            return f"括号不配对 {x}"
+    return ""
+
+
 def check(rows):
     bad = {k: [] for k in (
-        "词头坏", "搭配坏格子", "解释混英文", "解释残留碎字", "例句坏",
+        "词头坏", "搭配坏格子", "解释空", "解释坏", "例句坏",
         "例句加粗不全")}
     for word, pos, full, cn, en, zh in rows:
         if p09.bad_head(word):
@@ -50,13 +107,13 @@ def check(rows):
             why = p09.bad_phrase(f)
             if why:
                 bad["搭配坏格子"].append(f"{f}  ←{why}")
-        if cn:
-            # 清洗过后中文列不该再有成串英文
-            if re.search(r"[A-Za-z]{2,}", cn):
-                bad["解释混英文"].append(cn[:40])
-            # 也不该剩下孤立的拉丁字母、竖线这些 OCR 碎渣
-            elif re.search(r"[A-Za-z0-9|｜~～*#$]", cn):
-                bad["解释残留碎字"].append(cn[:40])
+        # 空白单元格也是错——不许拿留空糊弄过去
+        if not cn:
+            bad["解释空"].append(full[0])
+        else:
+            why = bad_gloss(cn)
+            if why:
+                bad["解释坏"].append(f"{cn[:40]}  ←{why}")
         if not en:
             continue
         plain = re.sub(r"</?b>", "", en)
@@ -71,6 +128,11 @@ def check(rows):
         hit = " ".join(re.findall(r"<b>(.*?)</b>", marked))
         there = [w for w in want if p09.hits(w, plain)]
         miss = [w for w in there if not p09.hits(w, hit)]
+        # 误报：例句里两种拼法一起写（`a grey area and a gray area`、
+        # `armour/armor`、`fibre-optic/fiber-optic`），标住了一处，
+        # 另一处当然标不上。跟已标住的词差一步之内的，算同一个词
+        marked_words = re.findall(r"[A-Za-z]+", hit)
+        miss = [w for w in miss if not any(close(w, h) for h in marked_words)]
         if miss:
             bad["例句加粗不全"].append(f"{full[0]} → {marked[:56]}")
     return bad
@@ -79,7 +141,7 @@ def check(rows):
 def main():
     book, cache = p07.load()
     done, todo = [], []
-    for word, pos, full, cn, en, zh, ok in p07.iter_rows(book, cache):
+    for word, pos, full, cn, en, zh, ok, _key in p07.iter_rows(book, cache):
         (done if ok else todo).append((word, pos, full, cn, en, zh))
     raw = sum(1 for h in book for s in h["senses"] for g in s["groups"]
               for x in (g.get("subs") or []) if x.get("full"))

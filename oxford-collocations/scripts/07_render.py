@@ -76,7 +76,9 @@ def bold_words(text, phrases):
                 continue
             text = re.sub(rf"(?<![>\w])({inflect(w)})(?!\w)",
                           r"<b>\1</b>", text, flags=re.I)
-    return re.sub(r"</b>([\s,]*)<b>", r"\1", flatten(text))
+    # 连字符两边各标一次会印成 `<b>great</b>-<b>aunt</b>`，看着像标漏了中间那杠。
+    # 空格、逗号、连字符隔开的相邻两段加粗一律并成一段
+    return re.sub(r"</b>([\s,\-]*)<b>", r"\1", flatten(text))
 
 
 def flatten(text):
@@ -113,12 +115,16 @@ def load():
     return book, cache
 
 
+HEADWORDS = set()          # 由 main/iter_rows 首次调用时灌入，见下
+
+
 def iter_rows(book, cache):
     """产出 (词头, 词性, 搭配列表, 解释, 例句英, 例句中, 是否校对过)。
 
     **自查脚本走的是同一个函数**，不再各抄一份——之前两边各写各的，
     渲染改了口径自查还按老口径查，报出来的数字是假的。
     """
+    HEADWORDS.update(h["word"].lower() for h in book)
     for h in book:
         for s in h["senses"]:
             # 词头按义项取：扫描件吃掉整行词头时，`log` 的几个义项会挂到
@@ -126,9 +132,21 @@ def iter_rows(book, cache):
             # 词头列以前完全没过纠错，印着 `thanktul` 这种查都查不到的词条。
             # 词头还要按义项取：扫描件吃掉整行词头时，`log` 的几个义项会挂到
             # `locust` 名下，04_expand 按组类型（`VERB + LOG`）认了回来
-            word = _p09.norm_phrase(_p04.fix_phrase(s.get("head") or h["word"]))
+            # 按义项取词头是为了救 `log` 挂到 `locust` 名下那种情况，但它会被
+            # 组标签污染：`ABSCESS + VERB` 让整个 abortion 词条变成了 abscess，
+            # 而 abscess 压根不是本书的词头。所以**只在它本身也是词头时才采信**
+            sh = s.get("head")
+            if sh and _p09.norm_phrase(sh).lower() not in HEADWORDS:
+                sh = None
+            word = _p09.norm_phrase(_p04.fix_phrase(sh or h["word"]))
             if _p09.bad_head(word):
                 continue
+            # 整组搭配被填成了隔壁词头（abortion 组里全是 abscess）。
+            # 必须在这儿按**整组**判——单看一条 `have abscess` 是通顺的，
+            # 到了 clean_row 那种逐条判据里根本发现不了
+            allp = [x for g in s["groups"] for sub in (g.get("subs") or [])
+                    for x in (sub.get("full") or [])]
+            swap = _p09.wrong_head(word, allp)
             for g in s["groups"]:
                 for sub in g.get("subs") or []:
                     full = sub.get("full") or []
@@ -141,30 +159,57 @@ def iter_rows(book, cache):
                     got = cache.get(key)
                     if got:
                         full = got.get("c") or full
-                        cn = got["cn"]
-                        en, _, zh = got["ex"].partition("  ")
+                        # 缓存里的字段可能只填了一半——17_merge_ex 只写例句、
+                        # 不碰解释，`cn` 是空串。空的一律退回原书那份，
+                        # 少了这个 or 会把五万多条解释清空
+                        cn = got.get("cn") or cell(sub["cn"])
+                        en, _, zh = (got.get("ex") or "").partition("  ")
+                        if not en:
+                            en, zh = ((sub.get("ex") or [["", ""]])[0] + ["", ""])[:2]
                     else:
                         cn = cell(sub["cn"])
                         en, zh = ((sub.get("ex") or [["", ""]])[0] + ["", ""])[:2]
                     # 纠错要放在 if/else 之后，两条路都得走——之前只在校对过的
                     # 那一支调了，未校对的九万多行照样印着 g00d coach
                     full = [_p04.fix_phrase(x) for x in full]
+                    if swap:
+                        full = [re.sub(rf"\b{re.escape(swap)}\b", word, x,
+                                       flags=re.I) for x in full]
                     en = _p04.fix_phrase(cell(en))
                     # 四列都要纠：解释和例句中译里也会混着 g00d 这种英文碎片
                     cn = _p04.fix_phrase(cn)
                     zh = _p04.fix_phrase(cell(zh))
+                    # 搭配必须含本组词头。不含的是展开时把 `~` 丢了的残片
+                    # （`provide` 其实是 provide accommodation、`hit-andrun`
+                    # 是 hit-and-run accident）。补不回正确语序——名词组词头在前
+                    # （airport lounge）、动词组在后（provide accommodation）——
+                    # 所以按老规矩丢掉，全书 392 条
+                    ws = word.lower()[:max(3, len(word) - 2)]
+                    full = [x for x in full if ws in x.lower()]
+                    if not full:
+                        continue
                     # 修不好的整行丢掉，宁可少印一行也不印错一行
                     row = _p09.clean_row(full, cn, en, zh)
                     if row is None:
                         continue
                     full, cn, en, zh = row
-                    yield word, h["pos"], full, cn, en, zh, bool(got)
+                    # 连例句都写不出来的搭配，就是搭配本身已经坏透了
+                    # （`ons for` 其实是 bus for、`Iressing` 是 dressing、
+                    # `installs` 是 instalments）。派了五轮 agent 按中文意思写，
+                    # 写出来的句子跟搭配对不上——印出去就是自相矛盾的一行。
+                    # **注意分清**：这里丢的是「搭配列坏掉」的整行，
+                    # 不是拿合并单元格去掩盖缺例句，那种做法已经撤销了
+                    if not en.strip():
+                        continue
+                    # 把 cache 键一起吐出来：16_make_ex 自己按清洗后的搭配拼键
+                    # 会跟这里对不上（清洗会改写 full[0]），几千条回填不进去
+                    yield word, h["pos"], full, cn, en, zh, bool(got), key
 
 
 def main():
     book, cache = load()
     rows, fixed, prev = [], 0, None
-    for word, pos, full, cn, en, zh, done in iter_rows(book, cache):
+    for word, pos, full, cn, en, zh, done, _key in iter_rows(book, cache):
         fixed += done
         # 换词条才重写词头。`name` 名词和 `name` 动词是两个词条，各出各的头
         first_head = (word, pos) != prev
@@ -190,9 +235,10 @@ def main():
     for word, words, cn, ex in rows:
         head = (f'<td class="c1 newword"><b>{word}</b></td>' if word
                 else '<td class="c1 cont"></td>')
-        # 每格都打上列号：排版脚本按 class 认列，不靠 td.cellIndex
-        lines.append(f'<tr>{head}<td class="c2"><b>{words}</b></td>'
-                     f'<td class="c3">{cn}</td><td class="c4">{ex}</td></tr>')
+        # 每格都打上列号：排版脚本按 class 认列，不靠 td.cellIndex。
+        # 四列都要有内容，**不许合并、不许留空**：没有原书例句的行用自拟例句填
+        body = f'<td class="c3">{cn}</td><td class="c4">{ex}</td>' 
+        lines.append(f'<tr>{head}<td class="c2"><b>{words}</b></td>{body}</tr>')
     lines.append("</table>\n")
     p = os.path.join(OUT, "牛津搭配词典.md")
     open(p, "w").write("\n".join(lines))
